@@ -5,7 +5,23 @@ const Register = () => {
     const { register, formState: { errors }, handleSubmit, reset, getValues } = useForm();
 
     const onSubmit = data => {
-        console.log(data)
+
+        const email = data.email;
+
+
+
+        const currentUser = { email: email }
+
+        fetch(`http://localhost:5000/user/${email}`, {
+            method: 'PUT',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+
         reset()
     };
     return (
@@ -40,7 +56,7 @@ const Register = () => {
                                     value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                                     message: 'Provide a valid email'
                                 }
-                            })} type="text" placeholder="email" class="input input-bordered" />
+                            })} type="email" placeholder="email" class="input input-bordered" />
                             <label className="label">
                                 {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
                                 {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
@@ -59,7 +75,7 @@ const Register = () => {
                                     value: 6,
                                     message: 'Must be 6 characters or longer'
                                 }
-                            })} type="text" placeholder="password" class="input input-bordered" />
+                            })} type="password" placeholder="password" class="input input-bordered" />
                             <label className="label">
                                 {errors.password?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.password.message}</span>}
                                 {errors.password?.type === 'minLenth' && <span className="label-text-alt text-red-500 ">{errors.password.message}</span>}

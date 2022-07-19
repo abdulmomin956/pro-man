@@ -7,7 +7,23 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit, reset, getValues } = useForm();
 
     const onSubmit = data => {
-        console.log(data)
+
+
+        const email = data.email;
+
+        const  currentUser = {email: email}
+
+        fetch(`http://localhost:5000/user/${email}`, {
+            method: 'PUT',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+
+
         reset()
     };
     return (
