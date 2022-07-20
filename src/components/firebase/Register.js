@@ -6,6 +6,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useNavigate } from 'react-router-dom';
 import auth from './firebase.init';
 import SocialLogin from './SocialLogin';
+import Loading from '../shared/Loading';
 
 const Register = () => {
     const navigate = useNavigate()
@@ -14,11 +15,11 @@ const Register = () => {
     const [updateProfile, updating, upError] = useUpdateProfile(auth);
 
     let signInError;
-    if (error) {
-        signInError = <p className='text-red-500'><small>{error?.message}</small></p>
+    if (error || upError) {
+        signInError = <p className='text-red-500'><small>{error?.message || upError?.message}</small></p>
     }
-    if (loading) {
-        <h1 className='text-3xl text-primary font-bold'>Loading....</h1>
+    if (loading || updating) {
+        <Loading></Loading>
     }
 
     if (user) {
