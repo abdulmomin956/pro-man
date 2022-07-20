@@ -1,5 +1,6 @@
 import React from "react";
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import { Link, Outlet } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -8,6 +9,7 @@ const Sidebar = () => {
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content ">
           {/* <!-- Page content here --> */}
+          <Outlet />
           <label for="my-drawer-2" class="btn drawer-button lg:hidden">
             <FaArrowAltCircleRight className="text-3xl"></FaArrowAltCircleRight>
           </label>
@@ -20,13 +22,13 @@ const Sidebar = () => {
           <ul class="menu p-4 overflow-y-auto w-52 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
             <li>
-              <a>Boards</a>
+              <Link to='/'>Boards</Link>
             </li>
             <li>
-              <a>Tables</a>
+              <Link to='/template'>Templates</Link>
             </li>
             <li>
-              <a>Calendar</a>
+              <Link to='/homescreen'>Home</Link>
             </li>
           </ul>
         </div>
