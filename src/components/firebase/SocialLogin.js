@@ -1,10 +1,13 @@
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from './firebase.init';
 import googleIcon from '../../assest/image/google-icon.svg'
+import Loading from '../shared/Loading';
 
 
 const SocialLogin = ({ children }) => {
+    let location = useLocation();
+    let from = location.state?.from?.pathname || '/'
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     let navigate = useNavigate();
 
@@ -15,13 +18,10 @@ const SocialLogin = ({ children }) => {
     }
 
     if (loading) {
-        return <div className='h-screen flex justify-center items-center'>
-            <h1>Loding....</h1>
-        </div>
+        <Loading></Loading>
     }
     if (user) {
-        navigate('/')
-        console.log(user)
+        navigate(from, { replace: true })
     }
 
     let signInError;

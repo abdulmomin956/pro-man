@@ -2,12 +2,14 @@ import React from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from './firebase.init';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
-
-
+import Loading from '../shared/Loading';
+// import { toast } from 'react-toastify';
 
 const Login = () => {
+    let location = useLocation();
+    let from = location.state?.from?.pathname || '/'
     const { register, formState: { errors }, handleSubmit, reset, getValues } = useForm();
     const navigate = useNavigate()
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
@@ -15,13 +17,18 @@ const Login = () => {
         auth
     );
 
+
+    if (loading || sending) {
+        <Loading></Loading>
+    }
+
     if (user) {
-        navigate('/')
+        navigate(from, { replace: true })
     }
 
     let signInError;
-    if (error) {
-        signInError = <p className='text-red-500'><small>{error?.message}</small></p>
+    if (error || resetError) {
+        signInError = <p className='text-red-500'><small>{error?.message || resetError?.message}</small></p>
     }
 
     const onSubmit = data => {
@@ -30,7 +37,7 @@ const Login = () => {
         console.log(data)
     };
     return (
-        <div className='mt-8'>
+        <div className='mt-12'>
             <h1 className='text-3xl font-bold text-center '>Please Login First!</h1>
             <div class="hero-content mx-auto flex-col lg:flex-row-reverse ">
                 <div class="card w-full  max-w-sm shadow-2xl bg-base-100">
@@ -82,6 +89,13 @@ const Login = () => {
                                 </label>
                             </div>
                             {signInError}
+
+                            <p>Forgot password? <button type='button' onClick={async () => {
+                                const values = getValues('email');
+                                await sendPasswordResetEmail(values);
+                                alert('Sent email');
+                            }} className=" link-hover">Reset </button></p>
+
                             <div class="form-control ">
                                 <button style={{ backgroundColor: 'black' }} class="btn text-white w-2/3 mx-auto">Login</button>
                             </div>

@@ -11,7 +11,7 @@ const Navbar = () => {
         signOut(auth);
     };
     return (
-        <div class="navbar bg-accent">
+        <div style={{ zIndex: '200' }} class="navbar bg-accent">
             <div class="navbar-start lg:px-12">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -38,29 +38,31 @@ const Navbar = () => {
                                 <li><a>Submenu 2</a></li>
                             </ul>
                         </li>
+
                         {user ? <button onClick={logout} className="btn btn-ghost rounded-lg">Sign Out</button> : <button style={{ backgroundColor: '#BFC9FF' }} className='btn '><NavLink className='rounded-lg px-2' to="/login">Login</NavLink></button>}
                     </ul>
                 </div>
                 <a href='/' class="btn btn-ghost normal-case text-xl">PRO-MAN</a>
                 <div class="navbar-center hidden lg:flex">
                     <ul class="menu menu-horizontal p-0">
-                        <li className='px-2' tabindex="0">
+                        <li style={{ zIndex: '100' }} className='px-2' tabindex="0">
                             <a>
                                 Workspaces
                                 <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                             </a>
-                            <ul class="p-2">
+                            <ul class="p-2 bg-slate-100">
                                 <li><a>Submenu 1</a></li>
                                 <li><a>Submenu 2</a></li>
                             </ul>
                         </li>
                         <li tabindex="0">
                             <button style={{ backgroundColor: '#BFC9FF' }} className='btn '> Create</button>
-                            <ul class="p-2">
+                            <ul class="p-2 bg-slate-100">
                                 <li><a>Submenu 1</a></li>
                                 <li><a>Submenu 2</a></li>
                             </ul>
                         </li>
+
 
                     </ul>
                 </div>
