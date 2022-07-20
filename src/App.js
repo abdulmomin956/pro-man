@@ -5,18 +5,17 @@ import Home from "./components/Home";
 import Navbar from "./components/shared/Navbar";
 import { ToastContainer } from 'react-toastify';
 import RequierAuth from "./components/requierAuth/RequierAuth";
-// import auth from "./components/firebase/firebase.init";
-// import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "./components/firebase/firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 
 
 function App() {
-  // const [user, loading, error] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth);
   return (
     <div className="#F5F5F5">
       <ToastContainer />
-      {/* {user && <Navbar />} */}
-      <Navbar></Navbar>
+      {user && <Navbar />}
 
       <Routes>
         {/* <Route path="/" element={<Home />}></Route> */}
