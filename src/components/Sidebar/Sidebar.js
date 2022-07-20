@@ -19,7 +19,7 @@ const Sidebar = () => {
           style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
         >
           <label for="my-drawer-2" class="drawer-overlay"></label>
-          <ul class="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
+          <ul class="menu p-4 overflow-y-auto w-52 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
             <li>
               <Link to='/'>Boards</Link>
