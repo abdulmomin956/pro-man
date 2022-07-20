@@ -5,12 +5,12 @@ import { Link, Outlet } from "react-router-dom";
 const Sidebar = () => {
   return (
     <div>
-      <div class="drawer drawer-mobile">
+      <div class="drawer drawer-mobile static">
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content ">
           {/* <!-- Page content here --> */}
           <Outlet />
-          <label for="my-drawer-2" class="btn drawer-button lg:hidden">
+          <label for="my-drawer-2" class="btn drawer-button lg:hidden absolute top-10 left-0">
             <FaArrowAltCircleRight className="text-3xl"></FaArrowAltCircleRight>
           </label>
         </div>
@@ -19,7 +19,7 @@ const Sidebar = () => {
           style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
         >
           <label for="my-drawer-2" class="drawer-overlay"></label>
-          <ul class="menu p-4 overflow-y-auto w-52 bg-base-100 text-base-content">
+          <ul class="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
             <li>
               <Link to='/'>Boards</Link>
