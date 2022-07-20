@@ -32,7 +32,7 @@ const SocialLogin = ({ children }) => {
     return (
 
         <>
-            <button onClick={handleSignUp} className="btn btn-outline "><img style={{ width: '25px' }} src={googleIcon} alt="" />{children}  Google</button>
+            <button style={{ backgroundColor: 'black' }} onClick={handleSignUp} className="btn text-white btn-outline "><img style={{ width: '25px' }} src={googleIcon} alt="" />{children}  Google</button>
             {
                 signInError
             }

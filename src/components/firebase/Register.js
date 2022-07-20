@@ -50,7 +50,7 @@ const Register = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="Salma"
+                                        placeholder="First Name"
                                         className="input input-bordered w-full max-w-xs"
                                         {...register("firstName", {
                                             required: {
@@ -69,7 +69,7 @@ const Register = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="Khatun"
+                                        placeholder="Last Name"
                                         className="input input-bordered w-full max-w-xs"
                                         {...register("lastName", {
                                             required: {
@@ -131,7 +131,7 @@ const Register = () => {
 
                             {signInError}
                             <div class="form-control ">
-                                <button style={{ backgroundColor: 'black' }} class="btn text-white w-2/3 mx-auto">Register</button>
+                                <button style={{ backgroundColor: 'black' }} class="btn text-white w-full mx-auto">Register</button>
                             </div>
                         </form>
 

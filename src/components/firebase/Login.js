@@ -97,7 +97,7 @@ const Login = () => {
                             }} className=" link-hover">Reset </button></p>
 
                             <div class="form-control ">
-                                <button style={{ backgroundColor: 'black' }} class="btn text-white w-2/3 mx-auto">Login</button>
+                                <button style={{ backgroundColor: 'black' }} class="btn text-white w-full mx-auto">Login</button>
                             </div>
                         </form>
 
