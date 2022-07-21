@@ -72,8 +72,9 @@ const Board = () => {
       {/* **Most popular template section start here** */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
 
-        {popularTemplates.map((template) => (
+        {popularTemplates.map((template, i) => (
           <div
+            key={i}
             className="align-middle"
             style={{
               height: "100px",
@@ -135,8 +136,8 @@ const Board = () => {
           </div>
         </div>
         <div>
-          <div class="card w-60 bg-base-100 shadow-xl">
-            <div class="card-body ">
+          <div className="card w-60 bg-base-100 shadow-xl">
+            <div className="card-body ">
               <div className="flex justify-center text-md items-center">
                 <span className="mr-3">Create New Board</span>
                 <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare>
