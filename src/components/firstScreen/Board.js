@@ -62,7 +62,7 @@ const Board = () => {
     },
   ];
   return (
-    <div className="px-8">
+    <div className="px-4">
       {/* This Board pages showing when enter to the site */}
       <h2 className="text-2xl font-medium my-6">
         <span className="flex items-center text-gray-700">
@@ -110,36 +110,36 @@ const Board = () => {
           <div className="grid grid-cols-3 lg:grid-cols-5 gap-1">
             <div>
               <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
-                <FaBoxes className="mr-1 text-sm"></FaBoxes> Boards
+                <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards
               </button>{" "}
             </div>
             <div>
               <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
-                <HiViewGridAdd className="mr-1 text-sm"></HiViewGridAdd> Views
+                <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd> Views
               </button>{" "}
             </div>
             <div>
               <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
-                <FaUserFriends className="mr-1 text-sm"></FaUserFriends> Members
+                <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends> Members
               </button>{" "}
             </div>
             <div>
               <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
-                <FaCogs className="mr-1 text-sm"></FaCogs> Settings
+                <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
               </button>{" "}
             </div>
             <div>
               <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
-                <GrUpgrade className="mr-1 text-sm"></GrUpgrade> Upgrade
+                <GrUpgrade className="mr-1 text-sm text-primary"></GrUpgrade> Upgrade
               </button>{" "}
             </div>
           </div>
         </div>
         <div>
           <div className="card w-60 bg-base-100 shadow-xl">
-            <div className="card-body ">
+            <div className="card-body hover:cursor-pointer hover:bg-gray-100  hover:font-bold">
               <div className="flex justify-center text-md items-center">
-                <span className="mr-3">Create New Board</span>
+                <span className="mr-2">Create New Board</span>
                 <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare>
               </div>
             </div>
