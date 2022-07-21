@@ -71,6 +71,7 @@ const Board = () => {
       </h2>
       {/* **Most popular template section start here** */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
+
         {popularTemplates.map((template) => (
           <div
             className="align-middle"
@@ -82,6 +83,7 @@ const Board = () => {
               backgroundImage: `url(${template.img})`,
             }}
           >
+
             <div>
               <button className="btn btn-xs btn-accent m-3">TEMPLATE</button>
             </div>
@@ -91,11 +93,14 @@ const Board = () => {
       </div>
       {/* **Most popular template section End here** */}
 
+
+
       {/* **Your Workspace section start here** */}
       <div className="my-16">
         <p className="text-2xl font-bold text-gray-500">YOUR WORKSPACES</p>
         <div className="md:flex items-center justify-between">
           <div className="flex items-center my-5">
+
             <span className="bg-primary text-3xl font-bold rounded text-white px-2">
               Pm
             </span>
@@ -141,6 +146,7 @@ const Board = () => {
         </div>
       </div>
       {/* **Your Workspace section End here** */}
+
     </div>
   );
 };
