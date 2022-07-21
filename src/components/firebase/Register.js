@@ -37,14 +37,14 @@ const Register = () => {
     return (
         <div className='mt-8'>
             <h1 className='text-3xl font-bold text-center '>Registration Here</h1>
-            <div class="hero-content mx-auto flex-col lg:flex-row-reverse ">
+            <div className="hero-content mx-auto flex-col lg:flex-row-reverse ">
 
-                <div class="card  w-full   max-w-sm shadow-2xl bg-base-100">
+                <div className="card  w-full   max-w-sm shadow-2xl bg-base-100">
 
-                    <div class="card-body ">
+                    <div className="card-body ">
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div class="flex flex-wrap -mx-3 ">
-                                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <div className="flex flex-wrap -mx-3 ">
+                                <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                     <label className="label">
                                         <span className="label-text">Name</span>
                                     </label>
@@ -63,7 +63,7 @@ const Register = () => {
                                         {errors.firstName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.firstName.message}</span>}
                                     </label>
                                 </div>
-                                <div class="w-full md:w-1/2 px-3">
+                                <div className="w-full md:w-1/2 px-3">
                                     <label className="label">
                                         <span className="label-text">Name</span>
                                     </label>
@@ -84,9 +84,9 @@ const Register = () => {
                                 </div>
                             </div>
 
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Email</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
                                 </label>
                                 <input {...register("email", {
                                     required: {
@@ -97,7 +97,7 @@ const Register = () => {
                                         value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                                         message: 'Provide a valid email'
                                     }
-                                })} type="text" placeholder="email" class="input input-bordered" />
+                                })} type="text" placeholder="email" className="input input-bordered" />
                                 <label className="label">
                                     {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
                                     {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
@@ -130,14 +130,14 @@ const Register = () => {
                             </div>
 
                             {signInError}
-                            <div class="form-control ">
-                                <button style={{ backgroundColor: 'black' }} class="btn text-white w-full mx-auto">Register</button>
+                            <div className="form-control ">
+                                <button style={{ backgroundColor: 'black' }} className="btn text-white w-full mx-auto">Register</button>
                             </div>
                         </form>
 
                         <SocialLogin><span className='px-2'>Continue With</span></SocialLogin>
-                        <label class="label">
-                            <small>Already have an account?<a href="/login" class="label-text-alt link px-2 font-bold link-hover">Please Login</a></small>
+                        <label className="label">
+                            <small>Already have an account?<a href="/login" className="label-text-alt link px-2 font-bold link-hover">Please Login</a></small>
                         </label>
                     </div>
 

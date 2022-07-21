@@ -39,14 +39,14 @@ const Login = () => {
     return (
         <div className='mt-12'>
             <h1 className='text-3xl font-bold text-center '>Please Login First!</h1>
-            <div class="hero-content mx-auto flex-col lg:flex-row-reverse ">
-                <div class="card w-full  max-w-sm shadow-2xl bg-base-100">
-                    <div class="card-body">
+            <div className="hero-content mx-auto flex-col lg:flex-row-reverse ">
+                <div className="card w-full  max-w-sm shadow-2xl bg-base-100">
+                    <div className="card-body">
                         <form onSubmit={handleSubmit(onSubmit)}>
 
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Email</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
                                 </label>
                                 <input {...register("email", {
                                     required: {
@@ -57,7 +57,7 @@ const Login = () => {
                                         value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                                         message: 'Provide a valid email'
                                     }
-                                })} type="text" placeholder="email" class="input input-bordered" />
+                                })} type="text" placeholder="email" className="input input-bordered" />
                                 <label className="label">
                                     {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
                                     {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
@@ -96,14 +96,14 @@ const Login = () => {
                                 alert('Sent email');
                             }} className=" link-hover">Reset </button></p>
 
-                            <div class="form-control ">
-                                <button style={{ backgroundColor: 'black' }} class="btn text-white w-full mx-auto">Login</button>
+                            <div className="form-control ">
+                                <button style={{ backgroundColor: 'black' }} className="btn text-white w-full mx-auto">Login</button>
                             </div>
                         </form>
 
                         <SocialLogin><span className='px-2'>Continue With</span></SocialLogin>
-                        <label class="label">
-                            <small>New to Pro-Man?<a href="/register" class="label-text-alt link px-2 font-bold link-hover">Please Register</a></small>
+                        <label className="label">
+                            <small>New to Pro-Man?<a href="/register" className="label-text-alt link px-2 font-bold link-hover">Please Register</a></small>
                         </label>
                     </div>
 
