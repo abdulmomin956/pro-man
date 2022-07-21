@@ -4,6 +4,7 @@ import {
   FaUserFriends,
   FaCogs,
   FaRegPlusSquare,
+  FaRegArrowAltCircleUp,
 } from "react-icons/fa";
 import { HiViewGridAdd } from "react-icons/hi";
 import { GrUpgrade } from "react-icons/gr";
@@ -130,7 +131,7 @@ const Board = () => {
             </div>
             <div>
               <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
-                <GrUpgrade className="mr-1 text-sm text-primary"></GrUpgrade> Upgrade
+                <FaRegArrowAltCircleUp className="mr-1 text-sm text-primary"></FaRegArrowAltCircleUp> Upgrade
               </button>{" "}
             </div>
           </div>
