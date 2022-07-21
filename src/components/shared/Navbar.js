@@ -6,7 +6,10 @@ import auth from '../firebase/firebase.init';
 
 const Navbar = () => {
     const [user] = useAuthState(auth);
-
+    const x = user?.displayName
+    const nameparts = x.split(" ");
+    const initials = nameparts[0].charAt(0).toUpperCase() + nameparts[1].charAt(0).toUpperCase();
+    // console.log(initials);
     const logout = () => {
         signOut(auth);
     };
@@ -24,7 +27,7 @@ const Navbar = () => {
                                 Workspaces
                                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
                             </p>
-                            <ul className="p-2">
+                            <ul className="p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><a>Submenu 1</a></li>
                                 <li><a>Submenu 2</a></li>
                             </ul>
@@ -34,13 +37,11 @@ const Navbar = () => {
                                 Create
 
                             </button>
-                            <ul className="p-2">
-                                <li ><a >Item 1</a></li>
-                                <li><a>Submenu 2</a></li>
+                            <ul className="p-2 shadow bg-base-100 rounded-box w-52">
+                                <li ><a >Create Board</a></li>
+                                <li><a>Create Workspace</a></li>
                             </ul>
                         </li>
-
-                        {user ? <button onClick={logout} className="btn btn-ghost rounded-lg">Sign Out</button> : <button style={{ backgroundColor: '#BFC9FF' }} className='btn '><NavLink className='rounded-lg px-2' to="/login">Login</NavLink></button>}
                     </ul>
                 </div>
                 <a href='/' className="btn btn-ghost normal-case text-xl">PRO-MAN</a>
@@ -60,8 +61,8 @@ const Navbar = () => {
                         <div className="dropdown">
                             <label tabIndex="0" className="btn  btn-md m-1">Create</label>
                             <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li ><a >Item 1</a></li>
-                                <li><a>Item 2</a></li>
+                                <li ><a >Create Board</a></li>
+                                <li><a>Create Workspace</a></li>
                             </ul>
                         </div>
 
@@ -71,12 +72,26 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end lg:px-12">
-                {user ? <button onClick={logout} className="btn btn-ghost rounded-lg">Sign Out</button> : <button style={{ backgroundColor: '#BFC9FF' }} className='btn'><NavLink className='rounded-lg px-2' to="/login">Login</NavLink></button>}
 
-                <button type="button" className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                    <span className="sr-only">Open user menu</span>
-                    <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                </button>
+                {
+                    user && <div className="dropdown dropdown-end">
+                        <label tabIndex="0" className="btn btn-ghost btn-circle bg-black avatar">
+                            <div className="w-10 rounded-full flex justify-center items-center">
+                                <span className='text-white font-bold block mt-3'>{initials}</span>
+                            </div>
+                        </label>
+                        <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                            <li>
+                                <a className="justify-between">
+                                    Profile
+                                    <span className="badge">New</span>
+                                </a>
+                            </li>
+                            <li><a>Settings</a></li>
+                            <li><p onClick={logout}>Logout</p></li>
+                        </ul>
+                    </div>
+                }
             </div>
         </div>
 
