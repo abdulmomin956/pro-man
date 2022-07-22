@@ -10,11 +10,15 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Board from "./components/firstScreen/Board";
 import HomeScreen from "./components/firstScreen/HomeScreen";
 import Template from "./components/firstScreen/Template";
+import Loading from "./components/shared/Loading";
 
 
 
 function App() {
   const [user, loading, error] = useAuthState(auth);
+  if (loading) {
+    <Loading></Loading>
+  }
   return (
     <div className="#F5F5F5">
       <ToastContainer />
