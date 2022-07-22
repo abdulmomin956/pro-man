@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 
@@ -14,25 +14,28 @@ const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, upError] = useUpdateProfile(auth);
 
-    let signInError;
-    if (error || upError) {
-        signInError = <p className='text-red-500'><small>{error?.message || upError?.message}</small></p>
-    }
     if (loading || updating) {
         <Loading></Loading>
     }
 
-    if (user) {
-        navigate('/')
-        console.log(user)
+    let signInError;
+    if (error || upError) {
+        signInError = <p className='text-red-500'><small>{error?.message || upError?.message}</small></p>
     }
+
+    useEffect(() => {
+        if (user) {
+            navigate('/')
+            console.log(user)
+        }
+    }, [user, navigate])
 
     const onSubmit = async (data) => {
         await createUserWithEmailAndPassword(data.email, data.password, data.displayName)
         const userName = data.firstName + " " + data.lastName
         await updateProfile({ displayName: userName });
         reset()
-        console.log(data)
+        // console.log(data)
     };
     return (
         <div className='mt-8'>

@@ -1,5 +1,5 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, Link } from 'react-router-dom';
 import auth from '../firebase/firebase.init';
@@ -7,13 +7,21 @@ import Loading from './Loading';
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
+    const [initials, setInitials] = useState('')
 
-    if (loading) {
-        <Loading />
-    }
-    const x = user?.displayName
-    const nameparts = x?.split(" ");
-    const initials = nameparts[0].charAt(0).toUpperCase() + nameparts[1].charAt(0).toUpperCase();
+    // if (loading) {
+    //     <Loading />
+    // }
+    useEffect(() => {
+        if (user) {
+            // console.log(user);
+            const x = user?.displayName
+            const nameparts = x?.split(" ");
+            if (nameparts) {
+                setInitials(nameparts[0]?.charAt(0)?.toUpperCase() + nameparts[1]?.charAt(0)?.toUpperCase());
+            }
+        }
+    }, [user])
     // console.log(initials);
     const logout = () => {
         signOut(auth);
