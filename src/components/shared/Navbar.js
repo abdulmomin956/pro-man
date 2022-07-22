@@ -3,9 +3,14 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, Link } from 'react-router-dom';
 import auth from '../firebase/firebase.init';
+import Loading from './Loading';
 
 const Navbar = () => {
-    const [user] = useAuthState(auth);
+    const [user, loading, error] = useAuthState(auth);
+
+    if (loading) {
+        <Loading />
+    }
     const x = user?.displayName
     const nameparts = x?.split(" ");
     const initials = nameparts[0].charAt(0).toUpperCase() + nameparts[1].charAt(0).toUpperCase();
@@ -77,7 +82,7 @@ const Navbar = () => {
                     user && <div className="dropdown dropdown-end">
                         <label tabIndex="0" className="btn btn-ghost btn-circle bg-black avatar">
                             <div className="w-10 rounded-full flex justify-center items-center">
-                                <span className='text-white font-bold block mt-3'>{initials}</span>
+                                <span title={user.displayName} className='text-white font-bold block mt-3'>{initials}</span>
                             </div>
                         </label>
                         <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
