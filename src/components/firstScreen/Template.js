@@ -1,9 +1,10 @@
 import React from 'react';
+import CoomingSoon from '../shared/CoomingSoon';
 
 const Template = () => {
     return (
         <div>
-            This is Templates page
+            <CoomingSoon></CoomingSoon>
         </div>
     );
 };
