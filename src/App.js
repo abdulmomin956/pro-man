@@ -17,7 +17,7 @@ function App() {
   const [user, loading, error] = useAuthState(auth);
   return (
     <div className="#F5F5F5">
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       {user && <Navbar />}
 
       <Routes>
