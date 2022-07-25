@@ -7,7 +7,7 @@ import {
   FaRegArrowAltCircleUp,
 } from "react-icons/fa";
 import { HiViewGridAdd } from "react-icons/hi";
-import { GrUpgrade } from "react-icons/gr";
+import Workspace from "../../Workspace/Workspace";
 
 const Board = () => {
   const popularTemplates = [
@@ -148,6 +148,8 @@ const Board = () => {
         </div>
       </div>
       {/* **Your Workspace section End here** */}
+
+      <Workspace></Workspace>
 
     </div>
   );
