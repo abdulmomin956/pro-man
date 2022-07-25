@@ -11,6 +11,7 @@ import Board from "./components/firstScreen/Board";
 import HomeScreen from "./components/firstScreen/HomeScreen";
 import Template from "./components/firstScreen/Template";
 import Loading from "./components/shared/Loading";
+import BoardDetails from "./components/boardDetails/BoardDetails";
 
 
 
@@ -25,7 +26,6 @@ function App() {
       {user && <Navbar />}
 
       <Routes>
-        {/* <Route path="/" element={<Home />}></Route> */}
         <Route path="/" element={<RequierAuth><Home /></RequierAuth>}>
           <Route path="/" element={<Board />}></Route>
           <Route path="/template" element={<Template />}></Route>
@@ -34,6 +34,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
 
+        <Route path="/board-details" element={<BoardDetails></BoardDetails>}></Route>
       </Routes>
     </div>
   );
