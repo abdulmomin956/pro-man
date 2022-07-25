@@ -12,6 +12,7 @@ import HomeScreen from "./components/firstScreen/HomeScreen";
 import Template from "./components/firstScreen/Template";
 import Loading from "./components/shared/Loading";
 import BoardDetails from "./components/boardDetails/BoardDetails";
+import NotFound from "./components/shared/NotFound";
 
 
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/register" element={<Register></Register>}></Route>
 
         <Route path="/board-details" element={<BoardDetails></BoardDetails>}></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
   );
