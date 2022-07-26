@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import List from './List/List';
 import store from '../../utils/store'
-import StoreApi from '../../utils/StoreApi';
+import storeApi from '../../utils/storeApi';
 import { v4 as uuid } from 'uuid';
 
 const BoardDetails = () => {
@@ -26,7 +26,7 @@ const BoardDetails = () => {
         console.log(data)
     }
     return (
-        <StoreApi.Provider value={{ addMoreCard }}>
+        <storeApi.Provider value={{ addMoreCard }}>
             <div>
                 {data.listIds.map((listId) => {
                     const list = data.lists[listId];
@@ -36,7 +36,7 @@ const BoardDetails = () => {
                 })}
 
             </div>
-        </StoreApi.Provider>
+        </storeApi.Provider>
     );
 };
 
