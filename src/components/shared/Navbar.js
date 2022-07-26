@@ -1,30 +1,21 @@
 import { signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink, Link } from "react-router-dom";
 import auth from "../firebase/firebase.init";
+import BoardModal from "./BoardModal";
 import Loading from "./Loading";
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
-  const [initials, setInitials] = useState("");
 
-  // if (loading) {
-  //     <Loading />
-  // }
-  useEffect(() => {
-    if (user) {
-      // console.log(user);
-      const x = user?.displayName;
-      const nameparts = x?.split(" ");
-      if (nameparts) {
-        setInitials(
-          nameparts[0]?.charAt(0)?.toUpperCase() +
-            nameparts[1]?.charAt(0)?.toUpperCase()
-        );
-      }
-    }
-  }, [user]);
+  if (loading) {
+    <Loading />;
+  }
+  const x = user?.displayName;
+  const nameparts = x?.split(" ");
+  const initials =
+    nameparts[0].charAt(0).toUpperCase() + nameparts[1].charAt(0).toUpperCase();
   // console.log(initials);
   const logout = () => {
     signOut(auth);
@@ -78,15 +69,24 @@ const Navbar = () => {
             <li tabIndex="0">
               <button>Create</button>
               <ul className="p-2 shadow bg-base-100 rounded-box w-52">
-                <li>
-                  <a>Create Board</a>
+              <li>
+                  {/* <!-- The button to open modal --> */}
+                  <label for="my-modal-6" class="btn modal-button">
+                    Create Board
+                  </label>
+
+                  {/* <!-- Put this part before </body> tag --> */}
+                  
+                  <BoardModal></BoardModal>
+               
                 </li>
                 <li>
-                  <label for="my-modal-6" class=" modal-button">
-                    Create Workspace
-                  </label>
+                  <a>Create Workspace</a>
                 </li>
               </ul>
+              {/* <!-- The button to open modal --> */}
+
+              {/* <!-- Put this part before </body> tag --> */}
             </li>
           </ul>
         </div>
@@ -131,13 +131,20 @@ const Navbar = () => {
                 tabIndex="0"
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
+               
                 <li>
-                  <a>Create Board</a>
+                  {/* <!-- The button to open modal --> */}
+                  <label for="my-modal-6" class="btn modal-button">
+                    Create Board
+                  </label>
+
+                 {/* modal */}
+                  
+                  <BoardModal></BoardModal>
+               
                 </li>
                 <li>
-                  <label for="my-modal-6" class=" modal-button">
-                    Create Workspace
-                  </label>
+                  <a>Create Workspace</a>
                 </li>
               </ul>
             </div>
