@@ -1,9 +1,10 @@
 import React from 'react';
+import CoomingSoon from '../shared/CoomingSoon';
 
 const HomeScreen = () => {
     return (
         <div>
-            This is the home screen show after clicked Home button
+            <CoomingSoon></CoomingSoon>
         </div>
     );
 };
