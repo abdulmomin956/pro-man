@@ -1,5 +1,5 @@
 # ProMan Project Management Tool
-
+# Proman
 ## Github 5 Rules:	
 1. Before task: `git pull origin main`
     * if need: `npm install`
