@@ -57,39 +57,39 @@ const BoardDetails = () => {
         setData(newState);
     };
 
-    // const onDragEnd = (result) => {
-    //     const { destination, source, draggableId } = result;
-    //     console.log('destination', destination, 'source', source, draggableId);
+    const onDragEnd = (result) => {
+        const { destination, source, draggableId } = result;
+        console.log('destination', destination, 'source', source, draggableId);
 
-    //     if (destination) {
-    //         return;
-    //     }
+        if (destination) {
+            return;
+        }
 
-    //     const sourceList = data.lists[source.droppableId];
-    //     const destinationList = data.lists[destination.droppableId];
-    //     const draggingCard = sourceList.cards.filter(
-    //         (card) => card.id === draggableId
-    //     )[0];
+        const sourceList = data.lists[source.droppableId];
+        const destinationList = data.lists[destination.droppableId];
+        const draggingCard = sourceList.cards.filter(
+            (card) => card.id === draggableId
+        )[0];
 
-    //     if (source.droppableId === destination.droppableId) {
-    //         sourceList.cards.splice(source.index, 1);
-    //         destinationList.cards.splice(destination.index, 0, draggingCard);
-    //         const newSate = {
-    //             ...data,
-    //             lists: {
-    //                 ...data.lists,
-    //                 [sourceList.id]: destinationList,
-    //             },
-    //         }
-    //         console.log(newSate)
-    //         setData(newSate)
-    //     }
-    // }
+        if (source.droppableId === destination.droppableId) {
+            sourceList.cards.splice(source.index, 1);
+            destinationList.cards.splice(destination.index, 0, draggingCard);
+            const newSate = {
+                ...data,
+                lists: {
+                    ...data.lists,
+                    [sourceList.id]: destinationList,
+                },
+            }
+            console.log(newSate)
+            setData(newSate)
+        }
+    }
 
     return (
 
         <storeApi.Provider value={{ addMoreCard, addMoreList }}>
-            <DragDropContext >
+            <DragDropContext onDragEnd={onDragEnd}>
                 <div className={classes.root}>
                     {data.listIds.map((listId) => {
                         const list = data.lists[listId];
