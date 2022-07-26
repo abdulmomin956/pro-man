@@ -15,7 +15,7 @@ const useStyle = makeStyles((theme) => ({
 
 }));
 
-const List = ({ list }) => {
+const List = ({ data, list }) => {
     const classes = useStyle()
     const lists = list.cards
     // console.log(lists);
@@ -29,7 +29,7 @@ const List = ({ list }) => {
                     // prop drilling 
                     < Card key={card.id} card={card} />
                 )}
-                <InputContainer listId={list.id} />
+                <InputContainer data={data} listId={list.id} />
             </Paper>
         </div>
     );

@@ -26,7 +26,7 @@ const useStyle = makeStyles((theme) => ({
     },
 }));
 
-const InputCard = ({ setOpen, listId }) => {
+const InputCard = ({ setOpen, data, listId }) => {
     const classes = useStyle()
     const { addMoreCard } = useContext(StoreApi)
 
@@ -38,14 +38,20 @@ const InputCard = ({ setOpen, listId }) => {
     const handleBtnConfirm = () => {
         addMoreCard(cardTitle, listId)
         setCardTitle('')
+
+        console.log(data)
+
+        if(data.listIds){
         setOpen(false)
-        console.log('salma')
+
+
+        }
     }
 
-    const handleBlur = () => {
-        setOpen(false);
-        setCardTitle('')
-    }
+    // const handleBlur = () => {
+    //     setOpen(false);
+    //     setCardTitle('')
+    // }
     console.log(cardTitle);
 
     return (
@@ -55,7 +61,7 @@ const InputCard = ({ setOpen, listId }) => {
                     <InputBase
                         onChange={(e) => setCardTitle(e.target.value)}
                         multiline
-                        onBlur={() => setOpen(false)}
+                        // onBlur={() => setOpen(false)}
                         fullWidth
                         inputProps={{ className: classes.input }}
                         value={cardTitle}
@@ -63,7 +69,7 @@ const InputCard = ({ setOpen, listId }) => {
                 </Paper>
             </div>
             <div className={classes.confirm}>
-                <Button className={classes.btnConfirm} onClick={() => handleBtnConfirm()}>Add Card</Button>
+                <Button className={classes.btnConfirm} onClick={()=> handleBtnConfirm()}>Add Card</Button>
                 <IconButton onClick={() => setOpen(false)}>
                     <ClearIcon />
                 </IconButton>

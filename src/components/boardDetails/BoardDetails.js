@@ -32,7 +32,7 @@ const BoardDetails = () => {
                     const list = data.lists[listId];
                     // console.log(list.cards)
                     // prop drilling
-                    return < List list={list} key={listId} />
+                    return < List data={data} list={list} key={listId} />
                 })}
 
             </div>

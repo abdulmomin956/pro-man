@@ -19,14 +19,15 @@ const useStyle = makeStyles((theme) => ({
     },
 }));
 
-const InputContainer = ({ listId }) => {
-    const classes = useStyle()
+const InputContainer = ({ data, listId }) => {
     const [open, setOpen] = useState(false)
+
+    const classes = useStyle()
     return (
         <div className={classes.root}>
             <Collapse in={open}>
                 {/* prop drillling */}
-                <InputCard setOpen={setOpen} listId={listId} />
+                <InputCard setOpen={setOpen} data={data} listId={listId} />
             </Collapse>
 
             <Collapse in={!open}>
