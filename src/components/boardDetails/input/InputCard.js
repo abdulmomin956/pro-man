@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Paper, InputBase, Button, IconButton } from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 import { alpha, makeStyles } from '@material-ui/core/styles';
-import StoreApi from '../../../utils/StoreApi';
+import storeApi from '../../../utils/storeApi';
 
 
 const useStyle = makeStyles((theme) => ({
@@ -28,7 +28,7 @@ const useStyle = makeStyles((theme) => ({
 
 const InputCard = ({ setOpen, data, listId }) => {
     const classes = useStyle()
-    const { addMoreCard } = useContext(StoreApi)
+    const { addMoreCard } = useContext(storeApi)
 
     const [cardTitle, setCardTitle] = useState('')
     // const handleOnChange = (e) => {
@@ -41,8 +41,8 @@ const InputCard = ({ setOpen, data, listId }) => {
 
         console.log(data)
 
-        if(data.listIds){
-        setOpen(false)
+        if (data.listIds) {
+            setOpen(false)
 
 
         }
@@ -69,7 +69,7 @@ const InputCard = ({ setOpen, data, listId }) => {
                 </Paper>
             </div>
             <div className={classes.confirm}>
-                <Button className={classes.btnConfirm} onClick={()=> handleBtnConfirm()}>Add Card</Button>
+                <Button className={classes.btnConfirm} onClick={() => handleBtnConfirm()}>Add Card</Button>
                 <IconButton onClick={() => setOpen(false)}>
                     <ClearIcon />
                 </IconButton>
