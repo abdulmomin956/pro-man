@@ -138,7 +138,7 @@ const Navbar = () => {
                     Create Board
                   </label>
 
-                  {/* <!-- Put this part before </body> tag --> */}
+                 {/* modal */}
                   
                   <BoardModal></BoardModal>
                
