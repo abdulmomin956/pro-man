@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tittle from './Tittle';
 import Card from './Card';
 import InputContainer from '../input/InputContainer';
-import { Droppable } from 'react-beautiful-dnd';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 
 const useStyle = makeStyles((theme) => ({
@@ -19,33 +19,41 @@ const useStyle = makeStyles((theme) => ({
 
 }));
 
-const List = ({ data, list }) => {
+const List = ({ data, list, index }) => {
     const classes = useStyle()
     // const lists = list.cards
     // console.log(lists);
     return (
-        <div>
-            <Paper className={classes.root}>
-                <CssBaseline />
-                {/* prop drilling  */}
-                <Tittle title={list.title} listId={list.id} />
-                <Droppable droppableId={list.id}>
-                    {(provided) => (
-                        <div
-                            ref={provided.innerRef}
-                            {...provided.droppableProps}
-                            className={classes.cardContainer}
-                        >
-                            {list.cards.map((card, index) => (
-                                <Card key={card.id} card={card} index={index} />
-                            ))}
-                            {provided.placeholder}
-                        </div>
-                    )}
-                </Droppable>
-                <InputContainer data={data} listId={list.id} type='card' />
-            </Paper>
-        </div>
+        <Draggable draggableId={list.id} index={index}>
+            {(provided) => (
+                <div
+                    {...provided.draggableProps}
+                    ref={provided.innerRef}
+                >
+                    <Paper className={classes.root} {...provided.dragHandleProps}>
+                        <CssBaseline />
+                        {/* prop drilling  */}
+                        <Tittle title={list.title} listId={list.id} />
+                        <Droppable droppableId={list.id}>
+                            {(provided) => (
+                                <div
+                                    ref={provided.innerRef}
+                                    {...provided.droppableProps}
+                                    className={classes.cardContainer}
+                                >
+                                    {list.cards.map((card, index) => (
+                                        <Card key={card.id} card={card} index={index} />
+                                    ))}
+                                    {provided.placeholder}
+                                </div>
+                            )}
+                        </Droppable>
+                        <InputContainer data={data} listId={list.id} type='card' />
+                    </Paper>
+                </div>
+            )}
+
+        </Draggable>
     );
 };
 
