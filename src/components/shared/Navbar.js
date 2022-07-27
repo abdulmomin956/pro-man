@@ -75,13 +75,15 @@ const Navbar = () => {
                     Create Board
                   </label>
 
-                  {/* <!-- Put this part before </body> tag --> */}
+                  {/* <!-- Put this part before </body> tag my-modal-sa6 --> */}
                   
                   <BoardModal></BoardModal>
                
                 </li>
                 <li>
-                  <a>Create Workspace</a>
+                <label for="my-modal-sa6" class="btn modal-button">
+                    Create Workspace
+                  </label>
                 </li>
               </ul>
               {/* <!-- The button to open modal --> */}
@@ -144,7 +146,9 @@ const Navbar = () => {
                
                 </li>
                 <li>
-                  <a>Create Workspace</a>
+                <label for="my-modal-sa6" class="btn modal-button">
+                    Create Workspace
+                  </label>
                 </li>
               </ul>
             </div>

@@ -4,7 +4,7 @@ const Workspace = () => {
   return (
     <div>
       {/* <!-- Put this part before </body> tag --> */}
-      <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+      <input type="checkbox" id="my-modal-sa6" class="modal-toggle" />
       <div class="modal modal-top sm:modal-middle">
         <div class="modal-box">
           <div>
@@ -68,7 +68,7 @@ const Workspace = () => {
                 <button className="btn">Continue</button>
               </div>
               <div class="modal-action">
-                <label for="my-modal-6" class="btn">
+                <label for="my-modal-sa6" class="btn">
                   Cancel
                 </label>
               </div>
