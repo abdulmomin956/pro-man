@@ -3,6 +3,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink, Link } from "react-router-dom";
 import auth from "../firebase/firebase.init";
+import Workspace from "../Workspace/Workspace";
 import BoardModal from "./BoardModal";
 import Loading from "./Loading";
 
@@ -143,6 +144,7 @@ const Navbar = () => {
                  {/* modal */}
                   
                   <BoardModal></BoardModal>
+                 
                
                 </li>
                 <li>
@@ -192,6 +194,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
+           <Workspace></Workspace>
     </div>
   );
 };

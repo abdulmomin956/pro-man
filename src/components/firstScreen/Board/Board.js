@@ -149,7 +149,7 @@ const Board = () => {
       </div>
       {/* **Your Workspace section End here** */}
 
-      <Workspace></Workspace>
+      {/* <Workspace></Workspace> */}
 
     </div>
   );
