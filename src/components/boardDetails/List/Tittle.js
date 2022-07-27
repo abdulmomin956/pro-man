@@ -23,16 +23,21 @@ const useStyle = makeStyles((theme) => ({
     },
 }));
 
-const Tittle = ({ title }) => {
+const Tittle = ({ title}) => {
     const [open, setOpen] = useState(false)
     const classes = useStyle()
     const [newTitle, setNewTitle] = useState(title)
 
     const handleOnChange = (e) => {
+
         setNewTitle(e.target.value)
+
+
+        // console.log(e.target.value)
     }
     return (
         <div>
+
             {open ?
                 <div>
                     <InputBase
@@ -50,7 +55,6 @@ const Tittle = ({ title }) => {
                     <MoreHorizIcon />
                 </div>
             }
-
 
         </div>
     );

@@ -23,6 +23,7 @@ const InputContainer = ({ data, listId, type }) => {
     const [open, setOpen] = useState(false)
 
     const classes = useStyle()
+
     return (
         <div className={classes.root}>
             <Collapse in={open}>

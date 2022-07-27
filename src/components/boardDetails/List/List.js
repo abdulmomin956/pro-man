@@ -1,5 +1,5 @@
 import { CssBaseline, Paper } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tittle from './Tittle';
 import Card from './Card';
@@ -20,9 +20,13 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const List = ({ data, list, index }) => {
+
+
     const classes = useStyle()
     // const lists = list.cards
     // console.log(lists);
+
+
     return (
         <Draggable draggableId={list.id} index={index}>
             {(provided) => (
