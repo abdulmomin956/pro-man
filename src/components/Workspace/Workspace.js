@@ -1,14 +1,30 @@
 import React from "react";
 import "./Workspace.css";
 import { FaTimes } from "react-icons/fa";
+import { useForm } from "react-hook-form";
 
 const Workspace = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
+  const onSubmit = (data) => {
+    const {name, description, workspaceType} = data;
+    console.log(data);
 
-  const handleSubmit = event => {
-    event.preventDefault();
-  }
+    const newWorkspace = [
+      {
+        title: name,
+        type: workspaceType,
+        description: description,
+      }
+    ]
 
+    localStorage.setItem(JSON.stringify(name), JSON.stringify(newWorkspace), )
+  };
 
   return (
     <div>
@@ -32,7 +48,10 @@ const Workspace = () => {
             </div>
 
             <div className="md:w-2/4 p-2">
-              <form onSubmit={handleSubmit} className="wordspace-form-card">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="wordspace-form-card"
+              >
                 <h3 class="font-bold text-lg workspace-modal-title">
                   Let's build a Workspace
                 </h3>
@@ -46,13 +65,25 @@ const Workspace = () => {
                       Workspace name
                     </span>
                   </label>
+
                   <input
                     type="text"
-                    placeholder="Type here"
-                    name="name"
-                    required
-                    class="input input-bordered w-full max-w-xs"
+                    placeholder="Type Your Name"
+                    className="input input-bordered w-full max-w-xs"
+                    {...register("name", {
+                      required: {
+                        value: true,
+                        message: "First Name is Required",
+                      },
+                    })}
                   />
+                  <label className="label">
+                    {errors.name?.type === "required" && (
+                      <span className="label-text-alt text-red-500">
+                        {errors.name.message}
+                      </span>
+                    )}
+                  </label>
                   <label class="label">
                     <span class="label-text-alt">
                       This is the name of your company, team or organization.
@@ -64,17 +95,32 @@ const Workspace = () => {
                   <p className="text-sm font-bold workspace-modal-title">
                     Workspace type
                   </p>
-                  <select class="select select-bordered select-sm w-full max-w-xs mt-2">
-                    <option disabled  selected>
-                      Education
-                    </option>
+                  <select
+                    placeholder="Type Your Name"
+                    class="select select-bordered select-sm w-full max-w-xs mt-2"
+                    {...register("workspaceType", {
+                      required: {
+                        value: true,
+                        message: "Workspace Type Required",
+                      },
+                    })}
+                  >
+                    <option disabled selected></option>
                     <option>Small Business</option>
+                    <option>Education</option>
                     <option>Marketing</option>
                     <option>Human Resources</option>
                     <option>Engineering-IT</option>
                     <option>Operation</option>
                     <option>Others</option>
                   </select>
+                  <label className="label">
+                    {errors.workspaceType?.type === "required" && (
+                      <span className="label-text-alt text-red-500">
+                        {errors.workspaceType.message}
+                      </span>
+                    )}
+                  </label>
                 </div>
 
                 <div class="form-control w-full max-w-xs mt-4">
@@ -88,10 +134,23 @@ const Workspace = () => {
                   </label>
                   <textarea
                     class="textarea textarea-bordered h-24"
-                    name="workspaceDescription"
                     placeholder="Our team organizes everything here"
-                    required
+                    // name="workspaceDescription"
+                    // required
+                    {...register("description", {
+                      required: {
+                        value: true,
+                        message: "Description Required",
+                      },
+                    })}
                   ></textarea>
+                  <label className="label">
+                    {errors.description?.type === "required" && (
+                      <span className="label-text-alt text-red-500">
+                        {errors.description.message}
+                      </span>
+                    )}
+                  </label>
                   <label class="label">
                     <span class="label-text-alt">
                       Get your members on board with a few words about your
@@ -102,9 +161,10 @@ const Workspace = () => {
 
                 <div className="flex justify-center ">
                   <div className="w-2/3">
-                    <button type="submit" className="btn w-full">Continue</button>
+                    <button type="submit" className="btn w-full">
+                      Continue
+                    </button>
                   </div>
-                  
                 </div>
               </form>
             </div>

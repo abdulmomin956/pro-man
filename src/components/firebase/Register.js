@@ -55,7 +55,7 @@ const Register = () => {
                                         type="text"
                                         placeholder="First Name"
                                         className="input input-bordered w-full max-w-xs"
-                                        {...register("firstName", {
+                                        {...register("name", {
                                             required: {
                                                 value: true,
                                                 message: 'First Name is Required'
