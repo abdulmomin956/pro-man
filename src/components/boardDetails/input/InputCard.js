@@ -34,11 +34,13 @@ const InputCard = ({ data, setOpen, listId, type }) => {
 
 
   let cardData = [];
+
   const handleBtnConfirm = () => {
-    if (title == "") {
+    if (title === "") {
       alert("Please Provide Your Task");
       return;
     }
+
     if (type === "card") {
       addMoreCard(title, listId);
       setTitle("");
@@ -48,17 +50,26 @@ const InputCard = ({ data, setOpen, listId, type }) => {
         cardData = [];
       }
       cardData.push(title);
-
       localStorage.setItem('Card-Data', cardData)
-
       setOpen(false);
+
     } else {
       addMoreList(title);
       setTitle("");
       setOpen(false);
     }
 
+    // console.log(data)
 
+    // if (data.listIds === '') {
+    //     setOpen(false)
+    //     alert('You are fail')
+    // }
+
+    // if (data.listIds) {
+    //     setOpen(false)
+    //     alert('You are add a card')
+    // }
   };
 
   const handleBlur = () => {

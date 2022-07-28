@@ -70,19 +70,19 @@ const Navbar = () => {
             <li tabIndex="0">
               <button>Create</button>
               <ul className="p-2 shadow bg-base-100 rounded-box w-52">
-              <li>
+                <li>
                   {/* <!-- The button to open modal --> */}
                   <label for="my-modal-6" class="btn modal-button">
                     Create Board
                   </label>
 
                   {/* <!-- Put this part before </body> tag my-modal-sa6 --> */}
-                  
-                  <BoardModal></BoardModal>
-               
+
+
+
                 </li>
                 <li>
-                <label for="my-modal-sa6" class="btn modal-button">
+                  <label for="my-modal-sa6" class="btn modal-button">
                     Create Workspace
                   </label>
                 </li>
@@ -134,21 +134,21 @@ const Navbar = () => {
                 tabIndex="0"
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
-               
+
                 <li>
                   {/* <!-- The button to open modal --> */}
-                  <label for="my-modal-6" class="btn modal-button">
+                  <label for="my-modal-6" class="btn w-full  modal-button">
                     Create Board
                   </label>
 
-                 {/* modal */}
-                  
-                  <BoardModal></BoardModal>
-                 
-               
+                  {/* modal */}
+
+
+
+
                 </li>
                 <li>
-                <label for="my-modal-sa6" class="btn modal-button">
+                  <label for="my-modal-sa6" class="btn mt-2 w-full modal-button">
                     Create Workspace
                   </label>
                 </li>
@@ -194,7 +194,8 @@ const Navbar = () => {
           </div>
         )}
       </div>
-           <Workspace></Workspace>
+      <Workspace></Workspace>
+      <BoardModal></BoardModal>
     </div>
   );
 };
