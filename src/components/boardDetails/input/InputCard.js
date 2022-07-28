@@ -32,9 +32,8 @@ const InputCard = ({ data, setOpen, listId, type }) => {
   const { addMoreCard, addMoreList } = useContext(storeApi);
   const [title, setTitle] = useState("");
 
-  
+
   let cardData = [];
-  
   const handleBtnConfirm = () => {
     if (title == "") {
       alert("Please Provide Your Task");
@@ -59,17 +58,7 @@ const InputCard = ({ data, setOpen, listId, type }) => {
       setOpen(false);
     }
 
-    // console.log(data)
 
-    // if (data.listIds === '') {
-    //     setOpen(false)
-    //     alert('You are fail')
-    // }
-
-    // if (data.listIds) {
-    //     setOpen(false)
-    //     alert('You are add a card')
-    // }
   };
 
   const handleBlur = () => {
