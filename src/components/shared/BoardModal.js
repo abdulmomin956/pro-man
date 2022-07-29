@@ -1,59 +1,27 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
 import "./BordModal.css";
+import { useForm } from "react-hook-form";
 
 const BoardModal = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-  const handleSubmit = event => {
-    event.preventDefault();
-  }
+  const onSubmit = (data) => {
+    const { boardTitle, visibility } = data;
+
+    const newBoard = {
+      title: boardTitle,
+      visibility: visibility,
+    };
+    console.log(newBoard);
+  };
+
   return (
-    // <div>
-    //   <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-    //   <div class="modal modal-bottom sm:modal-middle">
-    //     <div class="modal-box">
-    //       {/* <label class="label">
-    //         <span class="label-text">board name</span>
-    //       </label> */}
-    //       <input type="text" placeholder="Type here" class="input w-full " />
-    //       <button className="fixed">
-    //         <label for="my-modal-6" class="">
-    //           <FaTimes className="text-xl hover:cursor-pointer"></FaTimes>
-    //         </label>
-    //       </button>{" "}
-    //       <div class="form-control w-full ">
-    //         <label class="label">
-    //           <span class="label-text">Workspace</span>
-    //         </label>
-    //         <select class="select select-bordered">
-    //           <option disabled selected>
-    //             Pick one
-    //           </option>
-    //           <option>Doctor portal</option>
-    //           <option>Trallo managmant</option>
-
-    //         </select>
-    //         <label class="label">
-    //           <span class="label-text">Validaty</span>
-    //         </label>
-    //         <select class="select select-bordered">
-
-    //           <option selected>Private</option>
-    //           <option>Public</option>
-    //           <option>Workspace</option>
-
-    //         </select>
-
-    //       </div>
-    //       <div class="modal-action">
-    //         <label for="my-modal-6" class="btn">
-    //           create
-    //         </label>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-
     <div>
       {/* <!-- Put this part before </body> tag --> */}
       <input type="checkbox" id="my-modal-6" class="modal-toggle" />
@@ -67,7 +35,10 @@ const BoardModal = () => {
             </button>{" "}
           </div>
 
-          <form onSubmit={handleSubmit} className="wordspace-form-card mt-20">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="wordspace-form-card mt-20"
+          >
             <h3 class="font-bold text-lg board-modal-title text-center">
               Create Board
             </h3>
@@ -80,41 +51,43 @@ const BoardModal = () => {
               <input
                 type="text"
                 placeholder="Type here"
-                name="name"
-                required
                 class="input input-bordered w-full max-w-xs"
+                {...register("boardTitle", {
+                  required: {
+                    value: true,
+                    message: "Board Title is Required",
+                  },
+                })}
               />
-              <label class="label">
-                <span class="label-text-alt">
-                  Board title is required.
-                </span>
+              <label className="label">
+                {errors.boardTitle?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.boardTitle.message}
+                  </span>
+                )}
               </label>
             </div>
 
             <div>
-              <p className="text-sm font-bold board-modal-title">
-                Visibility
-              </p>
-              <select class="select select-bordered select-sm w-full max-w-xs mt-2">
-
+              <p className="text-sm font-bold board-modal-title">Visibility</p>
+              <select
+                class="select select-bordered select-sm w-full max-w-xs mt-2"
+                {...register("visibility")}
+              >
                 <option>Privete</option>
                 <option selected>
                   <h4>Workspace</h4>
-                  {/* <p>All members of the Pro-man</p> */}
                 </option>
                 <option>Public</option>
-
               </select>
             </div>
 
             <div class="modal-action my-6">
-              <label for="my-modal-6" class="btn bg-black text-white w-full">
+              <button type="submit" class="btn bg-black text-white w-full">
                 create
-              </label>
+              </button>
             </div>
-
           </form>
-
         </div>
       </div>
     </div>
@@ -122,4 +95,3 @@ const BoardModal = () => {
 };
 
 export default BoardModal;
-
