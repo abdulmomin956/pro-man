@@ -21,6 +21,10 @@ const Navbar = () => {
   const logout = () => {
     signOut(auth);
   };
+
+  const workspaceJson = localStorage.getItem('workspace')
+  const workspace = JSON.parse(workspaceJson)
+  console.log(workspace);
   return (
     <div style={{ zIndex: "200" }} className="navbar bg-accent">
       <div className="navbar-start lg:px-12">
@@ -59,12 +63,14 @@ const Navbar = () => {
                 </svg>
               </p>
               <ul className="p-2 shadow bg-base-100 rounded-box w-52">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
+                {
+                  workspace?.map((item, i) =>
+                    <li key={i}>
+                      <a>{item?.title}</a>
+                    </li>
+                  )
+                }
+
               </ul>
             </li>
             <li tabIndex="0">
@@ -117,12 +123,13 @@ const Navbar = () => {
                 tabIndex="0"
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <li>
-                  <a>Item 1</a>
-                </li>
-                <li>
-                  <a>Item 2</a>
-                </li>
+                {
+                  workspace?.map((item, i) =>
+                    <li key={i}>
+                      <a>{item?.title}</a>
+                    </li>
+                  )
+                }
               </ul>
             </div>
 
