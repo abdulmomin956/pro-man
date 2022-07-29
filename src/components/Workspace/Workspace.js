@@ -9,6 +9,7 @@ const Workspace = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -18,6 +19,7 @@ const Workspace = () => {
     console.log('true');
     workspace = JSON.parse(workspaceJson)
   }
+
 
 
   const onSubmit = (data) => {
@@ -31,6 +33,7 @@ const Workspace = () => {
     workspace.push(newWorkspace)
     console.log(workspace);
     localStorage.setItem('workspace', JSON.stringify(workspace),)
+
   };
 
   return (
