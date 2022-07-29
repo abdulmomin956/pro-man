@@ -9,6 +9,13 @@ import {
 import { HiViewGridAdd } from "react-icons/hi";
 
 const Board = () => {
+
+  let workspace = [];//[null]
+  const workspaceJson = localStorage.getItem('workspace')
+  if (JSON.parse(workspaceJson)) {
+    workspace = JSON.parse(workspaceJson)
+  }
+
   const popularTemplates = [
     {
       _id: 1,
@@ -99,52 +106,56 @@ const Board = () => {
       {/* **Your Workspace section start here** */}
       <div className="my-16">
         <p className="text-2xl font-bold text-gray-500">YOUR WORKSPACES</p>
-        <div className="md:flex items-center justify-between">
-          <div className="flex items-center my-5">
+        {workspace.map(item =>
+          <>
+            <div className="md:flex items-center justify-between">
+              <div className="flex items-center my-5">
 
-            <span className="bg-primary text-3xl font-bold rounded text-white px-2">
-              Pm
-            </span>
-            <h2 className="text-2xl font-bold ml-4">ProMan Workspace</h2>
-          </div>
-          <div className="grid grid-cols-3 lg:grid-cols-5 gap-1">
-            <div>
-              <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
-                <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards
-              </button>{" "}
-            </div>
-            <div>
-              <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
-                <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd> Views
-              </button>{" "}
-            </div>
-            <div>
-              <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
-                <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends> Members
-              </button>{" "}
-            </div>
-            <div>
-              <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
-                <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
-              </button>{" "}
-            </div>
-            <div>
-              <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
-                <FaRegArrowAltCircleUp className="mr-1 text-sm text-primary"></FaRegArrowAltCircleUp> Upgrade
-              </button>{" "}
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="card w-60 bg-base-100 shadow-xl">
-            <div className="card-body hover:cursor-pointer hover:bg-gray-100  hover:font-bold">
-              <div className="flex justify-center text-md items-center">
-                <span className="mr-2">Create New Board</span>
-                <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare>
+                <span className="bg-primary text-3xl font-bold rounded text-white px-2">
+                  {item?.title?.charAt(0)}
+                </span>
+                <h2 className="text-2xl font-bold ml-4">{item?.title}</h2>
+              </div>
+              <div className="grid grid-cols-3 lg:grid-cols-5 gap-1">
+                <div>
+                  <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                    <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards
+                  </button>{" "}
+                </div>
+                <div>
+                  <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                    <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd> Views
+                  </button>{" "}
+                </div>
+                <div>
+                  <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                    <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends> Members
+                  </button>{" "}
+                </div>
+                <div>
+                  <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                    <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
+                  </button>{" "}
+                </div>
+                <div>
+                  <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                    <FaRegArrowAltCircleUp className="mr-1 text-sm text-primary"></FaRegArrowAltCircleUp> Upgrade
+                  </button>{" "}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+            <div>
+              <div className="card w-60 bg-base-100 shadow-xl">
+                <div className="card-body hover:cursor-pointer hover:bg-gray-100  hover:font-bold">
+                  <div className="flex justify-center text-md items-center">
+                    <span className="mr-2">Create New Board</span>
+                    <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
       {/* **Your Workspace section End here** */}
 

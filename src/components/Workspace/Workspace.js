@@ -2,6 +2,7 @@ import React from "react";
 import "./Workspace.css";
 import { FaTimes } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const Workspace = () => {
   const {
@@ -12,21 +13,27 @@ const Workspace = () => {
     formState: { errors },
   } = useForm();
 
+  let workspace = [];//[null]
+  const workspaceJson = localStorage.getItem('workspace')
+  if (JSON.parse(workspaceJson)) {
+    console.log('true');
+    workspace = JSON.parse(workspaceJson)
+  }
+
+
+
   const onSubmit = (data) => {
-    const {name, description, workspaceType} = data;
-    console.log(data);
+    const { name, description, workspaceType } = data;
+    // console.log(data);
+    const newWorkspace = {
+      title: name,
+      type: workspaceType,
+      description: description,
+    }
+    workspace.push(newWorkspace)
+    console.log(workspace);
+    localStorage.setItem('workspace', JSON.stringify(workspace),)
 
-    const newWorkspace = [
-      {
-        title: name,
-        type: workspaceType,
-        description: description,
-      }
-    ]
-
-    localStorage.setItem(JSON.stringify(name), JSON.stringify(newWorkspace), )
-
-    reset();
   };
 
   return (
