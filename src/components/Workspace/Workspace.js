@@ -8,6 +8,7 @@ const Workspace = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -24,6 +25,8 @@ const Workspace = () => {
     ]
 
     localStorage.setItem(JSON.stringify(name), JSON.stringify(newWorkspace), )
+
+    reset();
   };
 
   return (

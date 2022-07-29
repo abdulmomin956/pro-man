@@ -8,6 +8,7 @@ const BoardModal = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -19,6 +20,8 @@ const BoardModal = () => {
       visibility: visibility,
     };
     console.log(newBoard);
+
+    reset()
   };
 
   return (
