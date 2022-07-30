@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from 'react';
 import "./Workspace.css";
 import { FaTimes } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 
 const Workspace = () => {
+  const [workspaceName, setWorkspaceName] = useState('');
+  
   const {
     register,
     handleSubmit,
@@ -13,29 +14,28 @@ const Workspace = () => {
     formState: { errors },
   } = useForm();
 
-  let workspace = [];//[null]
-  const workspaceJson = localStorage.getItem('workspace')
+  let workspace = []; //[null]
+  const workspaceJson = localStorage.getItem("workspace");
   if (JSON.parse(workspaceJson)) {
-    console.log('true');
-    workspace = JSON.parse(workspaceJson)
+    workspace = JSON.parse(workspaceJson);
   }
 
-
-
   const onSubmit = (data) => {
-    const { name, description, workspaceType } = data;
-    // console.log(data);
+    const { description, workspaceType } = data;
     const newWorkspace = {
-      title: name,
+      title: workspaceName,
       type: workspaceType,
       description: description,
-    }
-    workspace.push(newWorkspace)
-    console.log(workspace);
-    localStorage.setItem('workspace', JSON.stringify(workspace),)
+    };
+
+    console.log(newWorkspace);
+
+    workspace.push(newWorkspace);
+    localStorage.setItem("workspace", JSON.stringify(workspace));
+    reset();
 
   };
-
+  
   return (
     <div>
       {/* <!-- Put this part before </body> tag --> */}
@@ -79,13 +79,10 @@ const Workspace = () => {
                   <input
                     type="text"
                     placeholder="Type Your Name"
+                    onChange={e => {
+                      setWorkspaceName(e.target.value);
+                    }}
                     className="input input-bordered w-full max-w-xs"
-                    {...register("name", {
-                      required: {
-                        value: true,
-                        message: "First Name is Required",
-                      },
-                    })}
                   />
                   <label className="label">
                     {errors.name?.type === "required" && (
@@ -145,22 +142,15 @@ const Workspace = () => {
                   <textarea
                     class="textarea textarea-bordered h-24"
                     placeholder="Our team organizes everything here"
-                    // name="workspaceDescription"
-                    // required
-                    {...register("description", {
-                      required: {
-                        value: true,
-                        message: "Description Required",
-                      },
-                    })}
+                    {...register("description",)}
                   ></textarea>
-                  <label className="label">
+                  {/* <label className="label">
                     {errors.description?.type === "required" && (
                       <span className="label-text-alt text-red-500">
                         {errors.description.message}
                       </span>
                     )}
-                  </label>
+                  </label> */}
                   <label class="label">
                     <span class="label-text-alt">
                       Get your members on board with a few words about your
@@ -170,11 +160,21 @@ const Workspace = () => {
                 </div>
 
                 <div className="flex justify-center ">
-                  <div className="w-2/3">
-                    <button type="submit" className="btn w-full">
-                      Continue
-                    </button>
-                  </div>
+                  {workspaceName ? (
+                    <div className="w-2/3">
+                      <button type="submit" className="btn w-full">
+                        <label for="my-modal-sa6" className="btn w-full" >
+                          Continue
+                        </label>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-2/3">
+                      <button type="submit" className="btn w-full">
+                        Continue
+                      </button>
+                    </div>
+                  )}
                 </div>
               </form>
             </div>
