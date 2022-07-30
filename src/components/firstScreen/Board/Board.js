@@ -72,7 +72,7 @@ const Board = () => {
     <div className="px-4">
       {/* This Board pages showing when enter to the site */}
       <h2 className="text-2xl font-medium my-6">
-        <span className="flex items-center text-gray-700">
+        <span className="flex items-center text-indigo-500">
           <FaBoxes className="mr-3"></FaBoxes>Most popular templates
         </span>
       </h2>
@@ -93,7 +93,7 @@ const Board = () => {
           >
 
             <div>
-              <button className="btn btn-xs btn-accent m-3">TEMPLATE</button>
+              <button className="btn btn-xs btn-accent m-3  ">TEMPLATE</button>
             </div>
             <p className="text-base font-bold text-white ">{template.title} </p>
           </div>
@@ -111,10 +111,10 @@ const Board = () => {
             <div className="md:flex items-center justify-between">
               <div className="flex items-center my-5">
 
-                <span className="bg-primary text-3xl font-bold rounded text-white px-2">
+                <span className="bg-primary text-3xl font-bold rounded text-white px-2 pb-1 uppercase">
                   {item?.title?.charAt(0)}
                 </span>
-                <h2 className="text-2xl font-bold ml-4">{item?.title}</h2>
+                <h2 className="text-2xl font-bold ml-4 text-indigo-500">{item?.title}</h2>
               </div>
               <div className="grid grid-cols-3 lg:grid-cols-5 gap-1">
                 <div>
