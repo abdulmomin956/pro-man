@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./Workspace.css";
 import { FaTimes } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 
 const Workspace = () => {
-  const [workspaceName, setWorkspaceName] = useState('');
-  
+  const [workspaceName, setWorkspaceName] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -32,16 +32,26 @@ const Workspace = () => {
 
     workspace.push(newWorkspace);
     localStorage.setItem("workspace", JSON.stringify(workspace));
+    setWorkspaceName("");
     reset();
-
   };
-  
+
+  let nameError;
+  if (!workspaceName) {
+    nameError = (
+      <p className="text-red-500 text-xs m-0 pt-2 italic">
+        {" "}
+        Workspace Name is Required
+      </p>
+    );
+  }
+
   return (
     <div>
       {/* <!-- Put this part before </body> tag --> */}
       <input type="checkbox" id="my-modal-sa6" class="modal-toggle" />
       <div class="modal modal-top sm:modal-middle">
-        <div className="workspace-modal lg:w-10/12 ">
+        <div className="workspace-modal w-10/12 sm:w-8/12 md:w-10/12 ">
           <div className="flex flex-row-reverse w-full">
             <button className="fixed">
               <label for="my-modal-sa6" class="">
@@ -79,11 +89,13 @@ const Workspace = () => {
                   <input
                     type="text"
                     placeholder="Type Your Name"
-                    onChange={e => {
+                    required
+                    onChange={(e) => {
                       setWorkspaceName(e.target.value);
                     }}
                     className="input input-bordered w-full max-w-xs"
                   />
+                  {nameError}
                   <label className="label">
                     {errors.name?.type === "required" && (
                       <span className="label-text-alt text-red-500">
@@ -112,7 +124,7 @@ const Workspace = () => {
                       },
                     })}
                   >
-                    <option disabled selected></option>
+                    {/* <option disabled selected></option> */}
                     <option>Small Business</option>
                     <option>Education</option>
                     <option>Marketing</option>
@@ -142,15 +154,8 @@ const Workspace = () => {
                   <textarea
                     class="textarea textarea-bordered h-24"
                     placeholder="Our team organizes everything here"
-                    {...register("description",)}
+                    {...register("description")}
                   ></textarea>
-                  {/* <label className="label">
-                    {errors.description?.type === "required" && (
-                      <span className="label-text-alt text-red-500">
-                        {errors.description.message}
-                      </span>
-                    )}
-                  </label> */}
                   <label class="label">
                     <span class="label-text-alt">
                       Get your members on board with a few words about your
@@ -162,15 +167,24 @@ const Workspace = () => {
                 <div className="flex justify-center ">
                   {workspaceName ? (
                     <div className="w-2/3">
-                      <button type="submit" className="btn w-full">
-                        <label for="my-modal-sa6" className="btn w-full" >
+                      <button
+                        type="submit"
+                        className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                      >
+                        <label
+                          for="my-modal-sa6"
+                          className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                        >
                           Continue
                         </label>
                       </button>
                     </div>
                   ) : (
                     <div className="w-2/3">
-                      <button type="submit" className="btn w-full">
+                      <button
+                        type="submit"
+                        className="w-full p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                      >
                         Continue
                       </button>
                     </div>

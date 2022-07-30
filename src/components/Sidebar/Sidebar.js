@@ -21,14 +21,14 @@ const Sidebar = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-52 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
-            <li>
-              <Link to='/'>Boards</Link>
+            <li >
+              <Link to='/' className="mb-2 p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300 hover:translate-x-1">Boards</Link>
             </li>
             <li>
-              <Link to='/template'>Templates</Link>
+              <Link to='/template' className="mb-2 p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300 hover:translate-x-1">Templates</Link>
             </li>
             <li>
-              <Link to='/homescreen'>Home</Link>
+              <Link to='/homescreen' className="p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300 hover:translate-x-1">Home</Link>
             </li>
           </ul>
         </div>
