@@ -1,3 +1,4 @@
 .active{
    background-color: #60A4FA;
+   transform: translate(10px, 0px);
 }

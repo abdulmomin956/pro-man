@@ -50,7 +50,7 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li tabIndex="0">
-              <p className="justify-between">
+              <p className="justify-between  p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
                 Workspaces
                 <svg
                   className="fill-current"
@@ -66,7 +66,7 @@ const Navbar = () => {
                 {
                   workspace?.map((item, i) =>
                     <li key={i}>
-                      <a>{item?.title}</a>
+                      <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a>
                     </li>
                   )
                 }
@@ -78,7 +78,7 @@ const Navbar = () => {
               <ul className="p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
                   {/* <!-- The button to open modal --> */}
-                  <label for="my-modal-6" class="btn modal-button">
+                  <label for="my-modal-6" class="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
                     Create Board
                   </label>
 
@@ -88,7 +88,7 @@ const Navbar = () => {
 
                 </li>
                 <li>
-                  <label for="my-modal-sa6" class="btn modal-button">
+                  <label for="my-modal-sa6" class="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
                     Create Workspace
                   </label>
                 </li>
@@ -99,13 +99,13 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a href="/" className="btn btn-ghost normal-case text-xl">
+        <a href="/" className="navTitle">
           PRO-MAN
         </a>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <div className="dropdown">
-              <label tabIndex="0" className="btn btn-md m-1">
+              <label tabIndex="0" className="btn btn-md m-1  p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
                 Workspaces{" "}
                 <a>
                   <svg
@@ -126,7 +126,7 @@ const Navbar = () => {
                 {
                   workspace?.map((item, i) =>
                     <li key={i}>
-                      <a>{item?.title}</a>
+                      <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a>
                     </li>
                   )
                 }
@@ -134,7 +134,7 @@ const Navbar = () => {
             </div>
 
             <div className="dropdown">
-              <label tabIndex="0" className="btn  btn-md m-1">
+              <label tabIndex="0" className="btn  btn-md m-1  p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
                 Create
               </label>
               <ul
@@ -144,7 +144,7 @@ const Navbar = () => {
 
                 <li>
                   {/* <!-- The button to open modal --> */}
-                  <label for="my-modal-6" class="btn w-full  modal-button">
+                  <label for="my-modal-6" class="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
                     Create Board
                   </label>
 
@@ -155,7 +155,7 @@ const Navbar = () => {
 
                 </li>
                 <li>
-                  <label for="my-modal-sa6" class="btn mt-2 w-full modal-button">
+                  <label for="my-modal-sa6" class=" btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
                     Create Workspace
                   </label>
                 </li>
