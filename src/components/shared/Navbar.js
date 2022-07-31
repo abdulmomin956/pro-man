@@ -24,7 +24,7 @@ const Navbar = () => {
 
   const workspaceJson = localStorage.getItem('workspace')
   const workspace = JSON.parse(workspaceJson)
-  console.log(workspace);
+  // console.log(workspace);
   return (
     <div style={{ zIndex: "200" }} className="navbar bg-accent">
       <div className="navbar-start lg:px-12">
@@ -78,7 +78,7 @@ const Navbar = () => {
               <ul className="p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
                   {/* <!-- The button to open modal --> */}
-                  <label for="my-modal-6" class="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
+                  <label htmlFor="my-modal-6" className="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
                     Create Board
                   </label>
 
@@ -88,7 +88,7 @@ const Navbar = () => {
 
                 </li>
                 <li>
-                  <label for="my-modal-sa6" class="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
+                  <label htmlFor="my-modal-sa6" className="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
                     Create Workspace
                   </label>
                 </li>
@@ -144,7 +144,7 @@ const Navbar = () => {
 
                 <li>
                   {/* <!-- The button to open modal --> */}
-                  <label for="my-modal-6" class="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
+                  <label htmlFor="my-modal-6" className="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
                     Create Board
                   </label>
 
@@ -155,7 +155,7 @@ const Navbar = () => {
 
                 </li>
                 <li>
-                  <label for="my-modal-sa6" class=" btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
+                  <label htmlFor="my-modal-sa6" className=" btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
                     Create Workspace
                   </label>
                 </li>

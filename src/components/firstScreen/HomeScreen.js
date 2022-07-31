@@ -5,10 +5,10 @@ import img from '../../images/uptodate.png'
 const HomeScreen = () => {
     return (
         <div className='flex justify-start mx-10'>
-            <div class="card w-[39rem] bg-base-100 shadow-xl">
+            <div className="card w-[39rem] bg-base-100 shadow-xl">
                 <figure><img src={img} alt="Shoes" /></figure>
-                <div class="card-body text-center">
-                    <h1 class="text-2xl text-center">Stay on track and up to date</h1>
+                <div className="card-body text-center">
+                    <h1 className="text-2xl text-center">Stay on track and up to date</h1>
                     <p>Invite people to boards and cards, leave comments, add due dates, and we'll show the most important activity here.</p>
 
                 </div>

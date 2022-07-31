@@ -49,17 +49,17 @@ const Workspace = () => {
   return (
     <div>
       {/* <!-- Put this part before </body> tag --> */}
-      <input type="checkbox" id="my-modal-sa6" class="modal-toggle" />
-      <div class="modal modal-top sm:modal-middle">
+      <input type="checkbox" id="my-modal-sa6" className="modal-toggle" />
+      <div className="modal modal-top sm:modal-middle">
         <div className="workspace-modal w-10/12 sm:w-8/12 md:w-10/12 ">
           <div className="flex flex-row-reverse w-full">
             <button className="fixed">
-              <label for="my-modal-sa6" class="">
+              <label htmlFor="my-modal-sa6" className="">
                 <FaTimes className="text-xl hover:cursor-pointer"></FaTimes>
               </label>
             </button>{" "}
           </div>
-          <div class="md:flex md:flex-row-reverse child-overflow ">
+          <div className="md:flex md:flex-row-reverse child-overflow ">
             <div className="md:w-2/4 flex content-center items-center px-4">
               <img
                 src="https://img.freepik.com/free-vector/project-management-business-process-planning-workflow-organization-colleagues-working-together-teamwork_335657-2469.jpg?w=2000"
@@ -72,16 +72,16 @@ const Workspace = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="wordspace-form-card"
               >
-                <h3 class="font-bold text-lg workspace-modal-title">
+                <h3 className="font-bold text-lg workspace-modal-title">
                   Let's build a Workspace
                 </h3>
-                <p class="py-4 text-gray-500">
+                <p className="py-4 text-gray-500">
                   Boost your productivity by making it easier for everyone to
                   access boards in one location.
                 </p>
-                <div class="form-control w-full max-w-xs mb-4">
-                  <label class="label">
-                    <span class="text-sm font-bold workspace-modal-title">
+                <div className="form-control w-full max-w-xs mb-4">
+                  <label className="label">
+                    <span className="text-sm font-bold workspace-modal-title">
                       Workspace name
                     </span>
                   </label>
@@ -103,8 +103,8 @@ const Workspace = () => {
                       </span>
                     )}
                   </label>
-                  <label class="label">
-                    <span class="label-text-alt">
+                  <label className="label">
+                    <span className="label-text-alt">
                       This is the name of your company, team or organization.
                     </span>
                   </label>
@@ -116,7 +116,7 @@ const Workspace = () => {
                   </p>
                   <select
                     placeholder="Type Your Name"
-                    class="select select-bordered select-sm w-full max-w-xs mt-2"
+                    className="select select-bordered select-sm w-full max-w-xs mt-2"
                     {...register("workspaceType", {
                       required: {
                         value: true,
@@ -142,9 +142,9 @@ const Workspace = () => {
                   </label>
                 </div>
 
-                <div class="form-control w-full max-w-xs mt-4">
-                  <label class="label">
-                    <p class="text-sm font-bold workspace-modal-title">
+                <div className="form-control w-full max-w-xs mt-4">
+                  <label className="label">
+                    <p className="text-sm font-bold workspace-modal-title">
                       Workspace description{" "}
                       <span className="text-gray-400 font-normal">
                         Optional
@@ -152,12 +152,12 @@ const Workspace = () => {
                     </p>
                   </label>
                   <textarea
-                    class="textarea textarea-bordered h-24"
+                    className="textarea textarea-bordered h-24"
                     placeholder="Our team organizes everything here"
                     {...register("description")}
                   ></textarea>
-                  <label class="label">
-                    <span class="label-text-alt">
+                  <label className="label">
+                    <span className="label-text-alt">
                       Get your members on board with a few words about your
                       Workspace.
                     </span>
@@ -172,7 +172,7 @@ const Workspace = () => {
                         className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
                       >
                         <label
-                          for="my-modal-sa6"
+                          htmlFor="my-modal-sa6"
                           className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
                         >
                           Continue
