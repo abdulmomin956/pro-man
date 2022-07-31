@@ -19,13 +19,13 @@ const useStyle = makeStyles((theme) => ({
 
 }));
 
-const List = ({ data, list, index }) => {
+const List = ({ list, index }) => {
     const classes = useStyle()
     // const lists = list.cards
     // console.log(lists);
     // console.log(data)
     // localStorage.setItem('board-details', JSON.stringify(data))
-
+    // console.log(list);
 
     return (
         <Draggable draggableId={list.id} index={index}>

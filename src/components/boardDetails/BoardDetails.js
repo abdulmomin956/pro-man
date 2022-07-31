@@ -7,6 +7,8 @@ import InputContainer from './input/InputContainer';
 import { makeStyles } from '@material-ui/core/styles';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
+
+
 const useStyle = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -21,7 +23,7 @@ const BoardDetails = () => {
     const classes = useStyle()
     const [data, setData] = useState(store)
 
-
+    // console.log(data);
     let cardData = []; //[null]
     const cardDataJson = localStorage.getItem("cardData");
     if (JSON.parse(cardDataJson)) {
@@ -46,7 +48,7 @@ const BoardDetails = () => {
             },
         };
         setData(newState);
-        console.log(newState)
+        // console.log(newState)
         cardData.push(newState);
         localStorage.setItem("cardData", JSON.stringify(cardData));
         setData(newState);
@@ -71,9 +73,22 @@ const BoardDetails = () => {
         // console.log(newState)
     };
 
+    const updateListTitle = (title, listId) => {
+        const list = data.lists[listId];
+        list.title = title;
+
+        const newState = {
+            ...data,
+            lists: {
+                ...data.lists,
+                [listId]: list,
+            },
+        };
+        setData(newState);
+    };
 
     const onDragEnd = (result) => {
-        console.log(result)
+        // console.log(result)
         const { destination, source, draggableId, type } = result;
         console.log('destination', destination, 'source', source, draggableId);
 
@@ -104,7 +119,7 @@ const BoardDetails = () => {
                     [sourceList.id]: destinationList,
                 },
             }
-            console.log(newSate)
+            // console.log(newSate)
             setData(newSate)
         }
         else {
@@ -124,7 +139,7 @@ const BoardDetails = () => {
 
     return (
 
-        <storeApi.Provider value={{ addMoreCard, addMoreList }}>
+        <storeApi.Provider value={{ addMoreCard, addMoreList, updateListTitle }}>
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId='app' type='list' direction='horizontal'>
                     {(provided) => (

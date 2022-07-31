@@ -27,7 +27,7 @@ const Tittle = ({ title }) => {
     const [open, setOpen] = useState(false)
     const classes = useStyle()
     const [newTitle, setNewTitle] = useState(title)
-    console.log(newTitle)
+    // console.log(newTitle)
 
     const handleOnChange = (e) => {
 
