@@ -21,6 +21,14 @@ const BoardDetails = () => {
     const classes = useStyle()
     const [data, setData] = useState(store)
 
+
+    let cardData = []; //[null]
+    const cardDataJson = localStorage.getItem("cardData");
+    if (JSON.parse(cardDataJson)) {
+        cardData = JSON.parse(cardDataJson);
+    }
+
+
     const addMoreCard = (title, listId) => {
         const newCardId = uuid()
         const newCard = {
@@ -38,10 +46,15 @@ const BoardDetails = () => {
             },
         };
         setData(newState);
-        // console.log(title, listId)
+        console.log(newState)
+        cardData.push(newState);
+        localStorage.setItem("cardData", JSON.stringify(cardData));
+        setData(newState);
     }
+
+
     const addMoreList = (title) => {
-        const newListId = uuid();
+        const newListId = uuid()
         const newList = {
             id: newListId,
             title,
@@ -55,13 +68,16 @@ const BoardDetails = () => {
             },
         };
         setData(newState);
+        // console.log(newState)
     };
 
+
     const onDragEnd = (result) => {
+        console.log(result)
         const { destination, source, draggableId, type } = result;
         console.log('destination', destination, 'source', source, draggableId);
 
-        if (destination) {
+        if (!result.destination) {
             return;
         }
 
@@ -110,13 +126,14 @@ const BoardDetails = () => {
 
         <storeApi.Provider value={{ addMoreCard, addMoreList }}>
             <DragDropContext onDragEnd={onDragEnd}>
-                <Droppable droppableId='boardDetails' type='list' direction='horizontal'>
+                <Droppable droppableId='app' type='list' direction='horizontal'>
                     {(provided) => (
                         <div className={classes.root}
                             ref={provided.innerRef}
                             {...provided.droppableProps}
+
                         >
-                            {data.listIds.map((listId, index) => {
+                            {data?.listIds?.map((listId, index) => {
                                 const list = data.lists[listId];
                                 // prop drilling
                                 return < List index={index} data={data} list={list} key={listId} />
@@ -127,6 +144,7 @@ const BoardDetails = () => {
                     )}
 
                 </Droppable>
+
             </DragDropContext>
         </storeApi.Provider>
     );

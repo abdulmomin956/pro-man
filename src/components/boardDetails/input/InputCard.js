@@ -46,12 +46,12 @@ const InputCard = ({ data, setOpen, listId, type }) => {
       setTitle("");
 
       // Local Storage
-      if (localStorage.Content === null) {
-        cardData = [];
-      }
-      cardData.push(title);
-      localStorage.setItem('Card-Data', cardData)
-      setOpen(false);
+      // if (localStorage.Content === null) {
+      //   cardData = [];
+      // }
+      // cardData.push(title);
+      // localStorage.setItem('Card-Data', cardData)
+      // setOpen(false);
 
     } else {
       addMoreList(title);

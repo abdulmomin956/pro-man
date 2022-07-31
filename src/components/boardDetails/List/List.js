@@ -30,13 +30,9 @@ const List = ({ data, list, index }) => {
     return (
         <Draggable draggableId={list.id} index={index}>
             {(provided) => (
-                <div
-                    {...provided.draggableProps}
-                    ref={provided.innerRef}
-                >
+                <div {...provided.draggableProps} ref={provided.innerRef}>
                     <Paper className={classes.root} {...provided.dragHandleProps}>
                         <CssBaseline />
-                        {/* prop drilling  */}
                         <Tittle title={list.title} listId={list.id} />
                         <Droppable droppableId={list.id}>
                             {(provided) => (
@@ -52,11 +48,11 @@ const List = ({ data, list, index }) => {
                                 </div>
                             )}
                         </Droppable>
-                        <InputContainer data={data} listId={list.id} type='card' />
+
+                        <InputContainer listId={list.id} type="card" />
                     </Paper>
                 </div>
             )}
-
         </Draggable>
     );
 };
