@@ -125,6 +125,7 @@ const BoardDetails = () => {
     return (
 
         <storeApi.Provider value={{ addMoreCard, addMoreList }}>
+            <h1>Salma</h1>
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId='app' type='list' direction='horizontal'>
                     {(provided) => (
