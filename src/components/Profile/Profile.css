@@ -1,0 +1,37 @@
+.profilebody_about {
+    width: 40%;
+    margin: auto;
+    box-shadow: 0 !important;
+}
+.top-use-info-banner{
+    position: relative;
+}
+.profileNav{
+ 
+        position: relative;
+        width: 100%;
+        bottom: 33px;
+   
+}
+.profileNav ul{
+    text-align: center;
+}
+.profileNav ul li{
+ 
+        display: inline;
+        padding: 10px;
+        margin: 10px;
+        background: #C1C7D0;
+        border: 1px solid #C1C7D0;
+        border-radius: 4px;
+   
+}
+.profileNav ul li:hover{
+ 
+    background: #fff;
+    border-bottom: 0px;
+
+}
+.profileNav ul li a {
+    font-weight: bold;
+}
