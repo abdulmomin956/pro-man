@@ -1,7 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&display=swap');
-
-
 
 
 .modal.modal-bottom.sm\:modal-middle {
@@ -13,11 +10,3 @@
     height: 700px;
 }
 
-.navTitle{
-    font-family: 'PT Serif', serif;
-    font-size: 30px;
-    font-style: italic;
-    font-weight: 500;
-    margin: 0px 25px 0px 25px;
-    color: #60A4FA;
-}
