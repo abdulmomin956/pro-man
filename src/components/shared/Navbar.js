@@ -50,7 +50,7 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li tabIndex="0">
-              <p className="justify-between  p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
+              <p className="justify-between  mb-2 p-2 pl-5 pr-5 myButton">
                 Workspaces
                 <svg
                   className="fill-current"
@@ -74,11 +74,11 @@ const Navbar = () => {
               </ul>
             </li>
             <li tabIndex="0">
-              <button>Create</button>
+              <button className="btn btn-sm myButton">Create</button>
               <ul className="p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
                   {/* <!-- The button to open modal --> */}
-                  <label htmlFor="my-modal-6" className="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
+                  <label htmlFor="my-modal-6" className="mb-2 btn-sm w-full  myButton">
                     Create Board
                   </label>
 
@@ -88,7 +88,7 @@ const Navbar = () => {
 
                 </li>
                 <li>
-                  <label htmlFor="my-modal-sa6" className="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
+                  <label htmlFor="my-modal-sa6" className="mb-2 btn-sm w-full  myButton">
                     Create Workspace
                   </label>
                 </li>
@@ -105,7 +105,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <div className="dropdown">
-              <label tabIndex="0" className="btn btn-md m-1  p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
+              <label tabIndex="0" className="btn btn-md m-1  myButton">
                 Workspaces{" "}
                 <a>
                   <svg
@@ -126,7 +126,8 @@ const Navbar = () => {
                 {
                   workspace?.map((item, i) =>
                     <li key={i}>
-                      <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a>
+                      <a className="mb-2 px-2 py-1 w-full myButton">{item?.title}</a>
+                      {/* <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a> */}
                     </li>
                   )
                 }
@@ -134,7 +135,7 @@ const Navbar = () => {
             </div>
 
             <div className="dropdown">
-              <label tabIndex="0" className="btn  btn-md m-1  p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
+              <label tabIndex="0" className="btn  btn-md m-1  myButton font-bold">
                 Create
               </label>
               <ul
