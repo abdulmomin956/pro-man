@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid';
 import InputContainer from './input/InputContainer';
 import { makeStyles } from '@material-ui/core/styles';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { useEffect } from 'react';
 
 
 
@@ -23,12 +24,20 @@ const BoardDetails = () => {
     const classes = useStyle()
     const [data, setData] = useState(store)
 
-    // console.log(data);
-    let cardData = []; //[null]
-    const cardDataJson = localStorage.getItem("cardData");
-    if (JSON.parse(cardDataJson)) {
-        cardData = JSON.parse(cardDataJson);
-    }
+    console.log(data);
+
+    useEffect(() => {
+        const dataJson = localStorage.getItem("data");
+        if (JSON.parse(dataJson)) {
+            setData(JSON.parse(dataJson));
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('data', JSON.stringify(data))
+    }, [data])
+
+
 
 
     const addMoreCard = (title, listId) => {
@@ -49,9 +58,9 @@ const BoardDetails = () => {
         };
         setData(newState);
         // console.log(newState)
-        cardData.push(newState);
-        localStorage.setItem("cardData", JSON.stringify(cardData));
-        setData(newState);
+        //     cardData.push(newState);
+        //     localStorage.setItem("cardData", JSON.stringify(cardData));
+        //     setData(newState);
     }
 
 
