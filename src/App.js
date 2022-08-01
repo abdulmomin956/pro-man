@@ -14,6 +14,7 @@ import Loading from "./components/shared/Loading";
 import BoardDetails from "./components/boardDetails/BoardDetails";
 import NotFound from "./components/shared/NotFound";
 import Board from "./components/firstScreen/Board/Board";
+import Profile from "./components/Profile/Profile";
 
 
 
@@ -39,6 +40,8 @@ function App() {
 
 
         <Route path="*" element={<NotFound></NotFound>}></Route>
+        
+        <Route path="/profile" element={<Profile/>}></Route>
       </Routes>
     </div>
   );
