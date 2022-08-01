@@ -69,6 +69,9 @@ const Navbar = () => {
                 {workspace?.map((item, i) => (
                   <li key={i}>
                     <a className="mb-2 btn-sm w-full  myButton">
+                      <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
+                        {item?.title?.charAt(0)}
+                      </span>
                       {item?.title}
                     </a>
                   </li>
@@ -139,6 +142,9 @@ const Navbar = () => {
                 {workspace?.map((item, i) => (
                   <li key={i}>
                     <a className="mb-2 px-2 py-1 w-full myButton">
+                      <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
+                        {item?.title?.charAt(0)}
+                      </span>
                       {item?.title}
                     </a>
                     {/* <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a> */}
@@ -214,7 +220,9 @@ const Navbar = () => {
                 <a className="mb-2 btn-sm w-full  myButton">Settings</a>
               </li>
               <li>
-                <p onClick={logout} className="mb-2 btn-sm w-full  myButton">Logout</p>
+                <p onClick={logout} className="mb-2 btn-sm w-full  myButton">
+                  Logout
+                </p>
               </li>
             </ul>
           </div>
