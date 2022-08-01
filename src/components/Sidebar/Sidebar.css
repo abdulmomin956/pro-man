@@ -1,4 +1,16 @@
 .active{
-   background-color: #60A4FA;
+   background: linear-gradient(90deg, #BFC9FF 2.16%, rgba(191, 201, 255, 0) 97.84%);
    transform: translate(10px, 0px);
+   color: #0038FF;
+}
+
+.myButton{
+   font-weight: 600;
+}
+.myButton:hover{
+   background: #BFC9FF;
+   font-weight: 600;
+   color: #0038FF;
+   /* background: linear-gradient(90deg, #BFC9FF 2.16%, rgba(191, 201, 255, 0) 97.84%); */
+
 }

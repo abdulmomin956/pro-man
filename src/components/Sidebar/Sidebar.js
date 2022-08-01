@@ -23,13 +23,13 @@ const Sidebar = () => {
           <ul className="menu p-4 overflow-y-auto w-52 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
             <li >
-              <NavLink to='/' className="mb-2 p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300 hover:translate-x-1">Boards</NavLink>
+              <NavLink to='/' className="mb-2 p-2 pl-5 pr-5 myButton">Boards</NavLink>
             </li>
             <li>
-              <NavLink to='/template' className="mb-2 p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300 hover:translate-x-1">Templates</NavLink>
+              <NavLink to='/template' className="mb-2 p-2 pl-5 pr-5 myButton">Templates</NavLink>
             </li>
             <li>
-              <NavLink to='/homescreen' className="p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300 hover:translate-x-1">Home</NavLink>
+              <NavLink to='/homescreen' className="mb-2 p-2 pl-5 pr-5 myButton">Home</NavLink>
             </li>
           </ul>
         </div>
