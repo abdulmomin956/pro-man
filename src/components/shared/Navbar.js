@@ -22,14 +22,14 @@ const Navbar = () => {
     signOut(auth);
   };
 
-  const workspaceJson = localStorage.getItem('workspace')
-  const workspace = JSON.parse(workspaceJson)
+  const workspaceJson = localStorage.getItem("workspace");
+  const workspace = JSON.parse(workspaceJson);
   // console.log(workspace);
   return (
-    <div style={{ zIndex: "200" }} className="navbar bg-accent">
+    <div style={{ zIndex: "" }} className="navbar bg-accent pb-4">
       <div className="navbar-start lg:px-12">
         <div className="dropdown">
-          <label tabIndex="0" className="btn btn-ghost lg:hidden">
+          <label tabIndex="0" className="btn myButton mb-3 lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -50,7 +50,7 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li tabIndex="0">
-              <p className="justify-between  mb-2 p-2 pl-5 pr-5 myButton">
+              <p className="justify-between mb-2 p-2 pl-5 pr-5 myButton">
                 Workspaces
                 <svg
                   className="fill-current"
@@ -62,33 +62,41 @@ const Navbar = () => {
                   <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
                 </svg>
               </p>
-              <ul className="p-2 shadow bg-base-100 rounded-box w-52">
-                {
-                  workspace?.map((item, i) =>
-                    <li key={i}>
-                      <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a>
-                    </li>
-                  )
-                }
-
+              <ul
+                className="p-2  bg-base-100 rounded-box w-52"
+                style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
+              >
+                {workspace?.map((item, i) => (
+                  <li key={i}>
+                    <a className="mb-2 btn-sm w-full  myButton">
+                      {item?.title}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </li>
             <li tabIndex="0">
-              <button className="btn btn-sm myButton">Create</button>
-              <ul className="p-2 shadow bg-base-100 rounded-box w-52">
+              <button className=" p-2 pl-5 pr-5 myButton">Create</button>
+              <ul
+                className="p-2 bg-base-100 rounded-box w-52"
+                style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
+              >
                 <li>
                   {/* <!-- The button to open modal --> */}
-                  <label htmlFor="my-modal-6" className="mb-2 btn-sm w-full  myButton">
+                  <label
+                    htmlFor="my-modal-6"
+                    className="mb-2 btn-sm w-full  myButton"
+                  >
                     Create Board
                   </label>
 
                   {/* <!-- Put this part before </body> tag my-modal-sa6 --> */}
-
-
-
                 </li>
                 <li>
-                  <label htmlFor="my-modal-sa6" className="mb-2 btn-sm w-full  myButton">
+                  <label
+                    htmlFor="my-modal-sa6"
+                    className="mb-2 btn-sm w-full  myButton"
+                  >
                     Create Workspace
                   </label>
                 </li>
@@ -99,13 +107,17 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a href="/" className="navTitle">
+        <a href="/" className="navTitle lg:mx-5">
           PRO-MAN
         </a>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <div className="dropdown">
-              <label tabIndex="0" className="btn btn-md m-1  myButton">
+              <label
+                tabIndex="0"
+                className="btn font-black btn-md m-1 myButton"
+                style={{ fontWeight: 700 }}
+              >
                 Workspaces{" "}
                 <a>
                   <svg
@@ -121,42 +133,48 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex="0"
-                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content menu p-2 bg-base-100 rounded-box w-52"
+                style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
               >
-                {
-                  workspace?.map((item, i) =>
-                    <li key={i}>
-                      <a className="mb-2 px-2 py-1 w-full myButton">{item?.title}</a>
-                      {/* <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a> */}
-                    </li>
-                  )
-                }
+                {workspace?.map((item, i) => (
+                  <li key={i}>
+                    <a className="mb-2 px-2 py-1 w-full myButton">
+                      {item?.title}
+                    </a>
+                    {/* <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a> */}
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div className="dropdown">
-              <label tabIndex="0" className="btn  btn-md m-1  myButton font-bold">
+              <label
+                tabIndex="0"
+                className="btn  btn-md m-1  myButton font-bold"
+              >
                 Create
               </label>
               <ul
                 tabIndex="0"
-                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content menu p-2 bg-base-100 rounded-box w-52"
+                style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
               >
-
                 <li>
                   {/* <!-- The button to open modal --> */}
-                  <label htmlFor="my-modal-6" className="mb-2 btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
+                  <label
+                    htmlFor="my-modal-6"
+                    className="mb-2 btn-sm w-full  myButton"
+                  >
                     Create Board
                   </label>
 
                   {/* modal */}
-
-
-
-
                 </li>
                 <li>
-                  <label htmlFor="my-modal-sa6" className=" btn-sm w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">
+                  <label
+                    htmlFor="my-modal-sa6"
+                    className="mb-2 btn-sm w-full  myButton"
+                  >
                     Create Workspace
                   </label>
                 </li>
@@ -187,16 +205,16 @@ const Navbar = () => {
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="justify-between">
+                <a className="justify-between   mb-2 btn-sm w-full  myButton">
                   Profile
                   <span className="badge">New</span>
                 </a>
               </li>
               <li>
-                <a>Settings</a>
+                <a className="mb-2 btn-sm w-full  myButton">Settings</a>
               </li>
               <li>
-                <p onClick={logout}>Logout</p>
+                <p onClick={logout} className="mb-2 btn-sm w-full  myButton">Logout</p>
               </li>
             </ul>
           </div>

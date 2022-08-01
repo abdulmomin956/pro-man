@@ -9,8 +9,21 @@
 }
 .myButton:hover{
    background: #BFC9FF;
-   font-weight: 600;
    color: #0038FF;
+   /* font-weight: 600; */
    /* background: linear-gradient(90deg, #BFC9FF 2.16%, rgba(191, 201, 255, 0) 97.84%); */
 
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+
+
+.navTitle{
+   font-family: 'Inter', sans-serif;
+   font-size: 30px;
+   /* font-style: italic; */
+   font-weight: 700;
+   /* margin: 0px 25px 0px 25px; */
+   color: #002198;
 }
