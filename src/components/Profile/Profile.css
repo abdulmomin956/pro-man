@@ -1,8 +1,8 @@
-.profilebody_about {
+/* .profilebody_about {
     width: 40%;
     margin: auto;
     box-shadow: 0 !important;
-}
+} */
 .top-use-info-banner{
     position: relative;
 }
@@ -34,4 +34,14 @@
 }
 .profileNav ul li a {
     font-weight: bold;
+}
+.profilebody {
+    width: 40%;
+    margin: auto;
+}
+.profilebody-heading{
+
+}
+.profilebody-doc{
+    background: #F4F5F7;
 }
