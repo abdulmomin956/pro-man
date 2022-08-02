@@ -12,6 +12,8 @@ import { convertToHsl } from "daisyui/src/colors/functions";
 import { useNavigate } from "react-router-dom";
 
 const BoardModal = () => {
+  const [newBoardTitle, setNewBoardTitle] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -22,7 +24,7 @@ const BoardModal = () => {
 
   const [background, setBackground] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     const { boardTitle, visibility } = data;
@@ -32,14 +34,51 @@ const BoardModal = () => {
       visibility: visibility,
     };
     console.log(newBoard);
-    
-    navigate('/board-details')
+
+    navigate("/board-details");
 
     reset();
   };
 
+  // Handle Board Background Image
+
+  const handleBg1 = () => {
+    document.querySelector(".b-modal-bg").style.background = `url(${bg1}) center center/cover`;
+  };
+  const handleBg2 = () => {
+    document.querySelector(".b-modal-bg").style.background = `url(${bg2}) center center/cover`;
+  };
+  const handleBg3 = () => {
+    document.querySelector(".b-modal-bg").style.background = `url(${bg3}) center center/cover`;
+  };
+  const handleBg4 = () => {
+    document.querySelector(".b-modal-bg").style.background = `url(${bg4}) center center/cover`;
+  };
+  const handleBg5 = () => {
+    document.querySelector(".b-modal-bg").style.background = `url(${bg5}) center center/cover`;
+  };
+
+  
+  // Handle Board Background Color
+
+  const handleBg6 = () => {
+    document.querySelector(".b-modal-bg").style.background = '#172b4d';
+  };
+  const handleBg7 = () => {
+    document.querySelector(".b-modal-bg").style.background = '#eb5a46';
+  };
+  const handleBg8 = () => {
+    document.querySelector(".b-modal-bg").style.background = '#4caf50';
+  };
+  const handleBg9 = () => {
+    document.querySelector(".b-modal-bg").style.background = '#9c27b0';
+  };
+  const handleBg10 = () => {
+    document.querySelector(".b-modal-bg").style.background = '#075D6C';
+  };
+
   return (
-    <div className="w-[80%] md:w-1/2">
+    <div className="">
       {/* <!-- Put this part before </body> tag --> */}
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
       <div className="modal modal-top sm:modal-middle">
@@ -54,41 +93,32 @@ const BoardModal = () => {
 
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="wordspace-form-card mt-20"
+            className=" mt-8"
+            id="wordspace-form-card"
           >
-            <h3 className="font-bold text-lg board-modal-title text-center">
+            <h3 className="font-bold text-2xl uppercase board-modal-title text-center">
               Create Board
+            <hr className="h-[2px] w-1/2 mx-auto bg-gray-900 my-3" />
             </h3>
-            <hr className="h-[2px] bg-gray-300" />
-            <div
-              style={{ background: `url(${bg1})`, objectFit: "cover" }}
-              className="flex bg-green-800 bg-contain  items-center bm-logo"
-            >
+
+            <div className="flex bg-center bg-contain bg-cover items-center b-modal-bg">
               <img src={img} className="" alt="" />
             </div>
-            <div className="grid grid-cols-4 gap-2 justify-center items-center overflow-hidden p-3 bg-orange-300">
-              <img
-                src={bg1}
-                className="h-24 w-24 rounded-xl bg-clip-padding"
-                alt=""
-              />
-              <img
-                src={bg2}
-                className="h-24 w-24 rounded-xl bg-clip-padding"
-                alt=""
-              />
-              <img
-                src={bg3}
-                className="h-24 w-24 rounded-xl bg-clip-padding"
-                alt=""
-              />
-              <img
-                src={bg4}
-                className="h-24 w-24 rounded-xl bg-clip-padding"
-                alt=""
-              />
+            <p className="font-bold text-primary">Select Background</p>
+            <div className="grid grid-cols-5 gap-1 justify-center items-center py-1 overflow-hidden">
+              <img src={bg1} onClick={handleBg1} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src={bg2} onClick={handleBg2} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src={bg3} onClick={handleBg3} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src={bg4} onClick={handleBg4} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src={bg5} onClick={handleBg5} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />    
+              <div onClick={handleBg6} className="h-12 w-16 bg-[#172b4d] rounded-xl  cursor-pointer mx-auto"></div>
+              <div onClick={handleBg7} className="h-12 w-16 bg-[#eb5a46] rounded-xl  cursor-pointer mx-auto"></div>
+              <div onClick={handleBg8} className="h-12 w-16 bg-[#4caf50] rounded-xl  cursor-pointer mx-auto"></div>
+              <div onClick={handleBg9} className="h-12 w-16 bg-[#9c27b0] rounded-xl  cursor-pointer mx-auto"></div>
+              <div onClick={handleBg10} className="h-12 w-16 bg-[#075D6C] rounded-xl text-white justify-center text-center text-3xl   cursor-pointer mx-auto">...</div>
+
             </div>
-            <div className="form-control w-full max-w-xs mb-4">
+            <div className="form-control w-full mb-4">
               <label className="label">
                 <span className="text-sm font-bold board-modal-title">
                   Board Title
@@ -96,14 +126,13 @@ const BoardModal = () => {
               </label>
               <input
                 type="text"
-                placeholder="Type here"
-                className="input input-bordered w-full max-w-xs"
-                {...register("boardTitle", {
-                  required: {
-                    value: true,
-                    message: "Board Title is Required",
-                  },
-                })}
+                placeholder="type your board tittle"
+                onChange={(e) => {
+                  setNewBoardTitle(e.target.value);
+                }}
+
+                className="input input-bordered w-full"
+                required
               />
               <label className="label">Board title is required </label>
               <label className="label">
@@ -118,22 +147,45 @@ const BoardModal = () => {
             <div>
               <p className="text-sm font-bold board-modal-title">Visibility</p>
               <select
-                defaultValue={"DEFAULT"}
-                className="select select-bordered select-sm w-full max-w-xs mt-2"
+                defaultValue={"workspace"}
+                className="select select-bordered select-sm w-full h-[40px] mt-2"
                 {...register("visibility")}
               >
                 <option>Private</option>
-                <option value="DEFAULT">Workspace</option>
+                <option value="workspace">Workspace</option>
                 <option>Public</option>
               </select>
+
+              <p className="text-justify text-sm my-1">This Workspace has 6 boards remaining. Free Workspaces can only have 10 open boards. For unlimited boards, upgrade your Workspace.</p>
             </div>
 
-            <div className="modal-action my-6">
-                <button type="submit" className="btn w-full text-white bg-black" >
-                  Create
-                </button>
-           </div>
-
+            <div className="flex justify-center my-3">
+                  {newBoardTitle ? (
+                    <div className="w-2/3">
+                      <button
+                        type="submit"
+                        className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                      >
+                        <label
+                          htmlFor="my-modal-6"
+                          className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                        >
+                          Create Board
+                        </label>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-2/3">
+                      <button
+                        type="submit"
+                        className="w-full p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                      >
+                        Create Board
+                      </button>
+                      
+                    </div>
+                  )}
+                </div>
           </form>
         </div>
       </div>
