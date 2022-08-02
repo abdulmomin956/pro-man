@@ -47,13 +47,26 @@ const Tittle = ({ title }) => {
                         autoFocus
                         inputProps={{ className: classes.input }}
                         fullWidth
-                    // onBlur={() => setOpen(!open)} 
+                        onBlur={() => setOpen(!open)}
                     />
                 </div>
                 :
                 <div className={classes.editableTitleContainer}>
                     <Typography onClick={() => setOpen(!open)} className={classes.editableTitle}>{title}</Typography>
-                    <MoreHorizIcon />
+                    <div className='dropdown dropdown-right' >
+
+                        <label tabIndex="0" className="block w-6 h-6 mr-2 text-gray-400 transform hover:scale-110 hover:bg-gray-700 rounded-sm">
+                            <MoreHorizIcon
+                                pointerEvents="none"
+                                className="w-full h-full"
+                            />
+                        </label>
+
+                        <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                            <li><a>Item 1</a></li>
+                            <li><a>Archive</a></li>
+                        </ul>
+                    </div>
                 </div>
             }
 
