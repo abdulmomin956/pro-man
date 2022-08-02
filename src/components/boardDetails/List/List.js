@@ -20,6 +20,7 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const List = ({ list, index }) => {
+
     const classes = useStyle()
     // const lists = list.cards
     // console.log(lists);
