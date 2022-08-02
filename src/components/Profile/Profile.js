@@ -4,8 +4,12 @@ import auth from "../firebase/firebase.init";
 import Loading from "../shared/Loading";
 import "./Profile.css";
 import { useForm } from "react-hook-form";
+import ProfileNav from "./ProfileNav";
 
 const Profile = () => {
+  const [user] = useAuthState(auth);
+  const name = user?.displayName;
+  const userPhoto=user?.photoURL;
   const {
     register,
     handleSubmit,
@@ -25,32 +29,33 @@ const Profile = () => {
         >
           <div className="avatar p-5">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src="https://placeimg.com/192/192/people" />
+              <img src={userPhoto} />
             </div>
           </div>
           <div className="p-5">
-            <h2 className="font-bold text-4xl">Bethany</h2>
+            <h2 className="font-bold text-4xl">{name}</h2>
           </div>
 
         </div>
-        <div className="profileNav">
-          <ul>
-            <li><a href="#">Profile & Visibility</a></li>
-            <li><a href="#">Activity</a></li>
-            <li><a href="#">Cards</a></li>
-            <li><a href="#">Settings</a></li>
-
-          </ul>
-        </div>
+        <ProfileNav></ProfileNav>
         <div className="profilebody">
-          <div className="profilebody-image">
+          <div className="profilebody-image py-12">
             {" "}
-            <img src="" alt="" />
+            <img src="https://i.ibb.co/mGkjjT0/Screenshot-2.png" alt="" />
+          
           </div>
+          <div>
+              <h2 className="profilebody-heading text-3xl font-bold py-7">Manage your personal information</h2>
+              <div className="profilebody-doc p-7">
+                <p className="pb-3" > This is an Atlassian account. Edit your personal information and visibility settings through your Atlassian profile.</p>
+                <p>To learn more, view our Terms of Service or Privacy Policy.</p>
+
+              </div>
+            </div>
           <div className="profilebody_about">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="wordspace-form-card mt-20"
+              className=" mt-20"
             >
               <h3 className="font-bold text-lg board-modal-title text-center">
                 Update yoursalf
