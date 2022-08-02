@@ -24,7 +24,7 @@ const BoardDetails = () => {
     const classes = useStyle()
     const [data, setData] = useState(store)
 
-    console.log(data);
+    // console.log(data);
 
     useEffect(() => {
         const dataJson = localStorage.getItem("data");
@@ -99,7 +99,7 @@ const BoardDetails = () => {
     const onDragEnd = (result) => {
         // console.log(result)
         const { destination, source, draggableId, type } = result;
-        console.log('destination', destination, 'source', source, draggableId);
+        // console.log('destination', destination, 'source', source, draggableId);
 
         if (!result.destination) {
             return;

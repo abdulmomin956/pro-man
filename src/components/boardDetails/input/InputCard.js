@@ -33,8 +33,6 @@ const InputCard = ({ data, setOpen, listId, type }) => {
   const [title, setTitle] = useState("");
 
 
-  let cardData = [];
-
   const handleBtnConfirm = () => {
     if (title === "") {
       alert("Please Provide Your Task");
@@ -45,13 +43,6 @@ const InputCard = ({ data, setOpen, listId, type }) => {
       addMoreCard(title, listId);
       setTitle("");
 
-      // Local Storage
-      // if (localStorage.Content === null) {
-      //   cardData = [];
-      // }
-      // cardData.push(title);
-      // localStorage.setItem('Card-Data', cardData)
-      // setOpen(false);
 
     } else {
       addMoreList(title);
@@ -59,17 +50,6 @@ const InputCard = ({ data, setOpen, listId, type }) => {
       setOpen(false);
     }
 
-    // console.log(data)
-
-    // if (data.listIds === '') {
-    //     setOpen(false)
-    //     alert('You are fail')
-    // }
-
-    // if (data.listIds) {
-    //     setOpen(false)
-    //     alert('You are add a card')
-    // }
   };
 
   const handleBlur = () => {
