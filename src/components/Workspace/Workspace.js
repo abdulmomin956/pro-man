@@ -4,8 +4,6 @@ import { FaTimes } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.init";
-import { useQuery } from "react-query";
-import Loading from "../shared/Loading";
 import axios from "axios";
 
 const Workspace = () => {
@@ -32,19 +30,15 @@ const Workspace = () => {
   //   )
   // );
 
-  const { isLoading, data, refetch } = useQuery("data", () => fetch("https://morning-coast-54182.herokuapp.com/workspace/:email").then((res) => res.json()))
 
-  if (isLoading) {
-    <Loading></Loading>;
-  }
 
-  console.log(data);
 
-  let workspace = []; //[null]
-  const workspaceJson = localStorage.getItem("workspace");
-  if (JSON.parse(workspaceJson)) {
-    workspace = JSON.parse(workspaceJson);
-  }
+
+  // let workspace = []; //[null]
+  // const workspaceJson = localStorage.getItem("workspace");
+  // if (JSON.parse(workspaceJson)) {
+  //   workspace = JSON.parse(workspaceJson);
+  // }
 
   const onSubmit = async (data) => {
     const { description, workspaceType } = data;
@@ -56,15 +50,9 @@ const Workspace = () => {
       description: description,
     };
 
-    // console.log(newWorkspace);
     const res = await axios.post('https://morning-coast-54182.herokuapp.com/workspace', newWorkspace)
     console.log(res)
 
-
-    // workspace.push(newWorkspace);
-    // localStorage.setItem("workspace", JSON.stringify(workspace));
-    // setWorkspaceName("");
-    // reset();
   };
 
   let nameError;

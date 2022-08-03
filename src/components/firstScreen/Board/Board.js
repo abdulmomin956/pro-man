@@ -1,4 +1,5 @@
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import {
   FaBoxes,
   FaUserFriends,
@@ -7,13 +8,22 @@ import {
   FaRegArrowAltCircleUp,
 } from "react-icons/fa";
 import { HiViewGridAdd } from "react-icons/hi";
+import Loading from "../../shared/Loading";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase/firebase.init";
 
 const Board = () => {
+  const [user] = useAuthState(auth);
+  const email = user.email;
 
-  let workspace = [];//[null]
-  const workspaceJson = localStorage.getItem('workspace')
-  if (JSON.parse(workspaceJson)) {
-    workspace = JSON.parse(workspaceJson)
+  const { isLoading, error, data } = useQuery(['repoData'], () =>
+    fetch(`https://morning-coast-54182.herokuapp.com/workspace/${email}`).then(res =>
+      res.json()
+    )
+  )
+
+  if (isLoading) {
+    <Loading></Loading>;
   }
 
   const popularTemplates = [
@@ -106,8 +116,8 @@ const Board = () => {
       {/* **Your Workspace section start here** */}
       <div className="my-16">
         <p className="text-2xl font-bold text-gray-500">YOUR WORKSPACES</p>
-        {workspace.map(item =>
-          <>
+        {data?.map(item =>
+          <div key={item._id}>
             <div className="md:flex items-center justify-between">
               <div className="flex items-center my-5">
 
@@ -145,21 +155,17 @@ const Board = () => {
               </div>
             </div>
             <div>
-              <div className="card w-60 bg-base-100 shadow-xl">
-                <div className="card-body hover:cursor-pointer hover:bg-gray-100  hover:font-bold">
-                  <div className="flex justify-center text-md items-center">
-                    <label
-                      htmlFor="my-modal-6"
-                      className="mr-2"
-                    >
-                      Create New Board
-                    </label>
-                    <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare>
-                  </div>
-                </div>
+              <div className=" w-60 bg-base-100 shadow-xl">
+                <label htmlFor="my-modal-6" className=" hover:cursor-pointer hover:bg-gray-100  hover:font-bold flex w-60 h-32 justify-center items-center">
+                  <p className="mr-2">
+                    Create New Board
+                  </p>
+                  <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare>
+
+                </label>
               </div>
             </div>
-          </>
+          </div>
         )}
       </div>
       {/* **Your Workspace section End here** */}
