@@ -4,6 +4,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = () => {
+
   return (
     <div>
       <div className="drawer drawer-mobile static">
