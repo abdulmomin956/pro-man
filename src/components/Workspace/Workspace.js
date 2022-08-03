@@ -6,13 +6,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.init";
 import { useQuery } from "react-query";
 import Loading from "../shared/Loading";
+import axios from "axios";
 
 const Workspace = () => {
   const [workspaceName, setWorkspaceName] = useState("");
-  const user = useAuthState(auth);
-  const email = user[0].email;
-
-
+  const [user] = useAuthState(auth);
+  const email = user.email;
+  // console.log(user);
 
   const {
     register,
@@ -22,21 +22,23 @@ const Workspace = () => {
     formState: { errors },
   } = useForm();
 
-  const {
-    isLoading,
-    data: users,
-    refetch,
-  } = useQuery("users", () =>
-    fetch("https://jsonplaceholder.typicode.com/users").then((res) =>
-      res.json()
-    )
-  );
- 
+  // const {
+  //   isLoading,
+  //   data: users,
+  //   refetch,
+  // } = useQuery("users", () =>
+  //   fetch("https://jsonplaceholder.typicode.com/users").then((res) =>
+  //     res.json()
+  //   )
+  // );
+
+  const { isLoading, data, refetch } = useQuery("data", () => fetch("https://morning-coast-54182.herokuapp.com/workspace/:email").then((res) => res.json()))
+
   if (isLoading) {
     <Loading></Loading>;
   }
 
-  console.log(users);
+  console.log(data);
 
   let workspace = []; //[null]
   const workspaceJson = localStorage.getItem("workspace");
@@ -44,7 +46,7 @@ const Workspace = () => {
     workspace = JSON.parse(workspaceJson);
   }
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { description, workspaceType } = data;
 
     const newWorkspace = {
@@ -54,12 +56,15 @@ const Workspace = () => {
       description: description,
     };
 
-    console.log(newWorkspace);
+    // console.log(newWorkspace);
+    const res = await axios.post('https://morning-coast-54182.herokuapp.com/workspace', newWorkspace)
+    console.log(res)
 
-    workspace.push(newWorkspace);
-    localStorage.setItem("workspace", JSON.stringify(workspace));
-    setWorkspaceName("");
-    reset();
+
+    // workspace.push(newWorkspace);
+    // localStorage.setItem("workspace", JSON.stringify(workspace));
+    // setWorkspaceName("");
+    // reset();
   };
 
   let nameError;
