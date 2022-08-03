@@ -152,7 +152,7 @@ const Board = () => {
                       htmlFor="my-modal-6"
                       className="mr-2"
                     >
-                      Create A New Board
+                      Create New Board
                     </label>
                     <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare>
                   </div>
