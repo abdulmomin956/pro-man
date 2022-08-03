@@ -58,6 +58,7 @@ const Card = ({ card, index }) => {
                                 </svg>
 
                             </div>
+
                         </Paper>
                     </div>
                 </div>

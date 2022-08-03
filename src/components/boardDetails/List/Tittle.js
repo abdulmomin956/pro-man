@@ -5,18 +5,18 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import ClearIcon from "@material-ui/icons/Clear";
+// import ClearIcon from "@material-ui/icons/Clear";
 import Divider from '@material-ui/core/Divider';
 const useStyle = makeStyles((theme) => ({
     editableTitleContainer: {
         margin: theme.spacing(1),
         display: 'flex'
     },
-    editableTitleContainer2: {
-        margin: theme.spacing(1),
-        display: 'flex',
-        justifyContent: 'center'
-    },
+    // editableTitleContainer2: {
+    //     margin: theme.spacing(1),
+    //     display: 'flex',
+    //     justifyContent: 'center'
+    // },
 
     editableTitle: {
         flexGrow: 1,
@@ -88,11 +88,12 @@ const Tittle = ({ title }) => {
                                 open={Boolean(anchorEl)}
                                 onClose={handleClose}
                             >
-                                <div className={classes.editableTitleContainer2}>
-                                    <p> List Actions  <IconButton onClick={handleClose}>
-                                        <ClearIcon />
-                                    </IconButton></p>
+                                <div  >
+                                    <button className='block ml-auto mx-2' onClick={handleClose}>X</button>
                                 </div>
+                                <p className='text-center mb-2'> List Actions</p>
+
+
                                 <Divider />
                                 <div className={classes.cardwidth}>
                                     <MenuItem>Add Card...</MenuItem>
