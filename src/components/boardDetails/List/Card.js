@@ -2,7 +2,7 @@ import React from 'react';
 import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Draggable } from 'react-beautiful-dnd';
-import WebIcon from '@material-ui/icons/Web';
+import CreateIcon from '@material-ui/icons/Create';
 
 
 
@@ -34,10 +34,12 @@ const Card = ({ card, index }) => {
 
     const editItem = (id) => {
         console.log('edit', id)
-    }
 
+
+    }
     const classes = useStyle()
     // console.log(card)
+    console.log(card.title)
     return (
         <Draggable key={card.id} draggableId={card.id} index={index} >
             {(provided) => (
@@ -49,8 +51,11 @@ const Card = ({ card, index }) => {
                 >
                     <div  >
                         <Paper className={classes.card} >{card.title}
+
                             <div>
-                                <WebIcon />
+                                <svg onClick={() => editItem(card.id)} xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                </svg>
 
                             </div>
                         </Paper>
