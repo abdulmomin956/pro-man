@@ -1,18 +1,30 @@
 import React, { useState } from 'react';
-import { Typography, InputBase } from '@material-ui/core';
+import { Typography, InputBase, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import ClearIcon from "@material-ui/icons/Clear";
+import Divider from '@material-ui/core/Divider';
 const useStyle = makeStyles((theme) => ({
     editableTitleContainer: {
         margin: theme.spacing(1),
         display: 'flex'
+    },
+    editableTitleContainer2: {
+        margin: theme.spacing(1),
+        display: 'flex',
+        justifyContent: 'center'
     },
 
     editableTitle: {
         flexGrow: 1,
         fontSize: '1.2rem',
         fontWeight: 'bold'
+    },
+    cardwidth: {
+        width: "300px",
     },
     input: {
         fontSize: '1.2rem',
@@ -36,6 +48,16 @@ const Tittle = ({ title }) => {
 
         // console.log(e.target.value)
     }
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     return (
         <div>
 
@@ -53,19 +75,42 @@ const Tittle = ({ title }) => {
                 :
                 <div className={classes.editableTitleContainer}>
                     <Typography onClick={() => setOpen(!open)} className={classes.editableTitle}>{title}</Typography>
-                    <div className='dropdown dropdown-right' >
+                    <div >
+                        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                            <MoreHorizIcon />
+                        </Button>
+                        <div >
+                            <Menu
 
-                        <label tabIndex="0" className="block w-6 h-6 mr-2 text-gray-400 transform hover:scale-110 hover:bg-gray-700 rounded-sm">
-                            <MoreHorizIcon
-                                pointerEvents="none"
-                                className="w-full h-full"
-                            />
-                        </label>
-
-                        <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a>Item 1</a></li>
-                            <li><a>Archive</a></li>
-                        </ul>
+                                id="simple-menu"
+                                anchorEl={anchorEl}
+                                keepMounted
+                                open={Boolean(anchorEl)}
+                                onClose={handleClose}
+                            >
+                                <div className={classes.editableTitleContainer2}>
+                                    <p> List Actions  <IconButton onClick={handleClose}>
+                                        <ClearIcon />
+                                    </IconButton></p>
+                                </div>
+                                <Divider />
+                                <div className={classes.cardwidth}>
+                                    <MenuItem>Add Card...</MenuItem>
+                                    <MenuItem >Copy List...</MenuItem>
+                                    <MenuItem >Move List...</MenuItem>
+                                    <MenuItem >Watch</MenuItem>
+                                    <Divider />
+                                    <p className='mx-4 my-4'>Automation</p>
+                                    <MenuItem >When a card is added to the list</MenuItem>
+                                    <MenuItem >Evrey day, sort list by..</MenuItem>
+                                    <MenuItem >Evrey Monday, sort list by..</MenuItem>
+                                    <MenuItem >Create a custom rule</MenuItem>
+                                    <Divider />
+                                    <MenuItem >Move all cards in this list..</MenuItem>
+                                    <MenuItem >Achive all cards in this list..</MenuItem>
+                                </div>
+                            </Menu>
+                        </div>
                     </div>
                 </div>
             }
