@@ -2,9 +2,17 @@ import React, { useState } from "react";
 import "./Workspace.css";
 import { FaTimes } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../firebase/firebase.init";
+import { useQuery } from "react-query";
+import Loading from "../shared/Loading";
 
 const Workspace = () => {
   const [workspaceName, setWorkspaceName] = useState("");
+  const user = useAuthState(auth);
+  const email = user[0].email;
+
+
 
   const {
     register,
@@ -14,6 +22,22 @@ const Workspace = () => {
     formState: { errors },
   } = useForm();
 
+  const {
+    isLoading,
+    data: users,
+    refetch,
+  } = useQuery("users", () =>
+    fetch("https://jsonplaceholder.typicode.com/users").then((res) =>
+      res.json()
+    )
+  );
+ 
+  if (isLoading) {
+    <Loading></Loading>;
+  }
+
+  console.log(users);
+
   let workspace = []; //[null]
   const workspaceJson = localStorage.getItem("workspace");
   if (JSON.parse(workspaceJson)) {
@@ -22,9 +46,11 @@ const Workspace = () => {
 
   const onSubmit = (data) => {
     const { description, workspaceType } = data;
+
     const newWorkspace = {
       title: workspaceName,
       type: workspaceType,
+      email: email,
       description: description,
     };
 
