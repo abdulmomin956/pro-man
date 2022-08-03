@@ -148,7 +148,12 @@ const Board = () => {
               <div className="card w-60 bg-base-100 shadow-xl">
                 <div className="card-body hover:cursor-pointer hover:bg-gray-100  hover:font-bold">
                   <div className="flex justify-center text-md items-center">
-                    <span className="mr-2">Create New Board</span>
+                    <label
+                      htmlFor="my-modal-6"
+                      className="mr-2"
+                    >
+                      Create A New Board
+                    </label>
                     <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare>
                   </div>
                 </div>
