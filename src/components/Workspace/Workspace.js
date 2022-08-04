@@ -32,8 +32,6 @@ const Workspace = () => {
 
 
 
-
-
   // let workspace = []; //[null]
   // const workspaceJson = localStorage.getItem("workspace");
   // if (JSON.parse(workspaceJson)) {

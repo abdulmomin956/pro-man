@@ -1,18 +1,28 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink, Link } from "react-router-dom";
 import auth from "../firebase/firebase.init";
 import Workspace from "../Workspace/Workspace";
 import BoardModal from "./BoardModal";
 import Loading from "./Loading";
+import axios from "axios";
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [workspace, setWorkspace] = useState([]);
 
   if (loading) {
     <Loading />;
   }
+
+const getWorkspace = async () => {
+  const url = `https://morning-coast-54182.herokuapp.com/workspace/${user.email}`
+  const res = await axios.get(url)
+    setWorkspace(res)
+}
+getWorkspace();
+
   const x = user?.displayName;
   const nameparts = x?.split(" ");
   const initials =
@@ -22,9 +32,15 @@ const Navbar = () => {
     signOut(auth);
   };
 
-  const workspaceJson = localStorage.getItem("workspace");
-  const workspace = JSON.parse(workspaceJson);
+ 
+
+  // const workspaceJson = localStorage.getItem("workspace");
+  // const workspace = JSON.parse(workspaceJson);
+  // const workspaces = getWorkspace();
+  // const workspace = workspaces.data;
   // console.log(workspace);
+
+
   return (
     <div>
       <div style={{ zIndex: "200" }} className="navbar bg-accent pb-4 w-full">
@@ -48,7 +64,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 "
             >
               <li tabIndex="0">
                 <p className="justify-between mb-2 p-2 pl-5 pr-5 myButton">
@@ -64,12 +80,12 @@ const Navbar = () => {
                   </svg>
                 </p>
                 <ul
-                  className="p-2  bg-base-100 rounded-box w-52"
+                  className="p-2  bg-base-100 rounded-box w-52 "
                   style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
                 >
-                  {workspace?.map((item, i) => (
+                  {workspace?.data?.map((item, i) => (
                     <li key={i}>
-                      <a className="mb-2 btn-sm w-full  myButton">
+                      <a className=" btn-sm w-full  myButton">
                         <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
@@ -137,12 +153,12 @@ const Navbar = () => {
                 </label>
                 <ul
                   tabIndex="0"
-                  className="dropdown-content menu p-2 bg-base-100 rounded-box w-52"
+                  className="dropdown-content menu p-2 bg-base-100 rounded-box w-52 "
                   style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
                 >
-                  {workspace?.map((item, i) => (
+                  {workspace?.data?.map((item, i) => (
                     <li key={i}>
-                      <a className="mb-2 px-2 py-1 w-full myButton">
+                      <a className=" px-2 py-1 w-full myButton">
                         <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
