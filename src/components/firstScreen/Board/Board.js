@@ -11,8 +11,17 @@ import { HiViewGridAdd } from "react-icons/hi";
 import Loading from "../../shared/Loading";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { LAST_WORKSPACE } from "../../../global-state/constants/reduxContstants";
+import { setWorkspace, setWorkspaceID } from "../../../global-state/actions/reduxActions";
+import { useEffect } from "react";
 
 const Board = () => {
+  // const lastWorkspaceID = useSelector(state => state.lastWorkspaceID)
+  const dispatch = useDispatch();
+  // console.log(lastWorkspaceID);
+
   const [user] = useAuthState(auth);
   const email = user.email;
 
@@ -21,6 +30,16 @@ const Board = () => {
       res.json()
     )
   )
+
+  useEffect(() => {
+    const allWorkspaceData = data?.map(item => (
+      {
+        _id: item._id, title: item.title
+      }
+    ))
+    // console.log(allWorkspaceData);
+    dispatch(setWorkspace(allWorkspaceData))
+  }, [data, dispatch])
 
   if (isLoading) {
     <Loading></Loading>;
@@ -156,7 +175,13 @@ const Board = () => {
             </div>
             <div>
               <div className=" w-60 bg-base-100 shadow-xl">
-                <label htmlFor="my-modal-6" className=" hover:cursor-pointer hover:bg-gray-100  hover:font-bold flex w-60 h-32 justify-center items-center">
+                <label
+                  htmlFor="my-modal-6"
+                  className=" hover:cursor-pointer hover:bg-gray-100  hover:font-bold flex w-60 h-32 justify-center items-center"
+                  onClick={() => {
+                    dispatch(setWorkspaceID(item._id))
+                  }}
+                >
                   <p className="mr-2">
                     Create New Board
                   </p>

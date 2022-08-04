@@ -8,11 +8,18 @@ import bg2 from "../../assest/image/bg2.jpg";
 import bg3 from "../../assest/image/bg3.jpg";
 import bg4 from "../../assest/image/bg4.jpg";
 import bg5 from "../../assest/image/bg5.jpg";
-import { convertToHsl } from "daisyui/src/colors/functions";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 
 const BoardModal = () => {
   const [newBoardTitle, setNewBoardTitle] = useState("");
+  const lastWorkspaceID = useSelector(state => state.lastWorkspaceID)
+  const allWorkspace = useSelector(state => state.workspace)
+  // console.log(lastWorkspaceID);
+  // console.log(allWorkspace);
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -26,16 +33,17 @@ const BoardModal = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    const { boardTitle, visibility } = data;
 
+  const onSubmit = (data) => {
+    console.log(data);
+    const { boardTitle, visibility } = data;
     const newBoard = {
       title: boardTitle,
       visibility: visibility,
     };
     console.log(newBoard);
 
-    navigate("/board-details");
+    // navigate("/board-details");
 
     reset();
   };
@@ -58,7 +66,7 @@ const BoardModal = () => {
     document.querySelector(".b-modal-bg").style.background = `url(${bg5}) center center/cover`;
   };
 
-  
+
   // Handle Board Background Color
 
   const handleBg6 = () => {
@@ -98,7 +106,7 @@ const BoardModal = () => {
           >
             <h3 className="font-bold text-2xl uppercase board-modal-title text-center">
               Create Board
-            <hr className="h-[2px] w-1/2 mx-auto bg-gray-900 my-3" />
+              <hr className="h-[2px] w-1/2 mx-auto bg-gray-900 my-3" />
             </h3>
 
             <div className="flex bg-center bg-contain bg-cover items-center b-modal-bg">
@@ -110,7 +118,7 @@ const BoardModal = () => {
               <img src={bg2} onClick={handleBg2} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
               <img src={bg3} onClick={handleBg3} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
               <img src={bg4} onClick={handleBg4} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
-              <img src={bg5} onClick={handleBg5} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />    
+              <img src={bg5} onClick={handleBg5} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
               <div onClick={handleBg6} className="h-12 w-16 bg-[#172b4d] rounded-xl  cursor-pointer mx-auto"></div>
               <div onClick={handleBg7} className="h-12 w-16 bg-[#eb5a46] rounded-xl  cursor-pointer mx-auto"></div>
               <div onClick={handleBg8} className="h-12 w-16 bg-[#4caf50] rounded-xl  cursor-pointer mx-auto"></div>
@@ -143,6 +151,35 @@ const BoardModal = () => {
                 )}
               </label>
             </div>
+            <div className="form-control w-full mb-4">
+              <label className="label">
+                <span className="text-sm font-bold board-modal-title">
+                  Workspace
+                </span>
+              </label>
+              <select
+                value={lastWorkspaceID}
+
+                className="select select-bordered select-sm w-full h-[40px] mt-2"
+                {...register("WorkspaceID", {
+                  onChange: (e) => { dispatch(setWorkspaceID(e.target.value)) }
+                })}
+              >
+                {
+                  allWorkspace?.map(item =>
+                    <option key={item?._id} value={item?._id}>{item?.title}</option>
+                  )
+                }
+              </select>
+              <label className="label">Select your workspace </label>
+              <label className="label">
+                {errors.boardTitle?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.boardTitle.message}
+                  </span>
+                )}
+              </label>
+            </div>
 
             <div>
               <p className="text-sm font-bold board-modal-title">Visibility</p>
@@ -160,32 +197,32 @@ const BoardModal = () => {
             </div>
 
             <div className="flex justify-center my-3">
-                  {newBoardTitle ? (
-                    <div className="w-2/3">
-                      <button
-                        type="submit"
-                        className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
-                      >
-                        <label
-                          htmlFor="my-modal-6"
-                          className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
-                        >
-                          Create Board
-                        </label>
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="w-2/3">
-                      <button
-                        type="submit"
-                        className="w-full p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
-                      >
-                        Create Board
-                      </button>
-                      
-                    </div>
-                  )}
+              {newBoardTitle ? (
+                <div className="w-2/3">
+                  <button
+                    type="submit"
+                    className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                  >
+                    <label
+                      htmlFor="my-modal-6"
+                      className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                    >
+                      Create Board
+                    </label>
+                  </button>
                 </div>
+              ) : (
+                <div className="w-2/3">
+                  <button
+                    type="submit"
+                    className="w-full p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                  >
+                    Create Board
+                  </button>
+
+                </div>
+              )}
+            </div>
           </form>
         </div>
       </div>
