@@ -7,21 +7,19 @@ import Workspace from "../Workspace/Workspace";
 import BoardModal from "./BoardModal";
 import Loading from "./Loading";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
-  const [workspace, setWorkspace] = useState([]);
+
+
+  const allWorkspace = useSelector(state => state.workspace)
+  console.log(allWorkspace);
 
   if (loading) {
     <Loading />;
   }
 
-const getWorkspace = async () => {
-  const url = `https://morning-coast-54182.herokuapp.com/workspace/${user.email}`
-  const res = await axios.get(url)
-    setWorkspace(res)
-}
-getWorkspace();
 
   const x = user?.displayName;
   const nameparts = x?.split(" ");
@@ -78,7 +76,7 @@ getWorkspace();
                   className="p-2  bg-base-100 rounded-box w-52 pt-4"
                   style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
                 >
-                  {workspace?.data?.map((item, i) => (
+                  {allWorkspace?.map((item, i) => (
                     <li key={i}>
                       <a className="mb-2 btn-sm w-full  myButton">
                         <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
@@ -151,7 +149,7 @@ getWorkspace();
                   className="dropdown-content menu p-2 bg-base-100 rounded-box w-52 pt-4"
                   style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
                 >
-                  {workspace?.data?.map((item, i) => (
+                  {allWorkspace?.map((item, i) => (
                     <li key={i}>
                       <a className="mb-2 px-2 py-1 w-full myButton">
                         <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
