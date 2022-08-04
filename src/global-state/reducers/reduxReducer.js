@@ -1,7 +1,7 @@
 import { LAST_WORKSPACE, WORKSPACE } from "../constants/reduxContstants";
 
 const initialState = {
-    lastWorkspaceID: "wID",
+    lastWorkspaceID: "",
     workspace: []
 }
 const reduxReducer = (state = initialState, action) => {
