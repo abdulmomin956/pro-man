@@ -32,14 +32,9 @@ getWorkspace();
     signOut(auth);
   };
 
- 
-
   // const workspaceJson = localStorage.getItem("workspace");
   // const workspace = JSON.parse(workspaceJson);
-  // const workspaces = getWorkspace();
-  // const workspace = workspaces.data;
   // console.log(workspace);
-
 
   return (
     <div>
@@ -80,12 +75,12 @@ getWorkspace();
                   </svg>
                 </p>
                 <ul
-                  className="p-2  bg-base-100 rounded-box w-52 "
+                  className="p-2  bg-base-100 rounded-box w-52 pt-4"
                   style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
                 >
                   {workspace?.data?.map((item, i) => (
                     <li key={i}>
-                      <a className=" btn-sm w-full  myButton">
+                      <a className="mb-2 btn-sm w-full  myButton">
                         <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
@@ -98,7 +93,7 @@ getWorkspace();
               <li tabIndex="0">
                 <button className=" p-2 pl-5 pr-5 myButton">Create</button>
                 <ul
-                  className="p-2 bg-base-100 rounded-box w-52"
+                  className="p-2 bg-base-100 rounded-box w-52 pt-4"
                   style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
                 >
                   <li>
@@ -153,12 +148,12 @@ getWorkspace();
                 </label>
                 <ul
                   tabIndex="0"
-                  className="dropdown-content menu p-2 bg-base-100 rounded-box w-52 "
+                  className="dropdown-content menu p-2 bg-base-100 rounded-box w-52 pt-4"
                   style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
                 >
                   {workspace?.data?.map((item, i) => (
                     <li key={i}>
-                      <a className=" px-2 py-1 w-full myButton">
+                      <a className="mb-2 px-2 py-1 w-full myButton">
                         <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
@@ -179,7 +174,7 @@ getWorkspace();
                 </label>
                 <ul
                   tabIndex="0"
-                  className="dropdown-content menu p-2 bg-base-100 rounded-box w-52"
+                  className="dropdown-content menu p-2 bg-base-100 rounded-box w-52 pt-4"
                   style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
                 >
                   <li>

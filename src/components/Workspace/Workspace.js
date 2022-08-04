@@ -10,7 +10,6 @@ const Workspace = () => {
   const [workspaceName, setWorkspaceName] = useState("");
   const [user] = useAuthState(auth);
   const email = user.email;
-  // console.log(user);
 
   const {
     register,
@@ -30,8 +29,6 @@ const Workspace = () => {
   //   )
   // );
 
-
-
   // let workspace = []; //[null]
   // const workspaceJson = localStorage.getItem("workspace");
   // if (JSON.parse(workspaceJson)) {
@@ -49,8 +46,7 @@ const Workspace = () => {
     };
 
     const res = await axios.post('https://morning-coast-54182.herokuapp.com/workspace', newWorkspace)
-    console.log(res)
-
+    // console.log(res)
   };
 
   let nameError;
