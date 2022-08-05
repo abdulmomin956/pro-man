@@ -12,9 +12,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setWorkspaceID } from "../../global-state/actions/reduxActions";
+import axios from "axios";
 
 const BoardModal = () => {
-  const [newBoardTitle, setNewBoardTitle] = useState("");
   const lastWorkspaceID = useSelector(state => state.lastWorkspaceID)
   const allWorkspace = useSelector(state => state.workspace)
   // console.log(lastWorkspaceID);
@@ -34,15 +34,20 @@ const BoardModal = () => {
   const navigate = useNavigate();
 
 
-  const onSubmit = (data) => {
-    console.log(data);
-    const { boardTitle, visibility } = data;
+  const onSubmit = async (data) => {
+    // console.log(data);
+    let { title, visibility, workspaceID } = data;
+
+    workspaceID = lastWorkspaceID;
+
     const newBoard = {
-      title: boardTitle,
+      workspaceID: workspaceID,
+      title: title,
       visibility: visibility,
     };
-    console.log(newBoard);
-
+    // console.log(newBoard);
+    const res = await axios.post('https://morning-coast-54182.herokuapp.com/board', newBoard)
+    console.log(res)
     // navigate("/board-details");
 
     reset();
@@ -135,10 +140,7 @@ const BoardModal = () => {
               <input
                 type="text"
                 placeholder="type your board tittle"
-                onChange={(e) => {
-                  setNewBoardTitle(e.target.value);
-                }}
-
+                {...register("title")}
                 className="input input-bordered w-full"
                 required
               />
@@ -161,7 +163,7 @@ const BoardModal = () => {
                 value={lastWorkspaceID}
 
                 className="select select-bordered select-sm w-full h-[40px] mt-2"
-                {...register("WorkspaceID", {
+                {...register("workspaceID", {
                   onChange: (e) => { dispatch(setWorkspaceID(e.target.value)) }
                 })}
               >
@@ -197,31 +199,21 @@ const BoardModal = () => {
             </div>
 
             <div className="flex justify-center my-3">
-              {newBoardTitle ? (
-                <div className="w-2/3">
-                  <button
-                    type="submit"
+
+              <div className="w-2/3">
+                <button
+                  type="submit"
+                  className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                >
+                  <label
+                    htmlFor="my-modal-6"
                     className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
                   >
-                    <label
-                      htmlFor="my-modal-6"
-                      className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
-                    >
-                      Create Board
-                    </label>
-                  </button>
-                </div>
-              ) : (
-                <div className="w-2/3">
-                  <button
-                    type="submit"
-                    className="w-full p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
-                  >
                     Create Board
-                  </button>
+                  </label>
+                </button>
+              </div>
 
-                </div>
-              )}
             </div>
           </form>
         </div>

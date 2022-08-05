@@ -33,15 +33,14 @@ function App() {
           <Route path="/" element={<Board />}></Route>
           <Route path="/template" element={<Template />}></Route>
           <Route path="/homescreen" element={<HomeScreen />}></Route>
-          <Route path="/board-details" element={<BoardDetails></BoardDetails>}></Route>
+          <Route path="/b/:id" element={<BoardDetails></BoardDetails>}></Route>
         </Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
-
+        <Route path="/profile" element={<Profile />}></Route>
 
         <Route path="*" element={<NotFound></NotFound>}></Route>
-        
-        <Route path="/profile" element={<Profile/>}></Route>
+
       </Routes>
     </div>
   );
