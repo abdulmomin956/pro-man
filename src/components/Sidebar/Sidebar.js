@@ -20,8 +20,8 @@ const Sidebar = () => {
           </label>
         </div>
         <div
-          className="drawer-side lg:mx-7 rounded"
-          style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
+          className="drawer-side lg:mx-7 rounded shadow"
+
         >
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-52 bg-base-100 text-base-content">

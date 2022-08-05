@@ -15,6 +15,7 @@ const reduxReducer = (state = initialState, action) => {
             return {
                 ...state,
                 workspace: action.payload,
+                lastWorkspaceID: action?.payload[0]?._id
             }
 
 

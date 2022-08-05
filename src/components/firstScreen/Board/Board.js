@@ -16,11 +16,17 @@ import { useDispatch } from "react-redux";
 import { LAST_WORKSPACE } from "../../../global-state/constants/reduxContstants";
 import { setWorkspace, setWorkspaceID } from "../../../global-state/actions/reduxActions";
 import { useEffect } from "react";
+import axios from "axios";
+import LoardBoard from "./LoardBoard";
+
+
+
 
 const Board = () => {
   // const lastWorkspaceID = useSelector(state => state.lastWorkspaceID)
+  // const re_data = useSelector(state => state)
   const dispatch = useDispatch();
-  // console.log(lastWorkspaceID);
+  // console.log(re_data);
 
   const [user] = useAuthState(auth);
   const email = user.email;
@@ -32,18 +38,24 @@ const Board = () => {
   )
 
   useEffect(() => {
-    const allWorkspaceData = data?.map(item => (
-      {
-        _id: item._id, title: item.title
-      }
-    ))
-    // console.log(allWorkspaceData);
-    dispatch(setWorkspace(allWorkspaceData))
+    if (data?.length > 0) {
+      const allWorkspaceData = data?.map(item => (
+        {
+          _id: item._id, title: item.title
+        }
+      ))
+      // console.log(allWorkspaceData);
+      dispatch(setWorkspace(allWorkspaceData))
+    }
   }, [data, dispatch])
+
+
 
   if (isLoading) {
     <Loading></Loading>;
   }
+
+
 
   const popularTemplates = [
     {
@@ -173,8 +185,10 @@ const Board = () => {
                 </div>
               </div>
             </div>
-            <div>
-              <div className=" w-60 bg-base-100 shadow-xl">
+            <div className="flex gap-3">
+              <LoardBoard props={item._id} />
+
+              <div className=" w-60 bg-base-100 shadow">
                 <label
                   htmlFor="my-modal-6"
                   className=" hover:cursor-pointer hover:bg-gray-100  hover:font-bold flex w-60 h-32 justify-center items-center"

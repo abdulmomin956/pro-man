@@ -14,7 +14,7 @@ const Navbar = () => {
 
 
   const allWorkspace = useSelector(state => state.workspace)
-  console.log(allWorkspace);
+  // console.log(allWorkspace);
 
   if (loading) {
     <Loading />;
@@ -30,9 +30,7 @@ const Navbar = () => {
     signOut(auth);
   };
 
-  // const workspaceJson = localStorage.getItem("workspace");
-  // const workspace = JSON.parse(workspaceJson);
-  // console.log(workspace);
+
 
   return (
     <div>
