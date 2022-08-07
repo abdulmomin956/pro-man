@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink, Link } from "react-router-dom";
 import auth from "../firebase/firebase.init";
-import Workspace from "../Workspace/Workspace";
+import workspaceModal from './WorkspaceModal'
 import BoardModal from "./BoardModal";
 import Loading from "./Loading";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import WorkspaceModal from "./WorkspaceModal";
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -234,7 +235,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <Workspace></Workspace>
+      <WorkspaceModal></WorkspaceModal>
       <BoardModal></BoardModal>
     </div>
   );

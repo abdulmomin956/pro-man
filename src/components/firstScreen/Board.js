@@ -8,13 +8,13 @@ import {
   FaRegArrowAltCircleUp,
 } from "react-icons/fa";
 import { HiViewGridAdd } from "react-icons/hi";
-import Loading from "../../shared/Loading";
+import Loading from "../shared/Loading";
 import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../firebase/firebase.init";
+import auth from "../firebase/firebase.init";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { LAST_WORKSPACE } from "../../../global-state/constants/reduxContstants";
-import { setWorkspace, setWorkspaceID } from "../../../global-state/actions/reduxActions";
+import { LAST_WORKSPACE } from "../../global-state/constants/reduxContstants";
+import { setWorkspace, setWorkspaceID } from "../../global-state/actions/reduxActions";
 import { useEffect } from "react";
 import axios from "axios";
 import LoardBoard from "./LoardBoard";

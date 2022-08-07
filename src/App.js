@@ -13,8 +13,12 @@ import Template from "./components/firstScreen/Template";
 import Loading from "./components/shared/Loading";
 import BoardDetails from "./components/boardDetails/BoardDetails";
 import NotFound from "./components/shared/NotFound";
-import Board from "./components/firstScreen/Board/Board";
+import Board from "./components/firstScreen/Board";
 import Profile from "./components/Profile/Profile";
+import Workspace from "./components/Workspace/Workspace";
+import Boards from "./components/Workspace/Boards";
+import Members from "./components/Workspace/Members";
+import Account from "./components/Workspace/Account";
 
 
 
@@ -33,8 +37,13 @@ function App() {
           <Route path="/" element={<Board />}></Route>
           <Route path="/template" element={<Template />}></Route>
           <Route path="/homescreen" element={<HomeScreen />}></Route>
-          <Route path="/b/:id" element={<BoardDetails></BoardDetails>}></Route>
         </Route>
+        <Route path="/:workspaceID" element={<Workspace />}>
+          <Route path="/:workspaceID/" element={<Boards />}></Route>
+          <Route path="/:workspaceID/members" element={<Members />}></Route>
+          <Route path="/:workspaceID/account" element={<Account />}></Route>
+        </Route>
+        <Route path="/b/:id" element={<BoardDetails></BoardDetails>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/profile" element={<Profile />}></Route>
