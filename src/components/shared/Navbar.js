@@ -56,10 +56,10 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 "
+              className="menu menu-compact dropdown-content mt-3 py-4 shadow bg-base-100 rounded-lg w-52 "
             >
               <li tabIndex="0">
-                <p className="justify-between mb-2 p-2 pl-5 pr-5 myButton">
+                <p className="justify-between mb-2 p-2 pl-5 pr-5 myButton"  style={{borderRadius: "0px"}}>
                   Workspaces
                   <svg
                     className="fill-current"
@@ -72,11 +72,11 @@ const Navbar = () => {
                   </svg>
                 </p>
                 <ul
-                  className="p-2  bg-base-100 rounded w-52 pt-4 shadow"
+                  className="py-2  bg-base-100 rounded w-52 pt-4 shadow"
                 >
                   {allWorkspace?.map((item, i) => (
                     <li key={i}>
-                      <a className="mb-2 btn-sm w-full  myButton">
+                      <a className="mb-2 btn-sm w-full rounded-none  myButton" style={{borderRadius: "0px"}}>
                         <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
@@ -87,15 +87,16 @@ const Navbar = () => {
                 </ul>
               </li>
               <li tabIndex="0">
-                <button className=" p-2 pl-5 pr-5 myButton">Create</button>
+                <button className=" p-2 pl-5 pr-5 myButton"  style={{borderRadius: "0px"}}>Create</button>
                 <ul
-                  className="p-2 bg-base-100 rounded w-52 pt-4 shadow"
+                  className="py-2 bg-base-100 rounded w-52 pt-4 shadow"
                 >
                   <li>
                     {/* <!-- The button to open modal --> */}
                     <label
                       htmlFor="my-modal-6"
                       className="mb-2 btn-sm w-full  myButton"
+                      style={{borderRadius: "0px"}}
                     >
                       Create Board
                     </label>
@@ -106,6 +107,7 @@ const Navbar = () => {
                     <label
                       htmlFor="my-modal-sa6"
                       className="mb-2 btn-sm w-full  myButton"
+                      style={{borderRadius: "0px"}}
                     >
                       Create Workspace
                     </label>
@@ -143,12 +145,12 @@ const Navbar = () => {
                 </label>
                 <ul
                   tabIndex="0"
-                  className="dropdown-content menu p-2 bg-base-100 rounded w-52 pt-4 shadow"
+                  className="dropdown-content menu py-2 bg-base-100 rounded w-52 pt-4 shadow"
                 >
                   {allWorkspace?.map((item, i) => (
                     <li key={i}>
-                      <a className="mb-2 px-2 py-1 w-full myButton">
-                        <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
+                      <a className="mb-2 px-2 py-1 w-full myButton"  style={{borderRadius: "0px"}}>
+                        <span className="text-white font-bold rounded-sm px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
                         {item?.title}
@@ -168,13 +170,14 @@ const Navbar = () => {
                 </label>
                 <ul
                   tabIndex="0"
-                  className="dropdown-content menu p-2 bg-base-100 rounded w-52 pt-4 shadow"
+                  className="dropdown-content menu py-2 bg-base-100 rounded w-52 pt-4 shadow"
                 >
                   <li>
                     {/* <!-- The button to open modal --> */}
                     <label
                       htmlFor="my-modal-6"
                       className="mb-2 btn-sm w-full  myButton"
+                      style={{borderRadius: "0px"}}
                     >
                       Create Board
                     </label>
@@ -185,6 +188,7 @@ const Navbar = () => {
                     <label
                       htmlFor="my-modal-sa6"
                       className="mb-2 btn-sm w-full  myButton"
+                      style={{borderRadius: "0px"}}
                     >
                       Create Workspace
                     </label>
