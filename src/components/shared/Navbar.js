@@ -71,8 +71,7 @@ const Navbar = () => {
                   </svg>
                 </p>
                 <ul
-                  className="p-2  bg-base-100 rounded-box w-52 pt-4"
-                  style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
+                  className="p-2  bg-base-100 rounded w-52 pt-4 shadow"
                 >
                   {allWorkspace?.map((item, i) => (
                     <li key={i}>
@@ -89,8 +88,7 @@ const Navbar = () => {
               <li tabIndex="0">
                 <button className=" p-2 pl-5 pr-5 myButton">Create</button>
                 <ul
-                  className="p-2 bg-base-100 rounded-box w-52 pt-4"
-                  style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
+                  className="p-2 bg-base-100 rounded w-52 pt-4 shadow"
                 >
                   <li>
                     {/* <!-- The button to open modal --> */}
@@ -144,8 +142,7 @@ const Navbar = () => {
                 </label>
                 <ul
                   tabIndex="0"
-                  className="dropdown-content menu p-2 bg-base-100 rounded-box w-52 pt-4"
-                  style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
+                  className="dropdown-content menu p-2 bg-base-100 rounded w-52 pt-4 shadow"
                 >
                   {allWorkspace?.map((item, i) => (
                     <li key={i}>
@@ -170,8 +167,7 @@ const Navbar = () => {
                 </label>
                 <ul
                   tabIndex="0"
-                  className="dropdown-content menu p-2 bg-base-100 rounded-box w-52 pt-4"
-                  style={{ boxShadow: `2px 5px 15px rgba(0, 0, 0, 0.25)` }}
+                  className="dropdown-content menu p-2 bg-base-100 rounded w-52 pt-4 shadow"
                 >
                   <li>
                     {/* <!-- The button to open modal --> */}
