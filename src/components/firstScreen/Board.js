@@ -18,6 +18,7 @@ import { setWorkspace, setWorkspaceID } from "../../global-state/actions/reduxAc
 import { useEffect } from "react";
 import axios from "axios";
 import LoardBoard from "./LoardBoard";
+import { Link } from "react-router-dom";
 
 
 
@@ -158,30 +159,30 @@ const Board = () => {
                 <h2 className="text-2xl font-bold ml-4 text-indigo-500">{item?.title}</h2>
               </div>
               <div className="grid grid-cols-3 lg:grid-cols-5 gap-1">
-                <div>
-                  <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                <div className="p-0 m-0">
+                  <Link to={`/:${item._id}/`} className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
                     <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards
-                  </button>{" "}
+                  </Link>{" "}
                 </div>
                 <div>
-                  <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                  <Link to="" className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
                     <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd> Views
-                  </button>{" "}
+                  </Link>{" "}
                 </div>
                 <div>
-                  <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                  <Link to="" className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
                     <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends> Members
-                  </button>{" "}
+                  </Link>{" "}
                 </div>
                 <div>
-                  <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                  <Link to="" className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
                     <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
-                  </button>{" "}
+                  </Link>{" "}
                 </div>
                 <div>
-                  <button className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                  <Link to="" className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
                     <FaRegArrowAltCircleUp className="mr-1 text-sm text-primary"></FaRegArrowAltCircleUp> Upgrade
-                  </button>{" "}
+                  </Link>{" "}
                 </div>
               </div>
             </div>
