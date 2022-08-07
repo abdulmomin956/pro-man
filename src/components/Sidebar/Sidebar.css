@@ -12,7 +12,6 @@
    color: #0038FF;
    /* font-weight: 600; */
    /* background: linear-gradient(90deg, #BFC9FF 2.16%, rgba(191, 201, 255, 0) 97.84%); */
-
 }
 
 
@@ -26,4 +25,16 @@
    font-weight: 700;
    /* margin: 0px 25px 0px 25px; */
    color: #002198;
+}
+
+
+
+
+
+
+.sidebar-workspace-btn:hover{
+   background-color: rgb(255, 255, 255);
+   color: red;
+   margin: 0%;
+   padding: 0%;
 }
