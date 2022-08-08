@@ -154,7 +154,7 @@ const Board = () => {
               </div>
               <div className="grid grid-cols-3 lg:grid-cols-5 gap-1">
                 <div className="p-0 m-0">
-                  <Link to={`/:${item._id}/`} className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                  <Link to={`/${item._id}`} className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
                     <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards
                   </Link>{" "}
                 </div>
