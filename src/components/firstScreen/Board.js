@@ -1,5 +1,4 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
 import {
   FaBoxes,
   FaUserFriends,
@@ -8,15 +7,11 @@ import {
   FaRegArrowAltCircleUp,
 } from "react-icons/fa";
 import { HiViewGridAdd } from "react-icons/hi";
-import Loading from "../shared/Loading";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.init";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { LAST_WORKSPACE } from "../../global-state/constants/reduxContstants";
-import { setWorkspace, setWorkspaceID } from "../../global-state/actions/reduxActions";
-import { useEffect } from "react";
-import axios from "axios";
+import {  setWorkspaceID } from "../../global-state/actions/reduxActions";
 import LoardBoard from "./LoardBoard";
 import { Link } from "react-router-dom";
 
@@ -24,21 +19,22 @@ import { Link } from "react-router-dom";
 
 
 const Board = () => {
-  // const lastWorkspaceID = useSelector(state => state.lastWorkspaceID)
-  // const re_data = useSelector(state => state)
   const dispatch = useDispatch();
-  // console.log(re_data);
 
   const [user] = useAuthState(auth);
   const email = user.email;
 
-  const { isLoading, error, data } = useQuery(['repoData'], () =>
+  const data = useSelector(state => state.workspace)
+  console.log(data)
+
+
+  /* const { isLoading, error, data } = useQuery(['repoData'], () =>
     fetch(`https://morning-coast-54182.herokuapp.com/workspace/${email}`).then(res =>
       res.json()
     )
-  )
+  ) */
 
-  useEffect(() => {
+ /*  useEffect(() => {
     if (data?.length > 0) {
       const allWorkspaceData = data?.map(item => (
         {
@@ -48,13 +44,11 @@ const Board = () => {
       // console.log(allWorkspaceData);
       dispatch(setWorkspace(allWorkspaceData))
     }
-  }, [data, dispatch])
+  }, [data, dispatch]) */
 
-
-
-  if (isLoading) {
+  /* if (isLoading) {
     <Loading></Loading>;
-  }
+  } */
 
 
 
