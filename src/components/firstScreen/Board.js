@@ -25,7 +25,7 @@ const Board = () => {
   const email = user.email;
 
   const data = useSelector(state => state.workspace)
-  console.log(data)
+  // console.log(data)
 
 
   /* const { isLoading, error, data } = useQuery(['repoData'], () =>

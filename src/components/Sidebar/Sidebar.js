@@ -10,8 +10,18 @@ import AccordionSummary from "@material-ui/core/AccordionSummary/AccordionSummar
 import AccordionDetails from "@material-ui/core/AccordionDetails/AccordionDetails";
 import Typography from "@material-ui/core/Typography/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { useSelector } from "react-redux";
+import {
+  FaBoxes,
+  FaUserFriends,
+  FaCogs,
+} from "react-icons/fa";
+import { HiViewGridAdd } from "react-icons/hi";
 
 const Sidebar = () => {
+  const data = useSelector((state) => state.workspace);
+  // console.log(data);
+
   return (
     <div>
       <div className="drawer drawer-mobile static">
@@ -28,9 +38,11 @@ const Sidebar = () => {
         </div>
         <div className="drawer-side lg:mx-7 rounded shadow">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 overflow-y-auto w-52 bg-base-100 text-base-content">
+          <ul className="menu overflow-y-auto w-52 bg-base-100 text-base-content"
+          id="sidebarOverflow"
+          >
             {/* <!-- Sidebar content here --> */}
-            <li className=" rounded">
+            <li className="">
               <NavLink to="/" className="mb-2 p-2 pl-5 pr-5 myButton">
                 Boards
               </NavLink>
@@ -46,7 +58,7 @@ const Sidebar = () => {
               </NavLink>
             </li>
 
-            <div className="flex items-center justify-between bg-none mt-5">
+            <div className="flex items-center justify-between bg-none m-3">
               <p>Workspace</p>
               <label
                 htmlFor="my-modal-sa6"
@@ -58,23 +70,61 @@ const Sidebar = () => {
 
             <div>
               <div>
-                
-                  <Accordion>
+                {data.map((item) => (
+                  <Accordion key={item._id}>
                     <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
+                      expandIcon={
+                        <ExpandMoreIcon
+                          className=""
+                          style={{ fontSize: "35px", fontWeight: "bold" }}
+                        ></ExpandMoreIcon>
+                      }
                       aria-controls="panel1a-content"
                       id="panel1a-header"
+                      style={{ fontSize: "25px", fontWeight: "bold" }}
                     >
-                      <Typography>Accordion 1</Typography>
+                      <Typography className="" style={{ fontWeight: "bold" }}>
+                        {item.title}{" "}
+                      </Typography>
                     </AccordionSummary>
-                    <AccordionDetails>
+                    <AccordionDetails
+                      style={{
+                        padding: "0px",
+                        margin: "0 auto",
+                        justifyContent: "center",
+                      }}
+                    >
                       <Typography>
-                        Lorem ipsum dolor sit amet
+                        <div className=" w-48  flex flex-col items-center justify-center">
+                          <Link
+                            to=""
+                            className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
+                          >
+                           <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards
+                          </Link>
+                          <Link
+                            to=""
+                            className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
+                          >
+                           <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd> Views
+                          </Link>
+                          <Link
+                            to=""
+                            className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
+                          >
+                           <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends> Members
+                          </Link>
+                          <Link
+                            to=""
+                            className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
+                          >
+                           <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
+                          </Link>
+                        </div>
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
-                 
-                
+                ))}
               </div>
             </div>
           </ul>
