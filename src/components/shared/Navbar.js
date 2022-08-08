@@ -9,17 +9,45 @@ import Loading from "./Loading";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import WorkspaceModal from "./WorkspaceModal";
+import { useDispatch } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
+import { setWorkspace } from "../../global-state/actions/reduxActions";
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
+  if (loading) {
+    <Loading />;
+  }
+
+  const dispatch = useDispatch();
+  const email = user.email;
+  const { isLoading, error2, data } = useQuery(['repoData'], () =>
+    fetch(`https://morning-coast-54182.herokuapp.com/workspace/${email}`).then(res =>
+      res.json()
+    )
+  );
+
+  useEffect(() => {
+    if (data?.length > 0) {
+      const allWorkspaceData = data?.map(item => (
+        {
+          _id: item._id, title: item.title
+        }
+      ))
+      // console.log(allWorkspaceData);
+      dispatch(setWorkspace(allWorkspaceData))
+    }
+  }, [data, dispatch])
+
+
+  if (isLoading) {
+    <Loading></Loading>;
+  }
 
 
   const allWorkspace = useSelector(state => state.workspace)
   // console.log(allWorkspace);
 
-  if (loading) {
-    <Loading />;
-  }
 
 
   const x = user?.displayName;

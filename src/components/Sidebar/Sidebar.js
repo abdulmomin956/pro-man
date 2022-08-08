@@ -42,10 +42,20 @@ const Sidebar = () => {
 
             <div className="flex items-center justify-between bg-none mt-5">
               <p>Workspace</p>
-              <label htmlFor="my-modal-sa6" className="myButton p-1 rounded-sm">
+              <label htmlFor="my-modal-sa6" className="myButton p-1 rounded-sm cursor-pointer">
                 <MdAddCircleOutline className="text-xl  "></MdAddCircleOutline>
               </label>
             </div>
+
+            <div>
+              <div>
+                
+              </div>
+
+
+
+            </div>
+
           </ul>
         </div>
       </div>
