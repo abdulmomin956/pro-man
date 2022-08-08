@@ -3,7 +3,7 @@ import Login from "./components/firebase/Login";
 import Register from "./components/firebase/Register";
 import Home from "./components/Home";
 import Navbar from "./components/shared/Navbar";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 import RequierAuth from "./components/requierAuth/RequierAuth";
 import auth from "./components/firebase/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -20,12 +20,10 @@ import Boards from "./components/Workspace/Boards";
 import Members from "./components/Workspace/Members";
 import Account from "./components/Workspace/Account";
 
-
-
 function App() {
   const [user, loading, error] = useAuthState(auth);
   if (loading) {
-    <Loading></Loading>
+    <Loading></Loading>;
   }
   return (
     <div className="#F5F5F5">
@@ -33,7 +31,14 @@ function App() {
       {user && <Navbar />}
 
       <Routes>
-        <Route path="/" element={<RequierAuth><Home /></RequierAuth>}>
+        <Route
+          path="/"
+          element={
+            <RequierAuth>
+              <Home />
+            </RequierAuth>
+          }
+        >
           <Route path="/" element={<Board />}></Route>
           <Route path="/template" element={<Template />}></Route>
           <Route path="/homescreen" element={<HomeScreen />}></Route>
@@ -49,7 +54,6 @@ function App() {
         <Route path="/profile" element={<Profile />}></Route>
 
         <Route path="*" element={<NotFound></NotFound>}></Route>
-
       </Routes>
     </div>
   );
