@@ -4,8 +4,8 @@ import img from '../../images/uptodate.png'
 
 const HomeScreen = () => {
     return (
-        <div className='flex justify-start mx-10'>
-            <div className="card w-[39rem] bg-base-100 shadow-xl">
+        <div className='md:flex justify-start mx-10'>
+            <div className="card md:w-[39rem] bg-base-100 shadow">
                 <figure><img src={img} alt="Shoes" /></figure>
                 <div className="card-body text-center">
                     <h1 className="text-2xl text-center">Stay on track and up to date</h1>
@@ -14,10 +14,16 @@ const HomeScreen = () => {
                 </div>
             </div>
             <div className='ml-10'>
-                <p>Links</p>
-                <div className='btn w-80 justify-start'>
-                    <FaRegPlusSquare></FaRegPlusSquare>
-                    <span className='ml-3'>Create a board</span>
+                <p className='text-xl font-semibold px-3 mb-2 '>Links</p>
+                <div className='md:w-80 justify-start'>
+                    <label
+                      htmlFor="my-modal-6"
+                      className="flex items-center px-3 py-1 myButton cursor-pointer rounded-lg"
+                      style={{borderRadius: "0px"}}
+                      >
+                        <FaRegPlusSquare className='mr-2'></FaRegPlusSquare>
+                        Create a board</label>
+                    {/* <span className='ml-3'>Create a board</span> */}
                 </div>
             </div>
 
