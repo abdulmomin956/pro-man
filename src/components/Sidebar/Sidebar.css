@@ -4,13 +4,22 @@
    color: #0038FF;
 }
 
+.navProfile{
+   font-weight: bold;
+   background-color: #2a41c4;
+}
+.navProfile:hover{
+   color: rgb(255, 255, 255);
+   background-color: #002198;
+   font-weight: bold;
+}
+
 .myButton{
    font-weight: 600;
 }
 .myButton:hover{
    background: #BFC9FF;
    color: #0038FF;
-   /* font-weight: 600; */
    /* background: linear-gradient(90deg, #BFC9FF 2.16%, rgba(191, 201, 255, 0) 97.84%); */
 }
 
@@ -21,9 +30,7 @@
 .navTitle{
    font-family: 'Inter', sans-serif;
    font-size: 30px;
-   /* font-style: italic; */
    font-weight: 700;
-   /* margin: 0px 25px 0px 25px; */
    color: #002198;
 }
 
@@ -33,6 +40,7 @@
 #sidebarOverflow::-webkit-scrollbar {
    display: none; /* for Chrome, Safari, and Opera */
  }
+
 
 .sidebar-workspace-toggle-button{
    border-radius: 5px;

@@ -63,7 +63,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div style={{ zIndex: "200" }} className="navbar bg-accent pb-4 w-full">
+      <div style={{ zIndex: "200" }} className="navbar bg-accent w-full">
         <div className="navbar-start lg:px-12">
           <div className="dropdown">
             <label tabIndex="0" className="btn myButton mb-3 lg:hidden">
@@ -151,11 +151,11 @@ const Navbar = () => {
             PRO-MAN
           </a>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal p-0">
+            <ul className="menu menu-horizontal p-0 m-0">
               <div className="dropdown">
                 <label
                   tabIndex="0"
-                  className="btn font-black btn-md m-1 myButton"
+                  className="btn font-black btn-sm rounded-none mx-1 myButton"
                   style={{ fontWeight: 700 }}
                 >
                   Workspaces{" "}
@@ -192,7 +192,7 @@ const Navbar = () => {
               <div className="dropdown">
                 <label
                   tabIndex="0"
-                  className="btn  btn-md m-1  myButton font-bold"
+                  className="btn btn-sm mx-1 myButton rounded-none font-bold"
                 >
                   Create
                 </label>
@@ -232,7 +232,8 @@ const Navbar = () => {
             <div className="dropdown dropdown-end">
               <label
                 tabIndex="0"
-                className="btn btn-ghost btn-circle bg-black avatar"
+                className="btn navProfile btn-circle avatar"
+                // className="btn btn-ghost btn-circle bg-black avatar"
               >
                 <div className="w-10 rounded-full flex justify-center items-center">
                   <span
@@ -245,7 +246,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex="0"
-                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                className="mt-3  shadow menu menu-compact dropdown-content bg-base-100 rounded w-52"
               >
                 <li>
                 <Link to="/profile" className="justify-between   mb-2 btn-sm w-full  myButton">
@@ -258,7 +259,7 @@ const Navbar = () => {
                   <a className="mb-2 btn-sm w-full  myButton">Settings</a>
                 </li>
                 <li>
-                  <p onClick={logout} className="mb-2 btn-sm w-full  myButton">
+                  <p onClick={logout} className="btn-sm w-full  myButton">
                     Logout
                   </p>
                 </li>
