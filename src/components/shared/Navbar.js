@@ -12,6 +12,10 @@ import WorkspaceModal from "./WorkspaceModal";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { setWorkspace } from "../../global-state/actions/reduxActions";
+import { FaRegBell } from "react-icons/fa";
+import Notification from "./Notification";
+
+// FiBell
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -228,6 +232,11 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end lg:px-12">
+          <label htmlFor="notification" class=" cursor-pointer modal-button">
+          <FaRegBell className="text-2xl mr-3" />
+          
+          </label>
+        
           {user && (
             <div className="dropdown dropdown-end">
               <label
@@ -270,6 +279,7 @@ const Navbar = () => {
       </div>
       <WorkspaceModal></WorkspaceModal>
       <BoardModal></BoardModal>
+      <Notification></Notification>
     </div>
   );
 };
