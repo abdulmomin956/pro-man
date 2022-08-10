@@ -1,23 +1,25 @@
-.active{
+.active {
    background: linear-gradient(90deg, #BFC9FF 2.16%, rgba(191, 201, 255, 0) 97.84%);
    transform: translate(10px, 0px);
    color: #0038FF;
 }
 
-.navProfile{
+.navProfile {
    font-weight: bold;
-   background-color: #2a41c4;
+   background-color: #081A51;
 }
-.navProfile:hover{
+
+.navProfile:hover {
    color: rgb(255, 255, 255);
-   background-color: #002198;
+   background-color: #081A51;
    font-weight: bold;
 }
 
-.myButton{
+.myButton {
    font-weight: 600;
 }
-.myButton:hover{
+
+.myButton:hover {
    background: #BFC9FF;
    color: #0038FF;
    /* background: linear-gradient(90deg, #BFC9FF 2.16%, rgba(191, 201, 255, 0) 97.84%); */
@@ -27,7 +29,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
 
 
-.navTitle{
+.navTitle {
    font-family: 'Inter', sans-serif;
    font-size: 30px;
    font-weight: 700;
@@ -38,16 +40,17 @@
 
 
 #sidebarOverflow::-webkit-scrollbar {
-   display: none; /* for Chrome, Safari, and Opera */
- }
+   display: none;
+   /* for Chrome, Safari, and Opera */
+}
 
 
-.sidebar-workspace-toggle-button{
+.sidebar-workspace-toggle-button {
    border-radius: 5px;
    padding: 5px 10px 5px 10px;
    font-weight: bold;
 }
 
-.sidebar-workspace-toggle-button:hover{
+.sidebar-workspace-toggle-button:hover {
    background: #f5f6f9;
 }

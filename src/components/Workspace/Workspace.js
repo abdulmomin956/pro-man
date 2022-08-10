@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import control from '../../../src/assest/image/control.png'
 import auth from '../firebase/firebase.init';
+import CustomLink from '../shared/CustomLink';
 import Loading from '../shared/Loading';
+import { useSelector } from "react-redux";
 
 const Workspace = () => {
     const [open, setOpen] = useState(true);
     const [user, loading, error] = useAuthState(auth);
     const [firstLetter, setFirstLetter] = useState('')
+    const currentWorkspaceName = useSelector(state => state.currentWorkspace)
+
     useEffect(() => {
         if (user?.displayName) {
             const x = user?.displayName;
@@ -60,8 +64,8 @@ const Workspace = () => {
                     className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple border-2 rounded-full  ${!open && "rotate-180"}`}
                     onClick={() => setOpen(!open)}
                 />
-                <div className="flex gap-x-4 items-center">
-                    <div className="h-6 p-2 w-6  border-2  flex justify-center items-center cursor-pointer duration-500">
+                <div className="flex gap-x-4 items-center mt-2">
+                    <div className="h-8 p-2 w-8  border-2  flex justify-center items-center cursor-pointer duration-500">
                         <span
                             title={user?.displayName}
                             className="text-white  font-bold block "
@@ -70,17 +74,18 @@ const Workspace = () => {
                         </span>
                     </div>
                     <h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
-                        }`}>Workspace name</h1>
+                        }`}>{currentWorkspaceName}</h1>
                 </div>
                 <ul className="pt-6 mr-8">
                     {
                         menusItem.map((menu, index) => (
-                            <Link to={menu.path} key={index} className={`flex py-2 rounded-md cursor-pointer  text-gray-300 text-sm items-center gap-x-4 `}>
+                            <CustomLink to={menu.path} key={index} className={`flex py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
                                 <div  >{menu.icon}</div>
                                 <span className={`${!open && "hidden"} origin-left duration-200`}>{menu.name}</span>
-                            </Link>
+                            </CustomLink>
                         ))
                     }
+                    <li> salma salma salma</li>
                 </ul>
             </div>
             <div className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"

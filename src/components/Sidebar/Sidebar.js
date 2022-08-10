@@ -4,7 +4,6 @@ import { NavLink, Outlet } from "react-router-dom";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import { MdAddCircleOutline } from "react-icons/md";
-
 import Accordion from "@material-ui/core/Accordion/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails/AccordionDetails";
@@ -39,7 +38,7 @@ const Sidebar = () => {
         <div className="drawer-side lg:mx-7 rounded shadow">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu overflow-y-auto w-52 bg-base-100 text-base-content"
-          id="sidebarOverflow"
+            id="sidebarOverflow"
           >
             {/* <!-- Sidebar content here --> */}
             <li className="">
@@ -100,25 +99,25 @@ const Sidebar = () => {
                             to=""
                             className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
                           >
-                           <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards
+                            <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards
                           </Link>
                           <Link
                             to=""
                             className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
                           >
-                           <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd> Views
+                            <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd> Views
                           </Link>
                           <Link
                             to=""
                             className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
                           >
-                           <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends> Members
+                            <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends> Members
                           </Link>
                           <Link
                             to=""
                             className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
                           >
-                           <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
+                            <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
                           </Link>
                         </div>
                       </Typography>
