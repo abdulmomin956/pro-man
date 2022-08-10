@@ -85,7 +85,6 @@ const Workspace = () => {
                             </CustomLink>
                         ))
                     }
-                    <li> salma salma salma</li>
                 </ul>
             </div>
             <div className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
