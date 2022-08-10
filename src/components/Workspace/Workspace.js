@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import control from '../../../src/assest/image/control.png'
 import auth from '../firebase/firebase.init';
 import CustomLink from '../shared/CustomLink';
@@ -78,60 +78,63 @@ const Workspace = () => {
 
 
     return (
-        <div className='flex'>
-            <div style={{ backgroundColor: '#081A51' }} className={`${open ? "w-72" : "w-16 "} p-5 pt-4  duration-300 h-screen relative`}>
+        <>
 
-                <img style={{ border: '#081A51' }}
-                    src={control}
-                    className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple border-2 rounded-full  ${!open && "rotate-180"}`}
-                    onClick={() => setOpen(!open)}
-                />
-                <div className="flex gap-x-4 items-center mt-2">
-                    <div className="h-8 p-2 w-8  border-2  flex justify-center items-center cursor-pointer duration-500">
-                        <span
-                            title={user?.displayName}
-                            className="text-white  font-bold block "
-                        >
-                            {firstLetter}
-                        </span>
-                    </div>
-                    <h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
-                        }`}>{currentWorkspaceName}</h1>
-                </div>
-                <ul className="pt-6 mr-8">
-                    {
-                        menusItem.map((menu, index) => (
-                            <CustomLink to={menu.path} key={index} className={`flex py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
-                                <div  >{menu.icon}</div>
-                                <span className={`${!open && "hidden"} origin-left duration-200`}>{menu.name}</span>
-                            </CustomLink>
-                        ))
-                    }
-                    <>
-                        <div className=' mt-6'>
-                            <h4 className={`${!open && "hidden"} mx-auto text-white font-bold origin-left duration-200`}>Your Board</h4>
+            <div className='flex'>
+
+                <div style={{ backgroundColor: '#081A51' }} className={`${open ? "w-72" : "w-16 "} p-5 pt-4  duration-300 h-screen relative`}>
+
+                    <img style={{ border: '#081A51' }}
+                        src={control}
+                        className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple border-2 rounded-full  ${!open && "rotate-180"}`}
+                        onClick={() => setOpen(!open)}
+                    />
+                    <div className="flex gap-x-4 items-center mt-2">
+                        <div className="h-8 p-2 w-8  border-2  flex justify-center items-center cursor-pointer duration-500">
+                            <span
+                                title={user?.displayName}
+                                className="text-white  font-bold block "
+                            >
+                                {firstLetter}
+                            </span>
                         </div>
+                        <h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
+                            }`}>{currentWorkspaceName}</h1>
+                    </div>
+                    <ul className="pt-6 mr-8">
                         {
-                            data.map((item) => (
-                                <div key={item._id} onClick={() => navigate(`/b/${item._id}`)} className={`flex rounded-md cursor-pointer w-30 h-8   text-gray-300 text-sm items-center  `}>
-                                    <div className=" hover:cursor-pointer hover:bg-gray-100  hover:font-bold flex justify-center items-center">
-                                        <span className={`${!open && "hidden"} mr-2 origin-left duration-200`}>{item.title}</span>
-                                    </div>
-
-                                </div>
+                            menusItem.map((menu, index) => (
+                                <CustomLink to={menu.path} key={index} className={`flex py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
+                                    <div  >{menu.icon}</div>
+                                    <span className={`${!open && "hidden"} origin-left duration-200`}>{menu.name}</span>
+                                </CustomLink>
                             ))
                         }
-                    </>
 
-                </ul>
+                        <div className=' my-6'>
+                            <h4 className={`${!open && "hidden"} mx-auto text-white font-bold origin-left duration-200`}>Your Boards</h4>
+                        </div>
+                        {
+                            data.map((item, index) => (
+                                <CustomLink to={`/${workspaceID}/${item._id}`} key={index} className={`flex py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
 
+                                    <span className={`${!open && "hidden"} mr-2 origin-left duration-200`}>{item.title}</span>
+
+
+                                </CustomLink>
+                            ))
+                        }
+
+                    </ul>
+
+                </div>
+                <div className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
+                    }`}>
+
+                </div>
+                <main><Outlet /></main>
             </div>
-            <div className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
-                }`}>
-
-            </div>
-            <main><Outlet /></main>
-        </div>
+        </>
     );
 };
 
