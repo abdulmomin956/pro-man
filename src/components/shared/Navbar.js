@@ -232,13 +232,13 @@ const Navbar = () => {
             <div className="dropdown dropdown-end">
               <label
                 tabIndex="0"
-                className="btn navProfile btn-circle avatar"
+                className=" "
                 // className="btn btn-ghost btn-circle bg-black avatar"
               >
-                <div className="w-10 rounded-full flex justify-center items-center">
+                <div id="navProfile" className="flex justify-center items-center">
                   <span
                     title={user.displayName}
-                    className="text-white font-bold block mt-3"
+                    className=" font-bold block "
                   >
                     {initials}
                   </span>

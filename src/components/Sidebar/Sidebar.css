@@ -4,14 +4,21 @@
    color: #0038FF;
 }
 
-.navProfile{
+#navProfile{
    font-weight: bold;
-   background-color: #2a41c4;
-}
-.navProfile:hover{
+   height: 30px;
+   width: 30px;
+   padding: 17px;
+   border: 5px solid white;
+   border-radius: 50%;
    color: rgb(255, 255, 255);
    background-color: #002198;
+}
+#navProfile:hover{
+   color: blue;
+   background-color: #BFC9FF;
    font-weight: bold;
+   cursor: pointer;
 }
 
 .myButton{
