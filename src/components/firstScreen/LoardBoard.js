@@ -12,6 +12,7 @@ const LoardBoard = ({ props }) => {
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([])
 
+
     // const { data, isLoading } = useQuery(['workspaceID'], () =>
     //     fetch(`https://morning-coast-54182.herokuapp.com/board/${workspaceID}`).then(res =>
     //         res.json()
@@ -36,7 +37,7 @@ const LoardBoard = ({ props }) => {
     }
     // console.log(data);
     return <>{
-        data?.map(item => <div key={item._id} onClick={() => navigate(`/b/${item._id}`)} className=" w-60 bg-base-100 shadow">
+        data?.map(item => <div key={item._id} onClick={() => navigate(`/${workspaceID}/${item._id}`)} className=" w-60 bg-base-100 shadow">
             <label
 
                 className=" hover:cursor-pointer hover:bg-gray-100  hover:font-bold flex w-60 h-32 justify-center items-center"
