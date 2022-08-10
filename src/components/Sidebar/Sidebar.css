@@ -4,15 +4,22 @@
    color: #0038FF;
 }
 
-.navProfile {
-   font-weight: bold;
-   background-color: #081A51;
-}
 
-.navProfile:hover {
-   color: rgb(255, 255, 255);
-   background-color: #081A51;
+#navProfile{
    font-weight: bold;
+   height: 30px;
+   width: 30px;
+   padding: 17px;
+   border: 5px solid white;
+   border-radius: 50%;
+   color: rgb(255, 255, 255);
+   background-color: #002198;
+}
+#navProfile:hover{
+   color: blue;
+   background-color: #BFC9FF;
+   font-weight: bold;
+   cursor: pointer;
 }
 
 .myButton {
@@ -31,7 +38,7 @@
 
 .navTitle {
    font-family: 'Inter', sans-serif;
-   font-size: 30px;
+   font-size: 28px;
    font-weight: 700;
    color: #002198;
 }

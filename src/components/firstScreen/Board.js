@@ -152,7 +152,7 @@ const Board = () => {
                 </span>
                 <h2 className="text-2xl font-bold ml-4 text-indigo-500">{item?.title}</h2>
               </div>
-              <div className="grid grid-cols-3 lg:grid-cols-5 gap-1">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-1">
                 <div className="p-0 m-0">
                   <Link to={`/${item._id}`} className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
                     <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards
@@ -173,11 +173,11 @@ const Board = () => {
                     <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
                   </Link>{" "}
                 </div>
-                <div>
+                {/* <div>
                   <Link to="" className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
                     <FaRegArrowAltCircleUp className="mr-1 text-sm text-primary"></FaRegArrowAltCircleUp> Upgrade
                   </Link>{" "}
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="flex gap-3">
