@@ -10,18 +10,28 @@ import { useDispatch } from 'react-redux';
 import { setCurrentBoards } from '../../global-state/actions/reduxActions';
 
 const Workspace = () => {
+    const navigate = useNavigate()
     const { workspaceID } = useParams()
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(null);
     const [firstLetter, setFirstLetter] = useState('')
     const currentWorkspaceName = useSelector(state => state.currentWorkspace)
     const dispatch = useDispatch()
 
-    const navigate = useNavigate();
-    // console.log(props);
+
+    useEffect(() => {
+        const dataJson = localStorage.getItem("bData");
+        if (JSON.parse(dataJson)) {
+            setOpen(JSON.parse(dataJson));
+        }
+    }, [])
+
+    const sidebarOpen = () => {
+        setOpen(!open)
+        localStorage.setItem('bData', JSON.stringify(!open))
+    }
+
 
     const boards = useQuery(['boards'], () => fetch(`https://morning-coast-54182.herokuapp.com/board/${workspaceID}`).then(res => res.json()))
-
-
     useEffect(() => {
         if (currentWorkspaceName) {
             const x = currentWorkspaceName;
@@ -81,7 +91,7 @@ const Workspace = () => {
                 <img style={{ border: '#081A51' }}
                     src={control}
                     className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple border-2 rounded-full  ${!open && "rotate-180"}`}
-                    onClick={() => setOpen(!open)}
+                    onClick={sidebarOpen}
                     alt=""
                 />
                 <div className="flex gap-x-4 items-center mt-2">
