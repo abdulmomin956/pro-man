@@ -9,7 +9,7 @@ const ProfileNav = () => {
             <div className="profileNav">
           <ul>
            
-            <li><NavLink to="/profile">profile & validaty</NavLink></li>
+            <li><NavLink to="/profile/">profile & validaty</NavLink></li>
             <li><NavLink to="/profile/profileActive">Activity</NavLink></li>
             <li><NavLink to="/profile/profileCard">Cards</NavLink></li>
             <li><NavLink to="/profile/profileSettings">Settings</NavLink></li>

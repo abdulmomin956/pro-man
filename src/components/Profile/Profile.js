@@ -17,7 +17,7 @@ const Profile = () => {
     <div>
       <div className="top-use-info">
         <div
-          className="flex justify-center w-screen items-center top-use-info-banner py-12 border"
+          className="flex justify-center w-screen items-center top-use-info-banner py-12 "
           style={{ background: "#F4F5F7" }}
         >
           <div className="avatar p-5">
