@@ -57,7 +57,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/profile" element={<Profile />}>
-          <Route index element={<ProfileValidity></ProfileValidity>}></Route>
+          <Route path="/profile/" element={<ProfileValidity></ProfileValidity>}></Route>
           <Route path='profileActive' element={<ProfileActive></ProfileActive>}></Route>
           <Route path='profileCard' element={<ProfileCard></ProfileCard>}></Route>
           <Route path='profileSettings' element={<ProfileSetting></ProfileSetting>}></Route>
