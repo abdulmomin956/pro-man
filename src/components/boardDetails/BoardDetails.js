@@ -14,7 +14,7 @@ const useStyle = makeStyles((theme) => ({
     root: {
         display: 'flex',
         minHeight: '100vh',
-        background: '#F5F5F5',
+        background: 'white',
         width: "100%",
         overflow: 'auto'
     },

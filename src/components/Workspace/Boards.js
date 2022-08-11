@@ -24,8 +24,8 @@ const Boards = () => {
 
 
     return (
-        <div className='w-full'>
-            <div className='flex py-6 px-24 justify-between items-center'>
+        <div style={{ width: '100%' }} className=''>
+            <div className='flex lg:py-6 lg:px-24 justify-between items-center'>
                 <div>
                     <h1 className='text-2xl font-bold'>{data?.title}</h1>
                     <p>visibility</p>
