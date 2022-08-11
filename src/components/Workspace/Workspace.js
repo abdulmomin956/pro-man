@@ -1,52 +1,46 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import control from '../../../src/assest/image/control.png'
-import auth from '../firebase/firebase.init';
 import CustomLink from '../shared/CustomLink';
 import Loading from '../shared/Loading';
 import { useSelector } from "react-redux";
+import { useQuery } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
+import { setCurrentBoards } from '../../global-state/actions/reduxActions';
 
 const Workspace = () => {
     const { workspaceID } = useParams()
     const [open, setOpen] = useState(true);
-    const [user, loading, error] = useAuthState(auth);
     const [firstLetter, setFirstLetter] = useState('')
     const currentWorkspaceName = useSelector(state => state.currentWorkspace)
+    const dispatch = useDispatch()
 
     const navigate = useNavigate();
     // console.log(props);
-    const [wLoading, setwLoading] = useState(false)
-    const [data, setData] = useState([])
+
+    const boards = useQuery(['boards'], () => fetch(`https://morning-coast-54182.herokuapp.com/board/${workspaceID}`).then(res => res.json()))
 
 
     useEffect(() => {
-        setwLoading(true)
-        fetch(`https://morning-coast-54182.herokuapp.com/board/${workspaceID}`)
-            .then(res => res.json())
-            .then(result => {
-                setData(result)
-                setwLoading(false)
-            })
-            .catch(err => {
-                // console.log(err)
-                setwLoading(false)
-            })
-    }, [workspaceID])
-
-    useEffect(() => {
-        if (user?.displayName) {
-            const x = user?.displayName;
+        if (currentWorkspaceName) {
+            const x = currentWorkspaceName;
             const nameparts = x?.split(" ");
             const initials =
                 nameparts[0]?.charAt(0)?.toUpperCase()
             setFirstLetter(initials)
         }
-    }, [user?.displayName])
-    if (loading || wLoading) {
+    }, [currentWorkspaceName])
+    useEffect(() => {
+        if (boards?.data) {
+            dispatch(setCurrentBoards(boards?.data))
+        }
+    }, [boards?.data, dispatch])
+
+    if (boards.isLoading) {
         return <Loading></Loading>;
     }
+    // console.log(boards);
 
     const menusItem = [
         {
@@ -88,11 +82,12 @@ const Workspace = () => {
                     src={control}
                     className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple border-2 rounded-full  ${!open && "rotate-180"}`}
                     onClick={() => setOpen(!open)}
+                    alt=""
                 />
                 <div className="flex gap-x-4 items-center mt-2">
                     <div className="h-8 p-2 w-8  border-2  flex justify-center items-center cursor-pointer duration-500">
                         <span
-                            title={user?.displayName}
+                            title={currentWorkspaceName}
                             className="text-white  font-bold block "
                         >
                             {firstLetter}
@@ -115,7 +110,7 @@ const Workspace = () => {
                         <h4 className={`${!open && "hidden"} mx-auto text-white font-bold origin-left duration-200`}>Your Boards</h4>
                     </div>
                     {
-                        data.map((item, index) => (
+                        boards?.data?.map((item, index) => (
                             <CustomLink to={`/${workspaceID}/${item._id}`} key={index} className={`flex py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
 
                                 <span className={`${!open && "hidden"} mr-2 origin-left duration-200`}>{item.title}</span>
