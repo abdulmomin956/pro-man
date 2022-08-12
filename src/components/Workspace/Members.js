@@ -1,9 +1,11 @@
 import React from 'react';
+import CommonTopDesign from './CommonTopDesign';
 
 const Members = () => {
     return (
-        <div>
-            This is members setting page
+        <div style={{ width: '100%' }}>
+            {/* This is members setting page */}
+            <CommonTopDesign></CommonTopDesign>
         </div>
     );
 };
