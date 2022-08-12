@@ -13,7 +13,7 @@ const Notification = () => {
       <input type="checkbox" id="notification" className="modal-toggle" />
 
       <label for="notification" className="modal">
-        <div className="modal-box right-2 absolute top-16">
+        <label className="modal-box right-2 absolute top-16">
           <div className="flex items-center justify-center">
             {/* modal header............. */}
             <label
@@ -44,14 +44,14 @@ const Notification = () => {
                 </div>
                 <div className="flex items-center pl-3">
                 <span className="bg-green-600 text-white rounded-[50px] p-1 mr-3">AM</span>
-                <h2 className="text-lg font-bold">Abdul Momin</h2>
+                <h2 className="text-lg font-bold">Abdul hoi Momin</h2>
                 </div>
                 <p className="pl-3">Made you as admin on the board <strong className="underline">Pro-man</strong>  Jul 21 at 10.5 PM</p>
               </div>
             </div>
           </div>
           <div></div>
-        </div>
+        </label>
       </label>
     </div>
   );
