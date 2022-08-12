@@ -6,6 +6,7 @@ import Loading from '../shared/Loading'
 import { setCurrentWorkspace } from '../../global-state/actions/reduxActions'
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import CommonTopDesign from './CommonTopDesign';
 
 const Boards = () => {
     const { workspaceID } = useParams()
@@ -40,7 +41,8 @@ const Boards = () => {
 
     return (
         <div style={{ width: '100%' }} className=''>
-            <div className='flex lg:py-6 lg:px-24 justify-between items-center'>
+            <CommonTopDesign></CommonTopDesign>
+            {/* <div className='flex lg:py-6 lg:px-24 justify-between items-center'>
                 <div className='flex'>
                     <div className='text-5xl font-bold bg-[#081A51] text-white px-2 mr-3'>
                         {firstLetter}
@@ -54,7 +56,7 @@ const Boards = () => {
                     <button className='btn bg-[#081A51] text-white'>Invite Workspace members</button>
                 </div>
             </div>
-            <hr />
+            <hr /> */}
             <div className='mx-12'>
                 <h1 className='text-2xl'>Boards</h1>
                 <div className='grid grid-cols-4 gap-4'>
