@@ -182,13 +182,13 @@ const WorkspaceModal = () => {
                     <div className="w-4/5">
                       <button
                         type="submit"
-                        className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                        className="w-full cursor-pointer transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
                       >
                         <label
                           htmlFor="my-modal-sa6"
-                          className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                          className="w-full block cursor-pointer py-2 px-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
                         >
-                          Continue
+                          Create Workspace
                         </label>
                       </button>
                     </div>
@@ -198,7 +198,7 @@ const WorkspaceModal = () => {
                         type="submit"
                         className="w-full p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
                       >
-                        Continue
+                        Create Workspace
                       </button>
                     </div>
                   )}

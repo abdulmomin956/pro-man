@@ -15,12 +15,17 @@ import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 import axios from "axios";
 
 const BoardModal = () => {
+  const [bTitle, setBtitle] = useState("")
   const lastWorkspaceID = useSelector(state => state.lastWorkspaceID)
   const allWorkspace = useSelector(state => state.workspace)
   // console.log(lastWorkspaceID);
   // console.log(allWorkspace);
   const dispatch = useDispatch();
 
+
+// React form 
+
+/*
   const {
     register,
     handleSubmit,
@@ -29,11 +34,35 @@ const BoardModal = () => {
     formState: { errors },
   } = useForm();
 
-  const [background, setBackground] = useState("");
+*/
+
 
   const navigate = useNavigate();
 
+  const handleSubmit = async (e) =>{
 
+    e.preventDefault()
+    const workspaceID = e.target.workspaceID.value
+    const title = e.target.boardTitle.value
+    const visibility = e.target.visibility.value
+
+    const newBoard = {
+      workspaceID: workspaceID,
+      title: title,
+      visibility: visibility,
+    };
+    
+    //console.log(newBoard)
+    const res = await axios.post('https://morning-coast-54182.herokuapp.com/board', newBoard)
+    console.log(res)
+
+    e.target.boardTitle.value = ""
+
+  } 
+
+
+  // Reach form submit btn **************
+/*
   const onSubmit = async (data) => {
     // console.log(data);
     let { title, visibility, workspaceID } = data;
@@ -52,7 +81,7 @@ const BoardModal = () => {
 
     reset();
   };
-
+*/
   // Handle Board Background Image
 
   const handleBg1 = () => {
@@ -105,7 +134,8 @@ const BoardModal = () => {
           </div>
 
           <form
-            onSubmit={handleSubmit(onSubmit)}
+            // onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit}
             className=" mt-8"
             id="wordspace-form-card"
           >
@@ -140,18 +170,21 @@ const BoardModal = () => {
               <input
                 type="text"
                 placeholder="type your board tittle"
-                {...register("title")}
+                name="boardTitle"
+                // {...register("title")}
+                onChange={(e)=>setBtitle(e.target.value)}
                 className="input input-bordered w-full"
                 required
               />
               <label className="label">Board title is required </label>
-              <label className="label">
+              {/* --------------Board Title------------ */}
+              {/* <label className="label">
                 {errors.boardTitle?.type === "required" && (
                   <span className="label-text-alt text-red-500">
                     {errors.boardTitle.message}
                   </span>
                 )}
-              </label>
+              </label> */}
             </div>
             <div className="form-control w-full mb-4">
               <label className="label">
@@ -161,11 +194,11 @@ const BoardModal = () => {
               </label>
               <select
                 value={lastWorkspaceID}
-
+                name="workspaceID"
                 className="select select-bordered select-sm w-full h-[40px] mt-2"
-                {...register("workspaceID", {
-                  onChange: (e) => { dispatch(setWorkspaceID(e.target.value)) }
-                })}
+                // {...register("workspaceID", {
+                //   onChange: (e) => { dispatch(setWorkspaceID(e.target.value)) }
+                // })}
               >
                 {
                   allWorkspace?.map(item =>
@@ -174,13 +207,15 @@ const BoardModal = () => {
                 }
               </select>
               <label className="label">Select your workspace </label>
-              <label className="label">
+              {/* --------------Error ------------- */}
+
+              {/* <label className="label">
                 {errors.boardTitle?.type === "required" && (
                   <span className="label-text-alt text-red-500">
                     {errors.boardTitle.message}
                   </span>
                 )}
-              </label>
+              </label> */}
             </div>
 
             <div>
@@ -188,33 +223,43 @@ const BoardModal = () => {
               <select
                 defaultValue={"workspace"}
                 className="select select-bordered select-sm w-full h-[40px] mt-2"
-                {...register("visibility")}
+                name="visibility"
+                // {...register("visibility")}
               >
-                <option>Private</option>
+                <option value="private">Private</option>
                 <option value="workspace">Workspace</option>
-                <option>Public</option>
+                <option value="public">Public</option>
               </select>
 
               <p className="text-justify text-sm my-1">This Workspace has 6 boards remaining. Free Workspaces can only have 10 open boards. For unlimited boards, upgrade your Workspace.</p>
             </div>
 
-            <div className="flex justify-center my-3">
-
-              <div className="w-2/3">
-                <button
-                  type="submit"
-                  className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
-                >
-                  <label
-                    htmlFor="my-modal-6"
-                    className="w-full cursor-pointer p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
-                  >
-                    Create Board
-                  </label>
-                </button>
-              </div>
-
-            </div>
+            <div className="flex justify-center my-5">
+                  {bTitle ? (
+                    <div className="w-4/5">
+                      <button
+                        type="submit"
+                        className=" w-full cursor-pointer transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                      >
+                        <label
+                          htmlFor="my-modal-6"
+                          className="w-full block cursor-pointer py-2 px-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                        >
+                          Create Board
+                        </label>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-4/5">
+                      <button
+                        type="submit"
+                        className="w-full p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                      >
+                        Create Board
+                      </button>
+                    </div>
+                  )}
+                </div>
           </form>
         </div>
       </div>
