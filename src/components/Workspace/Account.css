@@ -8,10 +8,10 @@
 }
 
 /* <!-- HTML !-->
-<button class="button-27" role="button">Button 27</button> */
+<button class="workspace-button" role="button">Button 27</button> */
 
 /* CSS */
-.button-27 {
+.workspace-button {
   appearance: none;
   background-color: #081A51;
   border: 2px solid #081A51;
@@ -39,16 +39,16 @@
   will-change: transform;
 }
 
-.button-27:disabled {
+.workspace-button:disabled {
   pointer-events: none;
 }
 
-.button-27:hover {
+.workspace-button:hover {
   box-shadow: rgb(8, 26, 81) 0 6px 10px;
   transform: translateY(-2px);
 }
 
-.button-27:active {
+.workspace-button:active {
   box-shadow: none;
   transform: translateY(0);
 }
@@ -58,4 +58,21 @@
    height: 1px;
    background-color: #102155;
    opacity: calc(25%);
+}
+
+.small-button{
+  background-color: #081A51;
+  border: 2px solid #081A51;
+  border-radius: 5px;
+  color: #FFFFFF;
+  cursor: pointer;
+  padding: 7px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+}
+
+.small-button:hover {
+  box-shadow: rgb(8, 26, 81) 0 6px 10px;
+  transform: translateY(-2px);
 }

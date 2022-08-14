@@ -4,9 +4,9 @@ import "./Account.css";
 
 const CommonTopDesign = () => {
    return (
-      <div className="mx-16 my-10">
-      <div className="flex justify-between mx-5">
-        <div className="flex items-start">
+      <div className="md:mx-16  my-10">
+      <div className="md:flex justify-between mx-5">
+        <div className="flex items-start mb-5">
           <div>
             <button className="aSeetingIcon">
               <span className="py-2">W</span>{" "}
@@ -24,7 +24,7 @@ const CommonTopDesign = () => {
           </div>
         </div>
         <div>
-          <button className="button-27 ">
+          <button className="workspace-button ">
             <p className="flex items-center">
             <MdPersonAddAlt1 className="mr-2"></MdPersonAddAlt1>
             Invite Workspace Members
