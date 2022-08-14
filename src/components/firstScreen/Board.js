@@ -11,7 +11,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.init";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {  setWorkspaceID } from "../../global-state/actions/reduxActions";
+import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 import LoardBoard from "./LoardBoard";
 import { Link } from "react-router-dom";
 
@@ -25,6 +25,7 @@ const Board = () => {
   const email = user.email;
 
   const data = useSelector(state => state.workspace)
+
   // console.log(data)
 
 
@@ -34,17 +35,17 @@ const Board = () => {
     )
   ) */
 
- /*  useEffect(() => {
-    if (data?.length > 0) {
-      const allWorkspaceData = data?.map(item => (
-        {
-          _id: item._id, title: item.title
-        }
-      ))
-      // console.log(allWorkspaceData);
-      dispatch(setWorkspace(allWorkspaceData))
-    }
-  }, [data, dispatch]) */
+  /*  useEffect(() => {
+     if (data?.length > 0) {
+       const allWorkspaceData = data?.map(item => (
+         {
+           _id: item._id, title: item.title
+         }
+       ))
+       // console.log(allWorkspaceData);
+       dispatch(setWorkspace(allWorkspaceData))
+     }
+   }, [data, dispatch]) */
 
   /* if (isLoading) {
     <Loading></Loading>;
@@ -151,6 +152,7 @@ const Board = () => {
                   {item?.title?.charAt(0)}
                 </span>
                 <h2 className="text-2xl font-bold ml-4 text-indigo-500">{item?.title}</h2>
+
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-1">
                 <div className="p-0 m-0">

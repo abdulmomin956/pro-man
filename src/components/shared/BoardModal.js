@@ -16,6 +16,7 @@ import axios from "axios";
 
 const BoardModal = () => {
   const [bTitle, setBtitle] = useState("")
+  const [background, setBackground] = useState("")
   const lastWorkspaceID = useSelector(state => state.lastWorkspaceID)
   const allWorkspace = useSelector(state => state.workspace)
   // console.log(lastWorkspaceID);
@@ -23,23 +24,23 @@ const BoardModal = () => {
   const dispatch = useDispatch();
 
 
-// React form 
+  // React form 
 
-/*
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
-
-*/
+  /*
+    const {
+      register,
+      handleSubmit,
+      watch,
+      reset,
+      formState: { errors },
+    } = useForm();
+  
+  */
 
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) => {
 
     e.preventDefault()
     const workspaceID = e.target.workspaceID.value
@@ -49,74 +50,85 @@ const BoardModal = () => {
     const newBoard = {
       workspaceID: workspaceID,
       title: title,
+      boardBg: background,
       visibility: visibility,
     };
-    
+
     //console.log(newBoard)
     const res = await axios.post('https://morning-coast-54182.herokuapp.com/board', newBoard)
     console.log(res)
 
     e.target.boardTitle.value = ""
 
-  } 
+  }
 
 
   // Reach form submit btn **************
-/*
-  const onSubmit = async (data) => {
-    // console.log(data);
-    let { title, visibility, workspaceID } = data;
-
-    workspaceID = lastWorkspaceID;
-
-    const newBoard = {
-      workspaceID: workspaceID,
-      title: title,
-      visibility: visibility,
+  /*
+    const onSubmit = async (data) => {
+      // console.log(data);
+      let { title, visibility, workspaceID } = data;
+  
+      workspaceID = lastWorkspaceID;
+  
+      const newBoard = {
+        workspaceID: workspaceID,
+        title: title,
+        visibility: visibility,
+      };
+      // console.log(newBoard);
+      const res = await axios.post('https://morning-coast-54182.herokuapp.com/board', newBoard)
+      console.log(res)
+      // navigate("/board-details");
+  
+      reset();
     };
-    // console.log(newBoard);
-    const res = await axios.post('https://morning-coast-54182.herokuapp.com/board', newBoard)
-    console.log(res)
-    // navigate("/board-details");
-
-    reset();
-  };
-*/
+  */
   // Handle Board Background Image
 
   const handleBg1 = () => {
-    document.querySelector(".b-modal-bg").style.background = `url(${bg1}) center center/cover`;
+    document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/xChCQ7F/bg1.jpg") center center/cover`;
+    setBackground("https://i.ibb.co/xChCQ7F/bg1.jpg")
   };
   const handleBg2 = () => {
-    document.querySelector(".b-modal-bg").style.background = `url(${bg2}) center center/cover`;
+    document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/qR72gx6/bg2.jpg") center center/cover`;
+    setBackground("hhttps://i.ibb.co/qR72gx6/bg2.jpg")
   };
   const handleBg3 = () => {
-    document.querySelector(".b-modal-bg").style.background = `url(${bg3}) center center/cover`;
+    document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/h2KhkfR/bg3.jpg") center center/cover`;
+    setBackground("https://i.ibb.co/h2KhkfR/bg3.jpg")
   };
   const handleBg4 = () => {
-    document.querySelector(".b-modal-bg").style.background = `url(${bg4}) center center/cover`;
+    document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/TT0tdj2/bg4.jpg") center center/cover`;
+    setBackground("https://i.ibb.co/TT0tdj2/bg4.jpg")
   };
   const handleBg5 = () => {
-    document.querySelector(".b-modal-bg").style.background = `url(${bg5}) center center/cover`;
+    document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/9n55Xpz/bg5.jpg") center center/cover`;
+    setBackground("https://i.ibb.co/9n55Xpz/bg5.jpg")
   };
 
 
   // Handle Board Background Color
 
   const handleBg6 = () => {
-    document.querySelector(".b-modal-bg").style.background = '#172b4d';
+    document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/Wz5Z2nW/250x215.png")center center/cover`;
+    setBackground("https://i.ibb.co/Wz5Z2nW/250x215.png")
   };
   const handleBg7 = () => {
-    document.querySelector(".b-modal-bg").style.background = '#eb5a46';
+    document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/YRnq6yd/250x215-2.png")center center/cover`;
+    setBackground("hthttps://i.ibb.co/YRnq6yd/250x215-2.png")
   };
   const handleBg8 = () => {
-    document.querySelector(".b-modal-bg").style.background = '#4caf50';
+    document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/wcL4qWD/250x215-3.png")center center/cover`;
+    setBackground("https://i.ibb.co/wcL4qWD/250x215-3.png")
   };
   const handleBg9 = () => {
-    document.querySelector(".b-modal-bg").style.background = '#9c27b0';
+    document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/7p9Xb5z/250x215-4.png")center center/cover`;
+    setBackground("https://i.ibb.co/7p9Xb5z/250x215-4.png")
   };
   const handleBg10 = () => {
-    document.querySelector(".b-modal-bg").style.background = '#075D6C';
+    document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/GFwP6Vw/250x215-5.png")center center/cover`;
+    setBackground("https://i.ibb.co/GFwP6Vw/250x215-5.png")
   };
 
   return (
@@ -154,11 +166,11 @@ const BoardModal = () => {
               <img src={bg3} onClick={handleBg3} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
               <img src={bg4} onClick={handleBg4} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
               <img src={bg5} onClick={handleBg5} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
-              <div onClick={handleBg6} className="h-12 w-16 bg-[#172b4d] rounded-xl  cursor-pointer mx-auto"></div>
-              <div onClick={handleBg7} className="h-12 w-16 bg-[#eb5a46] rounded-xl  cursor-pointer mx-auto"></div>
-              <div onClick={handleBg8} className="h-12 w-16 bg-[#4caf50] rounded-xl  cursor-pointer mx-auto"></div>
-              <div onClick={handleBg9} className="h-12 w-16 bg-[#9c27b0] rounded-xl  cursor-pointer mx-auto"></div>
-              <div onClick={handleBg10} className="h-12 w-16 bg-[#075D6C] rounded-xl text-white justify-center text-center text-3xl   cursor-pointer mx-auto">...</div>
+              <div onClick={handleBg6} style={{ background: `url("https://i.ibb.co/Wz5Z2nW/250x215.png")center center/cover` }} className="h-12 w-16  rounded-xl  cursor-pointer mx-auto"></div>
+              <div onClick={handleBg7} style={{ background: `url("https://i.ibb.co/YRnq6yd/250x215-2.png")center center/cover` }} className="h-12 w-16 rounded-xl  cursor-pointer mx-auto"></div>
+              <div onClick={handleBg8} style={{ background: `url("https://i.ibb.co/wcL4qWD/250x215-3.png")center center/cover` }} className="h-12 w-16  rounded-xl  cursor-pointer mx-auto"></div>
+              <div onClick={handleBg9} style={{ background: `url("https://i.ibb.co/7p9Xb5z/250x215-4.png")center center/cover` }} className="h-12 w-16  rounded-xl  cursor-pointer mx-auto"></div>
+              <div onClick={handleBg10} style={{ background: `url("https://i.ibb.co/GFwP6Vw/250x215-5.png")center center/cover` }} className="h-12 w-16  rounded-xl text-white justify-center text-center text-3xl   cursor-pointer mx-auto">...</div>
 
             </div>
             <div className="form-control w-full mb-4">
@@ -172,7 +184,7 @@ const BoardModal = () => {
                 placeholder="type your board tittle"
                 name="boardTitle"
                 // {...register("title")}
-                onChange={(e)=>setBtitle(e.target.value)}
+                onChange={(e) => setBtitle(e.target.value)}
                 className="input input-bordered w-full"
                 required
               />
@@ -196,9 +208,9 @@ const BoardModal = () => {
                 value={lastWorkspaceID}
                 name="workspaceID"
                 className="select select-bordered select-sm w-full h-[40px] mt-2"
-                // {...register("workspaceID", {
-                //   onChange: (e) => { dispatch(setWorkspaceID(e.target.value)) }
-                // })}
+              // {...register("workspaceID", {
+              //   onChange: (e) => { dispatch(setWorkspaceID(e.target.value)) }
+              // })}
               >
                 {
                   allWorkspace?.map(item =>
@@ -224,7 +236,7 @@ const BoardModal = () => {
                 defaultValue={"workspace"}
                 className="select select-bordered select-sm w-full h-[40px] mt-2"
                 name="visibility"
-                // {...register("visibility")}
+              // {...register("visibility")}
               >
                 <option value="private">Private</option>
                 <option value="workspace">Workspace</option>
@@ -235,31 +247,31 @@ const BoardModal = () => {
             </div>
 
             <div className="flex justify-center my-5">
-                  {bTitle ? (
-                    <div className="w-4/5">
-                      <button
-                        type="submit"
-                        className=" w-full cursor-pointer transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
-                      >
-                        <label
-                          htmlFor="my-modal-6"
-                          className="w-full block cursor-pointer py-2 px-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
-                        >
-                          Create Board
-                        </label>
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="w-4/5">
-                      <button
-                        type="submit"
-                        className="w-full p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
-                      >
-                        Create Board
-                      </button>
-                    </div>
-                  )}
+              {bTitle ? (
+                <div className="w-4/5">
+                  <button
+                    type="submit"
+                    className=" w-full cursor-pointer transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                  >
+                    <label
+                      htmlFor="my-modal-6"
+                      className="w-full block cursor-pointer py-2 px-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                    >
+                      Create Board
+                    </label>
+                  </button>
                 </div>
+              ) : (
+                <div className="w-4/5">
+                  <button
+                    type="submit"
+                    className="w-full p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+                  >
+                    Create Board
+                  </button>
+                </div>
+              )}
+            </div>
           </form>
         </div>
       </div>

@@ -7,6 +7,8 @@ import InputContainer from './input/InputContainer';
 import { makeStyles } from '@material-ui/core/styles';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from "axios";
 
 
 
@@ -14,13 +16,16 @@ const useStyle = makeStyles((theme) => ({
     root: {
         display: 'flex',
         minHeight: '100vh',
-        background: 'white',
+        background: 'red',
         width: "100%",
         overflow: 'auto'
     },
 }));
 
 const BoardDetails = () => {
+
+    const board1 = useParams()
+    // console.log(board1);
     const classes = useStyle()
     const [data, setData] = useState(store)
 
@@ -36,6 +41,8 @@ const BoardDetails = () => {
     useEffect(() => {
         localStorage.setItem('data', JSON.stringify(data))
     }, [data])
+
+
 
 
 
