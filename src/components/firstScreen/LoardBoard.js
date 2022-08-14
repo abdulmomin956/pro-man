@@ -11,6 +11,7 @@ const LoardBoard = ({ props }) => {
     const workspaceID = props;
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([])
+    // console.log(data)
 
 
     // const { data, isLoading } = useQuery(['workspaceID'], () =>
@@ -25,6 +26,7 @@ const LoardBoard = ({ props }) => {
             .then(result => {
                 setData(result)
                 setLoading(false)
+                console.log(result);
             })
             .catch(err => {
                 // console.log(err)
