@@ -100,6 +100,7 @@ const Register = () => {
                                         value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                                         message: 'Provide a valid email'
                                     }
+                                    
                                 })} type="text" placeholder="email" className="input input-bordered" />
                                 <label className="label">
                                     {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
