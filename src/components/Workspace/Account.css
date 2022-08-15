@@ -73,3 +73,8 @@
   box-shadow: rgb(8, 26, 81) 0 6px 10px;
   transform: translateY(-2px);
 }
+
+.deleteModal{
+  width: 30%;
+  height: 70vh;
+}
