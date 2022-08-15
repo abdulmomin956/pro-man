@@ -13,7 +13,7 @@ const Boards = () => {
     const dispatch = useDispatch()
     const currentBoards = useSelector(state => state.currentWorkspaceBoards)
     const navigate = useNavigate()
-    const [firstLetter, setFirstLetter] = useState('')
+    // const [firstLetter, setFirstLetter] = useState('')
 
     const workspace = useQuery(['singleData'], () => fetch(`https://morning-coast-54182.herokuapp.com/sworkspace/${workspaceID}`).then(res => res.json()))
     const { data } = workspace;
@@ -23,15 +23,15 @@ const Boards = () => {
         }
     }, [data, dispatch])
 
-    useEffect(() => {
-        if (data?.title) {
-            const x = data?.title;
-            const nameparts = x?.split(" ");
-            const initials =
-                nameparts[0]?.charAt(0)?.toUpperCase()
-            setFirstLetter(initials)
-        }
-    }, [data?.title])
+    // useEffect(() => {
+    //     if (data?.title) {
+    //         const x = data?.title;
+    //         const nameparts = x?.split(" ");
+    //         const initials =
+    //             nameparts[0]?.charAt(0)?.toUpperCase()
+    //         setFirstLetter(initials)
+    //     }
+    // }, [data?.title])
 
     if (workspace.isLoading) {
         return <Loading />
