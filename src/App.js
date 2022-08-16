@@ -14,7 +14,6 @@ import Loading from "./components/shared/Loading";
 import BoardDetails from "./components/boardDetails/BoardDetails";
 import NotFound from "./components/shared/NotFound";
 import Board from "./components/firstScreen/Board";
-import Profile from "./components/Profile/Profile";
 import Workspace from "./components/Workspace/Workspace";
 import Boards from "./components/Workspace/Boards";
 import Members from "./components/Workspace/Members";
@@ -23,6 +22,7 @@ import ProfileValidity from "./components/Profile/ProfileValidity";
 import ProfileActive from "./components/Profile/ProfileActive";
 import ProfileCard from "./components/Profile/ProfileCard";
 import ProfileSetting from "./components/Profile/ProfileSetting";
+import Profiles from "./components/Profile/Profiles";
 
 function App() {
   const [user, loading, error] = useAuthState(auth);
@@ -56,7 +56,7 @@ function App() {
 
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
-        <Route path="/profile" element={<Profile />}>
+        <Route path="/profile" element={<Profiles />}>
           <Route path="/profile/" element={<ProfileValidity></ProfileValidity>}></Route>
           <Route path='profileActive' element={<ProfileActive></ProfileActive>}></Route>
           <Route path='profileCard' element={<ProfileCard></ProfileCard>}></Route>
