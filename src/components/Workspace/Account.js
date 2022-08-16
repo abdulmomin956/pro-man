@@ -2,9 +2,29 @@ import React, { useState } from "react";
 import "./Account.css";
 import CommonTopDesign from "./CommonTopDesign";
 import { MdLockOutline, MdPublic } from "react-icons/md";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { async } from "@firebase/util";
+import axios from "axios";
 
 const Account = () => {
   const [visibility, setVisibility] = useState(true);
+  const { workspaceID } = useParams();
+  const [validName, setValidName] = useState("");
+  const currentWorkspace = useSelector((state) => state.currentWorkspace);
+  const navigate = useNavigate()
+  
+  const deleteWorkspace = async(event) => {
+    console.log("Delete Workspace Button is clicked.....");
+
+    await axios.delete(`https://morning-coast-54182.herokuapp.com/sworkspace/${workspaceID}`)
+    .then(res=> {
+      console.log(res);
+      navigate('/')
+    })
+
+  };
+
   return (
     <div style={{ width: "100%" }}>
       <CommonTopDesign></CommonTopDesign>
@@ -73,45 +93,82 @@ const Account = () => {
           </div>
         </div>
 
-
-      {/* Delete Workspace start here */}
-      <div>
-        <label htmlFor="deleteWorkspace" class="btn btn-link px-0 underline text-red-600 hover:text-blue-900 modal-button">
-          Delete this Workspace?
-        </label>
-
-
-        <div className="mx-auto w-2/12">
-        <input type="checkbox" id="deleteWorkspace" class="modal-toggle" />
-        <label for="deleteWorkspace" class="modal cursor-pointer">
-          <label class="modal-box relative mx-10 md:deleteModal" for="" style={{height: "70vh", width: "350px"}}>
-            <div className="flex items-center justify-center">
-              <label
-                for="deleteWorkspace"
-                className="btn btn-sm btn-circle absolute right-2 top-2">
-                ✕
-              </label>
-              <h3 className="text-lg text-center mb-1">Delete Workspace</h3>
-            </div>
-            <hr></hr>
-            <p className="font-bold mt-4">Are you sure you want to delete Demo Workspace?</p>
-            <div className="text-gray-500 text-sm mt-3">
-              <p className="font-bold">Things to know</p>
-              <ul class="list-disc mx-5">
-                <li>This is permanent and can't be undone.</li>
-                <li>All boards in this Workspace will be closed.</li>
-                <li>Board members will not be able to interact with closed boards.</li>
-              </ul>
-            </div>
+        {/* Delete Workspace start here */}
+        <div>
+          <label
+            htmlFor="deleteWorkspace"
+            class="btn btn-link px-0 underline text-red-600 hover:text-blue-900 modal-button"
+          >
+            Delete this Workspace?
           </label>
-        </label>
+
+          <div className="mx-auto w-2/12">
+            <input type="checkbox" id="deleteWorkspace" class="modal-toggle" />
+            <label for="deleteWorkspace" class="modal cursor-pointer">
+              <label
+                class="modal-box relative mx-10 md:deleteModal"
+                id="sidebarOverflow"
+                for=""
+                style={{ height: "70vh", width: "350px" }}
+              >
+                <div className="flex items-center justify-center">
+                  <label
+                    for="deleteWorkspace"
+                    className="btn btn-sm btn-circle absolute right-2 top-2"
+                  >
+                    ✕
+                  </label>
+                  <h3 className="text-lg text-center mb-1">Delete Workspace</h3>
+                </div>
+                <hr></hr>
+                <p className="font-bold mt-4">
+                  Are you sure you want to delete Demo Workspace?
+                </p>
+                <div className="text-gray-500 text-sm mt-3">
+                  <p className="font-bold">Things to know</p>
+                  <ul class="list-disc mx-5">
+                    <li>This is permanent and can't be undone.</li>
+                    <li>All boards in this Workspace will be closed.</li>
+                    <li>
+                      Board members will not be able to interact with closed
+                      boards.
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="mt-4 mb-2">
+                  <p className="font-bold text-sm mb-2">
+                    Enter the Workspace name to delete
+                  </p>
+                  <input
+                    onKeyUp={(e) => setValidName(e.target.value)}
+                    type="text"
+                    placeholder="Type here"
+                    class="input input-sm input-bordered w-full max-w-xs rounded-none"
+                  />
+                </div>
+
+                {(currentWorkspace === validName && (
+                  <button
+                    onClick={deleteWorkspace}
+                    className="btn btn-outline btn-error w-full rounded-none"
+                  >
+                    Delete Workspace
+                  </button>
+                )) || (
+                  <button
+                    onClick={deleteWorkspace}
+                    className="btn btn-outline btn-error w-full rounded-none"
+                    disabled="disabled"
+                  >
+                    Delete Workspace
+                  </button>
+                )}
+              </label>
+            </label>
+          </div>
         </div>
-
-      
       </div>
-
-      </div>
-
     </div>
   );
 };
