@@ -106,7 +106,7 @@ const Board = () => {
     },
   ];
   return (
-    <div className="px-4">
+    <div className="px-4" id="sidebarOverflow">
       {/* This Board pages showing when enter to the site */}
       <h2 className="text-2xl font-medium my-6">
         <span className="flex items-center text-indigo-500">
@@ -114,7 +114,7 @@ const Board = () => {
         </span>
       </h2>
       {/* **Most popular template section start here** */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 " id="sidebarOverflow">
 
         {popularTemplates.map((template, i) => (
           <div

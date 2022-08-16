@@ -136,7 +136,7 @@ const BoardModal = () => {
       {/* <!-- Put this part before </body> tag --> */}
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
       <div className="modal modal-top sm:modal-middle">
-        <div className="workspace-modal lg:w-1/3">
+        <div className="workspace-modal lg:w-1/3" id="sidebarOverflow">
           <div className="flex flex-row-reverse w-full">
             <button className="fixed">
               <label htmlFor="my-modal-6" className="">
