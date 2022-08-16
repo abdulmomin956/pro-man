@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.init";
 import Loading from "../shared/Loading";
 import "./Profile.css";
-import { useForm } from "react-hook-form";
 import ProfileNav from "./ProfileNav";
 
 import { Outlet } from "react-router-dom";
 
-const Profile = () => {
-  const [user] = useAuthState(auth);
+const Profiles = () => {
+  const [user , loading] = useAuthState(auth);
   const name = user?.displayName;
-  const userPhoto=user?.photoURL;
-
+  const userPhoto =user?.photoURL;
+  const email=user?.email;
+  const [profiles,setProfiles]=useState({});
+ 
+  useEffect(()=>{
+    fetch(`http://localhost:5000/profile/${email}`)
+    .then(res=>res.json())
+    .then(data=>setProfiles(data))
+  },[])
+  if (loading) {
+    return (
+      <Loading></Loading>
+    );
+  }
+  const userName=profiles.userName;
+  console.log(email);
+  console.log(userName);
   return (
     <div>
       <div className="top-use-info">
@@ -26,10 +40,12 @@ const Profile = () => {
             </div>
           </div>
           <div className="p-5">
-            <h2 className="font-bold text-4xl">{name}</h2>
+            <h2 className="font-bold text-4xl">{userName ? userName : name}  </h2>
           </div>
 
+           
         </div>
+         
         <ProfileNav></ProfileNav>
         <div className="profilebody">
           <Outlet></Outlet>
@@ -42,4 +58,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Profiles;
