@@ -19,7 +19,7 @@ const Account = () => {
 
     await axios.delete(`https://morning-coast-54182.herokuapp.com/sworkspace/${workspaceID}`)
     .then(res=> {
-      console.log(res);
+      // console.log(res);
       navigate('/')
     })
 

@@ -64,7 +64,7 @@ const WorkspaceModal = () => {
       {/* <!-- Put this part before </body> tag --> */}
       <input type="checkbox" id="my-modal-sa6" className="modal-toggle" />
       <div className="modal modal-top sm:modal-middle">
-        <div className="workspace-modal w-10/12 sm:w-8/12 md:w-10/12 ">
+        <div className="workspace-modal w-10/12 sm:w-8/12 md:w-10/12 " id="sidebarOverflow">
           <div className="flex flex-row-reverse w-full">
             <button className="fixed">
               <label htmlFor="my-modal-sa6" className="">
