@@ -96,7 +96,7 @@ const Sidebar = () => {
                       <Typography>
                         <div className=" w-48  flex flex-col items-center justify-center">
                           <Link
-                            to={`/${item._id}`}
+                            to={`/${item.shortname}`}
                             className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
                           >
                             <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards

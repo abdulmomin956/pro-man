@@ -13,14 +13,14 @@ const CommonTopDesign = () => {
         <div className="flex items-start ">
           <div>
             <button className="bg-primary text-white p-2 rounded text-4xl">
-              <span className="p-1 font-bold">{currentWorkspace.charAt(0).toUpperCase()}</span>{" "}
+              <span className="p-1 font-bold">{currentWorkspace?.title?.charAt(0).toUpperCase()}</span>{" "}
             </button>
           </div>
           {
             !editMood ?
               <div className="pl-3">
                 <div className="font-bold text-xl flex items-center">
-                  {currentWorkspace}{" "}
+                  {currentWorkspace?.title}{" "}
                   <button className="" onClick={() => setEditMood(true)}><MdOutlineModeEditOutline className="ml-2"></MdOutlineModeEditOutline></button>
                 </div>
                 <div className="flex items-center">
@@ -30,16 +30,24 @@ const CommonTopDesign = () => {
               </div> :
               <div className="pl-3">
                 <label className="label" htmlFor="name">Name</label>
-                <input type="text" className="input input-bordered w-full max-w-xs" value={currentWorkspace} />
+                <input type="text" className="input input-bordered w-full max-w-xs" value={currentWorkspace?.title} />
                 <label className="label" htmlFor="name">Workspace type</label>
-                <input type="text" className="input input-bordered w-full max-w-xs" />
+                <select type="text" className="input input-bordered w-full max-w-xs" defaultValue={currentWorkspace?.type}>
+                  <option>Small Business</option>
+                  <option>Education</option>
+                  <option>Marketing</option>
+                  <option>Human Resources</option>
+                  <option>Engineering-IT</option>
+                  <option>Operation</option>
+                  <option>Others</option>
+                </select>
                 <label className="label" htmlFor="name">Short name</label>
-                <input type="text" className="input input-bordered w-full max-w-xs" />
+                <input defaultValue={currentWorkspace?.shortname} type="text" className="input input-bordered w-full max-w-xs" />
                 <label className="label" htmlFor="name">Website (optional)</label>
-                <input type="text" className="input input-bordered w-full max-w-xs" />
+                <input defaultValue={currentWorkspace?.website} type="text" className="input input-bordered w-full max-w-xs" />
                 <label className="label" htmlFor="name">Description (optional)</label>
-                <textarea type="text" className="input input-bordered w-full max-w-xs" />
-                <button className="btn btn-primary" type="submit">Save</button>
+                <textarea defaultValue={currentWorkspace?.description} type="text" className="input input-bordered w-full max-w-xs" />
+                <button className="btn btn-primary mr-2" type="submit">Save</button>
                 <button className="btn" type="cancel" onClick={() => setEditMood(false)}>Cancel</button>
               </div>
           }

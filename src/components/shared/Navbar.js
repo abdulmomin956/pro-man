@@ -35,7 +35,7 @@ const Navbar = () => {
     if (data?.length > 0) {
       const allWorkspaceData = data?.map(item => (
         {
-          _id: item._id, title: item.title
+          _id: item._id, title: item.title, shortname: item.shortname
         }
       ))
       // console.log(allWorkspaceData);
@@ -91,7 +91,7 @@ const Navbar = () => {
               className="menu menu-compact dropdown-content mt-3 py-4 shadow bg-base-100 rounded-lg w-52 "
             >
               <li tabIndex="0">
-                <p className="justify-between mb-2 p-2 pl-5 pr-5 myButton"  style={{borderRadius: "0px"}}>
+                <p className="justify-between mb-2 p-2 pl-5 pr-5 myButton" style={{ borderRadius: "0px" }}>
                   Workspaces
                   <svg
                     className="fill-current"
@@ -108,7 +108,7 @@ const Navbar = () => {
                 >
                   {allWorkspace?.map((item, i) => (
                     <li key={i}>
-                      <a className="mb-2 btn-sm w-full rounded-none  myButton" style={{borderRadius: "0px"}}>
+                      <a className="mb-2 btn-sm w-full rounded-none  myButton" style={{ borderRadius: "0px" }}>
                         <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
@@ -119,7 +119,7 @@ const Navbar = () => {
                 </ul>
               </li>
               <li tabIndex="0">
-                <button className=" p-2 pl-5 pr-5 myButton"  style={{borderRadius: "0px"}}>Create</button>
+                <button className=" p-2 pl-5 pr-5 myButton" style={{ borderRadius: "0px" }}>Create</button>
                 <ul
                   className="py-2 bg-base-100 rounded w-52 pt-4 shadow"
                 >
@@ -128,7 +128,7 @@ const Navbar = () => {
                     <label
                       htmlFor="my-modal-6"
                       className="mb-2 btn-sm w-full  myButton"
-                      style={{borderRadius: "0px"}}
+                      style={{ borderRadius: "0px" }}
                     >
                       Create Board
                     </label>
@@ -139,7 +139,7 @@ const Navbar = () => {
                     <label
                       htmlFor="my-modal-sa6"
                       className="mb-2 btn-sm w-full  myButton"
-                      style={{borderRadius: "0px"}}
+                      style={{ borderRadius: "0px" }}
                     >
                       Create Workspace
                     </label>
@@ -181,7 +181,7 @@ const Navbar = () => {
                 >
                   {allWorkspace?.map((item, i) => (
                     <li key={i}>
-                      <a className="mb-2 px-2 py-1 w-full myButton"  style={{borderRadius: "0px"}}>
+                      <a className="mb-2 px-2 py-1 w-full myButton" style={{ borderRadius: "0px" }}>
                         <span className="text-white font-bold rounded-sm px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
@@ -209,7 +209,7 @@ const Navbar = () => {
                     <label
                       htmlFor="my-modal-6"
                       className="mb-2 btn-sm w-full  myButton"
-                      style={{borderRadius: "0px"}}
+                      style={{ borderRadius: "0px" }}
                     >
                       Create Board
                     </label>
@@ -220,7 +220,7 @@ const Navbar = () => {
                     <label
                       htmlFor="my-modal-sa6"
                       className="mb-2 btn-sm w-full  myButton"
-                      style={{borderRadius: "0px"}}
+                      style={{ borderRadius: "0px" }}
                     >
                       Create Workspace
                     </label>
@@ -233,16 +233,16 @@ const Navbar = () => {
 
         <div className="navbar-end lg:px-12">
           <label htmlFor="notification" class=" cursor-pointer modal-button">
-          <FaRegBell className="text-2xl mr-3" />
-          
+            <FaRegBell className="text-2xl mr-3" />
+
           </label>
-        
+
           {user && (
             <div className="dropdown dropdown-end">
               <label
                 tabIndex="0"
                 className=" "
-                // className="btn btn-ghost btn-circle bg-black avatar"
+              // className="btn btn-ghost btn-circle bg-black avatar"
               >
                 <div id="navProfile" className="flex justify-center items-center">
                   <span
@@ -258,11 +258,11 @@ const Navbar = () => {
                 className="mt-3  shadow menu menu-compact dropdown-content bg-base-100 rounded w-52"
               >
                 <li>
-                <Link to="/profile" className="justify-between   mb-2 btn-sm w-full  myButton">
+                  <Link to="/profile" className="justify-between   mb-2 btn-sm w-full  myButton">
                     Profile
                     <span className="badge">New</span>
                   </Link>
-                 
+
                 </li>
                 <li>
                   <a className="mb-2 btn-sm w-full  myButton">Settings</a>

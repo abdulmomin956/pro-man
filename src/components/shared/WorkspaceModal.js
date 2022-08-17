@@ -19,21 +19,6 @@ const WorkspaceModal = () => {
     formState: { errors },
   } = useForm();
 
-  // const {
-  //   isLoading,
-  //   data: users,
-  //   refetch,
-  // } = useQuery("users", () =>
-  //   fetch("https://jsonplaceholder.typicode.com/users").then((res) =>
-  //     res.json()
-  //   )
-  // );
-
-  // let workspace = []; //[null]
-  // const workspaceJson = localStorage.getItem("workspace");
-  // if (JSON.parse(workspaceJson)) {
-  //   workspace = JSON.parse(workspaceJson);
-  // }
 
   const onSubmit = async (data) => {
     const { description, workspaceType } = data;
