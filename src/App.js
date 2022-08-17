@@ -47,11 +47,11 @@ function App() {
           <Route path="/template" element={<Template />}></Route>
           <Route path="/homescreen" element={<HomeScreen />}></Route>
         </Route>
-        <Route path="/:workspaceID" element={<Workspace />}>
-          <Route path="/:workspaceID/" element={<Boards />}></Route>
-          <Route path="/:workspaceID/members" element={<Members />}></Route>
-          <Route path="/:workspaceID/account" element={<Account />}></Route>
-          <Route path="/:workspaceID/:id" element={<BoardDetails></BoardDetails>}></Route>
+        <Route path="/:shortname" element={<Workspace />}>
+          <Route path="/:shortname/" element={<Boards />}></Route>
+          <Route path="/:shortname/members" element={<Members />}></Route>
+          <Route path="/:shortname/account" element={<Account />}></Route>
+          <Route path="/:shortname/:id" element={<BoardDetails></BoardDetails>}></Route>
         </Route>
 
         <Route path="/login" element={<Login></Login>}></Route>

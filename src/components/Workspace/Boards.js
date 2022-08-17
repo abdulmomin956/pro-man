@@ -9,17 +9,17 @@ import { useSelector } from 'react-redux';
 import CommonTopDesign from './CommonTopDesign';
 
 const Boards = () => {
-    const { workspaceID } = useParams()
+    const { shortname } = useParams()
     const dispatch = useDispatch()
     const currentBoards = useSelector(state => state.currentWorkspaceBoards)
     const navigate = useNavigate()
     // const [firstLetter, setFirstLetter] = useState('')
 
-    const workspace = useQuery(['singleData'], () => fetch(`https://morning-coast-54182.herokuapp.com/sworkspace/${workspaceID}`).then(res => res.json()))
+    const workspace = useQuery(['singleData'], () => fetch(`https://morning-coast-54182.herokuapp.com/sworkspace/get/${shortname}`).then(res => res.json()))
     const { data } = workspace;
     useEffect(() => {
         if (data) {
-            dispatch(setCurrentWorkspace(data?.title))
+            dispatch(setCurrentWorkspace(data))
         }
     }, [data, dispatch])
 
@@ -76,7 +76,7 @@ const Boards = () => {
                         </label>
                     </div>
                     {
-                        currentBoards?.map(item => <div key={item._id} onClick={() => navigate(`/${workspaceID}/${item._id}`)} className=" bg-base-100 drop-shadow">
+                        currentBoards?.map(item => <div key={item._id} onClick={() => navigate(`/${shortname}/${item._id}`)} className=" bg-base-100 drop-shadow">
                             <label
 
                                 className=" hover:cursor-pointer hover:bg-gray-100  hover:font-bold flex  h-32 justify-center items-center"

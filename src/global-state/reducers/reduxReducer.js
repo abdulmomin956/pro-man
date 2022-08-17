@@ -3,7 +3,7 @@ import { CURRENTWORKSPACE, CURRENTWORKSPACEBOARDS, LAST_WORKSPACE, WORKSPACE } f
 const initialState = {
     lastWorkspaceID: "",
     workspace: [],
-    currentWorkspace: '',
+    currentWorkspace: {},
     currentWorkspaceBoards: []
 }
 const reduxReducer = (state = initialState, action) => {

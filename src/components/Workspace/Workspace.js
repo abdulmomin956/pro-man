@@ -33,8 +33,8 @@ const Workspace = () => {
 
     const boards = useQuery(['boards'], () => fetch(`https://morning-coast-54182.herokuapp.com/board/${workspaceID}`).then(res => res.json()))
     useEffect(() => {
-        if (currentWorkspaceName) {
-            const x = currentWorkspaceName;
+        if (currentWorkspaceName?.title) {
+            const x = currentWorkspaceName?.title;
             const nameparts = x?.split(" ");
             const initials =
                 nameparts[0]?.charAt(0)?.toUpperCase()
@@ -97,14 +97,14 @@ const Workspace = () => {
                 <div className="flex gap-x-4 items-center mt-2">
                     <div className="h-8 p-2 w-8  border-2  flex justify-center items-center cursor-pointer duration-500">
                         <span
-                            title={currentWorkspaceName}
+                            title={currentWorkspaceName?.title}
                             className="text-white  font-bold block "
                         >
                             {firstLetter}
                         </span>
                     </div>
                     <h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
-                        }`}>{currentWorkspaceName}</h1>
+                        }`}>{currentWorkspaceName?.title}</h1>
                 </div>
                 <ul className="pt-6 mr-8">
                     {
