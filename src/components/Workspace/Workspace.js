@@ -11,10 +11,12 @@ import { setCurrentBoards } from '../../global-state/actions/reduxActions';
 
 const Workspace = () => {
     const navigate = useNavigate()
-    const { workspaceID } = useParams()
+    const { shortname } = useParams()
     const [open, setOpen] = useState(null);
     const [firstLetter, setFirstLetter] = useState('')
-    const currentWorkspaceName = useSelector(state => state.currentWorkspace)
+    const workspaces = useSelector(state => state.workspace)
+    const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
+    // console.log(currentWorkspace);
     const dispatch = useDispatch()
 
 
@@ -31,16 +33,17 @@ const Workspace = () => {
     }
 
 
-    const boards = useQuery(['boards'], () => fetch(`https://morning-coast-54182.herokuapp.com/board/${workspaceID}`).then(res => res.json()))
+    const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/${currentWorkspace[0]?._id}`).then(res => res.json()))
     useEffect(() => {
-        if (currentWorkspaceName?.title) {
-            const x = currentWorkspaceName?.title;
+        if (currentWorkspace[0]?.title) {
+            const x = currentWorkspace[0]?.title;
             const nameparts = x?.split(" ");
             const initials =
                 nameparts[0]?.charAt(0)?.toUpperCase()
             setFirstLetter(initials)
         }
-    }, [currentWorkspaceName])
+    }, [currentWorkspace])
+
     useEffect(() => {
         if (boards?.data) {
             dispatch(setCurrentBoards(boards?.data))
@@ -54,7 +57,7 @@ const Workspace = () => {
 
     const menusItem = [
         {
-            path: `/${workspaceID}`,
+            path: `/${shortname}`,
             name: "Boards",
             icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
@@ -62,14 +65,14 @@ const Workspace = () => {
         },
 
         {
-            path: `/${workspaceID}/members`,
+            path: `/${shortname}/members`,
             name: "Members",
             icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
         },
         {
-            path: `/${workspaceID}/account`,
+            path: `/${shortname}/account`,
             name: "Settings",
             icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -97,14 +100,14 @@ const Workspace = () => {
                 <div className="flex gap-x-4 items-center mt-2">
                     <div className="h-8 p-2 w-8  border-2  flex justify-center items-center cursor-pointer duration-500">
                         <span
-                            title={currentWorkspaceName?.title}
+                            title={currentWorkspace[0]?.title}
                             className="text-white  font-bold block "
                         >
                             {firstLetter}
                         </span>
                     </div>
                     <h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
-                        }`}>{currentWorkspaceName?.title}</h1>
+                        }`}>{currentWorkspace[0]?.title}</h1>
                 </div>
                 <ul className="pt-6 mr-8">
                     {
@@ -121,7 +124,7 @@ const Workspace = () => {
                     </div>
                     {
                         boards?.data?.map((item, index) => (
-                            <CustomLink to={`/${workspaceID}/${item._id}`} key={index} className={`flex py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
+                            <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
 
                                 <span className={`${!open && "hidden"} mr-2 origin-left duration-200`}>{item.title}</span>
 

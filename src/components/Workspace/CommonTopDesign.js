@@ -2,25 +2,28 @@ import React from "react";
 import { useState } from "react";
 import { MdOutlineModeEditOutline, MdOutlineLock, MdPersonAddAlt1 } from "react-icons/md";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import "./Account.css";
 
 const CommonTopDesign = () => {
   const [editMood, setEditMood] = useState(false)
-  const currentWorkspace = useSelector(state => state.currentWorkspace)
+  const { shortname } = useParams();
+  const workspaces = useSelector(state => state.workspace)
+  const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
   return (
     <div className="md:mx-16  my-10">
       <div className="md:flex justify-between items-start mx-5">
         <div className="flex items-start ">
           <div>
             <button className="bg-primary text-white p-2 rounded text-4xl">
-              <span className="p-1 font-bold">{currentWorkspace?.title?.charAt(0).toUpperCase()}</span>{" "}
+              <span className="p-1 font-bold">{currentWorkspace[0]?.title?.charAt(0).toUpperCase()}</span>{" "}
             </button>
           </div>
           {
             !editMood ?
               <div className="pl-3">
                 <div className="font-bold text-xl flex items-center">
-                  {currentWorkspace?.title}{" "}
+                  {currentWorkspace[0]?.title}{" "}
                   <button className="" onClick={() => setEditMood(true)}><MdOutlineModeEditOutline className="ml-2"></MdOutlineModeEditOutline></button>
                 </div>
                 <div className="flex items-center">
@@ -30,9 +33,9 @@ const CommonTopDesign = () => {
               </div> :
               <div className="pl-3">
                 <label className="label" htmlFor="name">Name</label>
-                <input type="text" className="input input-bordered w-full max-w-xs" value={currentWorkspace?.title} />
+                <input type="text" className="input input-bordered w-full max-w-xs" value={currentWorkspace[0]?.title} />
                 <label className="label" htmlFor="name">Workspace type</label>
-                <select type="text" className="input input-bordered w-full max-w-xs" defaultValue={currentWorkspace?.type}>
+                <select type="text" className="input input-bordered w-full max-w-xs" defaultValue={currentWorkspace[0]?.type}>
                   <option>Small Business</option>
                   <option>Education</option>
                   <option>Marketing</option>
@@ -42,11 +45,11 @@ const CommonTopDesign = () => {
                   <option>Others</option>
                 </select>
                 <label className="label" htmlFor="name">Short name</label>
-                <input defaultValue={currentWorkspace?.shortname} type="text" className="input input-bordered w-full max-w-xs" />
+                <input defaultValue={currentWorkspace[0]?.shortname} type="text" className="input input-bordered w-full max-w-xs" />
                 <label className="label" htmlFor="name">Website (optional)</label>
-                <input defaultValue={currentWorkspace?.website} type="text" className="input input-bordered w-full max-w-xs" />
+                <input defaultValue={currentWorkspace[0]?.website} type="text" className="input input-bordered w-full max-w-xs" />
                 <label className="label" htmlFor="name">Description (optional)</label>
-                <textarea defaultValue={currentWorkspace?.description} type="text" className="input input-bordered w-full max-w-xs" />
+                <textarea defaultValue={currentWorkspace[0]?.description} type="text" className="input input-bordered w-full max-w-xs" />
                 <button className="btn btn-primary mr-2" type="submit">Save</button>
                 <button className="btn" type="cancel" onClick={() => setEditMood(false)}>Cancel</button>
               </div>
