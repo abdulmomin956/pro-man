@@ -23,6 +23,9 @@ import ProfileActive from "./components/Profile/ProfileActive";
 import ProfileCard from "./components/Profile/ProfileCard";
 import ProfileSetting from "./components/Profile/ProfileSetting";
 import Profiles from "./components/Profile/Profiles";
+import WorkspaceMembers from "./components/Workspace/Member/WorkspaceMembers";
+import Guests from "./components/Workspace/Member/Guests";
+import Pending from "./components/Workspace/Member/Pending";
 
 function App() {
   const [user, loading, error] = useAuthState(auth);
@@ -51,7 +54,11 @@ function App() {
           <Workspace />
         }>
           <Route path="/:shortname/" element={<Boards />}></Route>
-          <Route path="/:shortname/members" element={<Members />}></Route>
+          <Route path="/:shortname/members" element={<Members />}>
+            <Route path="/:shortname/members" element={<WorkspaceMembers></WorkspaceMembers>}></Route>
+            <Route path="/:shortname/members/guests" element={<Guests></Guests>}></Route>
+            <Route path="/:shortname/members/pending" element={<Pending></Pending>}></Route>
+          </Route>
           <Route path="/:shortname/account" element={<Account />}></Route>
           <Route path="/:shortname/:id" element={<BoardDetails></BoardDetails>}></Route>
         </Route>
