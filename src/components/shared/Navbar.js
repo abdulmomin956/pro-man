@@ -33,13 +33,8 @@ const Navbar = () => {
 
   useEffect(() => {
     if (data?.length > 0) {
-      const allWorkspaceData = data?.map(item => (
-        {
-          _id: item._id, title: item.title, shortname: item.shortname
-        }
-      ))
       // console.log(allWorkspaceData);
-      dispatch(setWorkspace(allWorkspaceData))
+      dispatch(setWorkspace(data))
     }
   }, [data, dispatch])
 
@@ -49,8 +44,7 @@ const Navbar = () => {
   }
 
 
-  const allWorkspace = useSelector(state => state.workspace)
-  // console.log(allWorkspace);
+
 
 
 
@@ -106,7 +100,7 @@ const Navbar = () => {
                 <ul
                   className="py-2  bg-base-100 rounded w-52 pt-4 shadow"
                 >
-                  {allWorkspace?.map((item, i) => (
+                  {data?.map((item, i) => (
                     <li key={i}>
                       <a className="mb-2 btn-sm w-full rounded-none  myButton" style={{ borderRadius: "0px" }}>
                         <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
@@ -179,7 +173,7 @@ const Navbar = () => {
                   tabIndex="0"
                   className="dropdown-content menu py-2 bg-base-100 rounded w-52 pt-4 shadow"
                 >
-                  {allWorkspace?.map((item, i) => (
+                  {data?.map((item, i) => (
                     <li key={i}>
                       <a className="mb-2 px-2 py-1 w-full myButton" style={{ borderRadius: "0px" }}>
                         <span className="text-white font-bold rounded-sm px-1 uppercase bg-indigo-400">

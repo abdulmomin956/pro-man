@@ -11,14 +11,6 @@ const LoardBoard = ({ props }) => {
     const workspaceID = props;
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([])
-    // console.log(data)
-
-
-    // const { data, isLoading } = useQuery(['workspaceID'], () =>
-    //     fetch(`https://morning-coast-54182.herokuapp.com/board/${workspaceID}`).then(res =>
-    //         res.json()
-    //     )
-    // )
     useEffect(() => {
         setLoading(true)
         fetch(`https://morning-coast-54182.herokuapp.com/board/${workspaceID}`)
@@ -26,7 +18,7 @@ const LoardBoard = ({ props }) => {
             .then(result => {
                 setData(result)
                 setLoading(false)
-                console.log(result);
+                // console.log(result);
             })
             .catch(err => {
                 // console.log(err)

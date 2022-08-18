@@ -4,7 +4,7 @@ import Register from "./components/firebase/Register";
 import Home from "./components/Home";
 import Navbar from "./components/shared/Navbar";
 import { ToastContainer } from "react-toastify";
-import RequierAuth from "./components/requierAuth/RequierAuth";
+import RequireAuth from "./components/requireAuth/RequireAuth";
 import auth from "./components/firebase/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 // import Board from "./components/firstScreen/Board";
@@ -38,16 +38,18 @@ function App() {
         <Route
           path="/"
           element={
-            <RequierAuth>
+            <RequireAuth>
               <Home />
-            </RequierAuth>
+            </RequireAuth>
           }
         >
           <Route path="/" element={<Board />}></Route>
           <Route path="/template" element={<Template />}></Route>
           <Route path="/homescreen" element={<HomeScreen />}></Route>
         </Route>
-        <Route path="/:shortname" element={<Workspace />}>
+        <Route path="/:shortname" element={
+          <Workspace />
+        }>
           <Route path="/:shortname/" element={<Boards />}></Route>
           <Route path="/:shortname/members" element={<Members />}></Route>
           <Route path="/:shortname/account" element={<Account />}></Route>
