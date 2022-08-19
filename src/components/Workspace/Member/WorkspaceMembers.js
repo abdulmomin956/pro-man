@@ -6,18 +6,18 @@ import { FaLink } from "react-icons/fa";
 import { MdCancelPresentation } from "react-icons/md";
 
 const WorkspaceMembers = () => {
-   const [user, loading] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const { wMember, setWmember } = useState(0);
-  if(loading){
-   return <Loading></Loading>
+  if (loading) {
+    return <Loading></Loading>;
   }
   const name = user.displayName;
-  console.log(name)
+  console.log(name);
 
   const x = name;
   const nameparts = x?.split(" ");
-  const initials = nameparts[0].charAt(0).toUpperCase() + nameparts[1].charAt(0).toUpperCase();
-
+  const initials =
+    nameparts[0].charAt(0).toUpperCase() + nameparts[1].charAt(0).toUpperCase();
 
   return (
     <div>
@@ -39,34 +39,43 @@ const WorkspaceMembers = () => {
           </p>
         </div>
         <div className="w-4/12 flex justify-center items-center">
-          <button className="btn btn-sm rounded-none"><FaLink className="mr-1"></FaLink> Invite with link</button>
+          <button className="btn btn-sm rounded-none">
+            <FaLink className="mr-1"></FaLink> Invite with link
+          </button>
         </div>
       </div>
       <hr></hr>
       <div>
-         <input type="text" placeholder="Filter by name" class="input input-sm rounded-none my-5 input-bordered w-full max-w-xs" />
+        <input
+          type="text"
+          placeholder="Filter by name"
+          class="input input-sm rounded-none my-5 input-bordered w-full max-w-xs"
+        />
       </div>
-               {/* Member list start here */}
+      {/* Member list start here */}
       <div className="pb-5">
-            <hr/>
-         <div className="flex justify-between my-2">
-            <div className="flex">
-               <div>
-                  <button className="btn btn-circle font-bold text-xl">{initials} </button>
-               </div>
-               <div className="ml-3">
-                  <p className="font-bold mb-0">{name}</p>
-                  <p className="text-sm">{user.email} </p>
-               </div>
-
+        <hr />
+        <div className="flex justify-between my-2">
+          <div className="flex">
+            <div>
+              <button className="btn btn-circle font-bold text-xl">
+                {initials}{" "}
+              </button>
             </div>
-            <div className="flex items-center">
-               <button className="btn btn-sm rounded-none font-bold"><MdCancelPresentation className="mr-1 font-bold"></MdCancelPresentation> Leave</button>
+            <div className="ml-3">
+              <p className="font-bold mb-0">{name}</p>
+              <p className="text-sm">{user.email} </p>
             </div>
-         </div>
-            <hr/>
+          </div>
+          <div className="flex items-center">
+            <button className="btn btn-sm rounded-none font-bold">
+              <MdCancelPresentation className="mr-1 font-bold"></MdCancelPresentation>{" "}
+              Leave
+            </button>
+          </div>
+        </div>
+        <hr />
       </div>
-
     </div>
   );
 };
