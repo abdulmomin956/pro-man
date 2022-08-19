@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
 import Loading from "../../shared/Loading";
+import { FaLink } from "react-icons/fa";
+import { MdCancelPresentation } from "react-icons/md";
 
 const WorkspaceMembers = () => {
    const [user, loading] = useAuthState(auth);
@@ -37,7 +39,7 @@ const WorkspaceMembers = () => {
           </p>
         </div>
         <div className="w-4/12 flex justify-center items-center">
-          <button className="btn btn-sm rounded-none">Invite with link</button>
+          <button className="btn btn-sm rounded-none"><FaLink className="mr-1"></FaLink> Invite with link</button>
         </div>
       </div>
       <hr></hr>
@@ -59,7 +61,7 @@ const WorkspaceMembers = () => {
 
             </div>
             <div className="flex items-center">
-               <button className="btn btn-sm rounded-none">Leave</button>
+               <button className="btn btn-sm rounded-none font-bold"><MdCancelPresentation className="mr-1 font-bold"></MdCancelPresentation> Leave</button>
             </div>
          </div>
             <hr/>
