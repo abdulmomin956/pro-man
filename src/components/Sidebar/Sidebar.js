@@ -10,16 +10,24 @@ import AccordionDetails from "@material-ui/core/AccordionDetails/AccordionDetail
 import Typography from "@material-ui/core/Typography/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   FaBoxes,
   FaUserFriends,
   FaCogs,
 } from "react-icons/fa";
 import { HiViewGridAdd } from "react-icons/hi";
+import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 
 const Sidebar = () => {
   const data = useSelector((state) => state.workspace);
   // console.log(data);
+  const dispatch = useDispatch();
+
+  // const [user] = useAuthState(auth);
+  // const email = user?.email;
+
+  // const data = useSelector(state => state.workspace)
 
   return (
     <div>
@@ -108,13 +116,19 @@ const Sidebar = () => {
                             <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd> Views
                           </Link>
                           <Link
-                            to=""
+                            onClick={() => {
+                              dispatch(setWorkspaceID(item._id))
+                            }}
+                              to={`/${item.shortname}/members`}
                             className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
                           >
                             <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends> Members
                           </Link>
                           <Link
-                            to=""
+                            onClick={() => {
+                              dispatch(setWorkspaceID(item._id))
+                            }}
+                              to={`/${item.shortname}/account`}
                             className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
                           >
                             <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
