@@ -39,6 +39,7 @@ const BoardModal = () => {
 
 
   const navigate = useNavigate();
+  console.log(background);
 
   const handleSubmit = async (e) => {
 

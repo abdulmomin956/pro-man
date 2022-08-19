@@ -9,6 +9,8 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from "axios";
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../shared/Loading';
 
 
 
@@ -16,16 +18,17 @@ const useStyle = makeStyles((theme) => ({
     root: {
         display: 'flex',
         minHeight: '100vh',
-        background: 'red',
+        background: '',
         width: "100%",
         overflow: 'auto'
     },
 }));
 
 const BoardDetails = () => {
-
     const board1 = useParams()
-    // console.log(board1);
+    console.log(board1.id);
+    const board = useQuery(['board'], () => fetch(`https://morning-coast-54182.herokuapp.com/board/${board1.id}`))
+
     const classes = useStyle()
     const [data, setData] = useState(store)
 
@@ -42,6 +45,11 @@ const BoardDetails = () => {
         localStorage.setItem('data', JSON.stringify(data))
     }, [data])
 
+    if (board.isLoading) {
+        <Loading />
+    }
+
+    console.log(board);
 
 
 
