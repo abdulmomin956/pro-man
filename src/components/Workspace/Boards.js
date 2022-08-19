@@ -5,8 +5,10 @@ import CommonTopDesign from './CommonTopDesign';
 
 const Boards = () => {
     const { shortname } = useParams()
+    console.log(shortname)
     const currentBoards = useSelector(state => state.currentWorkspaceBoards)
     const navigate = useNavigate()
+    console.log(currentBoards)
 
     return (
         <div style={{ width: '100%' }} className=''>

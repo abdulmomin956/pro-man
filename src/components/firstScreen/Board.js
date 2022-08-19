@@ -22,11 +22,14 @@ const Board = () => {
   const dispatch = useDispatch();
 
   const [user] = useAuthState(auth);
-  const email = user.email;
+  const email = user?.email;
 
   const data = useSelector(state => state.workspace)
+  // if (data) {
+  //   console.log(data)
+  // }
 
-  // console.log(data)
+
 
 
 

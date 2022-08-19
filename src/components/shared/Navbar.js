@@ -226,7 +226,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end lg:px-12">
-          <label htmlFor="notification" class=" cursor-pointer modal-button">
+          <label htmlFor="notification" className=" cursor-pointer modal-button">
             <FaRegBell className="text-2xl mr-3" />
 
           </label>
