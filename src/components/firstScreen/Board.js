@@ -141,7 +141,6 @@ const Board = () => {
                 <div className="p-0 m-0">
                   <Link onClick={() => {
                     dispatch(setWorkspaceID(item._id))
-                    localStorage.setItem('lastWorkspaceID', item._id)
                   }}
                     to={`/${item.shortname}`}
                     className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
@@ -154,12 +153,18 @@ const Board = () => {
                   </Link>{" "}
                 </div>
                 <div>
-                  <Link to="" className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                  <Link onClick={() => {
+                    dispatch(setWorkspaceID(item._id))
+                  }}
+                    to={`/${item.shortname}/members`} className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
                     <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends> Members
                   </Link>{" "}
                 </div>
                 <div>
-                  <Link to="" className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                  <Link onClick={() => {
+                    dispatch(setWorkspaceID(item._id))
+                  }}
+                    to={`/${item.shortname}/account`} className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
                     <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
                   </Link>{" "}
                 </div>
@@ -171,7 +176,7 @@ const Board = () => {
               </div>
             </div>
             <div className="flex gap-3">
-              <LoardBoard props={item._id} />
+              <LoardBoard props={item.shortname} workspaceID={item._id} />
 
               <div className=" w-60 bg-base-100 shadow">
                 <label

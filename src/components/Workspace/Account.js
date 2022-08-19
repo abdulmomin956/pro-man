@@ -6,18 +6,31 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import { async } from "@firebase/util";
 import axios from "axios";
+import { useEffect } from "react";
 
 const Account = () => {
+  const { shortname } = useParams();
   const [visibility, setVisibility] = useState(true);
-  const { workspaceID } = useParams();
-  const [validName, setValidName] = useState("");
-  const currentWorkspace = useSelector((state) => state.currentWorkspace);
+  const [validName, setValidName] = useState(false);
+  const [matchField, setMatchField] = useState('')
+  const workspaces = useSelector((state) => state.workspace);
+  const workspace = workspaces.filter(w => w.shortname === shortname)
   const navigate = useNavigate()
+  // console.log(workspace, validName, shortname);
+
+  useEffect(() => {
+    if (workspace[0]?.title === matchField) {
+      setValidName(true)
+    }
+    else {
+      setValidName(false)
+    }
+  }, [workspace, matchField])
 
   const deleteWorkspace = async (event) => {
     console.log("Delete Workspace Button is clicked.....");
 
-    await axios.delete(`https://morning-coast-54182.herokuapp.com/sworkspace/${workspaceID}`)
+    await axios.delete(`https://morning-coast-54182.herokuapp.com/sworkspace/api/${workspace[0]?._id}`)
       .then(res => {
         // console.log(res);
         navigate('/')
@@ -141,29 +154,22 @@ const Account = () => {
                     Enter the Workspace name to delete
                   </p>
                   <input
-                    onKeyUp={(e) => setValidName(e.target.value)}
+                    onKeyUp={(e) => setMatchField(e.target.value)}
                     type="text"
                     placeholder="Type here"
                     className="input input-sm input-bordered w-full max-w-xs rounded-none"
                   />
                 </div>
 
-                {(currentWorkspace === validName && (
-                  <button
-                    onClick={deleteWorkspace}
-                    className="btn btn-outline btn-error w-full rounded-none"
-                  >
-                    Delete Workspace
-                  </button>
-                )) || (
-                    <button
-                      onClick={deleteWorkspace}
-                      className="btn btn-outline btn-error w-full rounded-none"
-                      disabled="disabled"
-                    >
-                      Delete Workspace
-                    </button>
-                  )}
+
+                <button
+                  onClick={deleteWorkspace}
+                  disabled={!validName}
+                  className="btn btn-outline btn-error w-full rounded-none"
+                >
+                  Delete Workspace
+                </button>
+
               </label>
             </label>
           </div>

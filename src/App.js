@@ -41,9 +41,9 @@ function App() {
         <Route
           path="/"
           element={
-            // <RequireAuth>
-            <Home />
-            // </RequireAuth>
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
           }
         >
           <Route path="/" element={<Board />}></Route>
