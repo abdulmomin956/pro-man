@@ -4,6 +4,7 @@ import Loading from '../shared/Loading';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from "react-redux";
 
 const LoardBoard = ({ props }) => {
     const navigate = useNavigate();
@@ -11,6 +12,19 @@ const LoardBoard = ({ props }) => {
     const workspaceID = props;
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([])
+
+    const data1 = useSelector(state => state.workspace)
+    if (data1 && workspaceID) {
+        data1?.map((item1) => {
+            const itemId = item1._id === workspaceID
+            const itemName = item1.sortname
+            console.log(itemName)
+        })
+    }
+    console.log(workspaceID)
+
+
+
     useEffect(() => {
         setLoading(true)
         fetch(`https://morning-coast-54182.herokuapp.com/board/${workspaceID}`)
@@ -29,7 +43,9 @@ const LoardBoard = ({ props }) => {
     if (loading) {
         <Loading></Loading>
     }
+
     // console.log(data);
+    // onClick={() => navigate(`/${shortname}/${item._id}`)}
     return <>{
         data?.map(item => <div key={item._id} onClick={() => navigate(`/${workspaceID}/${item._id}`)} className=" w-60 bg-base-100 shadow">
             <label

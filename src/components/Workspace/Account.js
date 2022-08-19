@@ -4,7 +4,7 @@ import CommonTopDesign from "./CommonTopDesign";
 import { MdLockOutline, MdPublic } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { async } from "@firebase/util";
+// import { async } from "@firebase/util";
 import axios from "axios";
 
 const Account = () => {
@@ -13,15 +13,15 @@ const Account = () => {
   const [validName, setValidName] = useState("");
   const currentWorkspace = useSelector((state) => state.currentWorkspace);
   const navigate = useNavigate()
-  
-  const deleteWorkspace = async(event) => {
+
+  const deleteWorkspace = async (event) => {
     console.log("Delete Workspace Button is clicked.....");
 
     await axios.delete(`https://morning-coast-54182.herokuapp.com/sworkspace/${workspaceID}`)
-    .then(res=> {
-      // console.log(res);
-      navigate('/')
-    })
+      .then(res => {
+        // console.log(res);
+        navigate('/')
+      })
 
   };
 
@@ -97,23 +97,23 @@ const Account = () => {
         <div>
           <label
             htmlFor="deleteWorkspace"
-            class="btn btn-link px-0 underline text-red-600 hover:text-blue-900 modal-button"
+            className="btn btn-link px-0 underline text-red-600 hover:text-blue-900 modal-button"
           >
             Delete this Workspace?
           </label>
 
           <div className="mx-auto w-2/12">
-            <input type="checkbox" id="deleteWorkspace" class="modal-toggle" />
-            <label for="deleteWorkspace" class="modal cursor-pointer">
+            <input type="checkbox" id="deleteWorkspace" className="modal-toggle" />
+            <label htmlFor="deleteWorkspace" className="modal cursor-pointer">
               <label
-                class="modal-box relative mx-10 md:deleteModal"
+                className="modal-box relative mx-10 md:deleteModal"
                 id="sidebarOverflow"
-                for=""
+                htmlFor=""
                 style={{ height: "70vh", width: "350px" }}
               >
                 <div className="flex items-center justify-center">
                   <label
-                    for="deleteWorkspace"
+                    htmlFor="deleteWorkspace"
                     className="btn btn-sm btn-circle absolute right-2 top-2"
                   >
                     ✕
@@ -126,7 +126,7 @@ const Account = () => {
                 </p>
                 <div className="text-gray-500 text-sm mt-3">
                   <p className="font-bold">Things to know</p>
-                  <ul class="list-disc mx-5">
+                  <ul className="list-disc mx-5">
                     <li>This is permanent and can't be undone.</li>
                     <li>All boards in this Workspace will be closed.</li>
                     <li>
@@ -144,7 +144,7 @@ const Account = () => {
                     onKeyUp={(e) => setValidName(e.target.value)}
                     type="text"
                     placeholder="Type here"
-                    class="input input-sm input-bordered w-full max-w-xs rounded-none"
+                    className="input input-sm input-bordered w-full max-w-xs rounded-none"
                   />
                 </div>
 
@@ -156,14 +156,14 @@ const Account = () => {
                     Delete Workspace
                   </button>
                 )) || (
-                  <button
-                    onClick={deleteWorkspace}
-                    className="btn btn-outline btn-error w-full rounded-none"
-                    disabled="disabled"
-                  >
-                    Delete Workspace
-                  </button>
-                )}
+                    <button
+                      onClick={deleteWorkspace}
+                      className="btn btn-outline btn-error w-full rounded-none"
+                      disabled="disabled"
+                    >
+                      Delete Workspace
+                    </button>
+                  )}
               </label>
             </label>
           </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.init";
-import Loading from "../shared/Loading";
+// import Loading from "../shared/Loading";
 import "./Profile.css";
 import { useForm } from "react-hook-form";
 import ProfileNav from "./ProfileNav";
@@ -9,11 +9,11 @@ import ProfileNav from "./ProfileNav";
 const Profile = () => {
   const [user] = useAuthState(auth);
   const name = user?.displayName;
-  const userPhoto=user?.photoURL;
+  const userPhoto = user?.photoURL;
   const {
     register,
     handleSubmit,
-   
+
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
@@ -42,16 +42,16 @@ const Profile = () => {
           <div className="profilebody-image py-12">
             {" "}
             <img src="https://i.ibb.co/mGkjjT0/Screenshot-2.png" alt="" />
-          
+
           </div>
           <div>
-              <h2 className="profilebody-heading text-3xl font-bold py-7">Manage your personal information</h2>
-              <div className="profilebody-doc p-7">
-                <p className="pb-3" > This is an Atlassian account. Edit your personal information and visibility settings through your Atlassian profile.</p>
-                <p>To learn more, view our Terms of Service or Privacy Policy.</p>
+            <h2 className="profilebody-heading text-3xl font-bold py-7">Manage your personal information</h2>
+            <div className="profilebody-doc p-7">
+              <p className="pb-3" > This is an Atlassian account. Edit your personal information and visibility settings through your Atlassian profile.</p>
+              <p>To learn more, view our Terms of Service or Privacy Policy.</p>
 
-              </div>
             </div>
+          </div>
           <div className="profilebody_about">
             <form
               onSubmit={handleSubmit(onSubmit)}
