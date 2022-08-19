@@ -6,22 +6,22 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from "react-redux";
 
-const LoardBoard = ({ props }) => {
+const LoardBoard = ({ props, workspaceID }) => {
     const navigate = useNavigate();
     // console.log(props);
-    const workspaceID = props;
+    const shortname = props;
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([])
 
-    const data1 = useSelector(state => state.workspace)
-    if (data1 && workspaceID) {
-        data1?.map((item1) => {
-            const itemId = item1._id === workspaceID
-            const itemName = item1.sortname
-            console.log(itemName)
-        })
-    }
-    console.log(workspaceID)
+    // const data1 = useSelector(state => state.workspace)
+    // if (data1 && shortname) {
+    //     data1?.map((item1) => {
+    //         const itemId = item1._id === shortname
+    //         const itemName = item1.sortname
+    //         console.log(itemName)
+    //     })
+    // }
+    // console.log(shortname)
 
 
 
@@ -47,7 +47,7 @@ const LoardBoard = ({ props }) => {
     // console.log(data);
     // onClick={() => navigate(`/${shortname}/${item._id}`)}
     return <>{
-        data?.map(item => <div key={item._id} onClick={() => navigate(`/${workspaceID}/${item._id}`)} className=" w-60 bg-base-100 shadow">
+        data?.map(item => <div key={item._id} onClick={() => navigate(`/${shortname}/${item._id}`)} className=" w-60 bg-base-100 shadow">
             <label
 
                 className=" hover:cursor-pointer hover:bg-gray-100  hover:font-bold flex w-60 h-32 justify-center items-center"

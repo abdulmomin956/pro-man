@@ -21,9 +21,7 @@ root.render(
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <Provider store={store}>
-        {/* <RequireAuth> */}
         <App />
-        {/* </RequireAuth> */}
       </Provider>
     </BrowserRouter>
   </QueryClientProvider>
