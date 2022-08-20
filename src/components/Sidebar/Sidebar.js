@@ -142,7 +142,7 @@ const Sidebar = () => {
             </div>
           </ul>
         </div>
-        Testing git push issue...
+        Testing git push issue.......
       </div>
     </div>
   );
