@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import control from '../../../src/assest/image/control.png'
 import CustomLink from '../shared/CustomLink';
 import Loading from '../shared/Loading';
@@ -8,15 +8,23 @@ import { useSelector } from "react-redux";
 import { useQuery } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { setCurrentBoards } from '../../global-state/actions/reduxActions';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
+import { FaRegBell, FaTimes } from 'react-icons/fa';
+import SidebarModal from './SidebarModal';
+// import Button from '@material-ui/core/Button';
+
 
 const Workspace = () => {
-    const navigate = useNavigate()
+
     const { shortname } = useParams()
     const [open, setOpen] = useState(null);
     const [firstLetter, setFirstLetter] = useState('')
     const workspaces = useSelector(state => state.workspace)
     const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
-    // console.log(currentWorkspace);
+    const [anchorE2, setAnchorE2] = React.useState(null);
+    // console.log(anchorEl);
     const dispatch = useDispatch()
 
 
@@ -83,6 +91,16 @@ const Workspace = () => {
 
 
 
+    const handleClick = (event) => {
+        setAnchorE2(event.currentTarget);
+
+    };
+
+    const handleClose = () => {
+        setAnchorE2(null);
+    };
+
+
 
     return (
 
@@ -109,10 +127,10 @@ const Workspace = () => {
                     <h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
                         }`}>{currentWorkspace[0]?.title}</h1>
                 </div>
-                <ul className="pt-6 mr-8">
+                <ul className={`pt-6 mr-8 w-full`}>
                     {
                         menusItem.map((menu, index) => (
-                            <CustomLink to={menu.path} key={index} className={`flex py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
+                            <CustomLink to={menu.path} key={index} className={`flex my-2  workspace-sidebar-toggle-button py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
                                 <div  >{menu.icon}</div>
                                 <span className={`${!open && "hidden"} origin-left duration-200`}>{menu.name}</span>
                             </CustomLink>
@@ -124,10 +142,9 @@ const Workspace = () => {
                     </div>
                     {
                         boards?.data?.map((item, index) => (
-                            <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex  py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
+                            <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex  py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 workspace-sidebar-toggle-button mb-2  w-full`}>
 
                                 <div >
-
                                     <button className="h-6 p-2 w-6  border-2  flex justify-center items-center cursor-pointer duration-500" style={{ backgroundImage: `url(${item.boardBg})` }} >
                                         {/* <img src={item.boardBg} alt="" /> */}
 
@@ -135,6 +152,46 @@ const Workspace = () => {
                                     </button>
                                 </div>
                                 <span className={`${!open && "hidden"} mr-2 origin-left duration-200`}>{item.title}</span>
+
+                                <div className='navbar-end ' >
+                                    {/* <label for="my-modal-3" class="btn modal-button">open modal</label> */}
+
+                                    {/* <!-- Put this part before </body> tag --> */}
+                                    {/* <SidebarModal></SidebarModal> */}
+
+                                    <button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                                        </svg>
+                                    </button>
+                                    <div >
+                                        <Menu
+
+                                            id="workspace-menu"
+                                            anchorEl={anchorE2}
+                                            keepMounted
+                                            open={Boolean(anchorE2)}
+                                            onClose={handleClose}
+                                        >
+                                            <div className='flex'>
+                                                <p className='mx-4'>{item?.title}</p>
+                                                <button className='block ml-auto mx-2' onClick={handleClose}>X</button>
+                                            </div>
+
+                                            <div >
+                                                <div class="divider"></div>
+                                                <div className='flex '>
+                                                    <li>Close board..</li>
+                                                    <svg className=' h-6 w-6   mx-16' focusable='false' viewBox="0 0 24 24" >
+                                                        <path fill='none' d="M0 0h24v24H0z" />
+                                                        <path d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z" />
+                                                    </svg>
+                                                </div>
+
+                                            </div>
+                                        </Menu>
+                                    </div>
+                                </div>
 
 
                             </CustomLink>
@@ -148,7 +205,7 @@ const Workspace = () => {
             <Outlet className={` ${!open && "scale-0"}`} />
 
 
-        </div>
+        </div >
 
     );
 };
