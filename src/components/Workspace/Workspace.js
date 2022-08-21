@@ -33,7 +33,7 @@ const Workspace = () => {
     }
 
 
-    const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/${currentWorkspace[0]?._id}`).then(res => res.json()))
+    const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${currentWorkspace[0]?._id}`).then(res => res.json()))
     useEffect(() => {
         if (currentWorkspace[0]?.title) {
             const x = currentWorkspace[0]?.title;
@@ -124,7 +124,7 @@ const Workspace = () => {
                     </div>
                     {
                         boards?.data?.map((item, index) => (
-                            <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
+                            <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex pl-3 py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
 
                                 <span className={`${!open && "hidden"} mr-2 origin-left duration-200`}>{item.title}</span>
 

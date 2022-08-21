@@ -93,7 +93,7 @@ const BoardModal = () => {
   };
   const handleBg2 = () => {
     document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/qR72gx6/bg2.jpg") center center/cover`;
-    setBackground("hhttps://i.ibb.co/qR72gx6/bg2.jpg")
+    setBackground("https://i.ibb.co/qR72gx6/bg2.jpg")
   };
   const handleBg3 = () => {
     document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/h2KhkfR/bg3.jpg") center center/cover`;
