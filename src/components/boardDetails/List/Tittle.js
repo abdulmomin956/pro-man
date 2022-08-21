@@ -85,7 +85,7 @@ const Tittle = ({ title }) => {
                                 <div  >
                                     <button className='block ml-auto mx-2' onClick={handleClose}>X</button>
                                 </div>
-                                <p className='text-center mb-2'> List Actions</p>
+                                <p className='text-center mb-2'>  </p>
 
 
                                 <Divider />

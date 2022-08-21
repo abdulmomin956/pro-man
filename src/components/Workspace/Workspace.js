@@ -33,7 +33,7 @@ const Workspace = () => {
     }
 
 
-    const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/${currentWorkspace[0]?._id}`).then(res => res.json()))
+    const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${currentWorkspace[0]?._id}`).then(res => res.json()))
     useEffect(() => {
         if (currentWorkspace[0]?.title) {
             const x = currentWorkspace[0]?.title;
@@ -53,7 +53,7 @@ const Workspace = () => {
     if (boards.isLoading) {
         return <Loading></Loading>;
     }
-    // console.log(boards);
+    console.log(boards);
 
     const menusItem = [
         {
@@ -124,8 +124,16 @@ const Workspace = () => {
                     </div>
                     {
                         boards?.data?.map((item, index) => (
-                            <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
+                            <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex  py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
 
+                                <div >
+
+                                    <button className="h-6 p-2 w-6  border-2  flex justify-center items-center cursor-pointer duration-500" style={{ backgroundImage: `url(${item.boardBg})` }} >
+                                        {/* <img src={item.boardBg} alt="" /> */}
+
+                                        <span >{item.title?.charAt(0).toUpperCase()}</span>{" "}
+                                    </button>
+                                </div>
                                 <span className={`${!open && "hidden"} mr-2 origin-left duration-200`}>{item.title}</span>
 
 

@@ -15,7 +15,7 @@ const Profiles = () => {
   const [profiles,setProfiles]=useState({});
  
   useEffect(()=>{
-    fetch(`http://localhost:5000/profile/${email}`)
+    fetch(`https://morning-coast-54182.herokuapp.com/profile/${email}`)
     .then(res=>res.json())
     .then(data=>setProfiles(data))
   },[])
@@ -25,8 +25,7 @@ const Profiles = () => {
     );
   }
   const userName=profiles.userName;
-  console.log(email);
-  console.log(userName);
+
   return (
     <div>
       <div className="top-use-info">
@@ -36,7 +35,7 @@ const Profiles = () => {
         >
           <div className="avatar p-5">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={userPhoto} />
+              <img src={userPhoto} alt="" />
             </div>
           </div>
           <div className="p-5">

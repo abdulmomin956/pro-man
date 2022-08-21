@@ -15,7 +15,7 @@ const Boards = () => {
             <CommonTopDesign></CommonTopDesign>
             <div className='mx-12'>
                 <h1 className='text-2xl'>Boards</h1>
-                <div className='grid grid-cols-4 gap-4'>
+                <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                     <div className="  bg-base-100 drop-shadow">
                         <label
 
@@ -34,11 +34,12 @@ const Boards = () => {
                     {
                         currentBoards?.map(item => <div key={item._id} onClick={() => navigate(`/${shortname}/${item._id}`)} className=" bg-base-100 drop-shadow">
                             <label
-
-                                className=" hover:cursor-pointer hover:bg-gray-100  hover:font-bold flex  h-32 justify-center items-center"
+                                
+                                className=" hover:cursor-pointer hover:bg-orange-300  hover:font-bold flex  h-32 justify-center items-center"
+                                style={{background: `url(${item.boardBg})`, backgroundSize: 'cover'}}
 
                             >
-                                <p className="mr-2 mb-16 font-bold">
+                                <p className="mr-2 text-xl text-white font-bold">
                                     {item.title}
                                 </p>
 

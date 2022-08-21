@@ -27,7 +27,7 @@ const LoardBoard = ({ props, workspaceID }) => {
 
     useEffect(() => {
         setLoading(true)
-        fetch(`https://morning-coast-54182.herokuapp.com/board/${workspaceID}`)
+        fetch(`https://morning-coast-54182.herokuapp.com/board/w/${workspaceID}`)
             .then(res => res.json())
             .then(result => {
                 setData(result)
@@ -49,14 +49,15 @@ const LoardBoard = ({ props, workspaceID }) => {
     return <>{
         data?.map(item => <div key={item._id} onClick={() => navigate(`/${shortname}/${item._id}`)} className=" w-60 bg-base-100 shadow">
             <label
-
-                className=" hover:cursor-pointer hover:bg-gray-100  hover:font-bold flex w-60 h-32 justify-center items-center"
+                style={{background: `url(${item.boardBg})`, backgroundSize: 'cover'}}
+                className=" hover:cursor-pointer text-white hover:bg-gray-700 hover:font-bold flex w-60 h-32 justify-center items-center"
             //   onClick={() => {
             //     dispatch(setWorkspaceID(item._id))
             //   }}
             >
-                <p className="mr-2">
+                <p className="mr-2 text-lg shadow-xl">
                     {item.title}
+                    
                 </p>
                 {/* <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare> */}
 

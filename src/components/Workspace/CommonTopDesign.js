@@ -13,6 +13,7 @@ const CommonTopDesign = () => {
   const workspaces = useSelector(state => state.workspace)
   const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
 
+
   const {
     register,
     handleSubmit,
@@ -33,6 +34,7 @@ const CommonTopDesign = () => {
       console.log(res);
     }
   }
+
   return (
     <div className="md:mx-16  my-10">
       <div className="md:flex justify-between items-start mx-5">

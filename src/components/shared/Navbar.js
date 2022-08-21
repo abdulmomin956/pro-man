@@ -12,7 +12,8 @@ import WorkspaceModal from "./WorkspaceModal";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { setWorkspace } from "../../global-state/actions/reduxActions";
-import { FaRegBell } from "react-icons/fa";
+import { FaRegBell, FaBoxes } from "react-icons/fa";
+import { MdGroupWork } from "react-icons/md";
 import Notification from "./Notification";
 
 // FiBell
@@ -205,7 +206,7 @@ const Navbar = () => {
                       className="mb-2 btn-sm w-full  myButton"
                       style={{ borderRadius: "0px" }}
                     >
-                      Create Board
+                     <FaBoxes ></FaBoxes>Create Board
                     </label>
 
                     {/* modal */}
@@ -216,7 +217,7 @@ const Navbar = () => {
                       className="mb-2 btn-sm w-full  myButton"
                       style={{ borderRadius: "0px" }}
                     >
-                      Create Workspace
+                    <MdGroupWork></MdGroupWork>  Create Workspace
                     </label>
                   </li>
                 </ul>
