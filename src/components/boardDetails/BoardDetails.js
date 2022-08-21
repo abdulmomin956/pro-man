@@ -18,7 +18,6 @@ const useStyle = makeStyles((theme) => ({
     root: {
         display: 'flex',
         minHeight: '100vh',
-        background: '',
         width: "100%",
         overflow: 'auto'
     },
@@ -26,13 +25,29 @@ const useStyle = makeStyles((theme) => ({
 
 const BoardDetails = () => {
     const board1 = useParams()
-    console.log(board1.id);
-    const board = useQuery(['board'], () => fetch(`https://morning-coast-54182.herokuapp.com/board/${board1.id}`))
-
+    const [loading, setLoading] = useState(false)
     const classes = useStyle()
     const [data, setData] = useState(store)
+    const [board, setBoard] = useState([])
 
-    // console.log(data);
+    useEffect(() => {
+        setLoading(true)
+        fetch(`https://morning-coast-54182.herokuapp.com/board/b/${board1.id}`)
+            .then(res => res.json())
+            .then(result => {
+                setBoard(result)
+                setLoading(true)
+            })
+            .catch(err => {
+                // console.log(err)
+                setLoading(false)
+            })
+    }, [board1.id, setBoard])
+    
+    const background = {
+        background: `url(${board?.boardBg})center center/cover`
+
+    }
 
     useEffect(() => {
         const dataJson = localStorage.getItem("data");
@@ -45,13 +60,9 @@ const BoardDetails = () => {
         localStorage.setItem('data', JSON.stringify(data))
     }, [data])
 
-    if (board.isLoading) {
+    if (loading){
         <Loading />
     }
-
-    console.log(board);
-
-
 
 
 
@@ -167,7 +178,9 @@ const BoardDetails = () => {
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId='app' type='list' direction='horizontal'>
                     {(provided) => (
-                        <div className={classes.root}
+                        <div 
+                        style={background}
+                            className={classes.root}
                             ref={provided.innerRef}
                             {...provided.droppableProps}
 

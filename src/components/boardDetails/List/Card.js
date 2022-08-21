@@ -38,8 +38,7 @@ const Card = ({ card, index }) => {
 
     }
     const classes = useStyle()
-    // console.log(card)
-    console.log(card.title)
+
     return (
         <Draggable key={card.id} draggableId={card.id} index={index} >
             {(provided) => (

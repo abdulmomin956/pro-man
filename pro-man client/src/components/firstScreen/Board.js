@@ -180,9 +180,9 @@ const Board = () => {
                 </div>
               </div>
             </div>
-            <div className="flex gap-3">
-              <LoardBoard props={item._id} />
-
+            <div className="bg-green-700  gap-3">
+              <LoardBoard className="" props={item._id} />
+              
               <div className=" w-60 bg-base-100 shadow">
                 <label
                   htmlFor="my-modal-6"

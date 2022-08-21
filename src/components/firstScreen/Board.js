@@ -175,7 +175,7 @@ const Board = () => {
                 </div> */}
               </div>
             </div>
-            <div className="flex gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               <LoardBoard props={item.shortname} workspaceID={item._id} />
 
               <div className=" w-60 bg-base-100 shadow">
