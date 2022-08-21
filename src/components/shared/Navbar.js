@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import WorkspaceModal from "./WorkspaceModal";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-import { setWorkspace } from "../../global-state/actions/reduxActions";
+import { setLoadWorkspace, setWorkspace, setWorkspaceID } from "../../global-state/actions/reduxActions";
 import { FaRegBell, FaBoxes } from "react-icons/fa";
 import { MdGroupWork } from "react-icons/md";
 import Notification from "./Notification";
@@ -19,18 +19,25 @@ import Notification from "./Notification";
 // FiBell
 
 const Navbar = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading, authError] = useAuthState(auth);
+  const loadWorkspaceState = useSelector(state => state.loadWorkspace)
   if (loading) {
     <Loading />;
   }
 
   const dispatch = useDispatch();
   const email = user.email;
-  const { isLoading, error2, data } = useQuery(['repoData'], () =>
+  const { isLoading, error, data, refetch } = useQuery(['repoData'], () =>
     fetch(`https://morning-coast-54182.herokuapp.com/workspace/${email}`).then(res =>
       res.json()
     )
   );
+  useEffect(() => {
+    if (loadWorkspaceState) {
+      refetch();
+      dispatch(setLoadWorkspace(false))
+    }
+  }, [dispatch, loadWorkspaceState, refetch])
 
   useEffect(() => {
     if (data?.length > 0) {
@@ -206,7 +213,7 @@ const Navbar = () => {
                       className="mb-2 btn-sm w-full  myButton"
                       style={{ borderRadius: "0px" }}
                     >
-                     <FaBoxes ></FaBoxes>Create Board
+                      <FaBoxes ></FaBoxes>Create Board
                     </label>
 
                     {/* modal */}
@@ -217,7 +224,7 @@ const Navbar = () => {
                       className="mb-2 btn-sm w-full  myButton"
                       style={{ borderRadius: "0px" }}
                     >
-                    <MdGroupWork></MdGroupWork>  Create Workspace
+                      <MdGroupWork></MdGroupWork>  Create Workspace
                     </label>
                   </li>
                 </ul>
