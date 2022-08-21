@@ -4,12 +4,35 @@ import { MdOutlineModeEditOutline, MdOutlineLock, MdPersonAddAlt1 } from "react-
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./Account.css";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const CommonTopDesign = () => {
   const [editMood, setEditMood] = useState(false)
   const { shortname } = useParams();
   const workspaces = useSelector(state => state.workspace)
   const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    const { newShortname, title, type, website, description } = data;
+    if (newShortname === shortname) {
+      const newData = { title, type, website, description }
+      const res = await axios.patch(`https://morning-coast-54182.herokuapp.com/sworkspace/api/${currentWorkspace[0]._id}`, newData)
+      console.log(res);
+    }
+    else {
+      const res = await axios.patch(`https://morning-coast-54182.herokuapp.com/sworkspace/api/${currentWorkspace[0]._id}`, data)
+      console.log(res);
+    }
+  }
   return (
     <div className="md:mx-16  my-10">
       <div className="md:flex justify-between items-start mx-5">
@@ -31,11 +54,11 @@ const CommonTopDesign = () => {
                   <p> Private</p>
                 </div>
               </div> :
-              <div className="pl-3">
+              <form onSubmit={handleSubmit(onSubmit)} className="pl-3">
                 <label className="label" htmlFor="name">Name</label>
-                <input type="text" className="input input-bordered w-full max-w-xs" value={currentWorkspace[0]?.title} />
+                <input {...register("title")} type="text" className="input input-bordered w-full max-w-xs" value={currentWorkspace[0]?.title} />
                 <label className="label" htmlFor="name">Workspace type</label>
-                <select type="text" className="input input-bordered w-full max-w-xs" defaultValue={currentWorkspace[0]?.type}>
+                <select {...register("type")} type="text" className="input input-bordered w-full max-w-xs" defaultValue={currentWorkspace[0]?.type}>
                   <option>Small Business</option>
                   <option>Education</option>
                   <option>Marketing</option>
@@ -45,14 +68,14 @@ const CommonTopDesign = () => {
                   <option>Others</option>
                 </select>
                 <label className="label" htmlFor="name">Short name</label>
-                <input defaultValue={currentWorkspace[0]?.shortname} type="text" className="input input-bordered w-full max-w-xs" />
+                <input {...register("newShortname")} defaultValue={currentWorkspace[0]?.shortname} type="text" className="input input-bordered w-full max-w-xs" />
                 <label className="label" htmlFor="name">Website (optional)</label>
-                <input defaultValue={currentWorkspace[0]?.website} type="text" className="input input-bordered w-full max-w-xs" />
+                <input {...register("website")} defaultValue={currentWorkspace[0]?.website} type="text" className="input input-bordered w-full max-w-xs" />
                 <label className="label" htmlFor="name">Description (optional)</label>
-                <textarea defaultValue={currentWorkspace[0]?.description} type="text" className="input input-bordered w-full max-w-xs" />
+                <textarea {...register("description")} defaultValue={currentWorkspace[0]?.description} type="text" className="input input-bordered w-full max-w-xs" />
                 <button className="btn btn-primary mr-2" type="submit">Save</button>
                 <button className="btn" type="cancel" onClick={() => setEditMood(false)}>Cancel</button>
-              </div>
+              </form>
           }
         </div>
         <div>
