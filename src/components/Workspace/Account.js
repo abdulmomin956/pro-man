@@ -12,30 +12,31 @@ const Account = () => {
   const { shortname } = useParams();
   const [visibility, setVisibility] = useState(true);
   const [validName, setValidName] = useState(false);
-  const [matchField, setMatchField] = useState('')
+  const [matchField, setMatchField] = useState("");
   const workspaces = useSelector((state) => state.workspace);
-  const workspace = workspaces.filter(w => w.shortname === shortname)
-  const navigate = useNavigate()
+  const workspace = workspaces.filter((w) => w.shortname === shortname);
+  const navigate = useNavigate();
   // console.log(workspace, validName, shortname);
 
   useEffect(() => {
     if (workspace[0]?.title === matchField) {
-      setValidName(true)
+      setValidName(true);
+    } else {
+      setValidName(false);
     }
-    else {
-      setValidName(false)
-    }
-  }, [workspace, matchField])
+  }, [workspace, matchField]);
 
   const deleteWorkspace = async (event) => {
     console.log("Delete Workspace Button is clicked.....");
 
-    await axios.delete(`https://morning-coast-54182.herokuapp.com/sworkspace/api/${workspace[0]?._id}`)
-      .then(res => {
+    await axios
+      .delete(
+        `https://morning-coast-54182.herokuapp.com/sworkspace/api/${workspace[0]?._id}`
+      )
+      .then((res) => {
         // console.log(res);
-        navigate('/')
-      })
-
+        navigate("/");
+      });
   };
 
   return (
@@ -116,7 +117,11 @@ const Account = () => {
           </label>
 
           <div className="mx-auto w-2/12">
-            <input type="checkbox" id="deleteWorkspace" className="modal-toggle" />
+            <input
+              type="checkbox"
+              id="deleteWorkspace"
+              className="modal-toggle"
+            />
             <label htmlFor="deleteWorkspace" className="modal cursor-pointer">
               <label
                 className="modal-box relative mx-10 md:deleteModal"
@@ -161,7 +166,6 @@ const Account = () => {
                   />
                 </div>
 
-
                 <button
                   onClick={deleteWorkspace}
                   disabled={!validName}
@@ -169,7 +173,6 @@ const Account = () => {
                 >
                   Delete Workspace
                 </button>
-
               </label>
             </label>
           </div>

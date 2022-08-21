@@ -11,13 +11,10 @@ import Typography from "@material-ui/core/Typography/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {
-  FaBoxes,
-  FaUserFriends,
-  FaCogs,
-} from "react-icons/fa";
+import { FaBoxes, FaUserFriends, FaCogs } from "react-icons/fa";
 import { HiViewGridAdd } from "react-icons/hi";
 import { setWorkspaceID } from "../../global-state/actions/reduxActions";
+import InviteMemberModal from "../shared/InviteMemberModal";
 
 const Sidebar = () => {
   const data = useSelector((state) => state.workspace);
@@ -45,7 +42,8 @@ const Sidebar = () => {
         </div>
         <div className="drawer-side lg:mx-7 rounded shadow">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu overflow-y-auto w-52 bg-base-100 text-base-content"
+          <ul
+            className="menu overflow-y-auto w-52 bg-base-100 text-base-content"
             id="sidebarOverflow"
           >
             {/* <!-- Sidebar content here --> */}
@@ -107,31 +105,43 @@ const Sidebar = () => {
                             to={`/${item.shortname}`}
                             className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
                           >
-                            <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards
+                            <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes>{" "}
+                            Boards
                           </Link>
                           <Link
                             to=""
                             className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
                           >
-                            <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd> Views
+                            <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd>{" "}
+                            Views
                           </Link>
-                          <Link
-                            onClick={() => {
-                              dispatch(setWorkspaceID(item._id))
-                            }}
+                          <span className="sidebar-workspace-toggle-button mb-2 w-5/6 flex justify-between">
+                            <Link
+                              onClick={() => {
+                                dispatch(setWorkspaceID(item._id));
+                              }}
                               to={`/${item.shortname}/members`}
-                            className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
-                          >
-                            <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends> Members
-                          </Link>
+                              className=" flex items-center "
+                            >
+                              <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends>{" "}
+                              Members
+                            </Link>
+                            <label
+                              className="text-xl cursor-pointer "
+                              htmlFor="inviteMember"
+                            >
+                              +
+                            </label>
+                          </span>
                           <Link
                             onClick={() => {
-                              dispatch(setWorkspaceID(item._id))
+                              dispatch(setWorkspaceID(item._id));
                             }}
-                              to={`/${item.shortname}/account`}
+                            to={`/${item.shortname}/account`}
                             className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
                           >
-                            <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
+                            <FaCogs className="mr-1 text-sm text-primary"></FaCogs>{" "}
+                            Settings
                           </Link>
                         </div>
                       </Typography>
@@ -142,8 +152,8 @@ const Sidebar = () => {
             </div>
           </ul>
         </div>
-        Testing git push issue.......
       </div>
+      <InviteMemberModal></InviteMemberModal>
     </div>
   );
 };
