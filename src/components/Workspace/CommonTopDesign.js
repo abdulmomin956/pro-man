@@ -10,6 +10,7 @@ const CommonTopDesign = () => {
   const { shortname } = useParams();
   const workspaces = useSelector(state => state.workspace)
   const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
+  console.log(currentWorkspace)
   return (
     <div className="md:mx-16  my-10">
       <div className="md:flex justify-between items-start mx-5">
