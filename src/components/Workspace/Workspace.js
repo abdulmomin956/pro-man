@@ -62,7 +62,7 @@ const Workspace = () => {
     if (boards.isLoading) {
         return <Loading></Loading>;
     }
-    console.log(boards);
+    // console.log(boards);
 
     const menusItem = [
         {
@@ -154,7 +154,7 @@ const Workspace = () => {
                                                 <span
                                                     className=" block "
                                                 >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                                                     </svg>
                                                 </span>
@@ -206,13 +206,13 @@ const Workspace = () => {
                                         }
                                     </div>
 
-                                    {/* <label for="my-modal-3" class="btn modal-button">open modal</label> */}
+                                    {/* <label for="my-modal-3" className="btn modal-button">open modal</label> */}
 
                                     {/* <!-- Put this part before </body> tag --> */}
                                     {/* <SidebarModal></SidebarModal> */}
 
                                     {/* <button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                                         </svg>
                                     </button> */}
@@ -231,7 +231,7 @@ const Workspace = () => {
                                             </div>
 
                                             <div >
-                                                <div class="divider"></div>
+                                                <div className="divider"></div>
                                                 <div className='flex '>
                                                     <li>Close board..</li>
                                                     <svg className=' h-6 w-6   mx-16' focusable='false' viewBox="0 0 24 24" >

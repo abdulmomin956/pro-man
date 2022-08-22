@@ -59,7 +59,7 @@ const Tittle = ({ title }) => {
                 <div>
                     <InputBase
                         onChange={handleOnChange}
-                        value={newTitle}
+                        defaultValue={newTitle}
                         autoFocus
                         inputProps={{ className: classes.input }}
                         fullWidth

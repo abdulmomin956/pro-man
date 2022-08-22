@@ -13,6 +13,7 @@ const CommonTopDesign = () => {
   const [editMood, setEditMood] = useState(false)
   const { shortname } = useParams();
   const workspaces = useSelector(state => state.workspace)
+  console.log(workspaces);
   const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
   const [shortnameError, setShortnameError] = useState(false)
   const dispatch = useDispatch()
@@ -68,6 +69,7 @@ const CommonTopDesign = () => {
     }
   }
 
+
   return (
     <div className="md:mx-16  my-10">
       <div className="md:flex justify-between items-start mx-5">
@@ -94,7 +96,7 @@ const CommonTopDesign = () => {
               </div> :
               <form onSubmit={handleSubmit(onSubmit)} className="pl-3">
                 <label className="label" htmlFor="name">Name</label>
-                <input {...register("title")} type="text" className="input input-bordered w-full max-w-xs" defaultValue={currentWorkspace[0]?.title} />
+                <input required {...register("title", { required: "Please enter a title" })} type="text" className="input input-bordered w-full max-w-xs" defaultValue={currentWorkspace[0]?.title} />
                 <label className="label" htmlFor="name">Workspace type</label>
                 <select {...register("type")} type="text" className="input input-bordered w-full max-w-xs" defaultValue={currentWorkspace[0]?.type}>
                   <option>Small Business</option>
@@ -106,7 +108,7 @@ const CommonTopDesign = () => {
                   <option>Others</option>
                 </select>
                 <label className="label" htmlFor="name">Short name</label>
-                <input {...register("newShortname", { onChange: () => setShortnameError(false) })} defaultValue={currentWorkspace[0]?.shortname} type="text" className="input input-bordered w-full max-w-xs" />
+                <input required {...register("newShortname", { onChange: () => setShortnameError(false) })} defaultValue={currentWorkspace[0]?.shortname} type="text" className="input input-bordered w-full max-w-xs" />
                 {
                   shortnameError && <label className="label text-red-500" htmlFor="name">Short name is taken.</label>
                 }
