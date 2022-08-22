@@ -68,7 +68,7 @@ const InputCard = ({ data, setOpen, listId, type }) => {
             // onBlur={() => setOpen(false)}
             fullWidth
             inputProps={{ className: classes.input }}
-            value={title}
+            defaultValue={title}
             placeholder={
               type === "card"
                 ? "Enter a title of this card.."

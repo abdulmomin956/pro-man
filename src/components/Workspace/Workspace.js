@@ -62,7 +62,7 @@ const Workspace = () => {
     if (boards.isLoading) {
         return <Loading></Loading>;
     }
-    console.log(boards);
+    // console.log(boards);
 
     const menusItem = [
         {
@@ -144,6 +144,7 @@ const Workspace = () => {
                                     <span className={`${!open && "hidden"} ml-2 origin-left duration-200`}>{item.title}</span>
                                 </div>
 
+
                                 {/* all board */}
 
                                 <div className='flex justify-center items-center px-2'>
@@ -151,6 +152,7 @@ const Workspace = () => {
 
                                         <div className="dropdown ">
                                             <label
+
                                                 tabIndex="0"
 
                                             >
@@ -221,6 +223,7 @@ const Workspace = () => {
                                                 <label
                                                     tabIndex="0"
 
+
                                                 >
                                                     <div className="flex justify-center items-center">
                                                         <span
@@ -233,6 +236,7 @@ const Workspace = () => {
                                                     </div>
                                                 </label >
                                             </div>
+
 
 
 
