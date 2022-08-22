@@ -20,10 +20,11 @@ const Workspace = () => {
 
     const { shortname } = useParams()
     const [open, setOpen] = useState(null);
+    const [closeB, setCloseB] = useState(false);
     const [firstLetter, setFirstLetter] = useState('')
     const workspaces = useSelector(state => state.workspace)
     const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
-    const [anchorE2, setAnchorE2] = React.useState(null);
+    const [close, setClose] = useState(false);
     // console.log(anchorEl);
     const dispatch = useDispatch()
 
@@ -91,17 +92,6 @@ const Workspace = () => {
 
 
 
-    const handleClick = (event) => {
-        setAnchorE2(event.currentTarget);
-
-    };
-
-    const handleClose = () => {
-        setAnchorE2(null);
-    };
-
-
-
     return (
 
 
@@ -146,25 +136,87 @@ const Workspace = () => {
 
                                 <div >
                                     <button className="h-6 p-2 w-6  border-2  flex justify-center items-center cursor-pointer duration-500" style={{ backgroundImage: `url(${item.boardBg})` }} >
-                                        {/* <img src={item.boardBg} alt="" /> */}
 
                                         <span >{item.title?.charAt(0).toUpperCase()}</span>{" "}
                                     </button>
                                 </div>
                                 <span className={`${!open && "hidden"} mr-2 origin-left duration-200`}>{item.title}</span>
 
-                                <div className='navbar-end ' >
+                                <div className='navbar-end pl-6' >
+
+                                    <div className="dropdown ">
+                                        <label
+                                            tabIndex="0"
+                                            className=" "
+                                        // className="btn btn-ghost btn-circle bg-black avatar"
+                                        >
+                                            <div onClick={() => setClose(!close)} className="flex justify-center items-center">
+                                                <span
+                                                    className=" block "
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </label >
+                                        {
+                                            close &&
+                                            <ul
+                                                style={{ width: '280px' }}
+                                                tabIndex="0"
+                                                className="mt-3 text-gray-500  shadow menu  dropdown-content bg-base-100 rounded w-52"
+                                            >
+                                                {
+                                                    !closeB &&
+                                                    <div className='flex justify-between items-center   mb-2 btn-sm w-full mt-2'>
+                                                        <small className="mt-2 text-center text-sm   btn-sm w-full  ">
+                                                            {item.title}
+
+                                                        </small>
+                                                        <small onClick={() => setClose(!close)} className="px-2">X</small>
+                                                    </div>
+                                                }
+                                                <hr />
+
+
+
+                                                <li onClick={() => setCloseB(!closeB)}>
+                                                    <div className="flex justify-between items-center   mb-2 btn-sm w-full mt-2 ">
+                                                        <small className="">X</small>
+                                                        <small className="mt-2 text-center text-sm   btn-sm w-full " >
+                                                            Close board
+                                                        </small>
+
+
+
+                                                    </div>
+                                                    {/* {closeB && } */}
+                                                    {
+                                                        closeB &&
+                                                        <div className='flex flex-col'>
+
+                                                            <p>You can find and reopen closed boards at the bottom of <Link to='/' className='underline hover:text-black' href="">your boards page.</Link></p>
+                                                            <button className='btn w-full btn-sm btn-warning'>Close</button>
+                                                        </div>
+                                                    }
+                                                </li>
+
+                                            </ul>
+                                        }
+                                    </div>
+
                                     {/* <label for="my-modal-3" class="btn modal-button">open modal</label> */}
 
                                     {/* <!-- Put this part before </body> tag --> */}
                                     {/* <SidebarModal></SidebarModal> */}
 
-                                    <button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                                    {/* <button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                                         </svg>
-                                    </button>
-                                    <div >
+                                    </button> */}
+                                    {/* <div >
                                         <Menu
 
                                             id="workspace-menu"
@@ -190,7 +242,7 @@ const Workspace = () => {
 
                                             </div>
                                         </Menu>
-                                    </div>
+                                    </div> */}
                                 </div>
 
 
