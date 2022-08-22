@@ -54,6 +54,7 @@ const Navbar = () => {
   if (isLoading) {
     <Loading></Loading>;
   }
+  console.log(data);
 
   const x = user?.displayName;
   const nameparts = x?.split(" ");
@@ -108,7 +109,7 @@ const Navbar = () => {
                 <ul className="py-2  bg-base-100 rounded w-52 pt-4 shadow">
                   {data?.map((item, i) => (
                     <li key={i}>
-                      <a
+                      <Link to={"/" + item?.shortname}
                         className="mb-2 btn-sm w-full rounded-none  myButton"
                         style={{ borderRadius: "0px" }}
                       >
@@ -116,7 +117,7 @@ const Navbar = () => {
                           {item?.title?.charAt(0)}
                         </span>
                         {item?.title}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -187,7 +188,8 @@ const Navbar = () => {
                 >
                   {data?.map((item, i) => (
                     <li key={i}>
-                      <a
+                      <Link
+                        to={"/" + item?.shortname}
                         className="mb-2 px-2 py-1 w-full myButton"
                         style={{ borderRadius: "0px" }}
                       >
@@ -195,7 +197,7 @@ const Navbar = () => {
                           {item?.title?.charAt(0)}
                         </span>
                         {item?.title}
-                      </a>
+                      </Link>
                       {/* <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a> */}
                     </li>
                   ))}
@@ -297,7 +299,7 @@ const Navbar = () => {
               <label
                 tabIndex="0"
                 className=" "
-                // className="btn btn-ghost btn-circle bg-black avatar"
+              // className="btn btn-ghost btn-circle bg-black avatar"
               >
                 <div
                   id="navProfile"
