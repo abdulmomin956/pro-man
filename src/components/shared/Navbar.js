@@ -24,7 +24,7 @@ import Notification from "./Notification";
 
 const Navbar = () => {
   const [user, loading, authError] = useAuthState(auth);
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
   if (loading) {
     <Loading />;
@@ -238,46 +238,47 @@ const Navbar = () => {
               </div>
 
               <div className="dropdown">
-              <label
-                  onClick={()=>setOpen(!open)}
+                <label
+                  onClick={() => setOpen(!open)}
                   tabIndex="0"
                   className="btn btn-sm mx-1 myButton rounded-none font-bold"
                 >
                   Starred
                 </label>
-                { open &&
-                <div
-                  tabIndex="0"
-                  className="dropdown-content menu p-4 bg-base-100 rounded w-96 pt-4 shadow"
-                >
-                  <label
-                    htmlFor="my-modal-sa6"
-                    className="mb-2 h-full w-full  "
-                    style={{ borderRadius: "0px" }}
+                {open && (
+                  <div
+                    tabIndex="0"
+                    className="dropdown-content menu p-4 bg-base-100 rounded w-96 pt-4 shadow"
                   >
-                    <div>
-                      <h1 className="text-xl text-center mb-3">
-                        Starred Board
-                      </h1>
-                      <label
-                        onClick={()=>setOpen(!open)}
-                        tabIndex="0"
-                        className="btn btn-sm bg-transparent btn-circle absolute right-2 top-2"
-                      >
-                        ✕
-                      </label>
-                    </div>
-                    <hr />
+                    <label
+                      htmlFor="my-modal-sa6"
+                      className="mb-2 h-full w-full  "
+                      style={{ borderRadius: "0px" }}
+                    >
+                      <div>
+                        <h1 className="text-xl text-center mb-3">
+                          Starred Board
+                        </h1>
+                        <label
+                          onClick={() => setOpen(!open)}
+                          tabIndex="0"
+                          className="btn btn-sm bg-transparent btn-circle absolute right-2 top-2"
+                        >
+                          ✕
+                        </label>
+                      </div>
+                      <hr />
 
-                    <img
-                      src="https://a.trellocdn.com/prgb/dist/images/starred-boards-menu/starred-board.cc47d0a8c646581ccd08.svg"
-                      alt=""
-                    />
-                    <p>
-                      Star important boards to access them quickly and easily.
-                    </p>
-                  </label>
-                </div> }
+                      <img
+                        src="https://a.trellocdn.com/prgb/dist/images/starred-boards-menu/starred-board.cc47d0a8c646581ccd08.svg"
+                        alt=""
+                      />
+                      <p>
+                        Star important boards to access them quickly and easily.
+                      </p>
+                    </label>
+                  </div>
+                )}
               </div>
             </ul>
           </div>

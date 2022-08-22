@@ -43,7 +43,7 @@ const InviteMemberModal = () => {
               </div>
               <div>
                 <textarea
-                  class="textarea w-full textarea-bordered"
+                  className="textarea w-full textarea-bordered"
                   placeholder="Bio"
                 ></textarea>
               </div>
