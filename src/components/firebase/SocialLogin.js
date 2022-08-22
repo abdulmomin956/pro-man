@@ -14,6 +14,7 @@ const SocialLogin = ({ children }) => {
 
     const handleSignUp = async () => {
         await signInWithGoogle()
+        
 
     }
 

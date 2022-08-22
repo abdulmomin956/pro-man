@@ -35,6 +35,22 @@ const Register = () => {
         await createUserWithEmailAndPassword(data.email, data.password, data.displayName)
         const userName = data.name + " " + data.lastName
         await updateProfile({ displayName: userName });
+        const userInfo = {
+          name: userName,
+          email: data.email,
+        };
+
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
         reset()
         // console.log(data)
     };
