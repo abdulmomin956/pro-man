@@ -132,117 +132,113 @@ const Workspace = () => {
                     </div>
                     {
                         boards?.data?.map((item, index) => (
-                            <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex  py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 workspace-sidebar-toggle-button mb-2  w-full`}>
+                            <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex justify-between  py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-2 workspace-sidebar-toggle-button mb-2  w-full`}>
 
-                                <div >
-                                    <button className="h-6 p-2 w-6  border-2  flex justify-center items-center cursor-pointer duration-500" style={{ backgroundImage: `url(${item.boardBg})` }} >
+                                <div className='flex justify-center items-center '>
+                                    <div >
+                                        <button className="h-6  w-6  border-2  flex justify-center items-center cursor-pointer duration-500" style={{ backgroundImage: `url(${item.boardBg})` }} >
 
-                                        <span >{item.title?.charAt(0).toUpperCase()}</span>{" "}
-                                    </button>
+                                            <span >{item.title?.charAt(0).toUpperCase()}</span>{" "}
+                                        </button>
+                                    </div>
+                                    <span className={`${!open && "hidden"} ml-2 origin-left duration-200`}>{item.title}</span>
                                 </div>
-                                <span className={`${!open && "hidden"} mr-2 origin-left duration-200`}>{item.title}</span>
 
-                                <div className='navbar-end pl-6' >
+                                {/* all board */}
 
-                                    <div className="dropdown ">
-                                        <label
-                                            tabIndex="0"
-                                            className=" "
-                                        // className="btn btn-ghost btn-circle bg-black avatar"
-                                        >
-                                            <div onClick={() => setClose(!close)} className="flex justify-center items-center">
-                                                <span
-                                                    className=" block "
-                                                >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                        </label >
-                                        {
-                                            close &&
-                                            <ul
-                                                style={{ width: '280px' }}
+                                <div className='flex justify-center items-center px-2'>
+                                    <div className={`${!open && "hidden"}  origin-left duration-200 navbar-end`}  >
+
+                                        <div className="dropdown ">
+                                            <label
                                                 tabIndex="0"
-                                                className="mt-3 text-gray-500  shadow menu  dropdown-content bg-base-100 rounded w-52"
+
                                             >
-                                                {
-                                                    !closeB &&
-                                                    <div className='flex justify-between items-center   mb-2 btn-sm w-full mt-2'>
-                                                        <small className="mt-2 text-center text-sm   btn-sm w-full  ">
-                                                            {item.title}
-
-                                                        </small>
-                                                        <small onClick={() => setClose(!close)} className="px-2">X</small>
-                                                    </div>
-                                                }
-                                                <hr />
-
-
-
-                                                <li onClick={() => setCloseB(!closeB)}>
-                                                    <div className="flex justify-between items-center   mb-2 btn-sm w-full mt-2 ">
-                                                        <small className="">X</small>
-                                                        <small className="mt-2 text-center text-sm   btn-sm w-full " >
-                                                            Close board
-                                                        </small>
-
-
-
-                                                    </div>
-                                                    {/* {closeB && } */}
+                                                <div onClick={() => setClose(!close)} className="flex justify-center items-center">
+                                                    <span
+                                                        className=" block "
+                                                    >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </label >
+                                            {
+                                                close &&
+                                                <ul
+                                                    style={{ width: '280px' }}
+                                                    tabIndex="0"
+                                                    className="mt-3 text-gray-500  shadow menu  dropdown-content bg-base-100 rounded w-52"
+                                                >
                                                     {
-                                                        closeB &&
-                                                        <div className='flex flex-col'>
+                                                        !closeB &&
+                                                        <div className='flex justify-between items-center   mb-2 btn-sm w-full mt-2'>
+                                                            <small className="mt-2 text-center text-sm   btn-sm w-full  ">
+                                                                {item.title}
 
-                                                            <p>You can find and reopen closed boards at the bottom of <Link to='/' className='underline hover:text-black' href="">your boards page.</Link></p>
-                                                            <button className='btn w-full btn-sm btn-warning'>Close</button>
+                                                            </small>
+                                                            <small onClick={() => setClose(!close)} className="px-2">X</small>
                                                         </div>
                                                     }
-                                                </li>
+                                                    <hr />
 
-                                            </ul>
-                                        }
+
+
+                                                    <li onClick={() => setCloseB(!closeB)}>
+                                                        <div className="flex justify-between items-center   mb-2 btn-sm w-full mt-2 ">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                                            </svg>
+                                                            <small className="mt-2 text-center text-sm   btn-sm w-full " >
+                                                                Close board
+                                                            </small>
+
+
+
+                                                        </div>
+
+                                                        {
+                                                            closeB &&
+                                                            <div className='flex flex-col'>
+
+                                                                <p>You can find and reopen closed boards at the bottom of <Link to='/' className='underline hover:text-black' href="">your boards page.</Link></p>
+                                                                <button className='btn w-full btn-sm btn-warning'>Close</button>
+                                                            </div>
+                                                        }
+                                                    </li>
+
+                                                </ul>
+                                            }
+                                        </div>
+
+
+
                                     </div>
+                                    <div>
+                                        <div className={`${!open && "hidden"} ml-2 origin-left duration-200 navbar-end`}  >
+                                            <div className="dropdown ">
+                                                <label
+                                                    tabIndex="0"
 
-                                    {/* <label for="my-modal-3" class="btn modal-button">open modal</label> */}
-
-                                    {/* <!-- Put this part before </body> tag --> */}
-                                    {/* <SidebarModal></SidebarModal> */}
-
-                                    {/* <button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                        </svg>
-                                    </button> */}
-                                    {/* <div >
-                                        <Menu
-
-                                            id="workspace-menu"
-                                            anchorEl={anchorE2}
-                                            keepMounted
-                                            open={Boolean(anchorE2)}
-                                            onClose={handleClose}
-                                        >
-                                            <div className='flex'>
-                                                <p className='mx-4'>{item?.title}</p>
-                                                <button className='block ml-auto mx-2' onClick={handleClose}>X</button>
+                                                >
+                                                    <div className="flex justify-center items-center">
+                                                        <span
+                                                            className=" block "
+                                                        >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </label >
                                             </div>
 
-                                            <div >
-                                                <div class="divider"></div>
-                                                <div className='flex '>
-                                                    <li>Close board..</li>
-                                                    <svg className=' h-6 w-6   mx-16' focusable='false' viewBox="0 0 24 24" >
-                                                        <path fill='none' d="M0 0h24v24H0z" />
-                                                        <path d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z" />
-                                                    </svg>
-                                                </div>
 
-                                            </div>
-                                        </Menu>
-                                    </div> */}
+
+
+                                        </div>
+                                    </div>
                                 </div>
 
 
