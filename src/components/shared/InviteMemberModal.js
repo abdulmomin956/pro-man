@@ -1,6 +1,31 @@
+import { Hidden } from "@material-ui/core";
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const InviteMemberModal = () => {
+  const [matchField, setMatchField] = useState("");
+  const [users, setUsers] = useState([]);
+  const [selectMember, setSelectMember] = useState("")
+
+  useEffect(() => {
+    fetch(`https://morning-coast-54182.herokuapp.com/users`)
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  }, []);
+
+  // console.log(users)
+  /* et userDiv;
+  const handleFindUser = (e) => {
+    userDiv = users.map((user, index) => (
+      <div key={index}>
+        <p>{user.emil}</p>
+      </div>
+    ));
+  }; */
+  // console.log(users[5]?.email);
+  console.log(selectMember);
+
   return (
     <div>
       <div>
@@ -20,7 +45,7 @@ const InviteMemberModal = () => {
                 >
                   ✕
                 </label>
-                <h3 className="text-lg text-center mb-1">
+                <h3 className="text-lg font-bold text-center mb-1">
                   Invite to Workspace{" "}
                 </h3>
               </div>
@@ -28,19 +53,32 @@ const InviteMemberModal = () => {
 
               <div className="mt-4 mb-2 flex justify-between items-center">
                 <input
-                  //   onKeyUp={(e) => setMatchField(e.target.value)}
+                  onKeyUp={(e) => {
+                    setMatchField(e.target.value);
+                  }}
                   type="text"
                   placeholder="Enter email address"
                   className="input input-sm input-bordered w-full  rounded-none"
                 />
                 <button
                   // onClick={}
-                  // disabled={!......}
+                  disabled={!selectMember}
                   className="btn btn-sm btn-outline ml-3 rounded-none"
                 >
                   Send Invite
                 </button>
               </div>
+                  {users?.filter((user)=>{
+                    if(matchField === ""){
+                      return
+                    } else if(user.email?.toLowerCase().includes(matchField?.toLocaleLowerCase())){
+                      console.log(user)
+                      return user
+
+                    }
+                  })?.map((user, index) => {
+                    return <p key={index} onClick={() => setSelectMember(user.email)}> {user.email} </p> 
+                  })}
               <div>
                 <textarea
                   className="textarea w-full textarea-bordered"
