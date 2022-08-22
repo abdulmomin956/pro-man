@@ -12,7 +12,7 @@ const Pending = () => {
         <input
           type="text"
           placeholder="Filter by name"
-          class="input input-sm rounded-none my-3 input-bordered w-full max-w-xs"
+          className="input input-sm rounded-none my-3 input-bordered w-full max-w-xs"
         />
       </div>
       <hr />

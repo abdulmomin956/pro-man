@@ -31,8 +31,9 @@ const Register = () => {
     }, [user, navigate])
 
     const onSubmit = async (data) => {
+        console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password, data.displayName)
-        const userName = data.firstName + " " + data.lastName
+        const userName = data.name + " " + data.lastName
         await updateProfile({ displayName: userName });
         reset()
         // console.log(data)
