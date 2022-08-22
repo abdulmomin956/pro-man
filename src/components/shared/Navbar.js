@@ -11,10 +11,6 @@ import { useSelector } from "react-redux";
 import WorkspaceModal from "./WorkspaceModal";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-<<<<<<< HEAD
-import { setWorkspace } from "../../global-state/actions/reduxActions";
-import { FaRegBell } from "react-icons/fa";
-=======
 import {
   setLoadWorkspace,
   setWorkspace,
@@ -22,14 +18,13 @@ import {
 } from "../../global-state/actions/reduxActions";
 import { FaRegBell, FaBoxes } from "react-icons/fa";
 import { MdGroupWork } from "react-icons/md";
->>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
 import Notification from "./Notification";
 
 // FiBell
 
 const Navbar = () => {
   const [user, loading, authError] = useAuthState(auth);
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
   if (loading) {
     <Loading />;
@@ -51,17 +46,8 @@ const Navbar = () => {
 
   useEffect(() => {
     if (data?.length > 0) {
-      const allWorkspaceData = data?.map(item => (
-        {
-          _id: item._id, title: item.title
-        }
-      ))
       // console.log(allWorkspaceData);
-<<<<<<< HEAD
-      dispatch(setWorkspace(allWorkspaceData))
-=======
       dispatch(setWorkspace(data));
->>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
     }
   }, [data, dispatch]);
 
@@ -69,25 +55,11 @@ const Navbar = () => {
     <Loading></Loading>;
   }
 
-<<<<<<< HEAD
-
-  const allWorkspace = useSelector(state => state.workspace)
-  // console.log(allWorkspace);
-
-
-
-  let filtered = ["First", "Last"];
-
-=======
->>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
   const x = user?.displayName;
   const nameparts = x?.split(" ");
-  filtered = nameparts?.filter((e) => e); //to remove empty strings (""). some times it return an undifined when we ware
-  const initials = filtered ? (
-    filtered[0][0].toUpperCase() + filtered[1][0].toUpperCase()
-  ) : (
-    <></>
-  );
+  const initials =
+    nameparts[0].charAt(0).toUpperCase() + nameparts[1].charAt(0).toUpperCase();
+  // console.log(initials);
   const logout = () => {
     signOut(auth);
   };
@@ -118,14 +90,10 @@ const Navbar = () => {
               className="menu menu-compact dropdown-content mt-3 py-4 shadow bg-base-100 rounded-lg w-52 "
             >
               <li tabIndex="0">
-<<<<<<< HEAD
-                <p className="justify-between mb-2 p-2 pl-5 pr-5 myButton"  style={{borderRadius: "0px"}}>
-=======
                 <p
                   className="justify-between mb-2 p-2 pl-5 pr-5 myButton"
                   style={{ borderRadius: "0px" }}
                 >
->>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                   Workspaces
                   <svg
                     className="fill-current"
@@ -137,14 +105,6 @@ const Navbar = () => {
                     <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
                   </svg>
                 </p>
-<<<<<<< HEAD
-                <ul
-                  className="py-2  bg-base-100 rounded w-52 pt-4 shadow"
-                >
-                  {allWorkspace?.map((item, i) => (
-                    <li key={i}>
-                      <a className="mb-2 btn-sm w-full rounded-none  myButton" style={{borderRadius: "0px"}}>
-=======
                 <ul className="py-2  bg-base-100 rounded w-52 pt-4 shadow">
                   {data?.map((item, i) => (
                     <li key={i}>
@@ -152,7 +112,6 @@ const Navbar = () => {
                         className="mb-2 btn-sm w-full rounded-none  myButton"
                         style={{ borderRadius: "0px" }}
                       >
->>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                         <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
@@ -163,15 +122,9 @@ const Navbar = () => {
                 </ul>
               </li>
               <li tabIndex="0">
-<<<<<<< HEAD
-                <button className=" p-2 pl-5 pr-5 myButton"  style={{borderRadius: "0px"}}>Create</button>
-                <ul
-                  className="py-2 bg-base-100 rounded w-52 pt-4 shadow"
-=======
                 <button
                   className=" p-2 pl-5 pr-5 myButton"
                   style={{ borderRadius: "0px" }}
->>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                 >
                   Create
                 </button>
@@ -181,7 +134,7 @@ const Navbar = () => {
                     <label
                       htmlFor="my-modal-6"
                       className="mb-2 btn-sm w-full  myButton"
-                      style={{borderRadius: "0px"}}
+                      style={{ borderRadius: "0px" }}
                     >
                       Create Board
                     </label>
@@ -192,7 +145,7 @@ const Navbar = () => {
                     <label
                       htmlFor="my-modal-sa6"
                       className="mb-2 btn-sm w-full  myButton"
-                      style={{borderRadius: "0px"}}
+                      style={{ borderRadius: "0px" }}
                     >
                       Create Workspace
                     </label>
@@ -232,16 +185,12 @@ const Navbar = () => {
                   tabIndex="0"
                   className="dropdown-content menu py-2 bg-base-100 rounded w-52 pt-4 shadow"
                 >
-                  {allWorkspace?.map((item, i) => (
+                  {data?.map((item, i) => (
                     <li key={i}>
-<<<<<<< HEAD
-                      <a className="mb-2 px-2 py-1 w-full myButton"  style={{borderRadius: "0px"}}>
-=======
                       <a
                         className="mb-2 px-2 py-1 w-full myButton"
                         style={{ borderRadius: "0px" }}
                       >
->>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                         <span className="text-white font-bold rounded-sm px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
@@ -269,13 +218,9 @@ const Navbar = () => {
                     <label
                       htmlFor="my-modal-6"
                       className="mb-2 btn-sm w-full  myButton"
-                      style={{borderRadius: "0px"}}
+                      style={{ borderRadius: "0px" }}
                     >
-<<<<<<< HEAD
-                      Create Board
-=======
                       <FaBoxes></FaBoxes>Create Board
->>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                     </label>
 
                     {/* modal */}
@@ -284,78 +229,69 @@ const Navbar = () => {
                     <label
                       htmlFor="my-modal-sa6"
                       className="mb-2 btn-sm w-full  myButton"
-                      style={{borderRadius: "0px"}}
+                      style={{ borderRadius: "0px" }}
                     >
-<<<<<<< HEAD
-                      Create Workspace
-=======
                       <MdGroupWork></MdGroupWork> Create Workspace
->>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                     </label>
                   </li>
                 </ul>
               </div>
 
               <div className="dropdown">
-              <label
-                  onClick={()=>setOpen(!open)}
+                <label
+                  onClick={() => setOpen(!open)}
                   tabIndex="0"
                   className="btn btn-sm mx-1 myButton rounded-none font-bold"
                 >
                   Starred
                 </label>
-                { open &&
-                <div
-                  tabIndex="0"
-                  className="dropdown-content menu p-4 bg-base-100 rounded w-96 pt-4 shadow"
-                >
-                  <label
-                    htmlFor="my-modal-sa6"
-                    className="mb-2 h-full w-full  "
-                    style={{ borderRadius: "0px" }}
+                {open && (
+                  <div
+                    tabIndex="0"
+                    className="dropdown-content menu p-4 bg-base-100 rounded w-96 pt-4 shadow"
                   >
-                    <div>
-                      <h1 className="text-xl text-center mb-3">
-                        Starred Board
-                      </h1>
-                      <label
-                        onClick={()=>setOpen(!open)}
-                        tabIndex="0"
-                        className="btn btn-sm bg-transparent btn-circle absolute right-2 top-2"
-                      >
-                        ✕
-                      </label>
-                    </div>
-                    <hr />
+                    <label
+                      htmlFor="my-modal-sa6"
+                      className="mb-2 h-full w-full  "
+                      style={{ borderRadius: "0px" }}
+                    >
+                      <div>
+                        <h1 className="text-xl text-center mb-3">
+                          Starred Board
+                        </h1>
+                        <label
+                          onClick={() => setOpen(!open)}
+                          tabIndex="0"
+                          className="btn btn-sm bg-transparent btn-circle absolute right-2 top-2"
+                        >
+                          ✕
+                        </label>
+                      </div>
+                      <hr />
 
-                    <img
-                      src="https://a.trellocdn.com/prgb/dist/images/starred-boards-menu/starred-board.cc47d0a8c646581ccd08.svg"
-                      alt=""
-                    />
-                    <p>
-                      Star important boards to access them quickly and easily.
-                    </p>
-                  </label>
-                </div> }
+                      <img
+                        src="https://a.trellocdn.com/prgb/dist/images/starred-boards-menu/starred-board.cc47d0a8c646581ccd08.svg"
+                        alt=""
+                      />
+                      <p>
+                        Star important boards to access them quickly and easily.
+                      </p>
+                    </label>
+                  </div>
+                )}
               </div>
             </ul>
           </div>
         </div>
 
         <div className="navbar-end lg:px-12">
-<<<<<<< HEAD
-          <label htmlFor="notification" className=" cursor-pointer modal-button">
-          <FaRegBell className="text-2xl mr-3" />
-          
-=======
           <label
             htmlFor="notification"
             className=" cursor-pointer modal-button"
           >
             <FaRegBell className="text-2xl mr-3" />
->>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
           </label>
-        
+
           {user && (
             <div className="dropdown dropdown-end">
               <label
@@ -377,13 +313,6 @@ const Navbar = () => {
                 className="mt-3  shadow menu menu-compact dropdown-content bg-base-100 rounded w-52"
               >
                 <li>
-<<<<<<< HEAD
-                <Link to="/profile" className="justify-between   mb-2 btn-sm w-full  myButton">
-                    Profile
-                    <span className="badge">New</span>
-                  </Link>
-                 
-=======
                   <Link
                     to="/profile"
                     className="justify-between   mb-2 btn-sm w-full  myButton"
@@ -391,7 +320,6 @@ const Navbar = () => {
                     Profile
                     <span className="badge">New</span>
                   </Link>
->>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                 </li>
                 <li>
                   <a className="mb-2 btn-sm w-full  myButton">Settings</a>
