@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "sa6",
+    "title": "Business",
+    "img": "../Images/Business.jpg"
+  },
+  {
+    "_id": "sa61",
+    "title": "Design",
+    "img": "../Images/Design.jpg"
+  },
+  {
+    "_id": "sa62",
+    "title": "Education",
+    "img": "../Images/Education.jpg"
+  },
+  {
+    "_id": "sa63",
+    "title": "Engineering",
+    "img": "../Images/Engineering.jpg"
+  },
+  {
+    "_id": "sa64",
+    "title": "Marketing",
+    "img": "../Images/Marketing.jpg"
+  },
+  {
+    "_id": "sa65",
+    "title": "Remote",
+    "img": "../Images/Remote Work.jpg"
+  }
+]
