@@ -13,6 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 import { FaRegBell, FaTimes } from 'react-icons/fa';
 import SidebarModal from './SidebarModal';
+import axios from 'axios';
 // import Button from '@material-ui/core/Button';
 
 
@@ -63,6 +64,15 @@ const Workspace = () => {
         return <Loading></Loading>;
     }
     // console.log(boards);
+
+    const handleDelete = async id => {
+        console.log(id);
+        const res = await axios.delete(`https://morning-coast-54182.herokuapp.com/board/b/${id}`)
+        console.log(res);
+        if (res.status === 200) {
+            boards.refetch();
+        }
+    }
 
     const menusItem = [
         {
@@ -193,7 +203,7 @@ const Workspace = () => {
                                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                                             </svg>
                                                             <small className="mt-2 text-center text-sm   btn-sm w-full " >
-                                                                Close board
+                                                                Delete board
                                                             </small>
 
 
@@ -204,8 +214,8 @@ const Workspace = () => {
                                                             closeB &&
                                                             <div className='flex flex-col'>
 
-                                                                <p>You can find and reopen closed boards at the bottom of <Link to='/' className='underline hover:text-black' href="">your boards page.</Link></p>
-                                                                <button className='btn w-full btn-sm btn-warning'>Close</button>
+                                                                <p>If you delete board, it will be deleted permanently</p>
+                                                                <button onClick={() => handleDelete(item._id)} className='btn w-full btn-sm btn-warning'>Delete</button>
                                                             </div>
                                                         }
                                                     </li>
