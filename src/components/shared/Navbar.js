@@ -19,12 +19,15 @@ import {
 import { FaRegBell, FaBoxes } from "react-icons/fa";
 import { MdGroupWork } from "react-icons/md";
 import Notification from "./Notification";
+import TempleteBoard from "./TempleteBoard";
+import StarredBoard from "./StarredBoard";
 
 // FiBell
 
 const Navbar = () => {
   const [user, loading, authError] = useAuthState(auth);
   const [open, setOpen] = useState(false);
+  const [openTemp, setOpenTemp] = useState(false)
   const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
   if (loading) {
     <Loading />;
@@ -54,7 +57,7 @@ const Navbar = () => {
   if (isLoading) {
     <Loading></Loading>;
   }
-  console.log(data);
+  // console.log(data);
 
   const x = user?.displayName;
   const nameparts = x?.split(" ");
@@ -246,42 +249,50 @@ const Navbar = () => {
                   className="btn btn-sm mx-1 myButton rounded-none font-bold"
                 >
                   Starred
-                </label>
-                {open && (
-                  <div
-                    tabIndex="0"
-                    className="dropdown-content menu p-4 bg-base-100 rounded w-96 pt-4 shadow"
-                  >
-                    <label
-                      htmlFor="my-modal-sa6"
-                      className="mb-2 h-full w-full  "
-                      style={{ borderRadius: "0px" }}
+                  <a>
+                    <svg
+                      className="fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
                     >
-                      <div>
-                        <h1 className="text-xl text-center mb-3">
-                          Starred Board
-                        </h1>
-                        <label
-                          onClick={() => setOpen(!open)}
-                          tabIndex="0"
-                          className="btn btn-sm bg-transparent btn-circle absolute right-2 top-2"
-                        >
-                          ✕
-                        </label>
-                      </div>
-                      <hr />
+                      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                    </svg>
+                  </a>
+                </label>
 
-                      <img
-                        src="https://a.trellocdn.com/prgb/dist/images/starred-boards-menu/starred-board.cc47d0a8c646581ccd08.svg"
-                        alt=""
-                      />
-                      <p>
-                        Star important boards to access them quickly and easily.
-                      </p>
-                    </label>
-                  </div>
+
+                {open && (
+                  <StarredBoard setOpen={setOpen} open={open}></StarredBoard>
                 )}
               </div>
+
+              <div className="dropdown">
+                <label
+                  onClick={() => setOpenTemp(!openTemp)}
+                  tabIndex="0"
+                  className="btn btn-sm mx-1 myButton rounded-none font-bold"
+                >
+                  Templetes
+                  <a>
+                    <svg
+                      className="fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                    </svg>
+                  </a>
+                </label>
+                {openTemp && (
+                  <TempleteBoard setOpenTemp={setOpenTemp} openTemp={openTemp}></TempleteBoard>
+                )}
+              </div>
+
+
             </ul>
           </div>
         </div>
