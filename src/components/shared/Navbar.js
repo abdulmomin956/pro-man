@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink, Link } from "react-router-dom";
 import auth from "../firebase/firebase.init";
-import workspaceModal from './WorkspaceModal'
+import workspaceModal from "./WorkspaceModal";
 import BoardModal from "./BoardModal";
 import Loading from "./Loading";
 import axios from "axios";
@@ -11,25 +11,43 @@ import { useSelector } from "react-redux";
 import WorkspaceModal from "./WorkspaceModal";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
+<<<<<<< HEAD
 import { setWorkspace } from "../../global-state/actions/reduxActions";
 import { FaRegBell } from "react-icons/fa";
+=======
+import {
+  setLoadWorkspace,
+  setWorkspace,
+  setWorkspaceID,
+} from "../../global-state/actions/reduxActions";
+import { FaRegBell, FaBoxes } from "react-icons/fa";
+import { MdGroupWork } from "react-icons/md";
+>>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
 import Notification from "./Notification";
 
 // FiBell
 
 const Navbar = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading, authError] = useAuthState(auth);
+  const [open, setOpen] = useState(false)
+  const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
   if (loading) {
     <Loading />;
   }
 
   const dispatch = useDispatch();
   const email = user.email;
-  const { isLoading, error2, data } = useQuery(['repoData'], () =>
-    fetch(`https://morning-coast-54182.herokuapp.com/workspace/${email}`).then(res =>
-      res.json()
+  const { isLoading, error, data, refetch } = useQuery(["repoData"], () =>
+    fetch(`https://morning-coast-54182.herokuapp.com/workspace/${email}`).then(
+      (res) => res.json()
     )
   );
+  useEffect(() => {
+    if (loadWorkspaceState) {
+      refetch();
+      dispatch(setLoadWorkspace(false));
+    }
+  }, [dispatch, loadWorkspaceState, refetch]);
 
   useEffect(() => {
     if (data?.length > 0) {
@@ -39,15 +57,19 @@ const Navbar = () => {
         }
       ))
       // console.log(allWorkspaceData);
+<<<<<<< HEAD
       dispatch(setWorkspace(allWorkspaceData))
+=======
+      dispatch(setWorkspace(data));
+>>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
     }
-  }, [data, dispatch])
-
+  }, [data, dispatch]);
 
   if (isLoading) {
     <Loading></Loading>;
   }
 
+<<<<<<< HEAD
 
   const allWorkspace = useSelector(state => state.workspace)
   // console.log(allWorkspace);
@@ -56,6 +78,8 @@ const Navbar = () => {
 
   let filtered = ["First", "Last"];
 
+=======
+>>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
   const x = user?.displayName;
   const nameparts = x?.split(" ");
   filtered = nameparts?.filter((e) => e); //to remove empty strings (""). some times it return an undifined when we ware
@@ -67,8 +91,6 @@ const Navbar = () => {
   const logout = () => {
     signOut(auth);
   };
-
-
 
   return (
     <div>
@@ -96,7 +118,14 @@ const Navbar = () => {
               className="menu menu-compact dropdown-content mt-3 py-4 shadow bg-base-100 rounded-lg w-52 "
             >
               <li tabIndex="0">
+<<<<<<< HEAD
                 <p className="justify-between mb-2 p-2 pl-5 pr-5 myButton"  style={{borderRadius: "0px"}}>
+=======
+                <p
+                  className="justify-between mb-2 p-2 pl-5 pr-5 myButton"
+                  style={{ borderRadius: "0px" }}
+                >
+>>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                   Workspaces
                   <svg
                     className="fill-current"
@@ -108,12 +137,22 @@ const Navbar = () => {
                     <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
                   </svg>
                 </p>
+<<<<<<< HEAD
                 <ul
                   className="py-2  bg-base-100 rounded w-52 pt-4 shadow"
                 >
                   {allWorkspace?.map((item, i) => (
                     <li key={i}>
                       <a className="mb-2 btn-sm w-full rounded-none  myButton" style={{borderRadius: "0px"}}>
+=======
+                <ul className="py-2  bg-base-100 rounded w-52 pt-4 shadow">
+                  {data?.map((item, i) => (
+                    <li key={i}>
+                      <a
+                        className="mb-2 btn-sm w-full rounded-none  myButton"
+                        style={{ borderRadius: "0px" }}
+                      >
+>>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                         <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
@@ -124,10 +163,19 @@ const Navbar = () => {
                 </ul>
               </li>
               <li tabIndex="0">
+<<<<<<< HEAD
                 <button className=" p-2 pl-5 pr-5 myButton"  style={{borderRadius: "0px"}}>Create</button>
                 <ul
                   className="py-2 bg-base-100 rounded w-52 pt-4 shadow"
+=======
+                <button
+                  className=" p-2 pl-5 pr-5 myButton"
+                  style={{ borderRadius: "0px" }}
+>>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                 >
+                  Create
+                </button>
+                <ul className="py-2 bg-base-100 rounded w-52 pt-4 shadow">
                   <li>
                     {/* <!-- The button to open modal --> */}
                     <label
@@ -186,7 +234,14 @@ const Navbar = () => {
                 >
                   {allWorkspace?.map((item, i) => (
                     <li key={i}>
+<<<<<<< HEAD
                       <a className="mb-2 px-2 py-1 w-full myButton"  style={{borderRadius: "0px"}}>
+=======
+                      <a
+                        className="mb-2 px-2 py-1 w-full myButton"
+                        style={{ borderRadius: "0px" }}
+                      >
+>>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                         <span className="text-white font-bold rounded-sm px-1 uppercase bg-indigo-400">
                           {item?.title?.charAt(0)}
                         </span>
@@ -216,7 +271,11 @@ const Navbar = () => {
                       className="mb-2 btn-sm w-full  myButton"
                       style={{borderRadius: "0px"}}
                     >
+<<<<<<< HEAD
                       Create Board
+=======
+                      <FaBoxes></FaBoxes>Create Board
+>>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                     </label>
 
                     {/* modal */}
@@ -227,19 +286,74 @@ const Navbar = () => {
                       className="mb-2 btn-sm w-full  myButton"
                       style={{borderRadius: "0px"}}
                     >
+<<<<<<< HEAD
                       Create Workspace
+=======
+                      <MdGroupWork></MdGroupWork> Create Workspace
+>>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                     </label>
                   </li>
                 </ul>
+              </div>
+
+              <div className="dropdown">
+              <label
+                  onClick={()=>setOpen(!open)}
+                  tabIndex="0"
+                  className="btn btn-sm mx-1 myButton rounded-none font-bold"
+                >
+                  Starred
+                </label>
+                { open &&
+                <div
+                  tabIndex="0"
+                  className="dropdown-content menu p-4 bg-base-100 rounded w-96 pt-4 shadow"
+                >
+                  <label
+                    htmlFor="my-modal-sa6"
+                    className="mb-2 h-full w-full  "
+                    style={{ borderRadius: "0px" }}
+                  >
+                    <div>
+                      <h1 className="text-xl text-center mb-3">
+                        Starred Board
+                      </h1>
+                      <label
+                        onClick={()=>setOpen(!open)}
+                        tabIndex="0"
+                        className="btn btn-sm bg-transparent btn-circle absolute right-2 top-2"
+                      >
+                        ✕
+                      </label>
+                    </div>
+                    <hr />
+
+                    <img
+                      src="https://a.trellocdn.com/prgb/dist/images/starred-boards-menu/starred-board.cc47d0a8c646581ccd08.svg"
+                      alt=""
+                    />
+                    <p>
+                      Star important boards to access them quickly and easily.
+                    </p>
+                  </label>
+                </div> }
               </div>
             </ul>
           </div>
         </div>
 
         <div className="navbar-end lg:px-12">
+<<<<<<< HEAD
           <label htmlFor="notification" className=" cursor-pointer modal-button">
           <FaRegBell className="text-2xl mr-3" />
           
+=======
+          <label
+            htmlFor="notification"
+            className=" cursor-pointer modal-button"
+          >
+            <FaRegBell className="text-2xl mr-3" />
+>>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
           </label>
         
           {user && (
@@ -249,11 +363,11 @@ const Navbar = () => {
                 className=" "
                 // className="btn btn-ghost btn-circle bg-black avatar"
               >
-                <div id="navProfile" className="flex justify-center items-center">
-                  <span
-                    title={user.displayName}
-                    className=" font-bold block "
-                  >
+                <div
+                  id="navProfile"
+                  className="flex justify-center items-center"
+                >
+                  <span title={user.displayName} className=" font-bold block ">
                     {initials}
                   </span>
                 </div>
@@ -263,11 +377,21 @@ const Navbar = () => {
                 className="mt-3  shadow menu menu-compact dropdown-content bg-base-100 rounded w-52"
               >
                 <li>
+<<<<<<< HEAD
                 <Link to="/profile" className="justify-between   mb-2 btn-sm w-full  myButton">
                     Profile
                     <span className="badge">New</span>
                   </Link>
                  
+=======
+                  <Link
+                    to="/profile"
+                    className="justify-between   mb-2 btn-sm w-full  myButton"
+                  >
+                    Profile
+                    <span className="badge">New</span>
+                  </Link>
+>>>>>>> 5703c1d9ce03f421387177856b93e067c6200dec
                 </li>
                 <li>
                   <a className="mb-2 btn-sm w-full  myButton">Settings</a>
