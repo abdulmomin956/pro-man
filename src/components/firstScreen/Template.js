@@ -72,7 +72,7 @@ const Template = () => {
         {categories.map((template) => (
           <div key={template._id} className="">
             <img
-              className="w-[120px] mx-auto hover:shadow-xl hover:rounded-lg"
+              className="w-[120px] mx-auto hover:shadow-xl rounded-md"
               src={template.img}
               alt=""
             />
@@ -94,9 +94,9 @@ const Template = () => {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
-        {popularTemplates.map((template, i) => (
+        {popularTemplates.map((template) => (
           <div
-            key={i}
+            key={template._id}
             className="align-middle"
             style={{
               height: "100px",
