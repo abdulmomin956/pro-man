@@ -1,6 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Template = () => {
   const [categories, setCategories] = useState([]);
@@ -66,33 +65,38 @@ const Template = () => {
   return (
     <div className="px-4">
       {/* This Board pages showing when enter to the site */}
-      <p className="text-2xl font-semibold my-3">Featured categories</p>
+      <p className="text-2xl font-semibold mt-3">Featured categories</p>
 
       {/* **Featured categories start here** */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 ">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 cursor-pointer my-8">
         {categories.map((template) => (
           <div key={template._id} className="">
             <img
-              className="w-[120px] hover:shadow-xl hover:rounded-lg"
+              className="w-[120px] mx-auto hover:shadow-xl rounded-md"
               src={template.img}
               alt=""
             />
-            <p className="text-base font-semibold">{template.title}</p>
+            <p className="text-base font-semibold text-center">
+              {template.title}
+            </p>
           </div>
         ))}
       </div>
 
       {/* **Your Workspace section start here** */}
-      <h2 className="text-2xl font-medium my-6">
-        <span className="flex items-center text-gray-700">
-          New and notable templates
-        </span>
-      </h2>
+      <div className="flex items-center flex-row gap-3 mb-6">
+        <img
+          className="w-[24px] rounded-md"
+          src="https://a.trellocdn.com/prgb/dist/images/templates/new-and-notable.32ad10f52fc078a76ea4.svg"
+          alt=""
+        />
+        <p className="text-2xl font-semibold"> New and notable templates</p>
+      </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
-        {popularTemplates.map((template, i) => (
+        {popularTemplates.map((template) => (
           <div
-            key={i}
+            key={template._id}
             className="align-middle"
             style={{
               height: "100px",
