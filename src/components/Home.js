@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 // import Navbar from './shared/Navbar';
-import Sidebar from './Sidebar/Sidebar';
+import Sidebar from "./Sidebar/Sidebar";
 
 const Home = () => {
-    return (
-        <div className='px-11' style={{ backgroundColor: "#F5F5F5", zIndex: '0' }}>
-            <Sidebar></Sidebar>
-        </div>
-    );
+  return (
+    <div className=" max-w-7xl mx-auto">
+      <Sidebar></Sidebar>
+    </div>
+  );
 };
 
 export default Home;

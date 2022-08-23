@@ -3,9 +3,9 @@ import React from "react";
 const EachTemplate = ({ item }) => {
   const { bg, profilePic, title, creator, about, used, views } = item;
   return (
-    <div className="border-2">
-      <div>
-        <img className="w-[264px] rounded-md" src={bg} alt="" />
+    <div>
+      <div className=" ">
+        <img className="rounded-md w-auto" src={bg} alt="" />
       </div>
 
       <div className="px-4 mt-[-38px] pb-6">
