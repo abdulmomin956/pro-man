@@ -6,7 +6,8 @@ import { useState } from "react";
 const InviteMemberModal = () => {
   const [matchField, setMatchField] = useState("");
   const [users, setUsers] = useState([]);
-  const [selectMember, setSelectMember] = useState("")
+  const [selectMember, setSelectMember] = useState("");
+  const [btnDisable, setBtnDisable] = useState(false);
 
   useEffect(() => {
     fetch(`https://morning-coast-54182.herokuapp.com/users`)
@@ -15,14 +16,14 @@ const InviteMemberModal = () => {
   }, []);
 
   // console.log(users)
-  /* et userDiv;
-  const handleFindUser = (e) => {
-    userDiv = users.map((user, index) => (
-      <div key={index}>
-        <p>{user.emil}</p>
-      </div>
-    ));
-  }; */
+  useEffect(() => {
+    if (selectMember) {
+      setBtnDisable(false);
+    } else {
+      setBtnDisable(true);
+    }
+  }, [selectMember]);
+
   // console.log(users[5]?.email);
   console.log(selectMember);
 
@@ -57,12 +58,13 @@ const InviteMemberModal = () => {
                     setMatchField(e.target.value);
                   }}
                   type="text"
-                  placeholder="Enter email address"
+                  placeholder={`Enter email address`}
                   className="input input-sm input-bordered w-full  rounded-none"
+                  
                 />
                 <button
                   // onClick={}
-                  disabled={!selectMember}
+                  disabled={btnDisable}
                   className="btn btn-sm btn-outline ml-3 rounded-none"
                 >
                   Send Invite
