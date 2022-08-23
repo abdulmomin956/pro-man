@@ -1,8 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import EachTemplate from "./EachTemplate";
 
 const Template = () => {
   const [categories, setCategories] = useState([]);
+  const [popularTemplates, setPopularTemplates] = useState([]);
+  const [demoTemplates, setDemoTemplates] = useState([]);
+  const [businessTemplates, setBusinessTemplates] = useState([]);
 
   useEffect(() => {
     fetch("Templates/featuredCategories.json")
@@ -10,62 +14,27 @@ const Template = () => {
       .then((data) => setCategories(data));
   }, []);
 
-  const popularTemplates = [
-    {
-      _id: 1,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-    {
-      _id: 2,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-    },
-    {
-      _id: 3,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-    {
-      _id: 4,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-    },
-    {
-      _id: 5,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-    {
-      _id: 6,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-    },
-    {
-      _id: 7,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-    {
-      _id: 8,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-    },
-    {
-      _id: 9,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-    {
-      _id: 10,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-  ];
+  useEffect(() => {
+    fetch("Templates/featuredData.json")
+      .then((res) => res.json())
+      .then((data) => setPopularTemplates(data));
+  }, []);
+
+  useEffect(() => {
+    const demoTemplates = popularTemplates.slice(0, 3);
+    const businessTemplates = popularTemplates
+      .filter((item) => item.categorie === "Business")
+      .slice(0, 3);
+    setDemoTemplates(demoTemplates);
+    setBusinessTemplates(businessTemplates);
+  }, [popularTemplates]);
+
+  console.log(demoTemplates);
+
   return (
-    <div className="px-4">
+    <div className="px-4 my-7">
       {/* This Board pages showing when enter to the site */}
-      <p className="text-2xl font-semibold mt-3">Featured categories</p>
+      <p className="text-xl font-semibold mt-3">Featured categories</p>
 
       {/* **Featured categories start here** */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 cursor-pointer my-8">
@@ -90,28 +59,40 @@ const Template = () => {
           src="https://a.trellocdn.com/prgb/dist/images/templates/new-and-notable.32ad10f52fc078a76ea4.svg"
           alt=""
         />
-        <p className="text-2xl font-semibold"> New and notable templates</p>
+        <p className="text-xl font-semibold"> New and notable templates</p>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {demoTemplates.map((item) => (
+          <EachTemplate key={item._id} item={item}></EachTemplate>
+        ))}
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 ">
-        {popularTemplates.map((template) => (
-          <div
-            key={template._id}
-            className="align-middle"
-            style={{
-              height: "100px",
-              maxWidth: "180px",
-              borderRadius: "5px",
-              backgroundSize: "cover",
-              backgroundImage: `url(${template.img})`,
-            }}
-          >
-            <div>
-              <button className="btn btn-xs btn-accent m-3">TEMPLATE</button>
-            </div>
-            <p className="text-base font-bold text-white ">{template.title} </p>
-          </div>
-        ))}
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/business.6b1a625e841b96791d68.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Business</p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {businessTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/design.e617072931480fdd44da.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Design</p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
       </div>
 
       {/* **Your Workspace section End here** */}
