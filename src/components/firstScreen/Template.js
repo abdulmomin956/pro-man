@@ -5,7 +5,7 @@ const Template = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("Templates/featuredData.json")
+    fetch("Templates/featuredCategories.json")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
@@ -68,11 +68,11 @@ const Template = () => {
       <p className="text-2xl font-semibold mt-3">Featured categories</p>
 
       {/* **Featured categories start here** */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 cursor-pointer my-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 cursor-pointer my-8">
         {categories.map((template) => (
           <div key={template._id} className="">
             <img
-              className="w-[120px] mx-auto hover:shadow-xl rounded-md"
+              className="w-[105px] mx-auto hover:shadow-xl rounded-md"
               src={template.img}
               alt=""
             />
@@ -93,7 +93,7 @@ const Template = () => {
         <p className="text-2xl font-semibold"> New and notable templates</p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 ">
         {popularTemplates.map((template) => (
           <div
             key={template._id}
