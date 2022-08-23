@@ -1,0 +1,88 @@
+[
+  {
+    "_id": "sa58",
+    "bg": "../Images/background/1..jpg",
+    "profilePic": "../Images/people/1..png",
+    "title": "Employee Manuaal",
+    "creator": "by Pro Man Team",
+    "about": "Get your new hires up and running with this simple employee manual!",
+    "used": "13.5K",
+    "views": "136.5K"
+  },
+  {
+    "_id": "er89",
+    "bg": "../Images/background/2..jpg",
+    "profilePic": "../Images/people/2..png",
+    "title": "Daily Task Management",
+    "creator": "by Mitchell Fry, Lead Software Engineer @ Oliver Wyman Digital",
+    "about": "Keep track of what to do and when.",
+    "used": "1.5K",
+    "views": "196.9K"
+  },
+  {
+    "_id": "bn55",
+    "bg": "../Images/background/3..jpg",
+    "profilePic": "../Images/people/3..png",
+    "title": "Weekly Meeting Template",
+    "creator": "by Jason Gibb, Chief Operating Officer @ BNG Team",
+    "about": "This is a weekly meeting template compatible with the Entrepreneurial Operating System (EOS).",
+    "used": "3.5K",
+    "views": "16.5K"
+  },
+
+  {
+    "_id": "bn78",
+    "categorie": "Business",
+    "bg": "../Images/background/4..jpg",
+    "profilePic": "../Images/people/4..png",
+    "title": "A Lead Management Pipeline by Crmble",
+    "creator": "by Toni, Founder @ Crmble",
+    "about": "Use this board to manage inventory or swag requests with the Crmble Power-Up!",
+    "used": "23.5K",
+    "views": "25.5K"
+  },
+  {
+    "_id": "bn78",
+    "categorie": "Business",
+    "bg": "../Images/background/5..jpg",
+    "profilePic": "../Images/people/5..png",
+    "title": "Lean Canvas",
+    "creator": "by Syarfandi Achmad",
+    "about": "Lean Canvas is a 1-page business plan template created by Ash Maurya that helps you deconstruct your idea into its key assumptions.",
+    "used": "28.5K",
+    "views": "250.5K"
+  },
+  {
+    "_id": "bn78",
+    "categorie": "Business",
+    "bg": "../Images/background/6..jpg",
+    "profilePic": "../Images/people/6..png",
+    "title": "Grant Tracking Template",
+    "creator": "by Shahzeb Irshad, Grants, Strategy and Project Management Specialistby Toni, Founder @ Crmble",
+    "about": "Track grant funding opportunities for your non profit organization or social enterprise.",
+    "used": "7.7K",
+    "views": "253.5K"
+  },
+  {
+    "_id": "bn78",
+    "categorie": "Business",
+    "bg": "../Images/background/7..jpg",
+    "profilePic": "../Images/people/7..png",
+    "title": "Align Your Team With V2MOM",
+    "creator": "by Salesforce Essentials",
+    "about": "Get everyone in your organization in sync, whether you’re a small business or a global company.",
+    "used": "230.5K",
+    "views": "2.5K"
+  },
+  {
+    "_id": "bn78",
+    "categorie": "Business",
+    "bg": "../Images/background/8..jpg",
+    "profilePic": "../Images/people/8..png",
+    "title": "Business Model Canvas",
+    "creator": "by Oshane Bailey @ Jamaican Developers Group",
+    "about": "Develop new or document existing business models.",
+    "used": "6.4K",
+    "views": "352.5K"
+  }
+]
