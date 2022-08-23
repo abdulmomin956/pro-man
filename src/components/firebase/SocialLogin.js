@@ -25,7 +25,7 @@ const SocialLogin = ({ children }) => {
       email: user.user.email,
     };
 
-    fetch("https://morning-coast-54182.herokuapp.com/users", {
+    fetch("https://morning-coast-54182.herokuapp.com/api/reg", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -34,7 +34,7 @@ const SocialLogin = ({ children }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       });
 
      navigate(from, { replace: true })

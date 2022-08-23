@@ -1,4 +1,3 @@
-import { Hidden } from "@material-ui/core";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -23,9 +22,20 @@ const InviteMemberModal = () => {
       setBtnDisable(true);
     }
   }, [selectMember]);
-
   // console.log(users[5]?.email);
-  console.log(selectMember);
+  // console.log(selectMember);
+
+  const handleModalSubmit = (event) => {
+    event.preventDefault();
+    let textArea = event.target.textArea.value;
+    console.log("Modal is submit......", textArea);
+    setSelectMember("");
+    setMatchField("");
+    textArea = "";
+  };
+  const handleSelectEmail = (user) => {
+    setSelectMember(user.email);
+  };
 
   return (
     <div>
@@ -52,41 +62,64 @@ const InviteMemberModal = () => {
               </div>
               <hr></hr>
 
-              <div className="mt-4 mb-2 flex justify-between items-center">
-                <input
-                  onKeyUp={(e) => {
-                    setMatchField(e.target.value);
-                  }}
-                  type="text"
-                  placeholder={`Enter email address`}
-                  className="input input-sm input-bordered w-full  rounded-none"
-                  
-                />
-                <button
-                  // onClick={}
-                  disabled={btnDisable}
-                  className="btn btn-sm btn-outline ml-3 rounded-none"
-                >
-                  Send Invite
-                </button>
-              </div>
-                  {users?.filter((user)=>{
-                    if(matchField === ""){
-                      return
-                    } else if(user.email?.toLowerCase().includes(matchField?.toLocaleLowerCase())){
-                      console.log(user)
-                      return user
-
+              <form onSubmit={handleModalSubmit}>
+                <div className="mt-4 mb-2 flex justify-between items-center">
+                  {selectMember ? (
+                    <p className="text-blue-600 border px-5 py-1 w-full">
+                      {selectMember}{" "}
+                    </p>
+                  ) : (
+                    <input
+                      onKeyUp={(e) => {
+                        setMatchField(e.target.value);
+                      }}
+                      type="text"
+                      name="email"
+                      placeholder={`Enter email address`}
+                      className="input input-sm input-bordered w-full  rounded-none"
+                    />
+                  )}
+                  <button
+                    disabled={btnDisable}
+                    type="submit"
+                    className="btn btn-sm btn-outline ml-3 rounded-none"
+                  >
+                    Send Invite
+                  </button>
+                </div>                
+                <div>
+                  <textarea
+                    className={`textarea w-full textarea-bordered ${
+                      selectMember ? "block" : "hidden"
+                    }`}
+                    placeholder="Bio"
+                    name="textArea"
+                  ></textarea>
+                </div>
+                <div className={`${selectMember && "hidden"}`}>
+                {users
+                  ?.filter((user) => {
+                    if (matchField === "") {
+                      return;
+                    } else if (
+                      user.email
+                        ?.toLowerCase()
+                        .includes(matchField?.toLocaleLowerCase())
+                    ) {
+                      // console.log(user)
+                      return user;
                     }
-                  })?.map((user, index) => {
-                    return <p key={index} onClick={() => setSelectMember(user.email)}> {user.email} </p> 
+                  })
+                  ?.map((user, index) => {
+                    return (
+                      <p key={index} onClick={() => handleSelectEmail(user)}>
+                        {" "}
+                        {user.email}{" "}
+                      </p>
+                    );
                   })}
-              <div>
-                <textarea
-                  className="textarea w-full textarea-bordered"
-                  placeholder="Bio"
-                ></textarea>
-              </div>
+                </div>
+              </form>
             </label>
           </label>
         </div>

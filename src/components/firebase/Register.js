@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-
-
 import { useNavigate } from 'react-router-dom';
 import auth from './firebase.init';
 import SocialLogin from './SocialLogin';
@@ -40,7 +38,7 @@ const Register = () => {
           email: data.email,
         };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://morning-coast-54182.herokuapp.com/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
