@@ -1,12 +1,12 @@
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import auth from "../firebase/firebase.init";
-import workspaceModal from "./WorkspaceModal";
+// import workspaceModal from "./WorkspaceModal";
 import BoardModal from "./BoardModal";
 import Loading from "./Loading";
-import axios from "axios";
+// import axios from "axios";
 import { useSelector } from "react-redux";
 import WorkspaceModal from "./WorkspaceModal";
 import { useDispatch } from "react-redux";
@@ -14,12 +14,12 @@ import { useQuery } from "@tanstack/react-query";
 import {
   setLoadWorkspace,
   setWorkspace,
-  setWorkspaceID,
+  // setWorkspaceID,
 } from "../../global-state/actions/reduxActions";
 import { FaRegBell, FaBoxes } from "react-icons/fa";
 import { MdGroupWork } from "react-icons/md";
 import Notification from "./Notification";
-import TempleteBoard from "./TempleteBoard";
+// import TempleteBoard from "./TempleteBoard";
 import StarredBoard from "./StarredBoard";
 
 // FiBell
@@ -27,7 +27,7 @@ import StarredBoard from "./StarredBoard";
 const Navbar = () => {
   const [user, loading, authError] = useAuthState(auth);
   const [open, setOpen] = useState(false);
-  const [openTemp, setOpenTemp] = useState(false)
+  // const [openTemp, setOpenTemp] = useState(false)
   const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
   if (loading) {
     <Loading />;
@@ -173,7 +173,7 @@ const Navbar = () => {
                   style={{ fontWeight: 700 }}
                 >
                   Workspaces{" "}
-                  <a>
+                  <p>
                     <svg
                       className="fill-current"
                       xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +183,7 @@ const Navbar = () => {
                     >
                       <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                     </svg>
-                  </a>
+                  </p>
                 </label>
                 <ul
                   tabIndex="0"
@@ -249,7 +249,7 @@ const Navbar = () => {
                   className="btn btn-sm mx-1 myButton rounded-none font-bold"
                 >
                   Starred
-                  <a>
+                  <p>
                     <svg
                       className="fill-current"
                       xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +259,7 @@ const Navbar = () => {
                     >
                       <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                     </svg>
-                  </a>
+                  </p>
                 </label>
 
 
@@ -268,7 +268,7 @@ const Navbar = () => {
                 )}
               </div>
 
-              <div className="dropdown">
+              {/* <div className="dropdown">
                 <label
                   onClick={() => setOpenTemp(!openTemp)}
                   tabIndex="0"
@@ -290,7 +290,7 @@ const Navbar = () => {
                 {openTemp && (
                   <TempleteBoard setOpenTemp={setOpenTemp} openTemp={openTemp}></TempleteBoard>
                 )}
-              </div>
+              </div> */}
 
 
             </ul>
@@ -335,7 +335,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <a className="mb-2 btn-sm w-full  myButton">Settings</a>
+                  <p className="mb-2 btn-sm w-full  myButton">Settings</p>
                 </li>
                 <li>
                   <p onClick={logout} className="btn-sm w-full  myButton">
