@@ -124,6 +124,7 @@ const InviteMemberModal = () => {
           </label>
         </div>
       </div>
+      Testing gitHub contribution
     </div>
   );
 };
