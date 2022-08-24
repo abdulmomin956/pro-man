@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 import LoardBoard from "./LoardBoard";
 import { Link } from "react-router-dom";
+import HomeScreen from "./HomeScreen";
 
 
 
@@ -28,6 +29,7 @@ const Board = () => {
   // if (data) {
   //   console.log(data)
   // }
+  // console.log(data)
 
 
 
@@ -177,6 +179,7 @@ const Board = () => {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               <LoardBoard props={item.shortname} workspaceID={item._id} />
+
 
               <div className=" w-60 bg-base-100 shadow">
                 <label

@@ -12,6 +12,7 @@ const LoardBoard = ({ props, workspaceID }) => {
     const shortname = props;
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([])
+    // console.log(data)
 
     // const data1 = useSelector(state => state.workspace)
     // if (data1 && shortname) {
@@ -49,7 +50,7 @@ const LoardBoard = ({ props, workspaceID }) => {
     return <>{
         data?.map(item => <div key={item._id} onClick={() => navigate(`/${shortname}/${item._id}`)} className=" w-60 bg-base-100 shadow">
             <label
-                style={{background: `url(${item.boardBg})`, backgroundSize: 'cover'}}
+                style={{ background: `url(${item.boardBg})`, backgroundSize: 'cover' }}
                 className=" hover:cursor-pointer text-white hover:bg-gray-700 hover:font-bold flex w-60 h-32 justify-center items-center"
             //   onClick={() => {
             //     dispatch(setWorkspaceID(item._id))
@@ -57,7 +58,7 @@ const LoardBoard = ({ props, workspaceID }) => {
             >
                 <p className="mr-2 text-lg shadow-xl">
                     {item.title}
-                    
+
                 </p>
                 {/* <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare> */}
 
