@@ -8,7 +8,13 @@ const HomeScreenAllBoards = ({ props, workspaceID }) => {
     const shortname = props;
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([])
-    console.log(data)
+    // const [numOfElement, setNumOfElement] = useState('')
+    const sliceData = data.slice(1)
+    console.log(sliceData);
+
+    if (sliceData) {
+        // console.log(sliceData)
+    }
 
     useEffect(() => {
         setLoading(true)
@@ -26,7 +32,7 @@ const HomeScreenAllBoards = ({ props, workspaceID }) => {
     }, [workspaceID])
 
     if (loading) {
-        <Loading></Loading>
+        return <Loading></Loading>
     }
 
     return <>{

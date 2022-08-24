@@ -63,7 +63,7 @@ const TempleteBoard = ({ openTemp, setOpenTemp }) => {
                         <div className='mt-2'>
                             {
                                 bTempletes && bTempletes.map((templete) => (
-                                    <div onClick={() => handleTemp(templete.name, templete.imgURL)} className='flex my-2  items-center'><img style={{ width: '40px', height: '40px' }} className='rounded' src={templete.imgURL} alt="" /> <p className='ml-2'>{templete.name}</p></div>
+                                    <div onClick={() => handleTemp(templete.name, templete.imgURL)} className='flex my-2  items-center cursor-pointer hover:bg-gray-200'><img style={{ width: '40px', height: '40px' }} className='rounded' src={templete.imgURL} alt="" /> <p className='ml-2'>{templete.name}</p></div>
                                 ))
                             }
                         </div>
