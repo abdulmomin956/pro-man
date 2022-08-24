@@ -27,23 +27,37 @@ const Template = () => {
 
   useEffect(() => {
     const demoTemplates = popularTemplates.slice(0, 3);
+    setDemoTemplates(demoTemplates);
+
     const businessTemplates = popularTemplates
       .filter((item) => item.categorie === "Business")
       .slice(0, 3);
+    setBusinessTemplates(businessTemplates);
+
     const designTemplates = popularTemplates
       .filter((item) => item.categorie === "Design")
       .slice(0, 3);
+    setDesignTemplates(designTemplates);
+
     const educationTemplates = popularTemplates
       .filter((item) => item.categorie === "Education")
       .slice(0, 3);
+    setEducationTemplates(educationTemplates);
+
     const engineeringTemplates = popularTemplates
       .filter((item) => item.categorie === "Engineering")
       .slice(0, 3);
-    setDemoTemplates(demoTemplates);
-    setBusinessTemplates(businessTemplates);
-    setDesignTemplates(designTemplates);
-    setEducationTemplates(educationTemplates);
     setEngineeringTemplates(engineeringTemplates);
+
+    const marketingTemplates = popularTemplates
+      .filter((item) => item.categorie === "Marketing")
+      .slice(0, 3);
+    setMarketingTemplates(marketingTemplates);
+
+    const remoteTemplates = popularTemplates
+      .filter((item) => item.categorie === "Remote")
+      .slice(0, 3);
+    setRemoteTemplates(remoteTemplates);
   }, [popularTemplates]);
 
   return (
@@ -141,6 +155,38 @@ const Template = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {engineeringTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/marketing.3695bf4ae87a54c23f88.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Marketing</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {marketingTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/remote-work.338e484944b19a8df667.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Remote work</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {remoteTemplates.map((item) => (
             <EachTemplate key={item._id} item={item}></EachTemplate>
           ))}
         </div>
