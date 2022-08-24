@@ -70,7 +70,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-primary w-full ">
+      <div style={{ zIndex: 200 }} className="navbar bg-primary w-full ">
 
         <div className="navbar-start lg:px-12">
 

@@ -74,14 +74,6 @@ const TempleteBoardModal = ({ tempBMTitle, bgUrl }) => {
                         autoFocus
                         fullWidth
                     />
-                    {/* --------------Board Title------------ */}
-                    {/* <label className="label">
-            {errors.boardTitle?.type === "required" && (
-              <span className="label-text-alt text-red-500">
-                {errors.boardTitle.message}
-              </span>
-            )}
-          </label> */}
                 </div>
                 <div className="form-control w-full mb-4">
                     <label className="label">
@@ -90,12 +82,8 @@ const TempleteBoardModal = ({ tempBMTitle, bgUrl }) => {
                         </span>
                     </label>
                     <select
-                        // defaultValue={lastWorkspaceID}
                         name="workspaceID"
                         className="select select-bordered select-sm w-full h-[30px] mt-2"
-                    // {...register("workspaceID", {
-                    //   onChange: (e) => { dispatch(setWorkspaceID(e.target.value)) }
-                    // })}
                     >
                         {
                             allWorkspace?.map(item =>
@@ -104,15 +92,6 @@ const TempleteBoardModal = ({ tempBMTitle, bgUrl }) => {
                         }
                     </select>
                     <label className="label">Select your workspace </label>
-                    {/* --------------Error ------------- */}
-
-                    {/* <label className="label">
-            {errors.boardTitle?.type === "required" && (
-              <span className="label-text-alt text-red-500">
-                {errors.boardTitle.message}
-              </span>
-            )}
-          </label> */}
                 </div>
 
                 <div>
@@ -121,7 +100,6 @@ const TempleteBoardModal = ({ tempBMTitle, bgUrl }) => {
                         defaultValue={"workspace"}
                         className="select select-bordered select-sm w-full h-[30px] mt-2"
                         name="visibility"
-                    // {...register("visibility")}
                     >
                         <option value="private">Private</option>
                         <option value="workspace">Workspace</option>
