@@ -19,7 +19,7 @@ import {
 import { FaRegBell, FaBoxes } from "react-icons/fa";
 import { MdGroupWork } from "react-icons/md";
 import Notification from "./Notification";
-// import TempleteBoard from "./TempleteBoard";
+import TempleteBoard from "./TempleteBoard";
 import StarredBoard from "./StarredBoard";
 
 // FiBell
@@ -27,7 +27,7 @@ import StarredBoard from "./StarredBoard";
 const Navbar = () => {
   const [user, loading, authError] = useAuthState(auth);
   const [open, setOpen] = useState(false);
-  // const [openTemp, setOpenTemp] = useState(false)
+  const [openTemp, setOpenTemp] = useState(false)
   const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
   if (loading) {
     <Loading />;
@@ -70,7 +70,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div style={{ zIndex: "200" }} className="navbar bg-accent w-full">
+      <div style={{ zIndex: "200" }} className="navbar bg-accent w-full p-0">
         <div className="navbar-start lg:px-12">
           <div className="dropdown">
             <label tabIndex="0" className="btn myButton mb-3 lg:hidden">
@@ -268,14 +268,14 @@ const Navbar = () => {
                 )}
               </div>
 
-              {/* <div className="dropdown">
+              <div className="dropdown">
                 <label
                   onClick={() => setOpenTemp(!openTemp)}
                   tabIndex="0"
                   className="btn btn-sm mx-1 myButton rounded-none font-bold"
                 >
                   Templetes
-                  <a>
+                  <p>
                     <svg
                       className="fill-current"
                       xmlns="http://www.w3.org/2000/svg"
@@ -285,12 +285,12 @@ const Navbar = () => {
                     >
                       <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                     </svg>
-                  </a>
+                  </p>
                 </label>
                 {openTemp && (
                   <TempleteBoard setOpenTemp={setOpenTemp} openTemp={openTemp}></TempleteBoard>
                 )}
-              </div> */}
+              </div>
 
 
             </ul>

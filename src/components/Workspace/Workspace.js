@@ -200,9 +200,6 @@ const Workspace = () => {
                                                             <small className="mt-2 text-center text-sm   btn-sm w-full " >
                                                                 Delete board
                                                             </small>
-
-
-
                                                         </div>
 
                                                         {
