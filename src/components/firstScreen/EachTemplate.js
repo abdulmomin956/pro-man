@@ -5,7 +5,11 @@ const EachTemplate = ({ item }) => {
   return (
     <div>
       <div className=" ">
-        <img className="rounded-md w-auto" src={bg} alt="" />
+        <img
+          className="rounded-md md:w-auto md:h-auto h-[135px] w-[100vw]"
+          src={bg}
+          alt=""
+        />
       </div>
 
       <div className="px-4 mt-[-38px] pb-6">
