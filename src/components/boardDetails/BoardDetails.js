@@ -194,9 +194,13 @@ const BoardDetails = () => {
     return (
 
         <storeApi.Provider value={{ addMoreCard, addMoreList, updateListTitle }}>
+
             <DragDropContext onDragEnd={onDragEnd}>
+
                 <Droppable droppableId='app' type='list' direction='horizontal'>
+
                     {(provided) => (
+
                         <div
                             style={background}
                             className={classes.root}
@@ -204,6 +208,7 @@ const BoardDetails = () => {
                             {...provided.droppableProps}
 
                         >
+
                             {data?.listIds?.map((listId, index) => {
                                 const list = data.lists[listId];
                                 // prop drilling
