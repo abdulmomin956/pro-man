@@ -13,13 +13,14 @@ import axios from 'axios';
 
 
 const Workspace = () => {
-
     const { shortname } = useParams()
     const [open, setOpen] = useState(null);
     const [closeB, setCloseB] = useState(false);
     const [firstLetter, setFirstLetter] = useState('')
     const workspaces = useSelector(state => state.workspace)
     const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
+    // console.log(currentWorkspace)
+
     const [close, setClose] = useState(false);
     // console.log(anchorEl);
     const dispatch = useDispatch()
@@ -39,6 +40,7 @@ const Workspace = () => {
 
 
     const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${currentWorkspace[0]?._id}`).then(res => res.json()))
+    console.log(boards)
     useEffect(() => {
         if (currentWorkspace[0]?.title) {
             const x = currentWorkspace[0]?.title;
