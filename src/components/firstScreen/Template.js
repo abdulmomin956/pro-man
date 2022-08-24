@@ -29,8 +29,6 @@ const Template = () => {
     setBusinessTemplates(businessTemplates);
   }, [popularTemplates]);
 
-  console.log(demoTemplates);
-
   return (
     <div className="px-4 my-7">
       {/* This Board pages showing when enter to the site */}
@@ -61,7 +59,7 @@ const Template = () => {
         />
         <p className="text-xl font-semibold"> New and notable templates</p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {demoTemplates.map((item) => (
           <EachTemplate key={item._id} item={item}></EachTemplate>
         ))}
@@ -76,7 +74,7 @@ const Template = () => {
           />
           <p className="text-xl font-semibold">Business</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {businessTemplates.map((item) => (
             <EachTemplate key={item._id} item={item}></EachTemplate>
           ))}
@@ -92,7 +90,7 @@ const Template = () => {
           />
           <p className="text-xl font-semibold">Design</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
       </div>
 
       {/* **Your Workspace section End here** */}
