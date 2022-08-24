@@ -249,5 +249,115 @@
     "about": "Develop an agile workflow that keeps your team of developers on task and under deadline.",
     "used": "106K",
     "views": "23.5K"
+  },
+  {
+    "_id": "mr871",
+    "categorie": "Marketing",
+    "bg": "../Images/background/10..jpg",
+    "profilePic": "../Images/people/4..png",
+    "title": "Speaker guide for online events",
+    "creator": "by Josip Lisec, Head of Product @ SpotMe",
+    "about": "Prep for your next virtual event with precision! ",
+    "used": "14.9K",
+    "views": "50.7K"
+  },
+  {
+    "_id": "mr872",
+    "categorie": "Marketing",
+    "bg": "../Images/background/11..jpg",
+    "profilePic": "../Images/people/5..png",
+    "title": "Marketing Content Catalog",
+    "creator": "by Nicholas Bouchard, Content Marketer @ Unito",
+    "about": "Centralize all the content your marketing teams create and make it easily searchable.",
+    "used": "36.5K",
+    "views": "98.8K"
+  },
+  {
+    "_id": "mr873",
+    "categorie": "Marketing",
+    "bg": "../Images/background/12..jpg",
+    "profilePic": "../Images/people/6..png",
+    "title": "Marketing Overview",
+    "creator": "by Stella Garber, Head of Marketing @ Proman",
+    "about": "Use this board to create a stronger sense of transparency within your marketing team and the company.",
+    "used": "1.9K",
+    "views": "3.7K"
+  },
+  {
+    "_id": "mr874",
+    "categorie": "Marketing",
+    "bg": "../Images/background/13..jpg",
+    "profilePic": "../Images/people/7..png",
+    "title": "Blog Content Schedule",
+    "creator": "by Scan2CAD",
+    "about": "A scheduled pipeline of all upcoming and published content for your blog.",
+    "used": "98.1K",
+    "views": "369.7K"
+  },
+  {
+    "_id": "mr875",
+    "categorie": "Marketing",
+    "bg": "../Images/background/14..jpg",
+    "profilePic": "../Images/people/8..png",
+    "title": "Marketing Requests",
+    "creator": "by Chad Reid, VP of Marketing and Communications @ JotForm",
+    "about": "This board is a collaboration board between the JotForm marketing and growth teams.",
+    "used": "36.7K",
+    "views": "310.5K"
+  },
+  {
+    "_id": "rm251",
+    "categorie": "Remote",
+    "bg": "../Images/background/15..jpg",
+    "profilePic": "../Images/people/9..png",
+    "title": "Work From Home Daily Planner",
+    "creator": "by Sarah Costello @ TalentHub",
+    "about": "Plan, collaborate and monitor your work-from-home schedule.",
+    "used": "80.3K",
+    "views": "980.5K"
+  },
+  {
+    "_id": "rm252",
+    "categorie": "Remote",
+    "bg": "../Images/background/16..jpg",
+    "profilePic": "../Images/people/10..png",
+    "title": "Mr. Rogers: “Watercooler” Video Chat Planner",
+    "creator": "by Proman Team",
+    "about": "A simple way to build team culture.",
+    "used": "37.7K",
+    "views": "104.7K"
+  },
+  {
+    "_id": "rm253",
+    "categorie": "Remote",
+    "bg": "../Images/background/17..jpg",
+    "profilePic": "../Images/people/4..png",
+    "title": "Remote Team Hub",
+    "creator": "by Proman Team",
+    "about": "A mission control center for your team productivity.",
+    "used": "19.7K",
+    "views": "30.5K"
+  },
+  {
+    "_id": "rm254",
+    "categorie": "Remote",
+    "bg": "../Images/background/18..jpg",
+    "profilePic": "../Images/people/2..png",
+    "title": "Remote Team Meetings",
+    "creator": "by Proman Team",
+    "about": "Bring focus and transparency to your remote team meetings.",
+    "used": "31.7K",
+    "views": "54.9K"
+  },
+  {
+    "_id": "rm255",
+    "categorie": "Remote",
+    "bg": "../Images/background/19..jpg",
+    "profilePic": "../Images/people/2..png",
+    "title": "Distributed Team Brainstorming",
+    "creator": "by Proman Team",
+    "about": "A better way to brainstorm new ideas.",
+    "used": "8.2K",
+    "views": "30.7K"
   }
 ]
