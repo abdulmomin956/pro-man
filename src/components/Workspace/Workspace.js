@@ -102,7 +102,7 @@ const Workspace = () => {
 
         <div className='flex'>
 
-            <div style={{ backgroundColor: '#081A51' }} className={`${open ? "w-72" : "w-16 "} p-5 pt-4  duration-300 h-screen relative`}>
+            <div style={{ backgroundColor: 'rgb(0 0 0 / 90%)' }} className={`${open ? "w-72" : "w-16 "} p-5 pt-4  duration-300 h-screen relative`}>
 
                 <img style={{ border: '#081A51' }}
                     src={control}
