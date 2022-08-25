@@ -2,7 +2,7 @@ import React from 'react';
 
 const Banner = () => {
     return (
-        <div className='flex gap-5 mt-16 items-center'>
+        <div className='flex gap-5 mb-24 mt-16 items-center'>
             <div className='w-1/2 ml-10 '>
                 <h1 className="text-5xl mb-4"                >
                 Trello helps teams move work forward.
