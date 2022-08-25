@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import EachTemplate from "./EachTemplate";
+import EachTemplate from "./TemplateComponents/EachTemplate";
+import TemplateCreateSection from "./TemplateComponents/TemplateCreateSection";
 
 const Template = () => {
   const [categories, setCategories] = useState([]);
@@ -17,9 +18,7 @@ const Template = () => {
     fetch("Templates/featuredCategories.json")
       .then((res) => res.json())
       .then((data) => setCategories(data));
-  }, []);
 
-  useEffect(() => {
     fetch("Templates/featuredData.json")
       .then((res) => res.json())
       .then((data) => setPopularTemplates(data));
@@ -193,6 +192,7 @@ const Template = () => {
       </div>
 
       {/* **Your Workspace section End here** */}
+      <TemplateCreateSection></TemplateCreateSection>
     </div>
   );
 };
