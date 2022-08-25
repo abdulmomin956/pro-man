@@ -46,8 +46,9 @@
 .navTitle {
    font-family: 'Inter', sans-serif;
    font-size: 28px;
+   width: 100%;
    font-weight: 700;
-   color: #002198;
+   color: white;
 }
 
 

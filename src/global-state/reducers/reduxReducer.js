@@ -1,11 +1,12 @@
-import { CURRENTWORKSPACE, CURRENTWORKSPACEBOARDS, LAST_WORKSPACE, LOADWORKSPACE, WORKSPACE } from "../constants/reduxContstants";
+import { CURRENTWORKSPACE, CURRENTWORKSPACEBOARDS, LAST_WORKSPACE, LIST, LOADWORKSPACE, WORKSPACE } from "../constants/reduxContstants";
 
 const initialState = {
     lastWorkspaceID: "",
     workspace: [],
     currentWorkspace: {},
     currentWorkspaceBoards: [],
-    loadWorkspace: false
+    loadWorkspace: false,
+    saveList: false
 }
 const reduxReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -34,6 +35,11 @@ const reduxReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loadWorkspace: action.payload,
+            }
+        case LIST:
+            return {
+                ...state,
+                saveList: action.payload,
             }
 
 

@@ -1,12 +1,12 @@
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import auth from "../firebase/firebase.init";
-import workspaceModal from "./WorkspaceModal";
+// import workspaceModal from "./WorkspaceModal";
 import BoardModal from "./BoardModal";
 import Loading from "./Loading";
-import axios from "axios";
+// import axios from "axios";
 import { useSelector } from "react-redux";
 import WorkspaceModal from "./WorkspaceModal";
 import { useDispatch } from "react-redux";
@@ -14,17 +14,20 @@ import { useQuery } from "@tanstack/react-query";
 import {
   setLoadWorkspace,
   setWorkspace,
-  setWorkspaceID,
+  // setWorkspaceID,
 } from "../../global-state/actions/reduxActions";
 import { FaRegBell, FaBoxes } from "react-icons/fa";
 import { MdGroupWork } from "react-icons/md";
 import Notification from "./Notification";
+import TempleteBoard from "./TempleteBoard";
+import StarredBoard from "./StarredBoard";
 
 // FiBell
 
 const Navbar = () => {
   const [user, loading, authError] = useAuthState(auth);
   const [open, setOpen] = useState(false);
+  const [openTemp, setOpenTemp] = useState(false)
   const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
   if (loading) {
     <Loading />;
@@ -52,13 +55,14 @@ const Navbar = () => {
   }, [data, dispatch]);
 
   if (isLoading) {
-    <Loading></Loading>;
+    return <Loading></Loading>;
   }
+  // console.log(data);
 
   const x = user?.displayName;
   const nameparts = x?.split(" ");
   const initials =
-    nameparts[0].charAt(0).toUpperCase() + nameparts[1].charAt(0).toUpperCase();
+    nameparts[0]?.charAt(0)?.toUpperCase() + nameparts[1]?.charAt(0)?.toUpperCase();
   // console.log(initials);
   const logout = () => {
     signOut(auth);
@@ -66,10 +70,12 @@ const Navbar = () => {
 
   return (
     <div>
-      <div style={{ zIndex: "200" }} className="navbar bg-accent w-full">
+      <div style={{ zIndex: 200 }} className="navbar bg-primary w-full ">
+
         <div className="navbar-start lg:px-12">
+
           <div className="dropdown">
-            <label tabIndex="0" className="btn myButton mb-3 lg:hidden">
+            <label tabIndex="0" className="btn myButton  lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -108,7 +114,7 @@ const Navbar = () => {
                 <ul className="py-2  bg-base-100 rounded w-52 pt-4 shadow">
                   {data?.map((item, i) => (
                     <li key={i}>
-                      <a
+                      <Link to={"/" + item?.shortname}
                         className="mb-2 btn-sm w-full rounded-none  myButton"
                         style={{ borderRadius: "0px" }}
                       >
@@ -116,7 +122,7 @@ const Navbar = () => {
                           {item?.title?.charAt(0)}
                         </span>
                         {item?.title}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -157,9 +163,14 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a href="/" className="navTitle lg:mx-5">
-            PRO-MAN
-          </a>
+
+          <div className='w-full navTitle'>
+            <a href="/" className="lg:mx-5  flex items-center justify-center">
+              ProMan
+            </a>
+          </div>
+
+
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0 m-0">
               <div className="dropdown">
@@ -169,7 +180,7 @@ const Navbar = () => {
                   style={{ fontWeight: 700 }}
                 >
                   Workspaces{" "}
-                  <a>
+                  <p>
                     <svg
                       className="fill-current"
                       xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +190,7 @@ const Navbar = () => {
                     >
                       <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                     </svg>
-                  </a>
+                  </p>
                 </label>
                 <ul
                   tabIndex="0"
@@ -187,7 +198,8 @@ const Navbar = () => {
                 >
                   {data?.map((item, i) => (
                     <li key={i}>
-                      <a
+                      <Link
+                        to={"/" + item?.shortname}
                         className="mb-2 px-2 py-1 w-full myButton"
                         style={{ borderRadius: "0px" }}
                       >
@@ -195,7 +207,7 @@ const Navbar = () => {
                           {item?.title?.charAt(0)}
                         </span>
                         {item?.title}
-                      </a>
+                      </Link>
                       {/* <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a> */}
                     </li>
                   ))}
@@ -244,42 +256,50 @@ const Navbar = () => {
                   className="btn btn-sm mx-1 myButton rounded-none font-bold"
                 >
                   Starred
-                </label>
-                {open && (
-                  <div
-                    tabIndex="0"
-                    className="dropdown-content menu p-4 bg-base-100 rounded w-96 pt-4 shadow"
-                  >
-                    <label
-                      htmlFor="my-modal-sa6"
-                      className="mb-2 h-full w-full  "
-                      style={{ borderRadius: "0px" }}
+                  <p>
+                    <svg
+                      className="fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
                     >
-                      <div>
-                        <h1 className="text-xl text-center mb-3">
-                          Starred Board
-                        </h1>
-                        <label
-                          onClick={() => setOpen(!open)}
-                          tabIndex="0"
-                          className="btn btn-sm bg-transparent btn-circle absolute right-2 top-2"
-                        >
-                          ✕
-                        </label>
-                      </div>
-                      <hr />
+                      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                    </svg>
+                  </p>
+                </label>
 
-                      <img
-                        src="https://a.trellocdn.com/prgb/dist/images/starred-boards-menu/starred-board.cc47d0a8c646581ccd08.svg"
-                        alt=""
-                      />
-                      <p>
-                        Star important boards to access them quickly and easily.
-                      </p>
-                    </label>
-                  </div>
+
+                {open && (
+                  <StarredBoard setOpen={setOpen} open={open}></StarredBoard>
                 )}
               </div>
+
+              <div className="dropdown">
+                <label
+                  onClick={() => setOpenTemp(!openTemp)}
+                  tabIndex="0"
+                  className="btn btn-sm mx-1 myButton rounded-none font-bold"
+                >
+                  Templetes
+                  <p>
+                    <svg
+                      className="fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                    </svg>
+                  </p>
+                </label>
+                {openTemp && (
+                  <TempleteBoard setOpenTemp={setOpenTemp} openTemp={openTemp}></TempleteBoard>
+                )}
+              </div>
+
+
             </ul>
           </div>
         </div>
@@ -289,7 +309,7 @@ const Navbar = () => {
             htmlFor="notification"
             className=" cursor-pointer modal-button"
           >
-            <FaRegBell className="text-2xl mr-3" />
+            <FaRegBell className="text-2xl text-white mr-3" />
           </label>
 
           {user && (
@@ -297,7 +317,7 @@ const Navbar = () => {
               <label
                 tabIndex="0"
                 className=" "
-                // className="btn btn-ghost btn-circle bg-black avatar"
+              // className="btn btn-ghost btn-circle bg-black avatar"
               >
                 <div
                   id="navProfile"
@@ -322,7 +342,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <a className="mb-2 btn-sm w-full  myButton">Settings</a>
+                  <p className="mb-2 btn-sm w-full  myButton">Settings</p>
                 </li>
                 <li>
                   <p onClick={logout} className="btn-sm w-full  myButton">

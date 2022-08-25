@@ -16,7 +16,7 @@ import axios from "axios";
 
 const BoardModal = () => {
   const [bTitle, setBtitle] = useState("")
-  const [background, setBackground] = useState("")
+  const [background, setBackground] = useState("https://i.ibb.co/xChCQ7F/bg1.jpg")
   const lastWorkspaceID = useSelector(state => state.lastWorkspaceID)
   const allWorkspace = useSelector(state => state.workspace)
   // console.log(lastWorkspaceID);
@@ -24,22 +24,11 @@ const BoardModal = () => {
   const dispatch = useDispatch();
 
 
-  // React form 
 
-  /*
-    const {
-      register,
-      handleSubmit,
-      watch,
-      reset,
-      formState: { errors },
-    } = useForm();
-  
-  */
 
 
   const navigate = useNavigate();
-  console.log(background);
+  // console.log(background);
 
   const handleSubmit = async (e) => {
 
@@ -206,7 +195,7 @@ const BoardModal = () => {
                 </span>
               </label>
               <select
-                value={lastWorkspaceID}
+                defaultValue={lastWorkspaceID}
                 name="workspaceID"
                 className="select select-bordered select-sm w-full h-[40px] mt-2"
               // {...register("workspaceID", {

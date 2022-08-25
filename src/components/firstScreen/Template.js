@@ -1,161 +1,200 @@
-import React from 'react';
-import img1 from '../../images/categories/business.svg'
-import img2 from '../../images/categories/design.svg'
-import img3 from '../../images/categories/education.svg'
-
+import React from "react";
+import { useEffect, useState } from "react";
+import EachTemplate from "./EachTemplate";
 
 const Template = () => {
-    const categories = [
-        {
-            id: 1,
-            title: "bussiness",
-            img: img1
-        },
-        {
-            id: 2,
-            title: "design",
-            img: img2
-        },
-        {
-            id: 3,
-            title: "education",
-            img: img3
-        },
-        {
-            id: 4,
-            title: "engineering",
-            img: img1
-        },
-        {
-            id: 5,
-            title: "marketing",
-            img: img2
-        },
-        {
-            id: 6,
-            title: "remote work",
-            img: img3
-        },
-    ];
-    const popularTemplates = [
-        {
-            _id: 1,
-            title: "Project Management",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-        },
-        {
-            _id: 2,
-            title: "Project Management",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-        },
-        {
-            _id: 3,
-            title: "Project Management",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-        },
-        {
-            _id: 4,
-            title: "Project Management",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-        },
-        {
-            _id: 5,
-            title: "Project Management",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-        },
-        {
-            _id: 6,
-            title: "Project Management",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-        },
-        {
-            _id: 7,
-            title: "Project Management",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-        },
-        {
-            _id: 8,
-            title: "Project Management",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-        },
-        {
-            _id: 9,
-            title: "Project Management",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-        },
-        {
-            _id: 10,
-            title: "Project Management",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-        },
-    ];
-    return (
-        <div className="px-4">
-            {/* This Board pages showing when enter to the site */}
-            <h2 className="text-2xl font-medium my-6">
-                <span className="flex items-center text-gray-700">
-                    Featured categories</span>
-            </h2>
-            {/* **Featured categories start here** */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 ">
+  const [categories, setCategories] = useState([]);
+  const [popularTemplates, setPopularTemplates] = useState([]);
+  const [demoTemplates, setDemoTemplates] = useState([]);
+  const [businessTemplates, setBusinessTemplates] = useState([]);
+  const [designTemplates, setDesignTemplates] = useState([]);
+  const [educationTemplates, setEducationTemplates] = useState([]);
+  const [engineeringTemplates, setEngineeringTemplates] = useState([]);
+  const [marketingTemplates, setMarketingTemplates] = useState([]);
+  const [remoteTemplates, setRemoteTemplates] = useState([]);
 
-                {categories.map((template, i) => (
-                    <div
-                        key={i}
-                        className="align-middle"
-                        style={{
-                            height: "100px",
-                            maxWidth: "100px",
-                            borderRadius: "5px"
-                        }}
-                    >
+  useEffect(() => {
+    fetch("Templates/featuredCategories.json")
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
+  }, []);
 
-                        <img src={template.img} alt="" />
-                        <p className="text-base font-bold ">{template.title.charAt(0).toUpperCase() + template.title.slice(1)} </p>
-                    </div>
-                ))}
-            </div>
-            {/* **Most popular template section End here** */}
+  useEffect(() => {
+    fetch("Templates/featuredData.json")
+      .then((res) => res.json())
+      .then((data) => setPopularTemplates(data));
+  }, []);
 
+  useEffect(() => {
+    const demoTemplates = popularTemplates.slice(0, 3);
+    setDemoTemplates(demoTemplates);
 
+    const businessTemplates = popularTemplates
+      .filter((item) => item.categorie === "Business")
+      .slice(0, 3);
+    setBusinessTemplates(businessTemplates);
 
-            {/* **Your Workspace section start here** */}
-            <h2 className="text-2xl font-medium my-6">
-                <span className="flex items-center text-gray-700">
-                    New and notable templates</span>
-            </h2>
+    const designTemplates = popularTemplates
+      .filter((item) => item.categorie === "Design")
+      .slice(0, 3);
+    setDesignTemplates(designTemplates);
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
+    const educationTemplates = popularTemplates
+      .filter((item) => item.categorie === "Education")
+      .slice(0, 3);
+    setEducationTemplates(educationTemplates);
 
-                {popularTemplates.map((template, i) => (
-                    <div
-                        key={i}
-                        className="align-middle"
-                        style={{
-                            height: "100px",
-                            maxWidth: "180px",
-                            borderRadius: "5px",
-                            backgroundSize: "cover",
-                            backgroundImage: `url(${template.img})`,
-                        }}
-                    >
+    const engineeringTemplates = popularTemplates
+      .filter((item) => item.categorie === "Engineering")
+      .slice(0, 3);
+    setEngineeringTemplates(engineeringTemplates);
 
-                        <div>
-                            <button className="btn btn-xs btn-accent m-3">TEMPLATE</button>
-                        </div>
-                        <p className="text-base font-bold text-white ">{template.title} </p>
-                    </div>
-                ))}
-            </div>
+    const marketingTemplates = popularTemplates
+      .filter((item) => item.categorie === "Marketing")
+      .slice(0, 3);
+    setMarketingTemplates(marketingTemplates);
 
+    const remoteTemplates = popularTemplates
+      .filter((item) => item.categorie === "Remote")
+      .slice(0, 3);
+    setRemoteTemplates(remoteTemplates);
+  }, [popularTemplates]);
 
+  return (
+    <div className="px-4 my-7">
+      {/* This Board pages showing when enter to the site */}
+      <p className="text-xl font-semibold mt-3">Featured categories</p>
 
-            {/* **Your Workspace section End here** */}
+      {/* **Featured categories start here** */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 cursor-pointer my-8">
+        {categories.map((template) => (
+          <div key={template._id} className="">
+            <img
+              className="w-[105px] mx-auto hover:shadow-xl rounded-md"
+              src={template.img}
+              alt=""
+            />
+            <p className="text-base font-semibold text-center">
+              {template.title}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* **Your Workspace section start here** */}
+      <div className="flex items-center flex-row gap-3 mb-6">
+        <img
+          className="w-[24px] rounded-md"
+          src="https://a.trellocdn.com/prgb/dist/images/templates/new-and-notable.32ad10f52fc078a76ea4.svg"
+          alt=""
+        />
+        <p className="text-xl font-semibold"> New and notable templates</p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {demoTemplates.map((item) => (
+          <EachTemplate key={item._id} item={item}></EachTemplate>
+        ))}
+      </div>
+
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/business.6b1a625e841b96791d68.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Business</p>
         </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {businessTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
 
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/design.e617072931480fdd44da.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Design</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {designTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
 
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/education.070ebae9f7177f08cff6.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Education</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {educationTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
 
-    );
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/engineering.457121414fa10aa6029a.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Engineering</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {engineeringTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/marketing.3695bf4ae87a54c23f88.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Marketing</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {marketingTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/remote-work.338e484944b19a8df667.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Remote work</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {remoteTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
+
+      {/* **Your Workspace section End here** */}
+    </div>
+  );
 };
 
 export default Template;

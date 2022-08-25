@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 // import { async } from "@firebase/util";
 import axios from "axios";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setLoadWorkspace } from "../../global-state/actions/reduxActions";
 
 const Account = () => {
   const { shortname } = useParams();
@@ -16,6 +18,7 @@ const Account = () => {
   const workspaces = useSelector((state) => state.workspace);
   const workspace = workspaces.filter((w) => w.shortname === shortname);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   // console.log(workspace, validName, shortname);
 
   useEffect(() => {
@@ -34,8 +37,9 @@ const Account = () => {
         `https://morning-coast-54182.herokuapp.com/sworkspace/api/${workspace[0]?._id}`
       )
       .then((res) => {
-        // console.log(res);
         navigate("/");
+        dispatch(setLoadWorkspace(true))
+        // console.log(res);
       });
   };
 

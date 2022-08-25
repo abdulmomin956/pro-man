@@ -1,28 +1,19 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-
-
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from './firebase.init';
 import SocialLogin from './SocialLogin';
 import Loading from '../shared/Loading';
+import axios from 'axios';
 
 const Register = () => {
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit, reset, getValues } = useForm();
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, upError] = useUpdateProfile(auth);
-
-    if (loading || updating) {
-        <Loading></Loading>
-    }
-
-    let signInError;
-    if (error || upError) {
-        signInError = <p className='text-red-500'><small>{error?.message || upError?.message}</small></p>
-    }
-
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     useEffect(() => {
         if (user) {
             navigate('/')
@@ -30,8 +21,19 @@ const Register = () => {
         }
     }, [user, navigate])
 
+    if (loading || updating) {
+        return <Loading></Loading>
+    }
+
+    let signInError;
+    if (error || upError) {
+        signInError = <p className='text-red-500'><small>{error?.message || upError?.message}</small></p>
+    }
+
+
+
     const onSubmit = async (data) => {
-        console.log(data);
+
         await createUserWithEmailAndPassword(data.email, data.password, data.displayName)
         const userName = data.name + " " + data.lastName
         await updateProfile({ displayName: userName });
@@ -39,22 +41,19 @@ const Register = () => {
           name: userName,
           email: data.email,
           role: "Member"
-        };
 
-        fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(userInfo),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-          });
+        };
+        console.log(userInfo);
+        const res = await axios.post(`https://morning-coast-54182.herokuapp.com/api/reg`, userInfo)
+        console.log(res)
+        if (res.status === 200) {
+            navigate(from, { replace: true })
+        }
+
         reset()
         // console.log(data)
     };
+
     return (
         <div className='mt-8'>
             <h1 className='text-3xl font-bold text-center '>Registration Here</h1>
@@ -113,13 +112,13 @@ const Register = () => {
                                     required: {
                                         value: true,
                                         message: 'Email is required'
-                                        
+
                                     },
                                     pattern: {
                                         value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                                         message: 'Provide a valid email'
                                     }
-                                    
+
                                 })} type="text" placeholder="email" className="input input-bordered" />
                                 <label className="label">
                                     {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}

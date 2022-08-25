@@ -5,11 +5,20 @@ import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.init";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setLoadWorkspace } from "../../global-state/actions/reduxActions";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const WorkspaceModal = () => {
   const [workspaceName, setWorkspaceName] = useState("");
   const [user] = useAuthState(auth);
   const email = user.email;
+  const dispatch = useDispatch();
+  const workspaces = useSelector(state => state.workspace)
+  // console.log(workspaces[workspaces.length - 1]?.shortname);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -32,7 +41,13 @@ const WorkspaceModal = () => {
 
     const res = await axios.post('https://morning-coast-54182.herokuapp.com/workspace', newWorkspace)
     // console.log(res)
+    if (res.status === 200) {
+      dispatch(setLoadWorkspace(true))
+      // navigate(workspaces[workspaces.length - 1]?.shortname)
+    }
   };
+
+
 
   let nameError;
   if (!workspaceName) {

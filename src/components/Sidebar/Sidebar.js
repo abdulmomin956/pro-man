@@ -28,8 +28,8 @@ const Sidebar = () => {
 
   return (
     <div>
-      <div className="drawer drawer-mobile static">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer drawer-mobile static ">
+        <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
         <div className="drawer-content " id="sidebarOverflow">
           {/* <!-- Page content here --> */}
           <Outlet />
@@ -40,7 +40,7 @@ const Sidebar = () => {
             <FaArrowAltCircleRight className="text-3xl"></FaArrowAltCircleRight>
           </label>
         </div>
-        <div className="drawer-side lg:mx-7 rounded shadow">
+        <div className="drawer-side lg:mx-7 py-5 px-3 shadow">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul
             className="menu overflow-y-auto w-52 bg-base-100 text-base-content"
