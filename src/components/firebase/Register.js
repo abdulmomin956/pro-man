@@ -38,6 +38,7 @@ const Register = () => {
         const userInfo = {
           name: userName,
           email: data.email,
+          role: "Member"
         };
 
         fetch("http://localhost:5000/users", {

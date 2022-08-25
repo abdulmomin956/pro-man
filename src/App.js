@@ -26,6 +26,7 @@ import Profiles from "./components/Profile/Profiles";
 import WorkspaceMembers from "./components/Workspace/Member/WorkspaceMembers";
 import Guests from "./components/Workspace/Member/Guests";
 import Pending from "./components/Workspace/Member/Pending";
+import MakeAdmin from "./components/dashboard/MakeAdmin";
 
 function App() {
   const [user, loading, error] = useAuthState(auth);
@@ -50,6 +51,7 @@ function App() {
           <Route path="/template" element={<Template />}></Route>
           <Route path="/homescreen" element={<HomeScreen />}></Route>
         </Route>
+        <Route path="/makeadmin" element={<MakeAdmin/>}></Route>
         <Route path="/:shortname" element={<Workspace />}>
           <Route path="/:shortname/" element={<Boards />}></Route>
           <Route path="/:shortname/members" element={<Members />}>
