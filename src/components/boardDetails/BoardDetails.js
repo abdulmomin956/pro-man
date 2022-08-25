@@ -51,7 +51,7 @@ const BoardDetails = () => {
 
 
     // localStorage.setItem('data', JSON.stringify(data))
-    // console.log(data);
+    console.log(data);
     if (saveList) {
         dispatch(setSaveList(false))
         const saveData = async () => {
@@ -139,6 +139,8 @@ const BoardDetails = () => {
             },
         };
         setData(newState);
+        console.log(newState);
+        dispatch(setSaveList(true))
     };
 
     const onDragEnd = (result) => {
@@ -173,8 +175,9 @@ const BoardDetails = () => {
                     [sourceList.id]: destinationList,
                 },
             }
-            // console.log(newSate)
-            setData(newSate)
+            console.log(newSate)
+            dispatch(setSaveList(true))
+            // setData(newSate)
         }
         else {
             sourceList.cards.splice(source.index, 1);
@@ -188,6 +191,8 @@ const BoardDetails = () => {
                 },
             };
             setData(newState);
+            dispatch(setSaveList(true))
+            // console.log(newState)
         }
     };
 
@@ -211,6 +216,7 @@ const BoardDetails = () => {
 
                             {data?.listIds?.map((listId, index) => {
                                 const list = data.lists[listId];
+                                // console.log(list);
                                 // prop drilling
                                 return < List index={index} data={data} list={list} key={listId} />
                             })}

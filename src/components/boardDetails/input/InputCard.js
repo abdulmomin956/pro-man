@@ -4,12 +4,14 @@ import ClearIcon from "@material-ui/icons/Clear";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import storeApi from "../../../utils/storeApi";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
+import { useRef } from 'react';
 
 const useStyle = makeStyles((theme) => ({
   card: {
     width: "280px",
-    margin: theme.spacing(0, 1, 1, 1),
-    paddingBottom: theme.spacing(4),
+    margin: theme.spacing(0, 0, 0, 1),
+    paddingBottom: theme.spacing(0),
     // padding: theme.spacing(1, 1, 1, 0),
   },
   input: {
@@ -27,13 +29,19 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const InputCard = ({ data, setOpen, listId, type }) => {
+const InputCard = ({ data, setOpen, listId, type, open }) => {
+  const ref = useRef(null);
   const classes = useStyle();
   const { addMoreCard, addMoreList } = useContext(storeApi);
   const [title, setTitle] = useState("");
 
+  useEffect(() => {
+    console.log(title);
+  }, [title])
+
 
   const handleBtnConfirm = () => {
+    console.log(title);
     if (title === "") {
       alert("Please Provide Your Task");
       return;
@@ -52,20 +60,38 @@ const InputCard = ({ data, setOpen, listId, type }) => {
 
   };
 
+  useEffect(() => {
+    // console.log(open);
+    if (open) {
+      // console.log(ref.current.childNodes[0]);
+      ref.current.childNodes[0].focus();
+    }
+  }, [open])
+
   const handleBlur = () => {
     setOpen(false);
-    setTitle("");
+    // setTitle("");
   };
   // console.log(cardTitle);
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      handleBtnConfirm()
+      console.log("hello")
+    }
+  }
 
   return (
-    <div>
-      <div>
+    <div
+
+    >
+      <div >
         <Paper className={classes.card}>
           <InputBase
+            ref={ref}
             onChange={(e) => setTitle(e.target.value)}
             multiline
-            // onBlur={() => setOpen(false)}
+            onKeyDown={handleKeyDown}
+            // onBlur={() => { setOpen(false) }}
             fullWidth
             inputProps={{ className: classes.input }}
             defaultValue={title}

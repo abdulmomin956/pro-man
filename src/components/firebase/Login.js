@@ -5,6 +5,7 @@ import auth from './firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
 import Loading from '../shared/Loading';
+import axios from 'axios';
 // import { toast } from 'react-toastify';
 
 const Login = () => {
@@ -21,21 +22,40 @@ const Login = () => {
     if (loading || sending) {
         <Loading></Loading>
     }
+    console.log(user?.user?.email);
 
-    if (user) {
-        navigate(from, { replace: true })
-    }
+    // if (user) {
+    //     navigate(from, { replace: true })
+    // }
 
     let signInError;
     if (error || resetError) {
         signInError = <p className='text-red-500'><small>{error?.message || resetError?.message}</small></p>
     }
 
-    const onSubmit = data => {
-        signInWithEmailAndPassword(data.email, data.password)
+    const onSubmit = async data => {
+        await signInWithEmailAndPassword(data.email, data.password)
         reset()
-        console.log(data)
+        const userInfo = { email: data.email }
+        // console.log(data)
+        const res = await axios.post(`https://morning-coast-54182.herokuapp.com/api/login`, userInfo)
+        // console.log(res);
+        if (res.status === 200) {
+            const accessToken = res.data.accessToken;
+            const ttl = res.data.ttl;
+            const now = new Date()
+
+            // `item` is an object which contains the original value
+            // as well as the time when it's supposed to expire
+            const item = {
+                accessToken: accessToken,
+                expiry: now.getTime() + ttl,
+            }
+            localStorage.setItem("token", JSON.stringify(item))
+            navigate(from, { replace: true })
+        }
     };
+
     return (
         <div className='mt-12'>
             <h1 className='text-3xl font-bold text-center '>Please Login First!</h1>

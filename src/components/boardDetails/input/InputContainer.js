@@ -10,6 +10,7 @@ const useStyle = makeStyles((theme) => ({
         marginTop: theme.spacing(1),
     },
     addCard: {
+        cursor: "pointer",
         padding: theme.spacing(1, 1, 1, 2),
         margin: theme.spacing(0, 1, 1, 1),
         background: '#EBECF0',
@@ -28,7 +29,7 @@ const InputContainer = ({ data, listId, type }) => {
         <div className={classes.root}>
             <Collapse in={open}>
                 {/* prop drillling */}
-                <InputCard setOpen={setOpen} data={data} listId={listId} type={type} />
+                <InputCard setOpen={setOpen} data={data} listId={listId} type={type} open={open} />
             </Collapse>
 
             <Collapse in={!open}>
