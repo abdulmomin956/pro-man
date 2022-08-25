@@ -26,16 +26,15 @@ import Profiles from "./components/Profile/Profiles";
 import WorkspaceMembers from "./components/Workspace/Member/WorkspaceMembers";
 import Guests from "./components/Workspace/Member/Guests";
 import Pending from "./components/Workspace/Member/Pending";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [user, loading, error] = useAuthState(auth);
-  if (loading) {
-    <Loading></Loading>;
-  }
+  const email = useSelector(state => state.email)
+
   return (
     <div className="#F5F5F5">
       {/* <ToastContainer /> */}
-      {user && <Navbar />}
+      {email && <Navbar />}
 
       <Routes>
         <Route

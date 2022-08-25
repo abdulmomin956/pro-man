@@ -12,6 +12,7 @@ import WorkspaceModal from "./WorkspaceModal";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import {
+  setEmail,
   setLoadWorkspace,
   setWorkspace,
   // setWorkspaceID,
@@ -26,16 +27,17 @@ import StarredBoard from "./StarredBoard";
 
 const Navbar = () => {
   const [user, loading, authError] = useAuthState(auth);
+  const [initials, setInitial] = useState("")
   const [open, setOpen] = useState(false);
   const [openTemp, setOpenTemp] = useState(false)
   const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
-  if (loading) {
-    <Loading />;
-  }
+  const email = useSelector(state => state.email)
+
+
 
   const dispatch = useDispatch();
-  const email = user.email;
-  const { isLoading, error, data, refetch } = useQuery(["repoData"], () =>
+  console.log(email);
+  const { isLoading, error, data, refetch } = useQuery(["repoData", email], () =>
     fetch(`https://morning-coast-54182.herokuapp.com/workspace/${email}`).then(
       (res) => res.json()
     )
@@ -54,18 +56,25 @@ const Navbar = () => {
     }
   }, [data, dispatch]);
 
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
-  // console.log(data);
+  useEffect(() => {
+    if (user) {
+      const x = user?.displayName;
+      const nameparts = x?.split(" ");
+      setInitial(nameparts[0]?.charAt(0)?.toUpperCase() + nameparts[1]?.charAt(0)?.toUpperCase())
+    }
+  }, [user, user?.displayName])
 
-  const x = user?.displayName;
-  const nameparts = x?.split(" ");
-  const initials =
-    nameparts[0]?.charAt(0)?.toUpperCase() + nameparts[1]?.charAt(0)?.toUpperCase();
+
+  console.log(data);
+  // useEffect(() => {
+
+  // }, [])
+
   // console.log(initials);
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem("token")
+    dispatch(setEmail(null))
   };
 
   return (
@@ -320,7 +329,7 @@ const Navbar = () => {
                   id="navProfile"
                   className="flex justify-center items-center"
                 >
-                  <span title={user.displayName} className=" font-bold block ">
+                  <span title={user?.displayName} className=" font-bold block ">
                     {initials}
                   </span>
                 </div>
