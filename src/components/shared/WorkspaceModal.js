@@ -14,7 +14,7 @@ import { useEffect } from "react";
 const WorkspaceModal = () => {
   const [workspaceName, setWorkspaceName] = useState("");
   const [user] = useAuthState(auth);
-  const email = user.email;
+  const email = user?.email;
   const dispatch = useDispatch();
   const workspaces = useSelector(state => state.workspace)
   // console.log(workspaces[workspaces.length - 1]?.shortname);

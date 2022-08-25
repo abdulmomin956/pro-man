@@ -6,8 +6,11 @@ import auth from './firebase.init';
 import SocialLogin from './SocialLogin';
 import Loading from '../shared/Loading';
 import axios from 'axios';
+import { useDispatch } from "react-redux"
+import { setEmail } from '../../global-state/actions/reduxActions';
 
 const Register = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit, reset, getValues } = useForm();
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
@@ -47,6 +50,19 @@ const Register = () => {
         const res = await axios.post(`https://morning-coast-54182.herokuapp.com/api/reg`, userInfo)
         console.log(res)
         if (res.status === 200) {
+            const accessToken = res.data.accessToken;
+            const ttl = res.data.ttl;
+            const now = new Date()
+
+            // `item` is an object which contains the original value
+            // as well as the time when it's supposed to expire
+            const item = {
+                accessToken: accessToken,
+                expiry: now.getTime() + ttl,
+                email: userInfo.email
+            }
+            localStorage.setItem("token", JSON.stringify(item))
+            dispatch(setEmail(userInfo.email))
             navigate(from, { replace: true })
         }
 
