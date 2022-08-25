@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HomeNav = () => {
   return (
@@ -81,11 +82,10 @@ const HomeNav = () => {
         </div>
       </div>
       <div className="flex">
-        <button className="flex items-center justify-center mx-3 py-5 hover:text-blue-600 font-[inherit] font-bold">
-            Log In
+            
+        <Link to="/login" className="flex items-center justify-center text-xl font-bold mx-5 py-5 hover:text-blue-600 font-[inherit]">Log In</Link>
 
-        </button>
-        <button className="p-3 bg-blue-600 py-5 text-white">
+        <button className="bg-blue-600 text-xl px-3 py-5 text-white">
             Get Proman for free
 
         </button>
