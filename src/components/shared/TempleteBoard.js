@@ -35,6 +35,13 @@ const TempleteBoard = ({ openTemp, setOpenTemp }) => {
                         style={{ borderRadius: "0px" }}
                     >
                         <div>
+                        <label
+                                onClick={() => setOpenTempBm(!openTempBM)}
+                                tabIndex="0"
+                                className="btn btn-sm bg-transparent btn-circle absolute right-2 top-2"
+                            >
+                                ✕
+                            </label>
                             <h1 className="text-md text-center mb-3">
                                 Templetes
                             </h1>

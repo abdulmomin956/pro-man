@@ -1,7 +1,6 @@
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "./firebase.init";
-import googleIcon from "../../assest/image/google-icon.svg";
 import Loading from "../shared/Loading";
 import { useEffect } from "react";
 import axios from "axios"
@@ -72,7 +71,7 @@ const SocialLogin = ({ children }) => {
         onClick={handleSignUp}
         className="btn text-white btn-outline "
       >
-        <img style={{ width: "25px" }} src={googleIcon} alt="" />
+        <img style={{ width: "25px" }} src="https://i.ibb.co/xXCkjSm/Google-G-Logo-svg.png" alt="" />
         {children} Google
       </button>
       {signInError}

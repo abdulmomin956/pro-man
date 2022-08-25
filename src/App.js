@@ -28,6 +28,7 @@ import Guests from "./components/Workspace/Member/Guests";
 import Pending from "./components/Workspace/Member/Pending";
 import { useSelector } from "react-redux";
 import MakeAdmin from "./components/dashboard/MakeAdmin";
+import Home1 from "./components/Home/Home"
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
 
 
       <Routes>
+        {!email && <Route path="/mainHome" element={<Home1></Home1>}></Route>}
         <Route
           path="/"
           element={
