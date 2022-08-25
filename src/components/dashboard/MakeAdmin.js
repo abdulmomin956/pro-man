@@ -19,19 +19,19 @@ const MakeAdmin = () => {
 
     console.log("clicked");
 
-    const url = `https://gentle-oasis-35718.herokuapp.com/users/${id}`;
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        toast("make admin sucessfull");
-        window.location.reload();
-      });
+    // const url = `users/${id}`;
+    // fetch(url, {
+    //   method: "PUT",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(user),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     toast("make admin sucessfull");
+    //     window.location.reload();
+    //   });
   };
   return (
     <div>
