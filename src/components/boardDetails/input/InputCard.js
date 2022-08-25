@@ -35,11 +35,6 @@ const InputCard = ({ data, setOpen, listId, type, open }) => {
   const { addMoreCard, addMoreList } = useContext(storeApi);
   const [title, setTitle] = useState("");
 
-  useEffect(() => {
-    console.log(title);
-  }, [title])
-
-
   const handleBtnConfirm = () => {
     console.log(title);
     if (title === "") {

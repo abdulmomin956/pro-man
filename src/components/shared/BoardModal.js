@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import "./BordModal.css";
 import { useForm } from "react-hook-form";
-import img from "./../../assest/image/abstract-board.png";
-import bg1 from "../../assest/image/bg1.jpg";
-import bg2 from "../../assest/image/bg2.jpg";
-import bg3 from "../../assest/image/bg3.jpg";
-import bg4 from "../../assest/image/bg4.jpg";
-import bg5 from "../../assest/image/bg5.jpg";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -106,7 +101,7 @@ const BoardModal = () => {
   };
   const handleBg7 = () => {
     document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/YRnq6yd/250x215-2.png")center center/cover`;
-    setBackground("hthttps://i.ibb.co/YRnq6yd/250x215-2.png")
+    setBackground("https://i.ibb.co/YRnq6yd/250x215-2.png")
   };
   const handleBg8 = () => {
     document.querySelector(".b-modal-bg").style.background = `url("https://i.ibb.co/wcL4qWD/250x215-3.png")center center/cover`;
@@ -147,15 +142,15 @@ const BoardModal = () => {
             </h3>
 
             <div className="flex bg-center bg-contain bg-cover items-center b-modal-bg">
-              <img src={img} className="" alt="" />
+              <img src="https://i.ibb.co/tCKqkzr/abstract-board.png" className="" alt="" />
             </div>
             <p className="font-bold text-primary">Select Background</p>
             <div className="grid grid-cols-5 gap-1 justify-center items-center py-1 overflow-hidden">
-              <img src={bg1} onClick={handleBg1} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
-              <img src={bg2} onClick={handleBg2} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
-              <img src={bg3} onClick={handleBg3} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
-              <img src={bg4} onClick={handleBg4} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
-              <img src={bg5} onClick={handleBg5} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src="https://i.ibb.co/xChCQ7F/bg1.jpg" onClick={handleBg1} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src="https://i.ibb.co/YRnq6yd/250x215-2.png" onClick={handleBg2} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src="https://i.ibb.co/wcL4qWD/250x215-3.png" onClick={handleBg3} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src="https://i.ibb.co/7p9Xb5z/250x215-4.png" onClick={handleBg4} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src="https://i.ibb.co/GFwP6Vw/250x215-5.png" onClick={handleBg5} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
               <div onClick={handleBg6} style={{ background: `url("https://i.ibb.co/Wz5Z2nW/250x215.png")center center/cover` }} className="h-12 w-16  rounded-xl  cursor-pointer mx-auto"></div>
               <div onClick={handleBg7} style={{ background: `url("https://i.ibb.co/YRnq6yd/250x215-2.png")center center/cover` }} className="h-12 w-16 rounded-xl  cursor-pointer mx-auto"></div>
               <div onClick={handleBg8} style={{ background: `url("https://i.ibb.co/wcL4qWD/250x215-3.png")center center/cover` }} className="h-12 w-16  rounded-xl  cursor-pointer mx-auto"></div>

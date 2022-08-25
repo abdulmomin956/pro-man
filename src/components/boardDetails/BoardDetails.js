@@ -51,7 +51,7 @@ const BoardDetails = () => {
 
 
     // localStorage.setItem('data', JSON.stringify(data))
-    console.log(data);
+
     if (saveList) {
         dispatch(setSaveList(false))
         const saveData = async () => {
