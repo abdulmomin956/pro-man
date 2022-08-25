@@ -27,14 +27,18 @@ import WorkspaceMembers from "./components/Workspace/Member/WorkspaceMembers";
 import Guests from "./components/Workspace/Member/Guests";
 import Pending from "./components/Workspace/Member/Pending";
 import { useSelector } from "react-redux";
+import MakeAdmin from "./components/dashboard/MakeAdmin";
+
 
 function App() {
   const email = useSelector(state => state.email)
 
   return (
     <div className="#F5F5F5">
+
       {/* <ToastContainer /> */}
       {email && <Navbar />}
+
 
       <Routes>
         <Route
@@ -49,11 +53,13 @@ function App() {
           <Route path="/template" element={<Template />}></Route>
           <Route path="/homescreen" element={<HomeScreen />}></Route>
         </Route>
+        <Route path="/makeadmin" element={<MakeAdmin/>}></Route>
         <Route path="/:shortname" element={
           <RequireAuth>
             <Workspace />
           </RequireAuth>
         }>
+
           <Route path="/:shortname/" element={<Boards />}></Route>
           <Route path="/:shortname/members" element={<Members />}>
             <Route

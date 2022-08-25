@@ -79,16 +79,12 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-primary w-full ">
+      <div style={{ zIndex: 200 }} className="navbar bg-primary w-full ">
 
         <div className="navbar-start lg:px-12">
-          <div className='w-full navTitle'>
-            <a href="/" className="lg:mx-5  flex items-center justify-center">
-              ProMan
-            </a>
-          </div>
+
           <div className="dropdown">
-            <label tabIndex="0" className="btn myButton mb-3 lg:hidden">
+            <label tabIndex="0" className="btn myButton  lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -176,6 +172,13 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
+
+          <div className='w-full navTitle'>
+            <a href="/" className="lg:mx-5  flex items-center justify-center">
+              ProMan
+            </a>
+          </div>
+
 
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0 m-0">

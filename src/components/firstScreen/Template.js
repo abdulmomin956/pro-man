@@ -7,6 +7,11 @@ const Template = () => {
   const [popularTemplates, setPopularTemplates] = useState([]);
   const [demoTemplates, setDemoTemplates] = useState([]);
   const [businessTemplates, setBusinessTemplates] = useState([]);
+  const [designTemplates, setDesignTemplates] = useState([]);
+  const [educationTemplates, setEducationTemplates] = useState([]);
+  const [engineeringTemplates, setEngineeringTemplates] = useState([]);
+  const [marketingTemplates, setMarketingTemplates] = useState([]);
+  const [remoteTemplates, setRemoteTemplates] = useState([]);
 
   useEffect(() => {
     fetch("Templates/featuredCategories.json")
@@ -22,14 +27,38 @@ const Template = () => {
 
   useEffect(() => {
     const demoTemplates = popularTemplates.slice(0, 3);
+    setDemoTemplates(demoTemplates);
+
     const businessTemplates = popularTemplates
       .filter((item) => item.categorie === "Business")
       .slice(0, 3);
-    setDemoTemplates(demoTemplates);
     setBusinessTemplates(businessTemplates);
-  }, [popularTemplates]);
 
-  console.log(demoTemplates);
+    const designTemplates = popularTemplates
+      .filter((item) => item.categorie === "Design")
+      .slice(0, 3);
+    setDesignTemplates(designTemplates);
+
+    const educationTemplates = popularTemplates
+      .filter((item) => item.categorie === "Education")
+      .slice(0, 3);
+    setEducationTemplates(educationTemplates);
+
+    const engineeringTemplates = popularTemplates
+      .filter((item) => item.categorie === "Engineering")
+      .slice(0, 3);
+    setEngineeringTemplates(engineeringTemplates);
+
+    const marketingTemplates = popularTemplates
+      .filter((item) => item.categorie === "Marketing")
+      .slice(0, 3);
+    setMarketingTemplates(marketingTemplates);
+
+    const remoteTemplates = popularTemplates
+      .filter((item) => item.categorie === "Remote")
+      .slice(0, 3);
+    setRemoteTemplates(remoteTemplates);
+  }, [popularTemplates]);
 
   return (
     <div className="px-4 my-7">
@@ -61,7 +90,7 @@ const Template = () => {
         />
         <p className="text-xl font-semibold"> New and notable templates</p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {demoTemplates.map((item) => (
           <EachTemplate key={item._id} item={item}></EachTemplate>
         ))}
@@ -76,7 +105,7 @@ const Template = () => {
           />
           <p className="text-xl font-semibold">Business</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {businessTemplates.map((item) => (
             <EachTemplate key={item._id} item={item}></EachTemplate>
           ))}
@@ -92,7 +121,75 @@ const Template = () => {
           />
           <p className="text-xl font-semibold">Design</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {designTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/education.070ebae9f7177f08cff6.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Education</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {educationTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/engineering.457121414fa10aa6029a.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Engineering</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {engineeringTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/marketing.3695bf4ae87a54c23f88.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Marketing</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {marketingTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center flex-row gap-3 mb-6">
+          <img
+            className="w-[24px] rounded-md"
+            src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/remote-work.338e484944b19a8df667.svg"
+            alt=""
+          />
+          <p className="text-xl font-semibold">Remote work</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {remoteTemplates.map((item) => (
+            <EachTemplate key={item._id} item={item}></EachTemplate>
+          ))}
+        </div>
       </div>
 
       {/* **Your Workspace section End here** */}

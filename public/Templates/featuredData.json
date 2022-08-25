@@ -31,7 +31,7 @@
   },
 
   {
-    "_id": "bn78",
+    "_id": "bn781",
     "categorie": "Business",
     "bg": "../Images/background/4..jpg",
     "profilePic": "../Images/people/4..png",
@@ -42,7 +42,7 @@
     "views": "25.5K"
   },
   {
-    "_id": "bn78",
+    "_id": "bn782",
     "categorie": "Business",
     "bg": "../Images/background/5..jpg",
     "profilePic": "../Images/people/5..png",
@@ -53,7 +53,7 @@
     "views": "250.5K"
   },
   {
-    "_id": "bn78",
+    "_id": "bn783",
     "categorie": "Business",
     "bg": "../Images/background/6..jpg",
     "profilePic": "../Images/people/6..png",
@@ -64,7 +64,7 @@
     "views": "253.5K"
   },
   {
-    "_id": "bn78",
+    "_id": "bn784",
     "categorie": "Business",
     "bg": "../Images/background/7..jpg",
     "profilePic": "../Images/people/7..png",
@@ -75,7 +75,7 @@
     "views": "2.5K"
   },
   {
-    "_id": "bn78",
+    "_id": "bn785",
     "categorie": "Business",
     "bg": "../Images/background/8..jpg",
     "profilePic": "../Images/people/8..png",
@@ -84,5 +84,280 @@
     "about": "Develop new or document existing business models.",
     "used": "6.4K",
     "views": "352.5K"
+  },
+  {
+    "_id": "de561",
+    "categorie": "Design",
+    "bg": "../Images/background/9..jpg",
+    "profilePic": "../Images/people/9..png",
+    "title": "Design Project Template",
+    "creator": "by Kene Ohiaeri, Product Designer",
+    "about": "An easy to use template for planning and monitoring your branding and product design projects online.",
+    "used": "9.2K",
+    "views": "14.5K"
+  },
+  {
+    "_id": "de562",
+    "categorie": "Design",
+    "bg": "../Images/background/10..jpg",
+    "profilePic": "../Images/people/10..png",
+    "title": "Design System Checklist",
+    "creator": "by Rahul JR, Senior Product Manager @ Zoho Corp",
+    "about": "A design system unites product teams around a common visual language.",
+    "used": "5.4K",
+    "views": "2.5K"
+  },
+  {
+    "_id": "de563",
+    "categorie": "Design",
+    "bg": "../Images/background/11..jpg",
+    "profilePic": "../Images/people/1..png",
+    "title": "Freelance Branding Project",
+    "creator": "by Stu Smith, Designer @ Proman",
+    "about": "Use this template to run your next Branding project.",
+    "used": "6.4K",
+    "views": "32.5K"
+  },
+  {
+    "_id": "de564",
+    "categorie": "Design",
+    "bg": "../Images/background/12..jpg",
+    "profilePic": "../Images/people/2..png",
+    "title": "Game Design Template",
+    "creator": "by Chris McCrimmons, Cinevva",
+    "about": "Easy-to-organize template for planning a video game project.",
+    "used": "3.5K",
+    "views": "20.5K"
+  },
+  {
+    "_id": "de565",
+    "categorie": "Design",
+    "bg": "../Images/background/13..jpg",
+    "profilePic": "../Images/people/3..png",
+    "title": "Portfolio - Step by Step guide",
+    "creator": "by Utsav Sheth, UI/UX Designer",
+    "about": "This template is for beginners who want to make a portfolio for their next job.",
+    "used": "68.9K",
+    "views": "70.1K"
+  },
+  {
+    "_id": "ed121",
+    "categorie": "Education",
+    "bg": "../Images/background/14..jpg",
+    "profilePic": "../Images/people/4..png",
+    "title": "Remote Class Template",
+    "creator": "by Kelly Theisen, Assistant Professor of Chemistry",
+    "about": "Stay organized in a remote learning environment.",
+    "used": "40.9K",
+    "views": "175.1K"
+  },
+  {
+    "_id": "ed122",
+    "categorie": "Education",
+    "bg": "../Images/background/15..jpg",
+    "profilePic": "../Images/people/5..png",
+    "title": "Academic Literature Review",
+    "creator": "by Ann Gillian Chu, PhD researcher @ the University of St. Andrews",
+    "about": "Keep track of what you've read and your notes in one place for long writing projects, like dissertations.",
+    "used": "17.7K",
+    "views": "64.7K"
+  },
+  {
+    "_id": "ed123",
+    "categorie": "Education",
+    "bg": "../Images/background/16..jpg",
+    "profilePic": "../Images/people/6..png",
+    "title": "Teaching: Weekly Planning",
+    "creator": "by Emma Trentman, Associate Professor of Arabic @ University of New Mexico",
+    "about": "A board per class. The lists are the weeks of the semester, cards are things I need to do for class each week.",
+    "used": "16.9K",
+    "views": "725.1K"
+  },
+  {
+    "_id": "ed124",
+    "categorie": "Education",
+    "bg": "../Images/background/17..jpg",
+    "profilePic": "../Images/people/7..png",
+    "title": "Project Based Learning",
+    "creator": "by Michael Burke, Educator @ Bel Air High School",
+    "about": "A key aspect of organizing projects is creating a timeline, responsibilities, and checklists.",
+    "used": "8.7K",
+    "views": "98.5K"
+  },
+  {
+    "_id": "ed125",
+    "categorie": "Education",
+    "bg": "../Images/background/18..jpg",
+    "profilePic": "../Images/people/8..png",
+    "title": "Plan your Studies - Vet Student",
+    "creator": "by Becky Lossing, Veterinarian & Founder of Mini Mammoth",
+    "about": "A template to help vet students conquer clinics and beyond!",
+    "used": "3.9K",
+    "views": "365.4K"
+  },
+  {
+    "_id": "en851",
+    "categorie": "Engineering",
+    "bg": "../Images/background/19..jpg",
+    "profilePic": "../Images/people/9..png",
+    "title": "Kanban Template",
+    "creator": "by Proman Engineering Team",
+    "about": "A simple and visual workflow for engineering teams.",
+    "used": "32.6K",
+    "views": "1.6M"
+  },
+  {
+    "_id": "en852",
+    "categorie": "Engineering",
+    "bg": "../Images/background/20..jpg",
+    "profilePic": "../Images/people/10..png",
+    "title": "Scrum Board",
+    "creator": "by Robin Warren, Founder of Cherry Wood Software",
+    "about": "For software teams following a Scrum process including best practices.",
+    "used": "17.1K",
+    "views": "35.4K"
+  },
+  {
+    "_id": "en853",
+    "categorie": "Engineering",
+    "bg": "../Images/background/7..jpg",
+    "profilePic": "../Images/people/1..png",
+    "title": "Software Development [Web App, iOS App, Android App]",
+    "creator": "by iLyas Farawe, CTO @ Techbarn",
+    "about": "Manage tasks and deadlines for software development projects.",
+    "used": "25.4K",
+    "views": "99.8K"
+  },
+  {
+    "_id": "en854",
+    "categorie": "Engineering",
+    "bg": "../Images/background/8..jpg",
+    "profilePic": "../Images/people/2..png",
+    "title": "Web Development",
+    "creator": "by Prashant Omer, Freelance Developer",
+    "about": "A simple template to help  web developers organize and manage tasks.",
+    "used": "42.9K",
+    "views": "51.4K"
+  },
+  {
+    "_id": "en855",
+    "categorie": "Engineering",
+    "bg": "../Images/background/9..jpg",
+    "profilePic": "../Images/people/3..png",
+    "title": "Agile Sprint Board",
+    "creator": "by Proman Engineering Team",
+    "about": "Develop an agile workflow that keeps your team of developers on task and under deadline.",
+    "used": "106K",
+    "views": "23.5K"
+  },
+  {
+    "_id": "mr871",
+    "categorie": "Marketing",
+    "bg": "../Images/background/10..jpg",
+    "profilePic": "../Images/people/4..png",
+    "title": "Speaker guide for online events",
+    "creator": "by Josip Lisec, Head of Product @ SpotMe",
+    "about": "Prep for your next virtual event with precision! ",
+    "used": "14.9K",
+    "views": "50.7K"
+  },
+  {
+    "_id": "mr872",
+    "categorie": "Marketing",
+    "bg": "../Images/background/11..jpg",
+    "profilePic": "../Images/people/5..png",
+    "title": "Marketing Content Catalog",
+    "creator": "by Nicholas Bouchard, Content Marketer @ Unito",
+    "about": "Centralize all the content your marketing teams create and make it easily searchable.",
+    "used": "36.5K",
+    "views": "98.8K"
+  },
+  {
+    "_id": "mr873",
+    "categorie": "Marketing",
+    "bg": "../Images/background/12..jpg",
+    "profilePic": "../Images/people/6..png",
+    "title": "Marketing Overview",
+    "creator": "by Stella Garber, Head of Marketing @ Proman",
+    "about": "Use this board to create a stronger sense of transparency within your marketing team and the company.",
+    "used": "1.9K",
+    "views": "3.7K"
+  },
+  {
+    "_id": "mr874",
+    "categorie": "Marketing",
+    "bg": "../Images/background/13..jpg",
+    "profilePic": "../Images/people/7..png",
+    "title": "Blog Content Schedule",
+    "creator": "by Scan2CAD",
+    "about": "A scheduled pipeline of all upcoming and published content for your blog.",
+    "used": "98.1K",
+    "views": "369.7K"
+  },
+  {
+    "_id": "mr875",
+    "categorie": "Marketing",
+    "bg": "../Images/background/14..jpg",
+    "profilePic": "../Images/people/8..png",
+    "title": "Marketing Requests",
+    "creator": "by Chad Reid, VP of Marketing and Communications @ JotForm",
+    "about": "This board is a collaboration board between the JotForm marketing and growth teams.",
+    "used": "36.7K",
+    "views": "310.5K"
+  },
+  {
+    "_id": "rm251",
+    "categorie": "Remote",
+    "bg": "../Images/background/15..jpg",
+    "profilePic": "../Images/people/9..png",
+    "title": "Work From Home Daily Planner",
+    "creator": "by Sarah Costello @ TalentHub",
+    "about": "Plan, collaborate and monitor your work-from-home schedule.",
+    "used": "80.3K",
+    "views": "980.5K"
+  },
+  {
+    "_id": "rm252",
+    "categorie": "Remote",
+    "bg": "../Images/background/16..jpg",
+    "profilePic": "../Images/people/10..png",
+    "title": "Mr. Rogers: “Watercooler” Video Chat Planner",
+    "creator": "by Proman Team",
+    "about": "A simple way to build team culture.",
+    "used": "37.7K",
+    "views": "104.7K"
+  },
+  {
+    "_id": "rm253",
+    "categorie": "Remote",
+    "bg": "../Images/background/17..jpg",
+    "profilePic": "../Images/people/4..png",
+    "title": "Remote Team Hub",
+    "creator": "by Proman Team",
+    "about": "A mission control center for your team productivity.",
+    "used": "19.7K",
+    "views": "30.5K"
+  },
+  {
+    "_id": "rm254",
+    "categorie": "Remote",
+    "bg": "../Images/background/18..jpg",
+    "profilePic": "../Images/people/2..png",
+    "title": "Remote Team Meetings",
+    "creator": "by Proman Team",
+    "about": "Bring focus and transparency to your remote team meetings.",
+    "used": "31.7K",
+    "views": "54.9K"
+  },
+  {
+    "_id": "rm255",
+    "categorie": "Remote",
+    "bg": "../Images/background/19..jpg",
+    "profilePic": "../Images/people/2..png",
+    "title": "Distributed Team Brainstorming",
+    "creator": "by Proman Team",
+    "about": "A better way to brainstorm new ideas.",
+    "used": "8.2K",
+    "views": "30.7K"
   }
 ]

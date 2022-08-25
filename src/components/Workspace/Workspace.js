@@ -13,13 +13,14 @@ import axios from 'axios';
 
 
 const Workspace = () => {
-
     const { shortname } = useParams()
     const [open, setOpen] = useState(null);
     const [closeB, setCloseB] = useState(false);
     const [firstLetter, setFirstLetter] = useState('')
     const workspaces = useSelector(state => state.workspace)
     const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
+    // console.log(currentWorkspace)
+
     const [close, setClose] = useState(false);
     // console.log(anchorEl);
     const dispatch = useDispatch()
@@ -39,6 +40,7 @@ const Workspace = () => {
 
 
     const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${currentWorkspace[0]?._id}`).then(res => res.json()))
+    console.log(boards)
     useEffect(() => {
         if (currentWorkspace[0]?.title) {
             const x = currentWorkspace[0]?.title;
@@ -102,7 +104,7 @@ const Workspace = () => {
 
         <div className='flex'>
 
-            <div style={{ backgroundColor: 'rgb(0 0 0 / 90%)' }} className={`${open ? "w-72" : "w-16 "} p-5 pt-4  duration-300 h-screen relative`}>
+            <div style={{ backgroundColor: 'rgb(0 0 0 / 90%)' }} className={`${open ? "w-72" : "w-16 "} p-5 pt-4 h-screen duration-300  relative`}>
 
                 <img style={{ border: '#081A51' }}
                     src={control}
@@ -122,10 +124,10 @@ const Workspace = () => {
                     <h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
                         }`}>{currentWorkspace[0]?.title}</h1>
                 </div>
-                <ul className={`pt-6 mr-8 w-full`}>
+                <ul className={`pt-6 mr-8 w-full mb-12`}>
                     {
                         menusItem.map((menu, index) => (
-                            <CustomLink to={menu.path} key={index} className={`flex my-2  workspace-sidebar-toggle-button py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
+                            <CustomLink to={menu.path} key={index} className={`flex my-2  workspace-sidebar-toggle-button py-1  rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
                                 <div  >{menu.icon}</div>
                                 <span className={`${!open && "hidden"} origin-left duration-200`}>{menu.name}</span>
                             </CustomLink>
@@ -137,15 +139,10 @@ const Workspace = () => {
                     </div>
                     {
                         boards?.data?.map((item, index) => (
-                            <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex justify-between  py-2 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-2 workspace-sidebar-toggle-button mb-2  w-full`}>
+                            <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex  justify-between  py-1 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-2 workspace-sidebar-toggle-button mb-2  w-full`}>
 
                                 <div className='flex justify-center items-center '>
-                                    <div >
-                                        <button className="h-6  w-6  border-2  flex justify-center items-center cursor-pointer duration-500" style={{ backgroundImage: `url(${item.boardBg})` }} >
-
-                                            <span >{item.title?.charAt(0).toUpperCase()}</span>{" "}
-                                        </button>
-                                    </div>
+                                    <button className="h-6  w-6  border-2  flex justify-center items-center cursor-pointer duration-500" style={{ backgroundImage: `url(${item.boardBg})` }} ><span >{item.title?.charAt(0).toUpperCase()}</span>{" "}</button>
                                     <span className={`${!open && "hidden"} ml-2 origin-left duration-200`}>{item.title}</span>
                                 </div>
 

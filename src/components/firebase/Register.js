@@ -41,8 +41,10 @@ const Register = () => {
         const userName = data.name + " " + data.lastName
         await updateProfile({ displayName: userName });
         const userInfo = {
-            name: userName,
-            email: data.email,
+          name: userName,
+          email: data.email,
+          role: "Member"
+
         };
         console.log(userInfo);
         const res = await axios.post(`https://morning-coast-54182.herokuapp.com/api/reg`, userInfo)
