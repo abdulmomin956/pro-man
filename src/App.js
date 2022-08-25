@@ -50,7 +50,11 @@ function App() {
           <Route path="/template" element={<Template />}></Route>
           <Route path="/homescreen" element={<HomeScreen />}></Route>
         </Route>
-        <Route path="/:shortname" element={<Workspace />}>
+        <Route path="/:shortname" element={
+          <RequireAuth>
+            <Workspace />
+          </RequireAuth>
+        }>
           <Route path="/:shortname/" element={<Boards />}></Route>
           <Route path="/:shortname/members" element={<Members />}>
             <Route

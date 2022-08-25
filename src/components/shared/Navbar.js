@@ -55,14 +55,14 @@ const Navbar = () => {
   }, [data, dispatch]);
 
   if (isLoading) {
-    <Loading></Loading>;
+    return <Loading></Loading>;
   }
   // console.log(data);
 
   const x = user?.displayName;
   const nameparts = x?.split(" ");
   const initials =
-    nameparts[0].charAt(0).toUpperCase() + nameparts[1].charAt(0).toUpperCase();
+    nameparts[0]?.charAt(0)?.toUpperCase() + nameparts[1]?.charAt(0)?.toUpperCase();
   // console.log(initials);
   const logout = () => {
     signOut(auth);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Typography, InputBase } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -6,10 +6,17 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
+import storeApi from '../../../utils/storeApi';
 const useStyle = makeStyles((theme) => ({
     editableTitleContainer: {
         margin: theme.spacing(1),
+        padding: theme.spacing(1, 1, 1, 1),
         display: 'flex'
+    },
+    card: {
+        margin: theme.spacing(1, 0, 0, 0),
+        // paddingBottom: theme.spacing(1),
+        padding: theme.spacing(0, 0, 0, 0),
     },
 
     editableTitle: {
@@ -23,24 +30,23 @@ const useStyle = makeStyles((theme) => ({
     input: {
         fontSize: '1.2rem',
         fontWeight: 'bold',
-        margin: theme.spacing(1),
+        margin: theme.spacing(0, 1, 1, 1),
+        padding: theme.spacing(1, 1, 1, 1),
         '&:focus': {
-            background: '#ddd',
+            background: '#FFF',
         },
     },
 }));
 
-const Tittle = ({ title }) => {
+const Tittle = ({ title, listId }) => {
     const [open, setOpen] = useState(false)
     const classes = useStyle()
     const [newTitle, setNewTitle] = useState(title)
+    const { updateListTitle } = useContext(storeApi);
     // console.log(newTitle)
 
     const handleOnChange = (e) => {
-
         setNewTitle(e.target.value)
-
-        // console.log(e.target.value)
     }
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -52,18 +58,34 @@ const Tittle = ({ title }) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const handleBlur = () => {
+        if (newTitle === "") {
+            setNewTitle(title)
+            setOpen(!open)
+            return
+        }
+        if (newTitle === title) {
+            setOpen(!open)
+        }
+        else {
+            updateListTitle(newTitle, listId)
+            setOpen(!open)
+        }
+
+    }
     return (
         <div>
 
             {open ?
-                <div>
+                <div className={classes.card}>
                     <InputBase
                         onChange={handleOnChange}
-                        defaultValue={newTitle}
+                        defaultValue={title}
                         autoFocus
+                        multiline
                         inputProps={{ className: classes.input }}
                         fullWidth
-                        onBlur={() => setOpen(!open)}
+                        onBlur={handleBlur}
                     />
                 </div>
                 :
@@ -102,7 +124,7 @@ const Tittle = ({ title }) => {
                                     <MenuItem >Create a custom rule</MenuItem>
                                     <Divider />
                                     <MenuItem >Move all cards in this list..</MenuItem>
-                                    <MenuItem >Achive all cards in this list..</MenuItem>
+                                    <MenuItem >Achive this list..</MenuItem>
                                 </div>
                             </Menu>
                         </div>

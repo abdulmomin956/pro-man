@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import auth from "./firebase.init";
 import googleIcon from "../../assest/image/google-icon.svg";
 import Loading from "../shared/Loading";
+import { useEffect } from "react";
+import axios from "axios"
 
 const SocialLogin = ({ children }) => {
   let location = useLocation();
@@ -12,33 +14,31 @@ const SocialLogin = ({ children }) => {
 
   const handleSignUp = async () => {
     await signInWithGoogle();
-    
   };
 
+  useEffect(() => {
+    if (user) {
+      const userInfo = {
+        name: user.user.displayName,
+        email: user.user.email,
+      };
+
+      const saveUser = async () => {
+        const res = await axios.post(`https://morning-coast-54182.herokuapp.com/api/login`, userInfo)
+        console.log(res);
+        if (res.status === 200) {
+          navigate(from, { replace: true })
+        }
+      }
+      saveUser();
+    }
+  }, [from, navigate, user])
+
   if (loading) {
-    <Loading></Loading>;
+    return <Loading></Loading>;
   }
-  
-  if (user) {
-    const userInfo = {
-      name: user.user.displayName,
-      email: user.user.email,
-    };
 
-    fetch("https://morning-coast-54182.herokuapp.com/api/reg", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userInfo),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-      });
 
-     navigate(from, { replace: true })
-  }
 
   let signInError;
   if (error) {
