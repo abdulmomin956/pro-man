@@ -21,8 +21,9 @@ const SocialLogin = ({ children }) => {
   useEffect(() => {
     if (user) {
       const userInfo = {
-        name: user.user.displayName,
+        displayName: user.user.displayName,
         email: user.user.email,
+        verified: true
       };
 
       const saveUser = async () => {
@@ -42,7 +43,12 @@ const SocialLogin = ({ children }) => {
           }
           localStorage.setItem("token", JSON.stringify(item))
           dispatch(setUser(userInfo))
-          navigate(from, { replace: true })
+          if (res.data.usersDB.role === "Admin") {
+            navigate("/")
+          }
+          else {
+            navigate(from, { replace: true })
+          }
         }
       }
       saveUser();

@@ -41,11 +41,10 @@ const Register = () => {
         const userName = data.name + " " + data.lastName
         await updateProfile({ displayName: userName });
         const userInfo = {
-            name: userName,
-            email: data.email,
-            role: "Member"
-
+            displayName: userName,
+            email: data.email
         };
+
         console.log(userInfo);
         const res = await axios.post(`https://morning-coast-54182.herokuapp.com/api/reg`, userInfo)
         console.log(res)
@@ -63,7 +62,12 @@ const Register = () => {
             }
             localStorage.setItem("token", JSON.stringify(item))
             dispatch(setUser(userInfo))
-            navigate(from, { replace: true })
+            if (res.data.usersDB.role === "Admin") {
+                navigate("/")
+            }
+            else {
+                navigate(from, { replace: true })
+            }
         }
 
         reset()
