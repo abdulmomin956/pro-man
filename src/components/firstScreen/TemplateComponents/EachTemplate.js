@@ -2,6 +2,7 @@ import React from "react";
 
 const EachTemplate = ({ item }) => {
   const { bg, profilePic, title, creator, about, used, views } = item;
+  // console.log(item);
   return (
     <div>
       <div className=" ">

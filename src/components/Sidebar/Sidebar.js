@@ -1,4 +1,3 @@
-import React from "react";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import "./Sidebar.css";
@@ -18,12 +17,10 @@ import InviteMemberModal from "../shared/InviteMemberModal";
 
 const Sidebar = () => {
   const data = useSelector((state) => state.workspace);
-  // console.log(data);
   const dispatch = useDispatch();
 
   // const [user] = useAuthState(auth);
   // const email = user?.email;
-
   // const data = useSelector(state => state.workspace)
 
   return (
@@ -32,6 +29,7 @@ const Sidebar = () => {
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
         <div className="drawer-content " id="sidebarOverflow">
           {/* <!-- Page content here --> */}
+
           <Outlet />
           <label
             htmlFor="my-drawer-2"
