@@ -4,7 +4,7 @@ import Loading from './Loading';
 const VerifyInvitedMember = () => {
    return (
       <div>
-         <h2 className='text-4xl'> Verify the member.....</h2>
+         <h2 className='text-4xl text-center mt-16'> Verify the member.....</h2>
 
          <Loading></Loading>
       </div>
