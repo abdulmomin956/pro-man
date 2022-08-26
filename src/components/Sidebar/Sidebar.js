@@ -46,7 +46,7 @@ const Sidebar = () => {
           >
             {/* <!-- Sidebar content here --> */}
             <li className="">
-              <NavLink to="/" className="mb-2 p-2 pl-5 pr-5 myButton">
+              <NavLink to="/my-board" className="mb-2 p-2 pl-5 pr-5 myButton">
                 Boards
               </NavLink>
             </li>
@@ -56,7 +56,7 @@ const Sidebar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/homescreen" className="mb-2 p-2 pl-5 pr-5 myButton">
+              <NavLink to="/" className="mb-2 p-2 pl-5 pr-5 myButton">
                 Home
               </NavLink>
             </li>

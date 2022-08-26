@@ -1,6 +1,4 @@
-
-
-.workspace-modal{
+.workspace-modal {
    max-width: 1000px;
    padding: 20px;
    height: 90vh;
@@ -10,10 +8,12 @@
    border-radius: 15px;
    /* background-image: url(https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcHgxMTAwMzgxLWltYWdlLWpvYjYzMC1uXzEtbDBnMDdvdWUuanBn.jpg); */
 }
-.workspace-modal-title{
+
+.workspace-modal-title {
    color: #4D4FF9;
 }
-.wordspace-form-card{
+
+.wordspace-form-card {
    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.25);
    padding: 15px;
 }

@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { setCurrentBoards } from '../../global-state/actions/reduxActions';
 import axios from 'axios';
+import { FaBoxes } from 'react-icons/fa';
 // import Button from '@material-ui/core/Button';
 
 
@@ -74,9 +75,7 @@ const Workspace = () => {
         {
             path: `/${shortname}`,
             name: "Boards",
-            icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-            </svg>
+            icon: <FaBoxes className='ml-1'></FaBoxes>
         },
 
         {
@@ -103,7 +102,7 @@ const Workspace = () => {
 
         <div className='flex'>
 
-            <div style={{ backgroundColor: 'rgb(0 0 0 / 90%)' }} className={`${open ? "w-72" : "w-16 "} p-5 pt-4 h-screen duration-300  relative`}>
+            <div className={`${open ? "w-72" : "w-16 "} p-5 pt-4 h-screen duration-300 bg-primary  relative`}>
 
                 <img style={{ border: '#081A51' }}
                     src="https://i.ibb.co/86h7B94/control.png"

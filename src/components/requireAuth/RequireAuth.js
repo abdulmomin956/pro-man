@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import Loading from '../shared/Loading';
 import { useSelector, useDispatch } from "react-redux"
 import axios from 'axios';
-import { setEmail } from '../../global-state/actions/reduxActions';
+import { setUser } from '../../global-state/actions/reduxActions';
 
 function getWithExpiry(key) {
     const itemStr = localStorage.getItem(key)
@@ -24,7 +24,7 @@ function getWithExpiry(key) {
 }
 
 const RequireAuth = ({ children }) => {
-    const email = useSelector(state => state.email)
+    const email = useSelector(state => state.user.email)
     const dispatch = useDispatch()
     let location = useLocation();
     // if (loading) {
@@ -53,7 +53,7 @@ const RequireAuth = ({ children }) => {
                     config
                 )
                 if (res.status === 200) {
-                    dispatch(setEmail(res.data.email))
+                    dispatch(setUser(res.data))
                 }
                 else return <Navigate to="/login" state={{ from: location }} replace />
             }

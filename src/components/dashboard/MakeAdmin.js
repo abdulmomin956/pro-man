@@ -1,36 +1,30 @@
+import { async } from "@firebase/util";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import Loading from "../shared/Loading";
 
 const MakeAdmin = () => {
-  const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("http://localhost:5000/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
+  const users = useQuery(["users"], () => fetch("https://morning-coast-54182.herokuapp.com/users").then(res => res.json()))
+
+  if (users.isLoading) {
+    return <Loading />
+  }
   console.log(users);
 
-  const handleAdmin = (id) => {
+  const handleAdmin = async (id) => {
     const role = "Admin";
     const user = { role };
 
-    console.log("clicked");
+    const res = await axios.put(`https://morning-coast-54182.herokuapp.com/users/${id}`, user)
+    if (res.status === 200) {
+      users.refetch()
+    }
 
-    const url = `http://localhost:5000/users/${id}`;
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        toast("make admin sucessfull");
-      });
   };
   return (
     <div>
@@ -47,16 +41,16 @@ const MakeAdmin = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user, i) => (
-                <tr key={i+1} className="border-2 rounded-md bg-red-400">
+              {users?.data?.map((user, i) => (
+                <tr key={i + 1} className="border-2 rounded-md bg-red-400">
                   <th>{i + 1}</th>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.role}</td>
-                  {user.role !== "admin" && (
+                  {user?.role !== "Admin" && (
                     <td>
                       <button
-                        onClick={() => handleAdmin(user._id)}
+                        onClick={() => handleAdmin(user?._id)}
                         className="btn btn-primary btn-sm bg-blue-50 text-black border-0 hover:bg-rose-50 shadow"
                       >
                         make admin

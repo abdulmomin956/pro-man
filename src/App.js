@@ -31,7 +31,7 @@ import MakeAdmin from "./components/dashboard/MakeAdmin";
 import TemplateCategory from "./components/firstScreen/TemplateComponents/TemplateCategory";
 import Home1 from "./components/Home/Home";
 import { useDispatch } from "react-redux";
-import { setEmail } from "./global-state/actions/reduxActions";
+import { setUser } from "./global-state/actions/reduxActions";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -55,13 +55,13 @@ function getWithExpiry(key) {
 }
 
 function App() {
-  const email = useSelector((state) => state.email);
+  const user = useSelector((state) => state.user);
   const [loading, setLoading] = useState(null);
   const dispatch = useDispatch();
   const token = getWithExpiry("token");
 
   if (!token) {
-    dispatch(setEmail(null));
+    dispatch(setUser(null));
   }
 
   useEffect(() => {
@@ -80,18 +80,21 @@ function App() {
           bodyParameters,
           config
         );
+        console.log(res);
         if (res.status === 200) {
-          dispatch(setEmail(res.data.email));
+
+          // console.log(res.data);
+          dispatch(setUser(res.data));
           setLoading(false);
         } else {
-          dispatch(setEmail(null));
+          dispatch(setUser(null));
           setLoading(false);
         }
       };
       fetchData();
     }
   }, [dispatch, token]);
-  console.log(email);
+  console.log(user);
 
   if (loading) {
     return <Loading />;
@@ -102,8 +105,8 @@ function App() {
       {/* <ToastContainer /> */}
 
       <Routes>
-        {!email && <Route path="/" element={<Home1 />}></Route>}
-        {email && (
+        {!user?.email && <Route path="/" element={<Home1 />}></Route>}
+        {user?.email && (
           <Route
             path="/"
             element={
@@ -112,39 +115,38 @@ function App() {
               </RequireAuth>
             }
           >
-            <Route path="/" element={<Home />}>
-              <Route path="/" element={<Board />}></Route>
-              <Route path="/template" element={<Template />}></Route>
-              <Route
-                path="/template/:category"
-                element={<TemplateCategory></TemplateCategory>}
-              ></Route>
-              <Route path="/homescreen" element={<HomeScreen />}></Route>
-            </Route>
-            <Route path="/:shortname" element={<Workspace />}>
-              <Route path="/:shortname/" element={<Boards />}></Route>
-              <Route path="/:shortname/members" element={<Members />}>
+            {user?.role !== "Admin" && <>
+              <Route path="/" element={<Home />}>
+                <Route path="/my-board" element={<Board />}></Route>
+                <Route path="/template" element={<Template />}></Route>
                 <Route
-                  path="/:shortname/members"
-                  element={<WorkspaceMembers />}
-                />
-                <Route path="/:shortname/members/guests" element={<Guests />} />
-                <Route
-                  path="/:shortname/members/pending"
-                  element={<Pending />}
-                />
+                  path="/template/:category"
+                  element={<TemplateCategory></TemplateCategory>}
+                ></Route>
+                <Route path="/" element={<HomeScreen />}></Route>
               </Route>
-              <Route path="/:shortname/account" element={<Account />} />
-              <Route path="/:shortname/:id" element={<BoardDetails />} />
-            </Route>
-            <Route path="/profile" element={<Profiles />}>
-              <Route path="/profile/" element={<ProfileValidity />} />
-              <Route path="profileActive" element={<ProfileActive />} />
-              <Route path="profileCard" element={<ProfileCard />} />
-              <Route path="profileSettings" element={<ProfileSetting />} />
-            </Route>
+              <Route path="/:shortname" element={<Workspace />}>
+                <Route path="/:shortname/" element={<Boards />}></Route>
+                <Route path="/:shortname/members" element={<Members />}>
+                  <Route path="/:shortname/members" element={<WorkspaceMembers />} />
+                  <Route path="/:shortname/members/guests" element={<Guests />} />
+                  <Route path="/:shortname/members/pending" element={<Pending />} />
+                </Route>
+                <Route path="/:shortname/account" element={<Account />} />
+                <Route path="/:shortname/:id" element={<BoardDetails />} />
+              </Route>
+              <Route path="/profile" element={<Profiles />}>
+                <Route path="/profile/" element={<ProfileValidity />} />
+                <Route path="profileActive" element={<ProfileActive />} />
+                <Route path="profileCard" element={<ProfileCard />} />
+                <Route path="profileSettings" element={<ProfileSetting />} />
+              </Route>
+            </>
+            }
             {/* Just for admin  */}
-            <Route path="/makeadmin" element={<MakeAdmin />} />
+            {
+              user?.role === "Admin" && <Route path="/" element={<MakeAdmin />} />
+            }
           </Route>
         )}
         <Route path="/login" element={<Login></Login>}></Route>

@@ -11,9 +11,9 @@ const HomeScreen = () => {
 
 
   return (
-    <div className="md:flex justify-center my-10 shadow-sm">
-      <div className="md:w-12/6 lg:w-12/7 flex justify-center">
-        <div className="card md:w-[25rem] bg-base-100 shadow">
+    <div className="md:flex justify-between my-10 shadow-sm">
+      <div className="md:w-12/6 lg:w-full flex justify-center">
+        <div className="card md:w-full bg-base-100 shadow">
           <figure>
             <img src={img} alt="Shoes" />
           </figure>
@@ -28,8 +28,8 @@ const HomeScreen = () => {
           </div>
         </div>
       </div>
-      <div className="ml-10 mt-10 md:mt-0 w-8/12 sm:w-6/12  md:w-3/12 shadow-lg rounded-lg">
-        <div className="p-2">
+      <div className="ml-10 mt-10 md:mt-0 sm:w-6/12  md:w-[20rem] shadow rounded-lg w-">
+        <div className="p-2 ">
           <p className=" mb-2 ">Recently viewed</p>
           {
             data.map(item => (

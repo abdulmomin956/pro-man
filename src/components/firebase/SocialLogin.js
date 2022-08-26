@@ -5,12 +5,12 @@ import Loading from "../shared/Loading";
 import { useEffect } from "react";
 import axios from "axios"
 import { useDispatch } from "react-redux";
-import { setEmail } from "../../global-state/actions/reduxActions";
+import { setUser } from "../../global-state/actions/reduxActions";
 
 const SocialLogin = ({ children }) => {
   const dispatch = useDispatch()
   let location = useLocation();
-  let from = location.state?.from?.pathname || "/";
+  let from = location.state?.from?.pathname || "/my-board";
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   let navigate = useNavigate();
 
@@ -41,7 +41,7 @@ const SocialLogin = ({ children }) => {
             email: userInfo.email
           }
           localStorage.setItem("token", JSON.stringify(item))
-          dispatch(setEmail(userInfo.email))
+          dispatch(setUser(userInfo))
           navigate(from, { replace: true })
         }
       }

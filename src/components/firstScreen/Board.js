@@ -15,6 +15,7 @@ import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 import LoardBoard from "./LoardBoard";
 import { Link } from "react-router-dom";
 import HomeScreen from "./HomeScreen";
+import { Divider } from "@material-ui/core";
 
 
 
@@ -94,7 +95,7 @@ const Board = () => {
     <div className="px-4" id="sidebarOverflow">
       {/* This Board pages showing when enter to the site */}
       <h2 className="text-2xl font-medium my-6">
-        <span className="flex items-center text-indigo-500">
+        <span className="flex items-center text-black">
           <FaBoxes className="mr-3"></FaBoxes>Most popular templates
         </span>
       </h2>
@@ -128,15 +129,16 @@ const Board = () => {
       {/* **Your Workspace section start here** */}
       <div className="my-16">
         <p className="text-2xl font-bold text-gray-500">YOUR WORKSPACES</p>
+        <hr className="mt-3" />
         {data?.map(item =>
           <div key={item._id}>
             <div className="md:flex items-center justify-between">
               <div className="flex items-center my-5">
 
-                <span className="bg-primary text-3xl font-bold rounded text-white px-2 pb-1 uppercase">
+                <span className="bg-black text-3xl font-bold rounded text-white px-2 pb-1 uppercase">
                   {item?.title?.charAt(0)}
                 </span>
-                <h2 className="text-2xl font-bold ml-4 text-indigo-500">{item?.title}</h2>
+                <h2 className="text-2xl font-bold ml-4 text-black">{item?.title}</h2>
 
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-1">

@@ -32,7 +32,7 @@ const HomeNav = () => {
           </ul>
         </div>
         <div>
-          <button className="lg:px-8 text-blue-900 text-3xl font-bold">
+          <button className="lg:px-8 text-primary text-3xl font-bold">
             ProMan
           </button>
 

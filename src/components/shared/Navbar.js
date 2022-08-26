@@ -12,7 +12,7 @@ import WorkspaceModal from "./WorkspaceModal";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import {
-  setEmail,
+  setUser,
   setLoadWorkspace,
   setWorkspace,
   // setWorkspaceID,
@@ -26,12 +26,13 @@ import StarredBoard from "./StarredBoard";
 // FiBell
 
 const Navbar = () => {
+  const role = useSelector(state => state.user?.role)
   const [user, loading, authError] = useAuthState(auth);
   const [initials, setInitial] = useState("")
   const [open, setOpen] = useState(false);
   const [openTemp, setOpenTemp] = useState(false)
   const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
-  const email = useSelector(state => state.email)
+  const email = useSelector(state => state.user?.email)
   const navigate = useNavigate();
 
 
@@ -75,247 +76,252 @@ const Navbar = () => {
   const logout = () => {
     signOut(auth);
     localStorage.removeItem("token")
-    dispatch(setEmail(null))
+    dispatch(setUser(null))
     navigate('/')
   };
 
   return (
-    <div>
-      <div style={{ zIndex: 200 }} className="navbar bg-primary w-full ">
+    <div className=" text-txtColor">
+      <div style={{ zIndex: 200 }} className="navbar bg-bg-100 w-full shadow">
 
         <div className="navbar-start lg:px-12">
 
-          <div className="dropdown">
-            <label tabIndex="0" className="btn myButton  lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </label>
-            <ul
-              tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 py-4 shadow bg-base-100 rounded-lg w-52 "
-            >
-              <li tabIndex="0">
-                <p
-                  className="justify-between mb-2 p-2 pl-5 pr-5 myButton"
-                  style={{ borderRadius: "0px" }}
+          {/* this is dropdown menu for mobile view  */}
+          {
+            role !== "Admin" && <div className="dropdown">
+              <label tabIndex="0" className="btn    lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  Workspaces
-                  <svg
-                    className="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </label>
+              <ul
+                tabIndex="0"
+                className="menu menu-compact dropdown-content mt-3 py-4 shadow bg-base-100 rounded-lg w-52 "
+              >
+                <li tabIndex="0">
+                  <p
+                    className="justify-between mb-2 p-2 pl-5 pr-5  hover:border-1"
+                    style={{ borderRadius: "0px" }}
                   >
-                    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                  </svg>
-                </p>
-                <ul className="py-2  bg-base-100 rounded w-52 pt-4 shadow">
-                  {data?.map((item, i) => (
-                    <li key={i}>
-                      <Link to={"/" + item?.shortname}
-                        className="mb-2 btn-sm w-full rounded-none  myButton"
+                    Workspaces
+                    <svg
+                      className="fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                    </svg>
+                  </p>
+                  <ul className="py-2  bg-base-100 rounded w-52 pt-4 shadow">
+                    {data?.map((item, i) => (
+                      <li key={i}>
+                        <Link to={"/" + item?.shortname}
+                          className="mb-2 btn-sm w-full rounded-none   "
+                          style={{ borderRadius: "0px" }}
+                        >
+                          <span className="  text-txtColor font-bold rounded px-1 uppercase bg-indigo-400">
+                            {item?.title?.charAt(0)}
+                          </span>
+                          {item?.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+                <li tabIndex="0">
+                  <button
+                    className=" p-2 pl-5 pr-5  "
+                    style={{ borderRadius: "0px" }}
+                  >
+                    Create
+                  </button>
+                  <ul className="py-2 bg-base-100 rounded w-52 pt-4 shadow">
+                    <li>
+                      {/* <!-- The button to open modal --> */}
+                      <label
+                        htmlFor="my-modal-6"
+                        className="mb-2 btn-sm w-full  myButton "
                         style={{ borderRadius: "0px" }}
                       >
-                        <span className="text-white font-bold rounded px-1 uppercase bg-indigo-400">
-                          {item?.title?.charAt(0)}
-                        </span>
-                        {item?.title}
-                      </Link>
+                        Create Board
+                      </label>
+
+                      {/* <!-- Put this part before </body> tag my-modal-sa6 --> */}
                     </li>
-                  ))}
-                </ul>
-              </li>
-              <li tabIndex="0">
-                <button
-                  className=" p-2 pl-5 pr-5 myButton"
-                  style={{ borderRadius: "0px" }}
-                >
-                  Create
-                </button>
-                <ul className="py-2 bg-base-100 rounded w-52 pt-4 shadow">
-                  <li>
-                    {/* <!-- The button to open modal --> */}
-                    <label
-                      htmlFor="my-modal-6"
-                      className="mb-2 btn-sm w-full  myButton"
-                      style={{ borderRadius: "0px" }}
-                    >
-                      Create Board
-                    </label>
+                    <li>
+                      <label
+                        htmlFor="my-modal-sa6"
+                        className="mb-2 btn-sm w-full   myButton"
+                        style={{ borderRadius: "0px" }}
+                      >
+                        Create Workspace
+                      </label>
+                    </li>
+                  </ul>
+                  {/* <!-- The button to open modal --> */}
 
-                    {/* <!-- Put this part before </body> tag my-modal-sa6 --> */}
-                  </li>
-                  <li>
-                    <label
-                      htmlFor="my-modal-sa6"
-                      className="mb-2 btn-sm w-full  myButton"
-                      style={{ borderRadius: "0px" }}
-                    >
-                      Create Workspace
-                    </label>
-                  </li>
-                </ul>
-                {/* <!-- The button to open modal --> */}
+                  {/* <!-- Put this part before </body> tag --> */}
+                </li>
+              </ul>
+            </div>
+          }
 
-                {/* <!-- Put this part before </body> tag --> */}
-              </li>
-            </ul>
-          </div>
-
-          <div className='w-full navTitle'>
-            <a href="/" className="lg:mx-5  flex items-center justify-center">
+          <div className='navbar-start w-full navTitle'>
+            <a href="/" className="lg:mx-5  flex items-center justify-start">
               ProMan
             </a>
           </div>
 
 
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal p-0 m-0">
-              <div className="dropdown">
-                <label
-                  tabIndex="0"
-                  className="btn font-black hover:text-secondary text-white border-0 btn-sm rounded-none mx-1 myButton"
-                  style={{ fontWeight: 500, backgroundColor: 'transparent' }}
-                >
-                  Workspaces{" "}
-                  <p>
-                    <svg
-                      className="fill-current"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                    </svg>
-                  </p>
-                </label>
-                <ul
-                  tabIndex="0"
-                  className="dropdown-content menu py-2 bg-base-100 rounded w-52 pt-4 shadow"
-                >
-                  {data?.map((item, i) => (
-                    <li key={i}>
-                      <Link
-                        to={"/" + item?.shortname}
-                        className="mb-2 px-2 py-1 w-full myButton"
+          {
+            role !== "Admin" && <div className="navbar-center hidden lg:flex">
+              <ul className="menu menu-horizontal p-0 m-0">
+                <div className="dropdown">
+                  <label
+                    tabIndex="0"
+                    className="btn font-black   text-txtColor border-0 btn-sm rounded-none mx-1 "
+                    style={{ fontWeight: 500, backgroundColor: 'transparent' }}
+                  >
+                    Workspaces{" "}
+                    <p>
+                      <svg
+                        className="fill-current"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                      </svg>
+                    </p>
+                  </label>
+                  <ul
+                    tabIndex="0"
+                    className="dropdown-content menu py-2 bg-base-100 rounded w-52 pt-4 shadow"
+                  >
+                    {data?.map((item, i) => (
+                      <li key={i}>
+                        <Link
+                          to={"/" + item?.shortname}
+                          className="mb-2 px-2 py-1 w-full  myButton"
+                          style={{ borderRadius: "0px" }}
+                        >
+                          <span className="  font-bold rounded-sm px-1 uppercase">
+                            {item?.title?.charAt(0)}
+                          </span>
+                          {item?.title}
+                        </Link>
+                        {/* <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a> */}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="dropdown">
+                  <label
+                    tabIndex="0"
+                    className="btn btn-sm mx-1 bg-transparent    text-txtColor border-0   rounded-none font-bold"
+                    style={{ fontWeight: 500, backgroundColor: 'transparent' }}
+                  >
+                    Create
+                  </label>
+                  <ul
+                    tabIndex="0"
+                    className="dropdown-content menu py-2 bg-base-100 rounded w-52 pt-4 shadow"
+                  >
+                    <li>
+                      {/* <!-- The button to open modal --> */}
+                      <label
+                        htmlFor="my-modal-6"
+                        className="mb-2 btn-sm w-full  myButton "
                         style={{ borderRadius: "0px" }}
                       >
-                        <span className="text-white font-bold rounded-sm px-1 uppercase bg-indigo-400">
-                          {item?.title?.charAt(0)}
-                        </span>
-                        {item?.title}
-                      </Link>
-                      {/* <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a> */}
+                        <FaBoxes></FaBoxes>Create Board
+                      </label>
+
+                      {/* modal */}
                     </li>
-                  ))}
-                </ul>
-              </div>
+                    <li>
+                      <label
+                        htmlFor="my-modal-sa6"
+                        className="mb-2 btn-sm w-full  myButton "
+                        style={{ borderRadius: "0px" }}
+                      >
+                        <MdGroupWork></MdGroupWork> Create Workspace
+                      </label>
+                    </li>
+                  </ul>
+                </div>
 
-              <div className="dropdown">
-                <label
-                  tabIndex="0"
-                  className="btn btn-sm mx-1 bg-transparent  text-white border-0 myButton rounded-none font-bold"
-                  style={{ fontWeight: 500, backgroundColor: 'transparent' }}
-                >
-                  Create
-                </label>
-                <ul
-                  tabIndex="0"
-                  className="dropdown-content menu py-2 bg-base-100 rounded w-52 pt-4 shadow"
-                >
-                  <li>
-                    {/* <!-- The button to open modal --> */}
-                    <label
-                      htmlFor="my-modal-6"
-                      className="mb-2 btn-sm w-full  myButton"
-                      style={{ borderRadius: "0px" }}
-                    >
-                      <FaBoxes></FaBoxes>Create Board
-                    </label>
-
-                    {/* modal */}
-                  </li>
-                  <li>
-                    <label
-                      htmlFor="my-modal-sa6"
-                      className="mb-2 btn-sm w-full bg-transparent text-white border-0 myButton"
-                      style={{ borderRadius: "0px" }}
-                    >
-                      <MdGroupWork></MdGroupWork> Create Workspace
-                    </label>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="dropdown">
-                <label
-                  onClick={() => setOpen(!open)}
-                  tabIndex="0"
-                  className="btn btn-sm mx-1 bg-transparent text-white border-0 myButton rounded-none font-bold"
-                  style={{ fontWeight: 500, backgroundColor: 'transparent' }}
-                >
-                  Starred
-                  <p>
-                    <svg
-                      className="fill-current"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                    </svg>
-                  </p>
-                </label>
+                <div className="dropdown">
+                  <label
+                    onClick={() => setOpen(!open)}
+                    tabIndex="0"
+                    className="btn btn-sm mx-1 bg-transparent   text-txtColor border-0   rounded-none font-bold"
+                    style={{ fontWeight: 500, backgroundColor: 'transparent' }}
+                  >
+                    Starred
+                    <p>
+                      <svg
+                        className="fill-current"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                      </svg>
+                    </p>
+                  </label>
 
 
-                {open && (
-                  <StarredBoard setOpen={setOpen} open={open}></StarredBoard>
-                )}
-              </div>
+                  {open && (
+                    <StarredBoard setOpen={setOpen} open={open}></StarredBoard>
+                  )}
+                </div>
 
-              <div className="dropdown">
-                <label
-                  onClick={() => setOpenTemp(!openTemp)}
-                  tabIndex="0"
-                  className="btn btn-sm mx-1 bg-transparent text-white border-0 h-full myButton rounded-none font-bold"
-                  style={{ fontWeight: 500, backgroundColor: 'transparent' }}
-                >
-                  Templetes
-                  <p>
-                    <svg
-                      className="fill-current"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                    </svg>
-                  </p>
-                </label>
-                {openTemp && (
-                  <TempleteBoard setOpenTemp={setOpenTemp} openTemp={openTemp}></TempleteBoard>
-                )}
-              </div>
+                <div className="dropdown">
+                  <label
+                    onClick={() => setOpenTemp(!openTemp)}
+                    tabIndex="0"
+                    className="btn btn-sm mx-1 bg-transparent   text-txtColor border-0 h-full   rounded-none font-bold"
+                    style={{ fontWeight: 500, backgroundColor: 'transparent' }}
+                  >
+                    Templetes
+                    <p>
+                      <svg
+                        className="fill-current"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                      </svg>
+                    </p>
+                  </label>
+                  {openTemp && (
+                    <TempleteBoard setOpenTemp={setOpenTemp} openTemp={openTemp}></TempleteBoard>
+                  )}
+                </div>
 
 
-            </ul>
-          </div>
+              </ul>
+            </div>
+          }
         </div>
 
         <div className="navbar-end lg:px-12">
@@ -323,7 +329,7 @@ const Navbar = () => {
             htmlFor="notification"
             className=" cursor-pointer modal-button"
           >
-            <FaRegBell className="text-2xl text-white mr-3" />
+            <FaRegBell className="text-2xl   text-txtColor mr-3" />
           </label>
 
           {user && (
@@ -349,17 +355,17 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/profile"
-                    className="justify-between   mb-2 btn-sm w-full  myButton"
+                    className="justify-between   mb-2 btn-sm w-full   "
                   >
                     Profile
                     <span className="badge">New</span>
                   </Link>
                 </li>
                 <li>
-                  <p className="mb-2 btn-sm w-full  myButton">Settings</p>
+                  <p className="mb-2 btn-sm w-full   ">Settings</p>
                 </li>
                 <li>
-                  <p onClick={logout} className="btn-sm w-full  myButton">
+                  <p onClick={logout} className="btn-sm w-full   ">
                     Logout
                   </p>
                 </li>
