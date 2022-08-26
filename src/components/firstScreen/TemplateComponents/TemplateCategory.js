@@ -13,7 +13,7 @@ const TemplateCategory = () => {
 
   useEffect(() => {
     const filterOutTemplates = popularTemplates.filter(
-      (item) => item.categorie === params.category
+      (item) => item.category === params.category
     );
     setTemplates(filterOutTemplates);
   }, [popularTemplates, params]);

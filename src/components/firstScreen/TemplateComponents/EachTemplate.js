@@ -1,13 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const EachTemplate = ({ item }) => {
-  const { bg, profilePic, title, creator, about, used, views } = item;
+  const { _id, category, bg, profilePic, title, creator, about, used, views } =
+    item;
+  const navigate = useNavigate();
   // console.log(item);
+
+  const handleNavigate = (id) => {
+    navigate("/category/" + id);
+  };
+
   return (
-    <div>
-      <div className=" ">
+    <div onClick={() => handleNavigate(_id)}>
+      <div>
         <img
-          className="rounded-md md:w-auto md:h-auto h-[135px] w-[100vw]"
+          className="rounded-md md:w-auto md:h-auto h-[135px] w-[100vw] hover:shadow-2xl"
           src={bg}
           alt=""
         />

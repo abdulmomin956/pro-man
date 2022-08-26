@@ -35,6 +35,7 @@ import { setEmail } from "./global-state/actions/reduxActions";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import EachTemplateDetails from "./components/firstScreen/TemplateComponents/EachTemplateDetails";
 
 function getWithExpiry(key) {
   const itemStr = localStorage.getItem(key);
@@ -118,6 +119,10 @@ function App() {
               <Route
                 path="/template/:category"
                 element={<TemplateCategory></TemplateCategory>}
+              ></Route>
+              <Route
+                path="/category/:id"
+                element={<EachTemplateDetails></EachTemplateDetails>}
               ></Route>
               <Route path="/homescreen" element={<HomeScreen />}></Route>
             </Route>
