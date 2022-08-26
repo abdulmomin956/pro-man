@@ -1,11 +1,7 @@
 import React from "react";
-import bg1 from "./../../assest/image/bg1.jpg";
 import './Notification.css'
 
 const Notification = () => {
-
-
-
 
   return (
     <div>
@@ -39,7 +35,7 @@ const Notification = () => {
             <div className="w-full border">
               <div className=" bg-gray-100">
                 <div className="flex border-b-2 w-full items-center bg-white mb-5 py-3 pl-3">
-                  <img src={bg1} alt="" className="w-[50px] mr-3" />
+                  <img src="https://i.ibb.co/xChCQ7F/bg1.jpg" alt="" className="w-[50px] mr-3" />
                   <p className="text-lg">Pro-man</p>
                 </div>
                 <div className="flex items-center pl-3">

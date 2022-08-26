@@ -29,6 +29,8 @@ import Pending from "./components/Workspace/Member/Pending";
 import { useSelector } from "react-redux";
 import MakeAdmin from "./components/dashboard/MakeAdmin";
 import TemplateCategory from "./components/firstScreen/TemplateComponents/TemplateCategory";
+import Home1 from "./components/Home/Home"
+
 
 function App() {
   const email = useSelector((state) => state.email);
@@ -39,6 +41,7 @@ function App() {
       {email && <Navbar />}
 
       <Routes>
+        {!email && <Route path="/mainHome" element={<Home1></Home1>}></Route>}
         <Route
           path="/"
           element={
