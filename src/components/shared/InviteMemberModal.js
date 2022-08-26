@@ -36,7 +36,7 @@ const InviteMemberModal = () => {
     return <Loading></Loading>;
   }
 
-  const { fromEmail, displayName } = user?.email;
+  // const { fromEmail, displayName } = user?.email;
 
   const handleModalSubmit = (event) => {
     event.preventDefault();
@@ -53,7 +53,7 @@ const InviteMemberModal = () => {
       )
       .then((res) => {
         console.log(res);
-        if(res.status == 200){
+        if (res.status == 200) {
           setSelectMember("");
           setMatchField("");
           message = "";
@@ -100,14 +100,14 @@ const InviteMemberModal = () => {
                   <input
                     type="text"
                     name="woner_email"
-                    value={user.email}
+                    value={user?.email}
                     id=""
                     className=" hidden"
                   />
                   <input
                     type="text"
                     name="woner_name"
-                    value={user.displayName}
+                    value={user?.displayName}
                     id=""
                     className=" hidden"
                   />
@@ -124,9 +124,8 @@ const InviteMemberModal = () => {
                     name="user_email"
                     placeholder={`Enter email address`}
                     required
-                    className={`input input-sm input-bordered w-full  rounded-none ${
-                      selectMember && "hidden"
-                    }`}
+                    className={`input input-sm input-bordered w-full  rounded-none ${selectMember && "hidden"
+                      }`}
                   />
                   <button
                     disabled={btnDisable}
@@ -138,9 +137,8 @@ const InviteMemberModal = () => {
                 </div>
                 <div>
                   <textarea
-                    className={`textarea w-full textarea-bordered ${
-                      selectMember ? "block" : "hidden"
-                    }`}
+                    className={`textarea w-full textarea-bordered ${selectMember ? "block" : "hidden"
+                      }`}
                     placeholder="Bio"
                     name="message"
                   ></textarea>
