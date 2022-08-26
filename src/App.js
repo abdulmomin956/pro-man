@@ -106,6 +106,7 @@ function App() {
 
 
       <Routes>
+
         {!email && <Route path="/" element={<Home1 />}></Route>}
         {email && <Route path="/" element={<RequireAuth><Navbar /></RequireAuth>}>
           <Route path="/" element={<Home />}>
