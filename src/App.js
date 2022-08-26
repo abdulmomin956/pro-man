@@ -29,7 +29,7 @@ import Pending from "./components/Workspace/Member/Pending";
 import { useSelector } from "react-redux";
 import MakeAdmin from "./components/dashboard/MakeAdmin";
 import TemplateCategory from "./components/firstScreen/TemplateComponents/TemplateCategory";
-import Home1 from "./components/Home/Home"
+import Home1 from "./components/Home/Home";
 import { useDispatch } from "react-redux";
 import { setEmail } from "./global-state/actions/reduxActions";
 import axios from "axios";
@@ -37,106 +37,118 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function getWithExpiry(key) {
-  const itemStr = localStorage.getItem(key)
+  const itemStr = localStorage.getItem(key);
   // if the item doesn't exist, return null
   if (!itemStr) {
-    return null
+    return null;
   }
-  const item = JSON.parse(itemStr)
-  const now = new Date()
+  const item = JSON.parse(itemStr);
+  const now = new Date();
   // compare the expiry time of the item with the current time
   if (now.getTime() > item.expiry) {
     // If the item is expired, delete the item from storage
     // and return null
-    localStorage.removeItem(key)
-    return null
+    localStorage.removeItem(key);
+    return null;
   }
-  return item.accessToken
+  return item.accessToken;
 }
-
 
 function App() {
   const email = useSelector((state) => state.email);
-  const [loading, setLoading] = useState(null)
+  const [loading, setLoading] = useState(null);
   const dispatch = useDispatch();
-  const token = getWithExpiry('token')
+  const token = getWithExpiry("token");
 
   if (!token) {
-    dispatch(setEmail(null))
+    dispatch(setEmail(null));
   }
-
 
   useEffect(() => {
     if (token) {
       const fetchData = async () => {
-        setLoading(true)
+        setLoading(true);
         const config = {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         };
 
         const bodyParameters = {
-          key: "value"
+          key: "value",
         };
         const res = await axios.post(
-          'https://morning-coast-54182.herokuapp.com/api/auth',
+          "https://morning-coast-54182.herokuapp.com/api/auth",
           bodyParameters,
           config
-        )
+        );
         if (res.status === 200) {
-          dispatch(setEmail(res.data.email))
-          setLoading(false)
+          dispatch(setEmail(res.data.email));
+          setLoading(false);
+        } else {
+          dispatch(setEmail(null));
+          setLoading(false);
         }
-        else {
-          dispatch(setEmail(null))
-          setLoading(false)
-        }
-      }
+      };
       fetchData();
     }
-  }, [dispatch, token])
+  }, [dispatch, token]);
   console.log(email);
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
     <div className="#F5F5F5">
       {/* <ToastContainer /> */}
 
-
       <Routes>
-
         {!email && <Route path="/" element={<Home1 />}></Route>}
-        {email && <Route path="/" element={<RequireAuth><Navbar /></RequireAuth>}>
-          <Route path="/" element={<Home />}>
-            <Route path="/" element={<Board />}></Route>
-            <Route path="/template" element={<Template />}></Route>
-            <Route path="/template/:category" element={<TemplateCategory></TemplateCategory>}></Route>
-            <Route path="/homescreen" element={<HomeScreen />}></Route>
-          </Route>
-          <Route path="/:shortname" element={<Workspace />}>
-            <Route path="/:shortname/" element={<Boards />}></Route>
-            <Route path="/:shortname/members" element={<Members />}>
-              <Route path="/:shortname/members" element={<WorkspaceMembers />} />
-              <Route path="/:shortname/members/guests" element={<Guests />} />
-              <Route path="/:shortname/members/pending" element={<Pending />} />
+        {email && (
+          <Route
+            path="/"
+            element={
+              <RequireAuth>
+                <Navbar />
+              </RequireAuth>
+            }
+          >
+            <Route path="/" element={<Home />}>
+              <Route path="/" element={<Board />}></Route>
+              <Route path="/template" element={<Template />}></Route>
+              <Route
+                path="/template/:category"
+                element={<TemplateCategory></TemplateCategory>}
+              ></Route>
+              <Route path="/homescreen" element={<HomeScreen />}></Route>
             </Route>
-            <Route path="/:shortname/account" element={<Account />} />
-            <Route path="/:shortname/:id" element={<BoardDetails />} />
+            <Route path="/:shortname" element={<Workspace />}>
+              <Route path="/:shortname/" element={<Boards />}></Route>
+              <Route path="/:shortname/members" element={<Members />}>
+                <Route
+                  path="/:shortname/members"
+                  element={<WorkspaceMembers />}
+                />
+                <Route path="/:shortname/members/guests" element={<Guests />} />
+                <Route
+                  path="/:shortname/members/pending"
+                  element={<Pending />}
+                />
+              </Route>
+              <Route path="/:shortname/account" element={<Account />} />
+              <Route path="/:shortname/:id" element={<BoardDetails />} />
+            </Route>
+            <Route path="/profile" element={<Profiles />}>
+              <Route path="/profile/" element={<ProfileValidity />} />
+              <Route path="profileActive" element={<ProfileActive />} />
+              <Route path="profileCard" element={<ProfileCard />} />
+              <Route path="profileSettings" element={<ProfileSetting />} />
+            </Route>
+            {/* Just for admin  */}
+            <Route path="/makeadmin" element={<MakeAdmin />} />
           </Route>
-          <Route path="/profile" element={<Profiles />}>
-            <Route path="/profile/" element={<ProfileValidity />} />
-            <Route path="profileActive" element={<ProfileActive />} />
-            <Route path="profileCard" element={<ProfileCard />} />
-            <Route path="profileSettings" element={<ProfileSetting />} />
-          </Route>
-          {/* Just for admin  */}
-          <Route path="/makeadmin" element={<MakeAdmin />} />
-        </Route>}
+        )}
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
-
 
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
