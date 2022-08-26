@@ -14,24 +14,23 @@ const MakeAdmin = () => {
   console.log(users);
 
   const handleAdmin = (id) => {
-    const role = "admin";
+    const role = "Admin";
     const user = { role };
 
     console.log("clicked");
 
-    // const url = `users/${id}`;
-    // fetch(url, {
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(user),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     toast("make admin sucessfull");
-    //     window.location.reload();
-    //   });
+    const url = `http://localhost:5000/users/${id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast("make admin sucessfull");
+      });
   };
   return (
     <div>
@@ -49,7 +48,7 @@ const MakeAdmin = () => {
             </thead>
             <tbody>
               {users.map((user, i) => (
-                <tr className="border-2 rounded-md bg-red-400">
+                <tr key={i+1} className="border-2 rounded-md bg-red-400">
                   <th>{i + 1}</th>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
