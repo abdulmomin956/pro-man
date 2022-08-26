@@ -18,9 +18,9 @@ const TemplateCategory = () => {
     setTemplates(filterOutTemplates);
   }, [popularTemplates, params]);
 
-  console.log(popularTemplates);
-  console.log(templates);
-  console.log(params.category);
+  // console.log(popularTemplates);
+  // console.log(templates);
+  // console.log(params.category);
 
   return (
     <div className="mx-5 my-6">
