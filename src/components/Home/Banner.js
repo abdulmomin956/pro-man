@@ -7,7 +7,7 @@ const Banner = () => {
                 <img src="https://images.ctfassets.net/rz1oowkt5gyp/5QIzYxue6b7raOnVFtMyQs/113acb8633ee8f0c9cb305d3a228823c/hero.png?w=1200&fm=webp" alt="" class="max-w-sm " />
                 <div className='lg:mr-20 sm:mt-16 sm:px-20'>
                     <h1 className="text-6xl mb-8 font-[poppins]"                >
-                        Trello helps teams move work forward.
+                        ProMan helps teams move work forward.
                     </h1>
 
                     <p className='text-xl mt-6 mb-12 text-justify'>Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all with Trello.</p>
