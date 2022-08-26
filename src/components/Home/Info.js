@@ -15,9 +15,9 @@ const Info = () => {
           </div>
 
           <div>
-            <h1 className="text-2xl font-bold mb-3">See Trello pricing</h1>
+            <h1 className="text-2xl font-bold mb-3">See ProMan pricing</h1>
             <p className="text-justify">
-              Whether you’re a team of 2 or 2,000, Trello can be customized for
+              Whether you’re a team of 2 or 2,000, ProMan can be customized for
               your organization. Explore which option is best for you
             </p>
 
@@ -40,7 +40,7 @@ const Info = () => {
               Proman is the visual tool that empowers your team to manage any type of project, workflow, or task tracking.
             </p>
 
-            <button className="bg-blue-600 text-white py-3 mt-5 px-5 rounded">Tour Trello</button>
+            <button className="bg-blue-600 text-white py-3 mt-5 px-5 rounded">Tour ProMan</button>
           </div>
 
         </div>
