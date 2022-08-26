@@ -14,10 +14,12 @@ import { FaBoxes, FaUserFriends, FaCogs } from "react-icons/fa";
 import { HiViewGridAdd } from "react-icons/hi";
 import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 import InviteMemberModal from "../shared/InviteMemberModal";
+import { useState } from "react";
 
 const Sidebar = () => {
   const data = useSelector((state) => state.workspace);
   const dispatch = useDispatch();
+  const [workspaceId, setWorkspaceId] = useState('');
 
   // const [user] = useAuthState(auth);
   // const email = user?.email;
@@ -127,6 +129,7 @@ const Sidebar = () => {
                             <label
                               className="text-xl cursor-pointer "
                               htmlFor="inviteMember"
+                              onClick={() => setWorkspaceId(item._id)}
                             >
                               +
                             </label>
@@ -151,7 +154,7 @@ const Sidebar = () => {
           </ul>
         </div>
       </div>
-      <InviteMemberModal></InviteMemberModal>
+      <InviteMemberModal workspaceId={workspaceId}></InviteMemberModal>
     </div>
   );
 };
