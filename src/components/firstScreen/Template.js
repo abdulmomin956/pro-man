@@ -27,36 +27,38 @@ const Template = () => {
   }, []);
 
   useEffect(() => {
-    const demoTemplates = popularTemplates.slice(0, 3);
+    const demoTemplates = popularTemplates.filter(
+      (item) => item.category === "Demo"
+    );
     setDemoTemplates(demoTemplates);
 
     const businessTemplates = popularTemplates
-      .filter((item) => item.categorie === "Business")
+      .filter((item) => item.category === "Business")
       .slice(0, 3);
     setBusinessTemplates(businessTemplates);
 
     const designTemplates = popularTemplates
-      .filter((item) => item.categorie === "Design")
+      .filter((item) => item.category === "Design")
       .slice(0, 3);
     setDesignTemplates(designTemplates);
 
     const educationTemplates = popularTemplates
-      .filter((item) => item.categorie === "Education")
+      .filter((item) => item.category === "Education")
       .slice(0, 3);
     setEducationTemplates(educationTemplates);
 
     const engineeringTemplates = popularTemplates
-      .filter((item) => item.categorie === "Engineering")
+      .filter((item) => item.category === "Engineering")
       .slice(0, 3);
     setEngineeringTemplates(engineeringTemplates);
 
     const marketingTemplates = popularTemplates
-      .filter((item) => item.categorie === "Marketing")
+      .filter((item) => item.category === "Marketing")
       .slice(0, 3);
     setMarketingTemplates(marketingTemplates);
 
     const remoteTemplates = popularTemplates
-      .filter((item) => item.categorie === "Remote")
+      .filter((item) => item.category === "Remote")
       .slice(0, 3);
     setRemoteTemplates(remoteTemplates);
   }, [popularTemplates]);
@@ -233,7 +235,7 @@ const Template = () => {
             <p className="text-xl font-semibold">Remote work</p>
           </div>
           <button
-            onClick={() => handleLoadMoreTemplates("Remote work")}
+            onClick={() => handleLoadMoreTemplates("Remote")}
             className="px-3 py-2 bg-slate-200 text-sm"
           >
             Load more templates

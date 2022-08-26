@@ -6,6 +6,7 @@ import HomeFooter from './HomeFooter';
 import HomeNav from './HomeNav';
 import HomeSponcers from './HomeSponcers';
 import Info from './Info';
+import Review from './Review';
 
 import WorkFieldDemo from './WorkFieldDemo';
 
@@ -19,6 +20,7 @@ const Home = () => {
             <HomeSponcers></HomeSponcers>
             <ChooseView></ChooseView>
             <HomeDetails></HomeDetails>
+            <Review />
             <HomeFooter></HomeFooter>
         </div>
     );
