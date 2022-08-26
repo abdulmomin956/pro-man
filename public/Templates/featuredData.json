@@ -1,7 +1,7 @@
 [
   {
     "_id": "sa58",
-    "bg": "../Images/background/1..jpg",
+    "bg": "https://i.ibb.co/3rDJBdP/1.jpg",
     "profilePic": "../Images/people/1..png",
     "title": "Employee Manuaal",
     "creator": "by Pro Man Team",
@@ -11,7 +11,7 @@
   },
   {
     "_id": "er89",
-    "bg": "../Images/background/2..jpg",
+    "bg": "https://i.ibb.co/R9jBkR2/2.jpg",
     "profilePic": "../Images/people/2..png",
     "title": "Daily Task Management",
     "creator": "by Mitchell Fry, Lead Software Engineer @ Oliver Wyman Digital",
@@ -21,7 +21,7 @@
   },
   {
     "_id": "bn55",
-    "bg": "../Images/background/3..jpg",
+    "bg": "https://i.ibb.co/Mf0vQS0/3.jpg",
     "profilePic": "../Images/people/3..png",
     "title": "Weekly Meeting Template",
     "creator": "by Jason Gibb, Chief Operating Officer @ BNG Team",
@@ -33,7 +33,7 @@
   {
     "_id": "bn781",
     "categorie": "Business",
-    "bg": "../Images/background/4..jpg",
+    "bg": "https://i.ibb.co/dBZRvHH/4.jpg",
     "profilePic": "../Images/people/4..png",
     "title": "A Lead Management Pipeline by Crmble",
     "creator": "by Toni, Founder @ Crmble",
@@ -44,7 +44,7 @@
   {
     "_id": "bn782",
     "categorie": "Business",
-    "bg": "../Images/background/5..jpg",
+    "bg": "https://i.ibb.co/VMrMjvd/5.jpg",
     "profilePic": "../Images/people/5..png",
     "title": "Lean Canvas",
     "creator": "by Syarfandi Achmad",
@@ -55,7 +55,7 @@
   {
     "_id": "bn783",
     "categorie": "Business",
-    "bg": "../Images/background/6..jpg",
+    "bg": "https://i.ibb.co/PzmzRx8/6.jpg",
     "profilePic": "../Images/people/6..png",
     "title": "Grant Tracking Template",
     "creator": "by Shahzeb Irshad, Grants, Strategy and Project Management Specialistby Toni, Founder @ Crmble",
@@ -66,7 +66,7 @@
   {
     "_id": "bn784",
     "categorie": "Business",
-    "bg": "../Images/background/7..jpg",
+    "bg": "https://i.ibb.co/vV3kdQL/7.jpg",
     "profilePic": "../Images/people/7..png",
     "title": "Align Your Team With V2MOM",
     "creator": "by Salesforce Essentials",
@@ -77,7 +77,7 @@
   {
     "_id": "bn785",
     "categorie": "Business",
-    "bg": "../Images/background/8..jpg",
+    "bg": "https://i.ibb.co/30J85Zv/8.jpg",
     "profilePic": "../Images/people/8..png",
     "title": "Business Model Canvas",
     "creator": "by Oshane Bailey @ Jamaican Developers Group",
@@ -88,7 +88,7 @@
   {
     "_id": "de561",
     "categorie": "Design",
-    "bg": "../Images/background/9..jpg",
+    "bg": "https://i.ibb.co/gd7t6kY/9.jpg",
     "profilePic": "../Images/people/9..png",
     "title": "Design Project Template",
     "creator": "by Kene Ohiaeri, Product Designer",
@@ -99,7 +99,7 @@
   {
     "_id": "de562",
     "categorie": "Design",
-    "bg": "../Images/background/10..jpg",
+    "bg": "https://i.ibb.co/HH3DMpx/10.jpg",
     "profilePic": "../Images/people/10..png",
     "title": "Design System Checklist",
     "creator": "by Rahul JR, Senior Product Manager @ Zoho Corp",
@@ -110,7 +110,7 @@
   {
     "_id": "de563",
     "categorie": "Design",
-    "bg": "../Images/background/11..jpg",
+    "bg": "https://i.ibb.co/T2Hcrg2/11.jpg",
     "profilePic": "../Images/people/1..png",
     "title": "Freelance Branding Project",
     "creator": "by Stu Smith, Designer @ Proman",
@@ -121,7 +121,7 @@
   {
     "_id": "de564",
     "categorie": "Design",
-    "bg": "../Images/background/12..jpg",
+    "bg": "https://i.ibb.co/5BgVCD6/12.jpg",
     "profilePic": "../Images/people/2..png",
     "title": "Game Design Template",
     "creator": "by Chris McCrimmons, Cinevva",
@@ -132,7 +132,7 @@
   {
     "_id": "de565",
     "categorie": "Design",
-    "bg": "../Images/background/13..jpg",
+    "bg": "https://i.ibb.co/6bvdyjP/13.jpg",
     "profilePic": "../Images/people/3..png",
     "title": "Portfolio - Step by Step guide",
     "creator": "by Utsav Sheth, UI/UX Designer",
@@ -143,7 +143,7 @@
   {
     "_id": "ed121",
     "categorie": "Education",
-    "bg": "../Images/background/14..jpg",
+    "bg": "https://i.ibb.co/NVtFC1b/14.jpg",
     "profilePic": "../Images/people/4..png",
     "title": "Remote Class Template",
     "creator": "by Kelly Theisen, Assistant Professor of Chemistry",
@@ -154,7 +154,7 @@
   {
     "_id": "ed122",
     "categorie": "Education",
-    "bg": "../Images/background/15..jpg",
+    "bg": "https://i.ibb.co/JrCH8LQ/15.jpg",
     "profilePic": "../Images/people/5..png",
     "title": "Academic Literature Review",
     "creator": "by Ann Gillian Chu, PhD researcher @ the University of St. Andrews",
@@ -165,7 +165,7 @@
   {
     "_id": "ed123",
     "categorie": "Education",
-    "bg": "../Images/background/16..jpg",
+    "bg": "https://i.ibb.co/cyHLmL6/16.jpg",
     "profilePic": "../Images/people/6..png",
     "title": "Teaching: Weekly Planning",
     "creator": "by Emma Trentman, Associate Professor of Arabic @ University of New Mexico",
@@ -176,7 +176,7 @@
   {
     "_id": "ed124",
     "categorie": "Education",
-    "bg": "../Images/background/17..jpg",
+    "bg": "https://i.ibb.co/kSM4z3c/17.jpg",
     "profilePic": "../Images/people/7..png",
     "title": "Project Based Learning",
     "creator": "by Michael Burke, Educator @ Bel Air High School",
@@ -187,7 +187,7 @@
   {
     "_id": "ed125",
     "categorie": "Education",
-    "bg": "../Images/background/18..jpg",
+    "bg": "https://i.ibb.co/VJQB9br/18.jpg",
     "profilePic": "../Images/people/8..png",
     "title": "Plan your Studies - Vet Student",
     "creator": "by Becky Lossing, Veterinarian & Founder of Mini Mammoth",
@@ -198,7 +198,7 @@
   {
     "_id": "en851",
     "categorie": "Engineering",
-    "bg": "../Images/background/19..jpg",
+    "bg": "https://i.ibb.co/NtLJqN2/19.jpg",
     "profilePic": "../Images/people/9..png",
     "title": "Kanban Template",
     "creator": "by Proman Engineering Team",
@@ -209,7 +209,7 @@
   {
     "_id": "en852",
     "categorie": "Engineering",
-    "bg": "../Images/background/20..jpg",
+    "bg": "https://i.ibb.co/zx3H8ZB/20.jpg",
     "profilePic": "../Images/people/10..png",
     "title": "Scrum Board",
     "creator": "by Robin Warren, Founder of Cherry Wood Software",
@@ -220,7 +220,7 @@
   {
     "_id": "en853",
     "categorie": "Engineering",
-    "bg": "../Images/background/7..jpg",
+    "bg": "https://i.ibb.co/vV3kdQL/7.jpg",
     "profilePic": "../Images/people/1..png",
     "title": "Software Development [Web App, iOS App, Android App]",
     "creator": "by iLyas Farawe, CTO @ Techbarn",
@@ -231,7 +231,7 @@
   {
     "_id": "en854",
     "categorie": "Engineering",
-    "bg": "../Images/background/8..jpg",
+    "bg": "https://i.ibb.co/30J85Zv/8.jpg",
     "profilePic": "../Images/people/2..png",
     "title": "Web Development",
     "creator": "by Prashant Omer, Freelance Developer",
@@ -242,7 +242,7 @@
   {
     "_id": "en855",
     "categorie": "Engineering",
-    "bg": "../Images/background/9..jpg",
+    "bg": "https://i.ibb.co/gd7t6kY/9.jpg",
     "profilePic": "../Images/people/3..png",
     "title": "Agile Sprint Board",
     "creator": "by Proman Engineering Team",
@@ -253,7 +253,7 @@
   {
     "_id": "mr871",
     "categorie": "Marketing",
-    "bg": "../Images/background/10..jpg",
+    "bg": "https://i.ibb.co/HH3DMpx/10.jpg",
     "profilePic": "../Images/people/4..png",
     "title": "Speaker guide for online events",
     "creator": "by Josip Lisec, Head of Product @ SpotMe",
@@ -264,7 +264,7 @@
   {
     "_id": "mr872",
     "categorie": "Marketing",
-    "bg": "../Images/background/11..jpg",
+    "bg": "https://i.ibb.co/T2Hcrg2/11.jpg",
     "profilePic": "../Images/people/5..png",
     "title": "Marketing Content Catalog",
     "creator": "by Nicholas Bouchard, Content Marketer @ Unito",
@@ -275,7 +275,7 @@
   {
     "_id": "mr873",
     "categorie": "Marketing",
-    "bg": "../Images/background/12..jpg",
+    "bg": "https://i.ibb.co/5BgVCD6/12.jpg",
     "profilePic": "../Images/people/6..png",
     "title": "Marketing Overview",
     "creator": "by Stella Garber, Head of Marketing @ Proman",
@@ -286,7 +286,7 @@
   {
     "_id": "mr874",
     "categorie": "Marketing",
-    "bg": "../Images/background/13..jpg",
+    "bg": "https://i.ibb.co/6bvdyjP/13.jpg",
     "profilePic": "../Images/people/7..png",
     "title": "Blog Content Schedule",
     "creator": "by Scan2CAD",
@@ -297,7 +297,7 @@
   {
     "_id": "mr875",
     "categorie": "Marketing",
-    "bg": "../Images/background/14..jpg",
+    "bg": "https://i.ibb.co/NVtFC1b/14.jpg",
     "profilePic": "../Images/people/8..png",
     "title": "Marketing Requests",
     "creator": "by Chad Reid, VP of Marketing and Communications @ JotForm",
@@ -308,7 +308,7 @@
   {
     "_id": "rm251",
     "categorie": "Remote",
-    "bg": "../Images/background/15..jpg",
+    "bg": "https://i.ibb.co/JrCH8LQ/15.jpg",
     "profilePic": "../Images/people/9..png",
     "title": "Work From Home Daily Planner",
     "creator": "by Sarah Costello @ TalentHub",
@@ -319,7 +319,7 @@
   {
     "_id": "rm252",
     "categorie": "Remote",
-    "bg": "../Images/background/16..jpg",
+    "bg": "https://i.ibb.co/cyHLmL6/16.jpg",
     "profilePic": "../Images/people/10..png",
     "title": "Mr. Rogers: “Watercooler” Video Chat Planner",
     "creator": "by Proman Team",
@@ -330,7 +330,7 @@
   {
     "_id": "rm253",
     "categorie": "Remote",
-    "bg": "../Images/background/17..jpg",
+    "bg": "https://i.ibb.co/kSM4z3c/17.jpg",
     "profilePic": "../Images/people/4..png",
     "title": "Remote Team Hub",
     "creator": "by Proman Team",
@@ -341,7 +341,7 @@
   {
     "_id": "rm254",
     "categorie": "Remote",
-    "bg": "../Images/background/18..jpg",
+    "bg": "https://i.ibb.co/VJQB9br/18.jpg",
     "profilePic": "../Images/people/2..png",
     "title": "Remote Team Meetings",
     "creator": "by Proman Team",
@@ -352,7 +352,7 @@
   {
     "_id": "rm255",
     "categorie": "Remote",
-    "bg": "../Images/background/19..jpg",
+    "bg": "https://i.ibb.co/NtLJqN2/19.jpg",
     "profilePic": "../Images/people/2..png",
     "title": "Distributed Team Brainstorming",
     "creator": "by Proman Team",

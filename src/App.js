@@ -28,18 +28,17 @@ import Guests from "./components/Workspace/Member/Guests";
 import Pending from "./components/Workspace/Member/Pending";
 import { useSelector } from "react-redux";
 import MakeAdmin from "./components/dashboard/MakeAdmin";
+import TemplateCategory from "./components/firstScreen/TemplateComponents/TemplateCategory";
 import Home1 from "./components/Home/Home"
 
 
 function App() {
-  const email = useSelector(state => state.email)
+  const email = useSelector((state) => state.email);
 
   return (
     <div className="#F5F5F5">
-
       {/* <ToastContainer /> */}
       {email && <Navbar />}
-
 
       <Routes>
         {!email && <Route path="/mainHome" element={<Home1></Home1>}></Route>}
@@ -53,6 +52,10 @@ function App() {
         >
           <Route path="/" element={<Board />}></Route>
           <Route path="/template" element={<Template />}></Route>
+          <Route
+            path="/template/:category"
+            element={<TemplateCategory></TemplateCategory>}
+          ></Route>
           <Route path="/homescreen" element={<HomeScreen />}></Route>
         </Route>
 
@@ -62,6 +65,7 @@ function App() {
             <Workspace />
           </RequireAuth>
         }>
+
 
           <Route path="/:shortname/" element={<Boards />}></Route>
           <Route path="/:shortname/members" element={<Members />}>
