@@ -12,6 +12,7 @@ import WorkspaceModal from "./WorkspaceModal";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import {
+  setEmail,
   setLoadWorkspace,
   setWorkspace,
   // setWorkspaceID,
@@ -26,16 +27,17 @@ import StarredBoard from "./StarredBoard";
 
 const Navbar = () => {
   const [user, loading, authError] = useAuthState(auth);
+  const [initials, setInitial] = useState("")
   const [open, setOpen] = useState(false);
   const [openTemp, setOpenTemp] = useState(false)
   const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
-  if (loading) {
-    <Loading />;
-  }
+  const email = useSelector(state => state.email)
+
+
 
   const dispatch = useDispatch();
-  const email = user.email;
-  const { isLoading, error, data, refetch } = useQuery(["repoData"], () =>
+
+  const { isLoading, error, data, refetch } = useQuery(["repoData", email], () =>
     fetch(`https://morning-coast-54182.herokuapp.com/workspace/${email}`).then(
       (res) => res.json()
     )
@@ -54,18 +56,25 @@ const Navbar = () => {
     }
   }, [data, dispatch]);
 
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
-  // console.log(data);
+  useEffect(() => {
+    if (user) {
+      const x = user?.displayName;
+      const nameparts = x?.split(" ");
+      setInitial(nameparts[0]?.charAt(0)?.toUpperCase() + nameparts[1]?.charAt(0)?.toUpperCase())
+    }
+  }, [user, user?.displayName])
 
-  const x = user?.displayName;
-  const nameparts = x?.split(" ");
-  const initials =
-    nameparts[0]?.charAt(0)?.toUpperCase() + nameparts[1]?.charAt(0)?.toUpperCase();
+
+
+  // useEffect(() => {
+
+  // }, [])
+
   // console.log(initials);
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem("token")
+    dispatch(setEmail(null))
   };
 
   return (
@@ -176,8 +185,8 @@ const Navbar = () => {
               <div className="dropdown">
                 <label
                   tabIndex="0"
-                  className="btn font-black btn-sm rounded-none mx-1 myButton"
-                  style={{ fontWeight: 700 }}
+                  className="btn font-black hover:text-secondary text-white border-0 btn-sm rounded-none mx-1 myButton"
+                  style={{ fontWeight: 500, backgroundColor: 'transparent' }}
                 >
                   Workspaces{" "}
                   <p>
@@ -217,7 +226,8 @@ const Navbar = () => {
               <div className="dropdown">
                 <label
                   tabIndex="0"
-                  className="btn btn-sm mx-1 myButton rounded-none font-bold"
+                  className="btn btn-sm mx-1 bg-transparent  text-white border-0 myButton rounded-none font-bold"
+                  style={{ fontWeight: 500, backgroundColor: 'transparent' }}
                 >
                   Create
                 </label>
@@ -240,7 +250,7 @@ const Navbar = () => {
                   <li>
                     <label
                       htmlFor="my-modal-sa6"
-                      className="mb-2 btn-sm w-full  myButton"
+                      className="mb-2 btn-sm w-full bg-transparent text-white border-0 myButton"
                       style={{ borderRadius: "0px" }}
                     >
                       <MdGroupWork></MdGroupWork> Create Workspace
@@ -253,7 +263,8 @@ const Navbar = () => {
                 <label
                   onClick={() => setOpen(!open)}
                   tabIndex="0"
-                  className="btn btn-sm mx-1 myButton rounded-none font-bold"
+                  className="btn btn-sm mx-1 bg-transparent text-white border-0 myButton rounded-none font-bold"
+                  style={{ fontWeight: 500, backgroundColor: 'transparent' }}
                 >
                   Starred
                   <p>
@@ -279,7 +290,8 @@ const Navbar = () => {
                 <label
                   onClick={() => setOpenTemp(!openTemp)}
                   tabIndex="0"
-                  className="btn btn-sm mx-1 myButton rounded-none font-bold"
+                  className="btn btn-sm mx-1 bg-transparent text-white border-0 h-full myButton rounded-none font-bold"
+                  style={{ fontWeight: 500, backgroundColor: 'transparent' }}
                 >
                   Templetes
                   <p>
@@ -323,7 +335,7 @@ const Navbar = () => {
                   id="navProfile"
                   className="flex justify-center items-center"
                 >
-                  <span title={user.displayName} className=" font-bold block ">
+                  <span title={user?.displayName} className=" font-bold block ">
                     {initials}
                   </span>
                 </div>

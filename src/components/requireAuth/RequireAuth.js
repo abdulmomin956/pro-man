@@ -1,8 +1,9 @@
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { Navigate, useLocation } from 'react-router-dom';
-import auth from '../firebase/firebase.init';
 import Loading from '../shared/Loading';
+import { useSelector, useDispatch } from "react-redux"
+import axios from 'axios';
+import { setEmail } from '../../global-state/actions/reduxActions';
 
 function getWithExpiry(key) {
     const itemStr = localStorage.getItem(key)
@@ -23,6 +24,8 @@ function getWithExpiry(key) {
 }
 
 const RequireAuth = ({ children }) => {
+    const email = useSelector(state => state.email)
+    const dispatch = useDispatch()
     let location = useLocation();
     // if (loading) {
     //     return <Loading></Loading>
@@ -30,9 +33,33 @@ const RequireAuth = ({ children }) => {
 
     const token = getWithExpiry('token')
 
-    if (!token) {
+    if (!email) {
+        if (!token) {
+            return <Navigate to="/login" state={{ from: location }} replace />;
+        }
+        else {
+            const config = {
+                headers: { Authorization: `Bearer ${token}` }
+            };
 
-        return <Navigate to="/login" state={{ from: location }} replace />;
+            const bodyParameters = {
+                key: "value"
+            };
+
+            const fetchData = async () => {
+                const res = await axios.post(
+                    'https://morning-coast-54182.herokuapp.com/api/auth',
+                    bodyParameters,
+                    config
+                )
+                if (res.status === 200) {
+                    dispatch(setEmail(res.data.email))
+                }
+                else return <Navigate to="/login" state={{ from: location }} replace />
+            }
+            fetchData();
+
+        }
     }
 
     return children;

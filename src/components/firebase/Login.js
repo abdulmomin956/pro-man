@@ -6,9 +6,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
 import Loading from '../shared/Loading';
 import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { setEmail } from '../../global-state/actions/reduxActions';
 // import { toast } from 'react-toastify';
 
 const Login = () => {
+    const dispatch = useDispatch()
     let location = useLocation();
     let from = location.state?.from?.pathname || '/'
     const { register, formState: { errors }, handleSubmit, reset, getValues } = useForm();
@@ -22,6 +25,7 @@ const Login = () => {
     if (loading || sending) {
         <Loading></Loading>
     }
+    console.log(user);
     console.log(user?.user?.email);
 
     // if (user) {
@@ -50,8 +54,10 @@ const Login = () => {
             const item = {
                 accessToken: accessToken,
                 expiry: now.getTime() + ttl,
+                email: userInfo.email
             }
             localStorage.setItem("token", JSON.stringify(item))
+            dispatch(setEmail(userInfo.email))
             navigate(from, { replace: true })
         }
     };

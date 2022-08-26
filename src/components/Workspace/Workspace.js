@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
-import control from '../../../src/assest/image/control.png'
 import CustomLink from '../shared/CustomLink';
 import Loading from '../shared/Loading';
 import { useSelector } from "react-redux";
@@ -40,7 +39,7 @@ const Workspace = () => {
 
 
     const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${currentWorkspace[0]?._id}`).then(res => res.json()))
-    console.log(boards)
+
     useEffect(() => {
         if (currentWorkspace[0]?.title) {
             const x = currentWorkspace[0]?.title;
@@ -107,7 +106,7 @@ const Workspace = () => {
             <div style={{ backgroundColor: 'rgb(0 0 0 / 90%)' }} className={`${open ? "w-72" : "w-16 "} p-5 pt-4 h-screen duration-300  relative`}>
 
                 <img style={{ border: '#081A51' }}
-                    src={control}
+                    src="https://i.ibb.co/86h7B94/control.png"
                     className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple border-2 rounded-full  ${!open && "rotate-180"}`}
                     onClick={sidebarOpen}
                     alt=""
