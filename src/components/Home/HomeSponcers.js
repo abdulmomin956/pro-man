@@ -16,9 +16,9 @@ const HomeSponcers = () => {
                     <img src="https://images.ctfassets.net/rz1oowkt5gyp/2Im844Kon73pvCD2ljoxeL/4073e041eb8eb961a0f9505965dec09b/Zoom.png?w=1200&fm=webp" alt="" />
                 </p>
             </div>
-            <div className='my-8 pl-20 w-1/2'>
+            <div className='my-8 sm:p-20 lg:pl-20 lg:w-1/2'>
                 <h3 className='text-3xl font-bold '>Features to help your team succeed</h3>
-                <p className='my-12'>Powering a productive team means using a powerful tool (and plenty of snacks). From meetings and projects to events and goal setting, Trello’s intuitive features give any team the ability to quickly set up and customize workflows for just about anything.</p>
+                <p className='my-12 text-justify'>Powering a productive team means using a powerful tool (and plenty of snacks). From meetings and projects to events and goal setting, Trello’s intuitive features give any team the ability to quickly set up and customize workflows for just about anything.</p>
             </div>
         </div>
     );
