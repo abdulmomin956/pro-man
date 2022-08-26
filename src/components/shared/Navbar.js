@@ -180,7 +180,7 @@ const Navbar = () => {
           }
 
           <div className='navbar-start w-full navTitle'>
-            <a href="/" className="lg:mx-5  flex items-center justify-start">
+            <a href="/my-board" className="lg:mx-5  flex items-center justify-start">
               ProMan
             </a>
           </div>
