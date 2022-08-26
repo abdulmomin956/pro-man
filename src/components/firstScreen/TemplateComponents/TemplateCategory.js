@@ -13,16 +13,17 @@ const TemplateCategory = () => {
 
   useEffect(() => {
     const filterOutTemplates = popularTemplates.filter(
-      (item) => item.categorie === "Engineering"
+      (item) => item.categorie === params.category
     );
     setTemplates(filterOutTemplates);
-  }, [popularTemplates, category]);
+  }, [popularTemplates, params]);
 
   console.log(popularTemplates);
   console.log(templates);
+  console.log(params.category);
 
   return (
-    <div>
+    <div className="mx-5 my-6">
       <div>
         <div className="flex items-center flex-row gap-3 mb-6">
           <img
@@ -30,7 +31,7 @@ const TemplateCategory = () => {
             src="https://a.trellocdn.com/prgb/dist/images/templates/categories/small/design.e617072931480fdd44da.svg"
             alt=""
           />
-          <p className="text-xl font-semibold">{category}</p>
+          <p className="text-xl font-semibold">{category} templates</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {templates.map((item) => (
