@@ -8,7 +8,7 @@ const ChooseView = () => {
                 <div className='lg:ml-20'>
                     <p>CHOOSE A VIEW</p>
                     <h1 class="text-3xl font-bold ">The board is just the beginning</h1>
-                    <p class="py-6">Lists and cards are the building blocks of organizing work on a Trello board. Grow from there with task assignments, timelines, productivity metrics, calendars, and more..</p>
+                    <p class="py-6 text-justify">Lists and cards are the building blocks of organizing work on a Trello board. Grow from there with task assignments, timelines, productivity metrics, calendars, and more..</p>
 
                     <div class="collapse ">
                         <input type="checkbox" class="peer" />

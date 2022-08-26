@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import auth from "../firebase/firebase.init";
 // import workspaceModal from "./WorkspaceModal";
 import BoardModal from "./BoardModal";
@@ -32,6 +32,7 @@ const Navbar = () => {
   const [openTemp, setOpenTemp] = useState(false)
   const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
   const email = useSelector(state => state.email)
+  const navigate = useNavigate();
 
 
 
@@ -75,6 +76,7 @@ const Navbar = () => {
     signOut(auth);
     localStorage.removeItem("token")
     dispatch(setEmail(null))
+    navigate('/')
   };
 
   return (
@@ -365,10 +367,11 @@ const Navbar = () => {
             </div>
           )}
         </div>
+        <WorkspaceModal></WorkspaceModal>
+        <BoardModal></BoardModal>
+        <Notification></Notification>
       </div>
-      <WorkspaceModal></WorkspaceModal>
-      <BoardModal></BoardModal>
-      <Notification></Notification>
+      <Outlet />
     </div>
   );
 };
