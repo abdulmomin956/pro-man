@@ -1,6 +1,7 @@
 [
   {
     "_id": "sa58",
+    "category": "Demo",
     "bg": "https://i.ibb.co/3rDJBdP/1.jpg",
     "profilePic": "../Images/people/1..png",
     "title": "Employee Manuaal",
@@ -11,6 +12,7 @@
   },
   {
     "_id": "er89",
+    "category": "Demo",
     "bg": "https://i.ibb.co/R9jBkR2/2.jpg",
     "profilePic": "../Images/people/2..png",
     "title": "Daily Task Management",
@@ -21,6 +23,7 @@
   },
   {
     "_id": "bn55",
+    "category": "Demo",
     "bg": "https://i.ibb.co/Mf0vQS0/3.jpg",
     "profilePic": "../Images/people/3..png",
     "title": "Weekly Meeting Template",
@@ -32,7 +35,7 @@
 
   {
     "_id": "bn781",
-    "categorie": "Business",
+    "category": "Business",
     "bg": "https://i.ibb.co/dBZRvHH/4.jpg",
     "profilePic": "../Images/people/4..png",
     "title": "A Lead Management Pipeline by Crmble",
@@ -43,7 +46,7 @@
   },
   {
     "_id": "bn782",
-    "categorie": "Business",
+    "category": "Business",
     "bg": "https://i.ibb.co/VMrMjvd/5.jpg",
     "profilePic": "../Images/people/5..png",
     "title": "Lean Canvas",
@@ -54,7 +57,7 @@
   },
   {
     "_id": "bn783",
-    "categorie": "Business",
+    "category": "Business",
     "bg": "https://i.ibb.co/PzmzRx8/6.jpg",
     "profilePic": "../Images/people/6..png",
     "title": "Grant Tracking Template",
@@ -65,7 +68,7 @@
   },
   {
     "_id": "bn784",
-    "categorie": "Business",
+    "category": "Business",
     "bg": "https://i.ibb.co/vV3kdQL/7.jpg",
     "profilePic": "../Images/people/7..png",
     "title": "Align Your Team With V2MOM",
@@ -76,7 +79,7 @@
   },
   {
     "_id": "bn785",
-    "categorie": "Business",
+    "category": "Business",
     "bg": "https://i.ibb.co/30J85Zv/8.jpg",
     "profilePic": "../Images/people/8..png",
     "title": "Business Model Canvas",
@@ -87,7 +90,7 @@
   },
   {
     "_id": "de561",
-    "categorie": "Design",
+    "category": "Design",
     "bg": "https://i.ibb.co/gd7t6kY/9.jpg",
     "profilePic": "../Images/people/9..png",
     "title": "Design Project Template",
@@ -98,7 +101,7 @@
   },
   {
     "_id": "de562",
-    "categorie": "Design",
+    "category": "Design",
     "bg": "https://i.ibb.co/HH3DMpx/10.jpg",
     "profilePic": "../Images/people/10..png",
     "title": "Design System Checklist",
@@ -109,7 +112,7 @@
   },
   {
     "_id": "de563",
-    "categorie": "Design",
+    "category": "Design",
     "bg": "https://i.ibb.co/T2Hcrg2/11.jpg",
     "profilePic": "../Images/people/1..png",
     "title": "Freelance Branding Project",
@@ -120,7 +123,7 @@
   },
   {
     "_id": "de564",
-    "categorie": "Design",
+    "category": "Design",
     "bg": "https://i.ibb.co/5BgVCD6/12.jpg",
     "profilePic": "../Images/people/2..png",
     "title": "Game Design Template",
@@ -131,7 +134,7 @@
   },
   {
     "_id": "de565",
-    "categorie": "Design",
+    "category": "Design",
     "bg": "https://i.ibb.co/6bvdyjP/13.jpg",
     "profilePic": "../Images/people/3..png",
     "title": "Portfolio - Step by Step guide",
@@ -142,7 +145,7 @@
   },
   {
     "_id": "ed121",
-    "categorie": "Education",
+    "category": "Education",
     "bg": "https://i.ibb.co/NVtFC1b/14.jpg",
     "profilePic": "../Images/people/4..png",
     "title": "Remote Class Template",
@@ -153,7 +156,7 @@
   },
   {
     "_id": "ed122",
-    "categorie": "Education",
+    "category": "Education",
     "bg": "https://i.ibb.co/JrCH8LQ/15.jpg",
     "profilePic": "../Images/people/5..png",
     "title": "Academic Literature Review",
@@ -164,7 +167,7 @@
   },
   {
     "_id": "ed123",
-    "categorie": "Education",
+    "category": "Education",
     "bg": "https://i.ibb.co/cyHLmL6/16.jpg",
     "profilePic": "../Images/people/6..png",
     "title": "Teaching: Weekly Planning",
@@ -175,7 +178,7 @@
   },
   {
     "_id": "ed124",
-    "categorie": "Education",
+    "category": "Education",
     "bg": "https://i.ibb.co/kSM4z3c/17.jpg",
     "profilePic": "../Images/people/7..png",
     "title": "Project Based Learning",
@@ -186,7 +189,7 @@
   },
   {
     "_id": "ed125",
-    "categorie": "Education",
+    "category": "Education",
     "bg": "https://i.ibb.co/VJQB9br/18.jpg",
     "profilePic": "../Images/people/8..png",
     "title": "Plan your Studies - Vet Student",
@@ -197,7 +200,7 @@
   },
   {
     "_id": "en851",
-    "categorie": "Engineering",
+    "category": "Engineering",
     "bg": "https://i.ibb.co/NtLJqN2/19.jpg",
     "profilePic": "../Images/people/9..png",
     "title": "Kanban Template",
@@ -208,7 +211,7 @@
   },
   {
     "_id": "en852",
-    "categorie": "Engineering",
+    "category": "Engineering",
     "bg": "https://i.ibb.co/zx3H8ZB/20.jpg",
     "profilePic": "../Images/people/10..png",
     "title": "Scrum Board",
@@ -219,7 +222,7 @@
   },
   {
     "_id": "en853",
-    "categorie": "Engineering",
+    "category": "Engineering",
     "bg": "https://i.ibb.co/vV3kdQL/7.jpg",
     "profilePic": "../Images/people/1..png",
     "title": "Software Development [Web App, iOS App, Android App]",
@@ -230,7 +233,7 @@
   },
   {
     "_id": "en854",
-    "categorie": "Engineering",
+    "category": "Engineering",
     "bg": "https://i.ibb.co/30J85Zv/8.jpg",
     "profilePic": "../Images/people/2..png",
     "title": "Web Development",
@@ -241,7 +244,7 @@
   },
   {
     "_id": "en855",
-    "categorie": "Engineering",
+    "category": "Engineering",
     "bg": "https://i.ibb.co/gd7t6kY/9.jpg",
     "profilePic": "../Images/people/3..png",
     "title": "Agile Sprint Board",
@@ -252,7 +255,7 @@
   },
   {
     "_id": "mr871",
-    "categorie": "Marketing",
+    "category": "Marketing",
     "bg": "https://i.ibb.co/HH3DMpx/10.jpg",
     "profilePic": "../Images/people/4..png",
     "title": "Speaker guide for online events",
@@ -263,7 +266,7 @@
   },
   {
     "_id": "mr872",
-    "categorie": "Marketing",
+    "category": "Marketing",
     "bg": "https://i.ibb.co/T2Hcrg2/11.jpg",
     "profilePic": "../Images/people/5..png",
     "title": "Marketing Content Catalog",
@@ -274,7 +277,7 @@
   },
   {
     "_id": "mr873",
-    "categorie": "Marketing",
+    "category": "Marketing",
     "bg": "https://i.ibb.co/5BgVCD6/12.jpg",
     "profilePic": "../Images/people/6..png",
     "title": "Marketing Overview",
@@ -285,7 +288,7 @@
   },
   {
     "_id": "mr874",
-    "categorie": "Marketing",
+    "category": "Marketing",
     "bg": "https://i.ibb.co/6bvdyjP/13.jpg",
     "profilePic": "../Images/people/7..png",
     "title": "Blog Content Schedule",
@@ -296,7 +299,7 @@
   },
   {
     "_id": "mr875",
-    "categorie": "Marketing",
+    "category": "Marketing",
     "bg": "https://i.ibb.co/NVtFC1b/14.jpg",
     "profilePic": "../Images/people/8..png",
     "title": "Marketing Requests",
@@ -307,7 +310,7 @@
   },
   {
     "_id": "rm251",
-    "categorie": "Remote",
+    "category": "Remote",
     "bg": "https://i.ibb.co/JrCH8LQ/15.jpg",
     "profilePic": "../Images/people/9..png",
     "title": "Work From Home Daily Planner",
@@ -318,7 +321,7 @@
   },
   {
     "_id": "rm252",
-    "categorie": "Remote",
+    "category": "Remote",
     "bg": "https://i.ibb.co/cyHLmL6/16.jpg",
     "profilePic": "../Images/people/10..png",
     "title": "Mr. Rogers: “Watercooler” Video Chat Planner",
@@ -329,7 +332,7 @@
   },
   {
     "_id": "rm253",
-    "categorie": "Remote",
+    "category": "Remote",
     "bg": "https://i.ibb.co/kSM4z3c/17.jpg",
     "profilePic": "../Images/people/4..png",
     "title": "Remote Team Hub",
@@ -340,7 +343,7 @@
   },
   {
     "_id": "rm254",
-    "categorie": "Remote",
+    "category": "Remote",
     "bg": "https://i.ibb.co/VJQB9br/18.jpg",
     "profilePic": "../Images/people/2..png",
     "title": "Remote Team Meetings",
@@ -351,7 +354,7 @@
   },
   {
     "_id": "rm255",
-    "categorie": "Remote",
+    "category": "Remote",
     "bg": "https://i.ibb.co/NtLJqN2/19.jpg",
     "profilePic": "../Images/people/2..png",
     "title": "Distributed Team Brainstorming",
