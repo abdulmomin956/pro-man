@@ -119,44 +119,44 @@ function App() {
             }
           >
 
-            {user?.role !== "Admin" && <>
-              <Route path="/" element={<Home />}>
-                <Route path="/my-board" element={<Board />}></Route>
-                <Route path="/template" element={<Template />}>
-                  <Route
-                    path="/template/:category"
-                    element={<TemplateCategory></TemplateCategory>} />
-                </Route>
+          {user?.role !== "Admin" && <>
+            <Route path="/" element={<Home />}>
+              <Route path="/my-board" element={<Board />}></Route>
+              <Route path="/template" element={<Template />}>
                 <Route
-                  path="/category/:id"
-                  element={<EachTemplateDetails></EachTemplateDetails>}
-                ></Route>
-                <Route path="/" element={<HomeScreen />}></Route>
+                  path="/template/:category"
+                  element={<TemplateCategory></TemplateCategory>} />
               </Route>
-              <Route path="/:shortname" element={<Workspace />}>
-                <Route path="/:shortname/" element={<Boards />}></Route>
-                <Route path="/:shortname/members" element={<Members />}>
-                  <Route path="/:shortname/members" element={<WorkspaceMembers />} />
-                  <Route path="/:shortname/members/guests" element={<Guests />} />
-                  <Route path="/:shortname/members/pending" element={<Pending />} />
-                </Route>
-                <Route path="/:shortname/account" element={<Account />} />
-                <Route path="/:shortname/:id" element={<BoardDetails />} />
+              <Route
+                path="/category/:id"
+                element={<EachTemplateDetails></EachTemplateDetails>}
+              ></Route>
+              <Route path="/" element={<HomeScreen />}></Route>
+            </Route>
+            <Route path="/:shortname" element={<Workspace />}>
+              <Route path="/:shortname/" element={<Boards />}></Route>
+              <Route path="/:shortname/members" element={<Members />}>
+                <Route path="/:shortname/members" element={<WorkspaceMembers />} />
+                <Route path="/:shortname/members/guests" element={<Guests />} />
+                <Route path="/:shortname/members/pending" element={<Pending />} />
               </Route>
-              <Route path="/profile" element={<Profiles />}>
-                <Route path="/profile/" element={<ProfileValidity />} />
-                <Route path="profileActive" element={<ProfileActive />} />
-                <Route path="profileCard" element={<ProfileCard />} />
-                <Route path="profileSettings" element={<ProfileSetting />} />
-              </Route>
-            </>
-            }
-            {/* Just for admin  */}
-            {
-              user?.role === "Admin" && <Route path="/" element={<MakeAdmin />} />
-            }
-          </Route>
-        )}
+              <Route path="/:shortname/account" element={<Account />} />
+              <Route path="/:shortname/:id" element={<BoardDetails />} />
+            </Route>
+            <Route path="/profile" element={<Profiles />}>
+              <Route path="/profile/" element={<ProfileValidity />} />
+              <Route path="profileActive" element={<ProfileActive />} />
+              <Route path="profileCard" element={<ProfileCard />} />
+              <Route path="profileSettings" element={<ProfileSetting />} />
+            </Route>
+          </>
+          }
+          {/* Just for admin  */}
+          {
+            user?.role === "Admin" && <Route path="/" element={<MakeAdmin />} />
+          }
+        </Route>
+        }
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
