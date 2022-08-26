@@ -57,8 +57,13 @@ const Login = () => {
                 email: userInfo.email
             }
             localStorage.setItem("token", JSON.stringify(item))
-            dispatch(setUser(userInfo))
-            navigate(from, { replace: true })
+            dispatch(setUser(res.data.usersDB))
+            if (res.data.usersDB.role === "Admin") {
+                navigate("/")
+            }
+            else {
+                navigate(from, { replace: true })
+            }
         }
     };
 
