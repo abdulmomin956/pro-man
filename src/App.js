@@ -120,21 +120,14 @@ function App() {
             {user?.role !== "Admin" && <>
               <Route path="/" element={<Home />}>
                 <Route path="/my-board" element={<Board />}></Route>
-                <Route path="/template" element={<Template />}></Route>
-
-              <Route
-                path="/template/:category"
-                element={<TemplateCategory></TemplateCategory>}
-              ></Route>
-              <Route
-                path="/category/:id"
-                element={<EachTemplateDetails></EachTemplateDetails>}
-              ></Route>
-            </Route>
-
+                <Route path="/template" element={<Template />}>
+                  <Route
+                    path="/template/:category"
+                    element={<TemplateCategory></TemplateCategory>} />
+                </Route>
                 <Route
-                  path="/template/:category"
-                  element={<TemplateCategory></TemplateCategory>}
+                  path="/category/:id"
+                  element={<EachTemplateDetails></EachTemplateDetails>}
                 ></Route>
                 <Route path="/" element={<HomeScreen />}></Route>
               </Route>
