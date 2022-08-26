@@ -30,15 +30,80 @@ import { useSelector } from "react-redux";
 import MakeAdmin from "./components/dashboard/MakeAdmin";
 import TemplateCategory from "./components/firstScreen/TemplateComponents/TemplateCategory";
 import Home1 from "./components/Home/Home"
+import { useDispatch } from "react-redux";
+import { setEmail } from "./global-state/actions/reduxActions";
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
+
+function getWithExpiry(key) {
+  const itemStr = localStorage.getItem(key)
+  // if the item doesn't exist, return null
+  if (!itemStr) {
+    return null
+  }
+  const item = JSON.parse(itemStr)
+  const now = new Date()
+  // compare the expiry time of the item with the current time
+  if (now.getTime() > item.expiry) {
+    // If the item is expired, delete the item from storage
+    // and return null
+    localStorage.removeItem(key)
+    return null
+  }
+  return item.accessToken
+}
 
 
 function App() {
   const email = useSelector((state) => state.email);
+  const [loading, setLoading] = useState(null)
+  const dispatch = useDispatch();
+  const token = getWithExpiry('token')
+
+  if (!token) {
+    dispatch(setEmail(null))
+  }
+
+
+  useEffect(() => {
+    if (token) {
+      const fetchData = async () => {
+        setLoading(true)
+        const config = {
+          headers: { Authorization: `Bearer ${token}` }
+        };
+
+        const bodyParameters = {
+          key: "value"
+        };
+        const res = await axios.post(
+          'https://morning-coast-54182.herokuapp.com/api/auth',
+          bodyParameters,
+          config
+        )
+        if (res.status === 200) {
+          dispatch(setEmail(res.data.email))
+          setLoading(false)
+        }
+        else {
+          dispatch(setEmail(null))
+          setLoading(false)
+        }
+      }
+      fetchData();
+    }
+  }, [dispatch, token])
+  console.log(email);
+
+  if (loading) {
+    return <Loading />
+  }
 
   return (
     <div className="#F5F5F5">
       {/* <ToastContainer /> */}
-      {email && <Navbar />}
+
 
       <Routes>
         {!email && <Route path="/mainHome" element={<Home1></Home1>}></Route>}
@@ -58,15 +123,15 @@ function App() {
           ></Route>
           <Route path="/homescreen" element={<HomeScreen />}></Route>
         </Route>
-
-        <Route path="/makeadmin" element={<MakeAdmin/>}></Route>
-        <Route path="/:shortname" element={
-          <RequireAuth>
-            <Workspace />
-          </RequireAuth>
-        }>
-
-
+        <Route path="/makeadmin" element={<MakeAdmin />}></Route>
+        <Route
+          path="/:shortname"
+          element={
+            <RequireAuth>
+              <Workspace />
+            </RequireAuth>
+          }
+        >
           <Route path="/:shortname/" element={<Boards />}></Route>
           <Route path="/:shortname/members" element={<Members />}>
             <Route
@@ -91,24 +156,7 @@ function App() {
 
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
-        <Route path="/profile" element={<Profiles />}>
-          <Route
-            path="/profile/"
-            element={<ProfileValidity></ProfileValidity>}
-          ></Route>
-          <Route
-            path="profileActive"
-            element={<ProfileActive></ProfileActive>}
-          ></Route>
-          <Route
-            path="profileCard"
-            element={<ProfileCard></ProfileCard>}
-          ></Route>
-          <Route
-            path="profileSettings"
-            element={<ProfileSetting></ProfileSetting>}
-          ></Route>
-        </Route>
+
 
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
