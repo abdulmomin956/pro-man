@@ -36,6 +36,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import EachTemplateDetails from "./components/firstScreen/TemplateComponents/EachTemplateDetails";
+import VerifyInvitedMember from "./components/shared/VerifyInvitedMember";
 
 function getWithExpiry(key) {
   const itemStr = localStorage.getItem(key);
@@ -107,14 +108,16 @@ function App() {
 
       <Routes>
         {!user?.email && <Route path="/" element={<Home1 />}></Route>}
-        {user?.email && <Route
-          path="/"
-          element={
-            <RequireAuth>
-              <Navbar />
-            </RequireAuth>
-          }
-        >
+        <Route path="/invite/:workspaceId/:email/:token" element={<RequireAuth><VerifyInvitedMember /></RequireAuth>}></Route>
+        {user?.email && (
+          <Route
+            path="/"
+            element={
+              <RequireAuth>
+                <Navbar />
+              </RequireAuth>
+            }
+          >
 
           {user?.role !== "Admin" && <>
             <Route path="/" element={<Home />}>
@@ -156,7 +159,6 @@ function App() {
         }
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
-
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>

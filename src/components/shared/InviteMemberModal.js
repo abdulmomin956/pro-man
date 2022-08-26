@@ -5,14 +5,17 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.init";
 import Loading from "./Loading";
 import emailjs from "@emailjs/browser";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import axios from "axios";
+import data from "../../utils/store";
 
-const InviteMemberModal = () => {
+const InviteMemberModal = ({ workspaceId }) => {
   const [matchField, setMatchField] = useState("");
   const [users, setUsers] = useState([]);
   const [selectMember, setSelectMember] = useState("");
   const [btnDisable, setBtnDisable] = useState(false);
   const [user, loading] = useAuthState(auth);
+  const [userInfoToken, setUserInfoToken] = useState("")
 
   const form = useRef();
 
@@ -22,7 +25,6 @@ const InviteMemberModal = () => {
       .then((data) => setUsers(data));
   }, []);
 
-  // console.log(users)
   useEffect(() => {
     if (selectMember) {
       setBtnDisable(false);
@@ -41,8 +43,10 @@ const InviteMemberModal = () => {
   const handleModalSubmit = (event) => {
     event.preventDefault();
     let message = event.target.message.value;
-    // console.log(user_email);
+    const url = `http://localhost:3000/invite/${workspaceId}/${selectMember}/${userInfoToken}`
+    // console.log(url);
     form.current.user_email.value = selectMember;
+    form.current.message.value = url;
 
     emailjs
       .sendForm(
@@ -59,15 +63,26 @@ const InviteMemberModal = () => {
           message = "";
           form.current.user_email.value = "";
           toast("Email send successfully.", {
-            position: toast.POSITION.TOP_CENTER
-          })
+            position: toast.POSITION.TOP_CENTER,
+          });
         }
       })
       .catch((err) => console.log(err));
-
   };
-  const handleSelectEmail = (user) => {
+  const handleSelectEmail = async (user) => {
     setSelectMember(user.email);
+    const userData = {
+      email: selectMember,
+      workspaceId: workspaceId
+    }
+    // console.log(userData);
+    await axios.post("http://localhost:5000/invite", userData)
+      .then(res => {
+        if (res.status === 200) {
+          setUserInfoToken(res.data.token);
+        }
+      })
+
   };
 
   return (
@@ -86,6 +101,10 @@ const InviteMemberModal = () => {
                 <label
                   htmlFor="inviteMember"
                   className="btn btn-sm btn-circle absolute right-2 top-2"
+                  onClick={() => {
+                    setSelectMember("");
+                    setMatchField("");
+                  }}
                 >
                   ✕
                 </label>
@@ -97,13 +116,7 @@ const InviteMemberModal = () => {
 
               <form ref={form} onSubmit={handleModalSubmit}>
                 <div className="mt-4 mb-2 flex justify-between items-center">
-                  <input
-                    type="text"
-                    name="woner_email"
-                    value={user?.email}
-                    id=""
-                    className=" hidden"
-                  />
+                  <input type="text" name="woner_email" value={user?.email} id="" className=" hidden" />
                   <input
                     type="text"
                     name="woner_name"
