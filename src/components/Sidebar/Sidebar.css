@@ -13,11 +13,11 @@
    border: 5px solid white;
    border-radius: 50%;
    color: rgb(255, 255, 255);
-   background-color: #002198;
+   background-color: #000000;
 }
 
 #navProfile:hover {
-   color: blue;
+   color: rgb(55, 55, 55);
    background-color: #BFC9FF;
    font-weight: bold;
    cursor: pointer;
@@ -30,7 +30,7 @@
 .myButton:hover {
    background: #BFC9FF;
    color: #0038FF;
-   /* background: linear-gradient(90deg, #BFC9FF 2.16%, rgba(191, 201, 255, 0) 97.84%); */
+
 }
 
 .sidebar-button:hover {
@@ -48,7 +48,7 @@
    font-size: 28px;
    width: 100%;
    font-weight: 700;
-   color: white;
+   color: rgb(0, 0, 0);
 }
 
 

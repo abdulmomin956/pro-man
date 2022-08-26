@@ -7,7 +7,7 @@ import SocialLogin from './SocialLogin';
 import Loading from '../shared/Loading';
 import axios from 'axios';
 import { useDispatch } from "react-redux"
-import { setEmail } from '../../global-state/actions/reduxActions';
+import { setUser } from '../../global-state/actions/reduxActions';
 
 const Register = () => {
     const dispatch = useDispatch()
@@ -16,7 +16,7 @@ const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, upError] = useUpdateProfile(auth);
     let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+    let from = location.state?.from?.pathname || "/my-board";
     useEffect(() => {
         if (user) {
             navigate('/')
@@ -41,9 +41,9 @@ const Register = () => {
         const userName = data.name + " " + data.lastName
         await updateProfile({ displayName: userName });
         const userInfo = {
-          name: userName,
-          email: data.email,
-          role: "Member"
+            name: userName,
+            email: data.email,
+            role: "Member"
 
         };
         console.log(userInfo);
@@ -62,7 +62,7 @@ const Register = () => {
                 email: userInfo.email
             }
             localStorage.setItem("token", JSON.stringify(item))
-            dispatch(setEmail(userInfo.email))
+            dispatch(setUser(userInfo))
             navigate(from, { replace: true })
         }
 

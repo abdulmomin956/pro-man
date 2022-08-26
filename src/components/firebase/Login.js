@@ -7,13 +7,13 @@ import SocialLogin from './SocialLogin';
 import Loading from '../shared/Loading';
 import axios from 'axios';
 import { useDispatch } from "react-redux";
-import { setEmail } from '../../global-state/actions/reduxActions';
+import { setUser } from '../../global-state/actions/reduxActions';
 // import { toast } from 'react-toastify';
 
 const Login = () => {
     const dispatch = useDispatch()
     let location = useLocation();
-    let from = location.state?.from?.pathname || '/'
+    let from = location.state?.from?.pathname || '/my-board'
     const { register, formState: { errors }, handleSubmit, reset, getValues } = useForm();
     const navigate = useNavigate()
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
@@ -57,7 +57,7 @@ const Login = () => {
                 email: userInfo.email
             }
             localStorage.setItem("token", JSON.stringify(item))
-            dispatch(setEmail(userInfo.email))
+            dispatch(setUser(userInfo))
             navigate(from, { replace: true })
         }
     };
