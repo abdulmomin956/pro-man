@@ -44,7 +44,7 @@ const InviteMemberModal = ({ workspaceId }) => {
         .then(res => {
           if (res.status === 200) {
             setUserInfoToken(res.data.token);
-            console.log(res.data.token);
+            // console.log(res.data.token);
           }
         })
     }
@@ -137,10 +137,11 @@ const InviteMemberModal = ({ workspaceId }) => {
                     onKeyUp={(e) => {
                       setMatchField(e.target.value);
                     }}
-                    type="text"
+                    type="email"
                     name="user_email"
                     placeholder={`Enter email address`}
                     required
+                    autocomplete="off"
                     className={`input input-sm input-bordered w-full  rounded-none ${selectMember && "hidden"
                       }`}
                   />
@@ -154,8 +155,8 @@ const InviteMemberModal = ({ workspaceId }) => {
                 </div>
                 <div>
                   <textarea
-                    className={`textarea w-full textarea-bordered ${selectMember ? "block" : "hidden"
-                      }`}
+                    className=" hidden"
+                    // className={`textarea w-full textarea-bordered ${selectMember ? "block" : "hidden"}`}
                     placeholder="Bio"
                     name="message"
                   ></textarea>
