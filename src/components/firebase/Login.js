@@ -25,8 +25,8 @@ const Login = () => {
     if (loading || sending) {
         <Loading></Loading>
     }
-    console.log(user);
-    console.log(user?.user?.email);
+    // console.log(user);
+    // console.log(user?.user?.email);
 
     // if (user) {
     //     navigate(from, { replace: true })

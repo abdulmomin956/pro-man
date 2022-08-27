@@ -10,7 +10,7 @@ const HomeScreenAllBoards = ({ props, workspaceID }) => {
     const [data, setData] = useState([])
     // const [numOfElement, setNumOfElement] = useState('')
     const sliceData = data.slice(1)
-    console.log(sliceData);
+    // console.log(sliceData);
 
     if (sliceData) {
         // console.log(sliceData)

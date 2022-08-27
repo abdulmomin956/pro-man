@@ -115,11 +115,11 @@ const InviteMemberModal = ({ workspaceId }) => {
 
               <form ref={form} onSubmit={handleModalSubmit}>
                 <div className="mt-4 mb-2 flex justify-between items-center">
-                  <input type="text" name="woner_email" value={user?.email} id="" className=" hidden" />
+                  <input type="text" name="woner_email" defaultValue={user?.email} id="" className=" hidden" />
                   <input
                     type="text"
                     name="woner_name"
-                    value={user?.displayName}
+                    defaultValue={user?.displayName}
                     id=""
                     className=" hidden"
                   />
