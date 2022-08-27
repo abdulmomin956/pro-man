@@ -35,7 +35,7 @@ const TempleteBoard = ({ openTemp, setOpenTemp }) => {
                         style={{ borderRadius: "0px" }}
                     >
                         <div>
-                        <label
+                            <label
                                 onClick={() => setOpenTempBm(!openTempBM)}
                                 tabIndex="0"
                                 className="btn btn-sm bg-transparent btn-circle absolute right-2 top-2"
@@ -61,8 +61,8 @@ const TempleteBoard = ({ openTemp, setOpenTemp }) => {
                                 Top templates
                             </p>
                             <button>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                                 </svg>
                             </button>
                         </div>
@@ -91,8 +91,8 @@ const TempleteBoard = ({ openTemp, setOpenTemp }) => {
                                     tabIndex="0"
                                     className="btn btn-sm bg-transparent btn-circle absolute left-2 top-2"
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                                     </svg>
                                 </label>
 

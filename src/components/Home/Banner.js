@@ -2,9 +2,9 @@ import React from 'react';
 
 const Banner = () => {
     return (
-        <div class="hero min-h-screen bg-base-100 lg:px-20 mt-24">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                <img src="https://images.ctfassets.net/rz1oowkt5gyp/5QIzYxue6b7raOnVFtMyQs/113acb8633ee8f0c9cb305d3a228823c/hero.png?w=1200&fm=webp" alt="" class="max-w-sm " />
+        <div className="hero min-h-screen bg-base-100 lg:px-20 mt-24">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <img src="https://images.ctfassets.net/rz1oowkt5gyp/5QIzYxue6b7raOnVFtMyQs/113acb8633ee8f0c9cb305d3a228823c/hero.png?w=1200&fm=webp" alt="" className="max-w-sm " />
                 <div className='lg:mr-20 sm:mt-16 sm:px-20'>
                     <h1 className="text-6xl mb-8 font-[poppins]"                >
                         ProMan helps teams move work forward.
