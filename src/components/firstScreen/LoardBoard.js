@@ -1,10 +1,8 @@
 import React from 'react';
-import { useQuery } from "@tanstack/react-query";
 import Loading from '../shared/Loading';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from "react-redux";
 
 const LoardBoard = ({ props, workspaceID }) => {
     const navigate = useNavigate();

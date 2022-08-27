@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import "./BordModal.css";
-import { useForm } from "react-hook-form";
 
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+
 import { useSelector } from "react-redux";
-import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 import axios from "axios";
 
 const BoardModal = () => {
@@ -16,13 +13,11 @@ const BoardModal = () => {
   const allWorkspace = useSelector(state => state.workspace)
   // console.log(lastWorkspaceID);
   // console.log(allWorkspace);
-  const dispatch = useDispatch();
 
 
 
 
 
-  const navigate = useNavigate();
   // console.log(background);
 
   const handleSubmit = async (e) => {
@@ -141,7 +136,7 @@ const BoardModal = () => {
               <hr className="h-[2px] w-1/2 mx-auto bg-gray-900 my-3" />
             </h3>
 
-            <div className="flex bg-center bg-contain bg-cover items-center b-modal-bg">
+            <div className="flex bg-center  bg-cover items-center b-modal-bg">
               <img src="https://i.ibb.co/tCKqkzr/abstract-board.png" className="" alt="" />
             </div>
             <p className="font-bold text-primary">Select Background</p>

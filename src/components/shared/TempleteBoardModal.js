@@ -1,4 +1,3 @@
-import { InputBase } from '@material-ui/core';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
@@ -7,7 +6,6 @@ import { useSelector } from 'react-redux';
 const TempleteBoardModal = ({ tempBMTitle, bgUrl }) => {
     const allWorkspace = useSelector(state => state.workspace)
     const [bTitle, setBtitle] = useState("")
-    const [temBg, setTemBg] = useState("")
     // const [newTitle, setNewTitle] = useState(tempBMTitle)
 
     useEffect(() => {

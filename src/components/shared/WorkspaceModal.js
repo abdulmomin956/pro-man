@@ -7,24 +7,16 @@ import auth from "../firebase/firebase.init";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLoadWorkspace } from "../../global-state/actions/reduxActions";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const WorkspaceModal = () => {
   const [workspaceName, setWorkspaceName] = useState("");
   const [user] = useAuthState(auth);
   const email = user?.email;
   const dispatch = useDispatch();
-  const workspaces = useSelector(state => state.workspace)
-  // console.log(workspaces[workspaces.length - 1]?.shortname);
-  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    watch,
-    reset,
     formState: { errors },
   } = useForm();
 

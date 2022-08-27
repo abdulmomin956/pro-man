@@ -23,10 +23,10 @@ const Notification = () => {
           <hr className="h-3" />
           {/* modal body............. */}
           <div className="flex space-between">
-            <a href="#" className="underline">
+            <a href='#Home' className="underline">
               Filter by unread
             </a>
-            <a href="#" className=" ml-auto underline">
+            <a href='#Home' className=" ml-auto underline">
               Mark as all read
             </a>
           </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import img from "../../images/uptodate.png";

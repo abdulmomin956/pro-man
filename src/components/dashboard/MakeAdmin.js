@@ -1,13 +1,9 @@
-import { async } from "@firebase/util";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
+import React from "react";
 import Loading from "../shared/Loading";
 
 const MakeAdmin = () => {
-  const navigate = useNavigate();
 
   const users = useQuery(["users"], () => fetch("https://morning-coast-54182.herokuapp.com/users").then(res => res.json()))
 

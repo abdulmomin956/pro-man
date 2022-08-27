@@ -4,27 +4,19 @@ import {
   FaUserFriends,
   FaCogs,
   FaRegPlusSquare,
-  FaRegArrowAltCircleUp,
 } from "react-icons/fa";
 import { HiViewGridAdd } from "react-icons/hi";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../firebase/firebase.init";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 import LoardBoard from "./LoardBoard";
 import { Link } from "react-router-dom";
-import HomeScreen from "./HomeScreen";
-import { Divider } from "@material-ui/core";
 
 
 
 
 const Board = () => {
   const dispatch = useDispatch();
-
-  const [user] = useAuthState(auth);
-  const email = user?.email;
 
   const data = useSelector(state => state.workspace)
   // if (data) {

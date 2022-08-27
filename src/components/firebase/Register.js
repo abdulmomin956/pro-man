@@ -12,7 +12,7 @@ import { setUser } from '../../global-state/actions/reduxActions';
 const Register = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { register, formState: { errors }, handleSubmit, reset, getValues } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, upError] = useUpdateProfile(auth);
     let location = useLocation();

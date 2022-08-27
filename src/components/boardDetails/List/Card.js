@@ -2,7 +2,6 @@ import React from 'react';
 import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Draggable } from 'react-beautiful-dnd';
-import CreateIcon from '@material-ui/icons/Create';
 
 
 
@@ -24,13 +23,13 @@ const useStyle = makeStyles((theme) => ({
 
 const Card = ({ card, index }) => {
 
-    const deletItem = (id) => {
-        // const updetedItems = card.filter((elm) => {
-        //     return index === elm.id
-        // })
-        // localStorage.setItem(updetedItems)
-        console.log('delete', id)
-    }
+    // const deletItem = (id) => {
+    //     const updetedItems = card.filter((elm) => {
+    //         return index === elm.id
+    //     })
+    //     localStorage.setItem(updetedItems)
+    //     console.log('delete', id)
+    // }
 
     const editItem = (id) => {
         console.log('edit', id)

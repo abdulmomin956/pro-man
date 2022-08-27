@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { MdOutlineModeEditOutline, MdOutlineLock, MdPersonAddAlt1 } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { useNavigate, useParams, useHistory } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./Account.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -23,8 +23,6 @@ const CommonTopDesign = () => {
   const {
     register,
     handleSubmit,
-    watch,
-    reset,
     formState: { errors },
   } = useForm();
 

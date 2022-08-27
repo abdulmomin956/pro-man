@@ -8,23 +8,23 @@ import ProfileNav from "./ProfileNav";
 import { Outlet } from "react-router-dom";
 
 const Profiles = () => {
-  const [user , loading] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const name = user?.displayName;
-  const userPhoto =user?.photoURL;
-  const email=user?.email;
-  const [profiles,setProfiles]=useState({});
- 
-  useEffect(()=>{
+  const userPhoto = user?.photoURL;
+  const email = user?.email;
+  const [profiles, setProfiles] = useState({});
+
+  useEffect(() => {
     fetch(`https://morning-coast-54182.herokuapp.com/profile/${email}`)
-    .then(res=>res.json())
-    .then(data=>setProfiles(data))
-  },[])
+      .then(res => res.json())
+      .then(data => setProfiles(data))
+  }, [email])
   if (loading) {
     return (
       <Loading></Loading>
     );
   }
-  const userName=profiles.userName;
+  const userName = profiles.userName;
 
   return (
     <div>
@@ -42,15 +42,15 @@ const Profiles = () => {
             <h2 className="font-bold text-4xl">{userName ? userName : name}  </h2>
           </div>
 
-           
+
         </div>
-         
+
         <ProfileNav></ProfileNav>
         <div className="profilebody">
           <Outlet></Outlet>
 
 
-           
+
         </div>
       </div>
     </div>

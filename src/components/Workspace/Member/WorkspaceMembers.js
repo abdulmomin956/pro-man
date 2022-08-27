@@ -7,7 +7,7 @@ import { MdCancelPresentation } from "react-icons/md";
 
 const WorkspaceMembers = () => {
   const [user, loading] = useAuthState(auth);
-  const { wMember, setWmember } = useState(0);
+  const [wMember, setWmember] = useState(0);
   if (loading) {
     return <Loading></Loading>;
   }

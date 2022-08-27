@@ -3,7 +3,6 @@ import { Paper, InputBase, Button, IconButton } from "@material-ui/core";
 import ClearIcon from "@material-ui/icons/Clear";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import storeApi from "../../../utils/storeApi";
-import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { useRef } from 'react';
 
@@ -63,10 +62,10 @@ const InputCard = ({ data, setOpen, listId, type, open }) => {
     }
   }, [open])
 
-  const handleBlur = () => {
-    setOpen(false);
-    // setTitle("");
-  };
+  // const handleBlur = () => {
+  //   setOpen(false);
+  //   setTitle("");
+  // };
   // console.log(cardTitle);
   const handleKeyDown = e => {
     if (e.key === 'Enter') {

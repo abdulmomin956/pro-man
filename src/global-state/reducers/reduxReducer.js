@@ -1,4 +1,4 @@
-import { CURRENTWORKSPACE, CURRENTWORKSPACEBOARDS, EMAIL, LAST_WORKSPACE, LIST, LOADWORKSPACE, USER, WORKSPACE } from "../constants/reduxContstants";
+import { CURRENTWORKSPACE, CURRENTWORKSPACEBOARDS, LAST_WORKSPACE, LIST, LOADWORKSPACE, USER, WORKSPACE } from "../constants/reduxContstants";
 
 const initialState = {
     lastWorkspaceID: "",
