@@ -104,7 +104,7 @@ function App() {
 
       <Routes>
         {!user?.email && <Route path="/" element={<Home1 />}></Route>}
-        <Route path="/invite/:workspaceId/:email/:token" element={<RequireAuth><VerifyInvitedMember /></RequireAuth>}></Route>
+        <Route path="/invite/:workspaceId/:email/:token" element={<VerifyInvitedMember />}></Route>
         {user?.email && (
           <Route
             path="/"
