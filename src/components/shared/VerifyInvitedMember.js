@@ -12,7 +12,6 @@ const VerifyInvitedMember = () => {
    const navigate = useNavigate()
 
    const { workspaceId, email, token } = useParams()
-   // console.log(token);
 
 
    useEffect(() => {
@@ -24,23 +23,17 @@ const VerifyInvitedMember = () => {
    useEffect(() => {
       if (user) {
          const userData = { userEmail: user.email, token: token }
-
          axios.post("http://localhost:5000/invite/verify", userData)
             .then(res => {
-               // console.log(res.data);
+               console.log(res.status);
                if (res.status === 200) {
-                  //  setUserInfoToken(res.data.token);
+                  console.log("Success......")
                }
+            }).catch(err => {
+               return navigate('/login')
             })
-
       }
-      // const verifyUser = allUsers?.filter(u => u.email === user?.email)
-      // if (verifyUser.length != 0) {
-
-      // } else {
-      //    <Navigate to="/login" state={{ from: location }} replace />
-      // }
-   }, [user, token, email, location, allUsers])
+   }, [user, token, navigate])
 
    if (loading) {
       return <Loading></Loading>
@@ -51,17 +44,9 @@ const VerifyInvitedMember = () => {
       return <Navigate to="/login" state={{ from: location }} replace />
    }
 
-
-
-
-
-
-   // console.log(users)
    return (
       <div>
          <h2 className='text-4xl text-center mt-16'> Verify the member.....</h2>
-
-
          <Loading></Loading>
       </div>
    );
