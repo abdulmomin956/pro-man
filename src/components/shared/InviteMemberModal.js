@@ -34,11 +34,27 @@ const InviteMemberModal = ({ workspaceId }) => {
   }, [selectMember]);
   // console.log(selectMember);
 
+  useEffect(() => {
+    if (selectMember) {
+      const userData = {
+        email: selectMember,
+        workspaceId: workspaceId
+      }
+      axios.post("http://localhost:5000/invite/token", userData)
+        .then(res => {
+          if (res.status === 200) {
+            setUserInfoToken(res.data.token);
+            console.log(res.data.token);
+          }
+        })
+    }
+
+  }, [selectMember, workspaceId])
+
   if (loading) {
     return <Loading></Loading>;
   }
 
-  // const { fromEmail, displayName } = user?.email;
 
   const handleModalSubmit = (event) => {
     event.preventDefault();
@@ -71,18 +87,6 @@ const InviteMemberModal = ({ workspaceId }) => {
   };
   const handleSelectEmail = async (user) => {
     setSelectMember(user.email);
-    const userData = {
-      email: selectMember,
-      workspaceId: workspaceId
-    }
-    // console.log(userData);
-    await axios.post("http://localhost:5000/invite", userData)
-      .then(res => {
-        if (res.status === 200) {
-          setUserInfoToken(res.data.token);
-        }
-      })
-
   };
 
   return (
