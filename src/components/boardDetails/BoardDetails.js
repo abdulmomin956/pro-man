@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import List from './List/List';
-import store from '../../utils/store'
 import storeApi from '../../utils/storeApi';
 import { v4 as uuid } from 'uuid';
 import InputContainer from './input/InputContainer';

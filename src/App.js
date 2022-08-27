@@ -3,11 +3,7 @@ import Login from "./components/firebase/Login";
 import Register from "./components/firebase/Register";
 import Home from "./components/Home";
 import Navbar from "./components/shared/Navbar";
-import { ToastContainer } from "react-toastify";
 import RequireAuth from "./components/requireAuth/RequireAuth";
-import auth from "./components/firebase/firebase.init";
-import { useAuthState } from "react-firebase-hooks/auth";
-// import Board from "./components/firstScreen/Board";
 import HomeScreen from "./components/firstScreen/HomeScreen";
 import Template from "./components/firstScreen/Template";
 import Loading from "./components/shared/Loading";
@@ -118,6 +114,12 @@ function App() {
               </RequireAuth>
             }
           >
+            <Route path="/profile" element={<Profiles />}>
+              <Route path="/profile/" element={<ProfileValidity />} />
+              <Route path="profileActive" element={<ProfileActive />} />
+              <Route path="profileCard" element={<ProfileCard />} />
+              <Route path="profileSettings" element={<ProfileSetting />} />
+            </Route>
 
             {user?.role !== "Admin" && <>
               <Route path="/" element={<Home />}>
@@ -143,12 +145,7 @@ function App() {
                 <Route path="/:shortname/account" element={<Account />} />
                 <Route path="/:shortname/:id" element={<BoardDetails />} />
               </Route>
-              <Route path="/profile" element={<Profiles />}>
-                <Route path="/profile/" element={<ProfileValidity />} />
-                <Route path="profileActive" element={<ProfileActive />} />
-                <Route path="profileCard" element={<ProfileCard />} />
-                <Route path="profileSettings" element={<ProfileSetting />} />
-              </Route>
+
             </>
             }
             {/* Just for admin  */}

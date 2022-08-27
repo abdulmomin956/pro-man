@@ -7,7 +7,6 @@ import Loading from "./Loading";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import axios from "axios";
-import data from "../../utils/store";
 
 const InviteMemberModal = ({ workspaceId }) => {
   const [matchField, setMatchField] = useState("");
@@ -57,7 +56,7 @@ const InviteMemberModal = ({ workspaceId }) => {
       )
       .then((res) => {
         // console.log(res);
-        if (res.status == 200) {
+        if (res.status === 200) {
           setSelectMember("");
           setMatchField("");
           message = "";

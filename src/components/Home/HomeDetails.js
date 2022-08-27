@@ -53,7 +53,7 @@ const HomeDetails = () => {
                                     <li>Use a Timeline view for project planning</li>
                                     <li>Schedule teammate assignments, and more!</li>
                                 </ul>
-                                <a className='underline ' href="" alt=''>Learn more about Butler Automation</a>
+                                <a className='underline ' href="#home" alt=''>Learn more about Butler Automation</a>
                             </div>
                         </div>
                     </div>

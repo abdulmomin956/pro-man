@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import Loading from '../shared/Loading';
 import { useSelector, useDispatch } from "react-redux"
 import axios from 'axios';
 import { setUser } from '../../global-state/actions/reduxActions';

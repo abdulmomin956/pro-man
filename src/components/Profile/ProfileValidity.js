@@ -77,7 +77,7 @@ const ProfileValidity = () => {
           <div className="modal-action my-6">
             <button
               type="submit"
-              className="btn  text-white w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
+              className="btn  w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300"
             >
               save
             </button>

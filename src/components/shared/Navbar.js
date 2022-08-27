@@ -3,10 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import auth from "../firebase/firebase.init";
-// import workspaceModal from "./WorkspaceModal";
 import BoardModal from "./BoardModal";
-import Loading from "./Loading";
-// import axios from "axios";
 import { useSelector } from "react-redux";
 import WorkspaceModal from "./WorkspaceModal";
 import { useDispatch } from "react-redux";
@@ -27,7 +24,7 @@ import StarredBoard from "./StarredBoard";
 
 const Navbar = () => {
   const role = useSelector(state => state.user?.role)
-  const [user, loading, authError] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const [initials, setInitial] = useState("")
   const [open, setOpen] = useState(false);
   const [openTemp, setOpenTemp] = useState(false)
@@ -39,7 +36,7 @@ const Navbar = () => {
 
   const dispatch = useDispatch();
 
-  const { isLoading, error, data, refetch } = useQuery(["repoData", email], () =>
+  const { data, refetch } = useQuery(["repoData", email], () =>
     fetch(`https://morning-coast-54182.herokuapp.com/workspace/${email}`).then(
       (res) => res.json()
     )

@@ -1,5 +1,4 @@
 import React from "react";
-import CoomingSoon from "../shared/CoomingSoon";
 
 const ProfileActive = () => {
   return (
@@ -19,11 +18,11 @@ const ProfileActive = () => {
             <li className=" flex items-center">
               <div className="avatar p-5">
                 <div className="w-7 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src='https://i.ibb.co/Pwc30QZ/images-1.png' />
+                  <img alt="" src='https://i.ibb.co/Pwc30QZ/images-1.png' />
                 </div>
               </div>
               <div>
-              <h2>Lorem ipsum dolor sit amet consectetur adipisicing.</h2>
+                <h2>Lorem ipsum dolor sit amet consectetur adipisicing.</h2>
               </div>
             </li>
           </ul>

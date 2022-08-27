@@ -1,5 +1,4 @@
 import React from "react";
-import CoomingSoon from "../shared/CoomingSoon";
 
 const ProfileSetting = () => {
   return (
@@ -8,25 +7,25 @@ const ProfileSetting = () => {
         <div className="settingHeader">
           <h2 className="settingHeaderItem">Account details</h2>
         </div>
-        <a href="">this is profole Setting Item </a>
+        <a href="#home">this is profole Setting Item </a>
       </div>
       <div className="profoleSettingItem">
         <div className="settingHeader">
           <h2 className="settingHeaderItem">Notifications</h2>
         </div>
-        <a href="">this is profole Setting Item </a>
+        <a href='#Home'>this is profole Setting Item </a>
       </div>
       <div className="profoleSettingItem">
         <div className="settingHeader">
           <h2 className="settingHeaderItem">Suggestions</h2>
         </div>
-        <a href="">this is profole Setting Item </a>
+        <a href='#Home'>this is profole Setting Item </a>
       </div>
       <div className="profoleSettingItem">
         <div className="settingHeader">
           <h2 className="settingHeaderItem">Marketing emails</h2>
         </div>
-        <a href="">this is profole Setting Item </a>
+        <a href='#Home'>this is profole Setting Item </a>
       </div>
     </div>
   );
