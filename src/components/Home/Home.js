@@ -15,9 +15,9 @@ const Home = () => {
         <div>
             <HomeNav></HomeNav>
             <Banner />
-            <Info></Info>
+            {/* <Info></Info> */}
             <WorkFieldDemo></WorkFieldDemo>
-            <HomeSponcers></HomeSponcers>
+            {/* <HomeSponcers></HomeSponcers> */}
             <ChooseView></ChooseView>
             <HomeDetails></HomeDetails>
             <Review />
