@@ -10,6 +10,7 @@ const VerifyInvitedMember = () => {
    let location = useLocation();
    const [user, loading] = useAuthState(auth)
    const navigate = useNavigate()
+   const [verifyUser, setVerifyUser] = useState("");
 
    const { workspaceId, email, token } = useParams()
 
@@ -20,20 +21,27 @@ const VerifyInvitedMember = () => {
          .then((data) => setAllUsers(data));
    }, []);
 
+   // verify the User 
    useEffect(() => {
       if (user) {
          const userData = { userEmail: user.email, token: token }
          axios.post("http://localhost:5000/invite/verify", userData)
             .then(res => {
-               console.log(res.status);
                if (res.status === 200) {
-                  console.log("Success......")
+                  setVerifyUser(res.data);
                }
             }).catch(err => {
                return navigate('/login')
             })
       }
    }, [user, token, navigate])
+
+   // Update user as a member
+   useEffect(() => {
+      if (verifyUser) {
+         console.log(verifyUser);
+      }
+   }, [verifyUser])
 
    if (loading) {
       return <Loading></Loading>
