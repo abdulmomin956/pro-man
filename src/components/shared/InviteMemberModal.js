@@ -33,11 +33,27 @@ const InviteMemberModal = ({ workspaceId }) => {
   }, [selectMember]);
   // console.log(selectMember);
 
+  useEffect(() => {
+    if (selectMember) {
+      const userData = {
+        email: selectMember,
+        workspaceId: workspaceId
+      }
+      axios.post("http://localhost:5000/invite/token", userData)
+        .then(res => {
+          if (res.status === 200) {
+            setUserInfoToken(res.data.token);
+            // console.log(res.data.token);
+          }
+        })
+    }
+
+  }, [selectMember, workspaceId])
+
   if (loading) {
     return <Loading></Loading>;
   }
 
-  // const { fromEmail, displayName } = user?.email;
 
   const handleModalSubmit = (event) => {
     event.preventDefault();
@@ -70,18 +86,6 @@ const InviteMemberModal = ({ workspaceId }) => {
   };
   const handleSelectEmail = async (user) => {
     setSelectMember(user.email);
-    const userData = {
-      email: selectMember,
-      workspaceId: workspaceId
-    }
-    // console.log(userData);
-    await axios.post("http://localhost:5000/invite", userData)
-      .then(res => {
-        if (res.status === 200) {
-          setUserInfoToken(res.data.token);
-        }
-      })
-
   };
 
   return (
@@ -132,10 +136,11 @@ const InviteMemberModal = ({ workspaceId }) => {
                     onKeyUp={(e) => {
                       setMatchField(e.target.value);
                     }}
-                    type="text"
+                    type="email"
                     name="user_email"
                     placeholder={`Enter email address`}
                     required
+                    autocomplete="off"
                     className={`input input-sm input-bordered w-full  rounded-none ${selectMember && "hidden"
                       }`}
                   />
@@ -149,8 +154,8 @@ const InviteMemberModal = ({ workspaceId }) => {
                 </div>
                 <div>
                   <textarea
-                    className={`textarea w-full textarea-bordered ${selectMember ? "block" : "hidden"
-                      }`}
+                    className=" hidden"
+                    // className={`textarea w-full textarea-bordered ${selectMember ? "block" : "hidden"}`}
                     placeholder="Bio"
                     name="message"
                   ></textarea>

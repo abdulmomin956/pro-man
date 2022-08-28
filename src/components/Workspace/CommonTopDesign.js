@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLoadWorkspace } from "../../global-state/actions/reduxActions";
+import InviteMemberModal from "../shared/InviteMemberModal";
 
 const CommonTopDesign = () => {
   const [editMood, setEditMood] = useState(false)
@@ -19,6 +20,7 @@ const CommonTopDesign = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  // console.log(currentWorkspace[0]._id);
 
   const {
     register,
@@ -120,15 +122,16 @@ const CommonTopDesign = () => {
           }
         </div>
         <div>
-          <button className="btn btn-primary text-white">
+          <label htmlFor="inviteMember" className="btn btn-primary text-white">
             <p className="flex items-center">
               <MdPersonAddAlt1 className="mr-2"></MdPersonAddAlt1>
               Invite Workspace Members
             </p>
-          </button>
+          </label>
         </div>
       </div>
       <div className="accountUnderline"></div>
+      <InviteMemberModal workspaceId={currentWorkspace[0]._id}></InviteMemberModal>
     </div>
   );
 };

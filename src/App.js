@@ -35,6 +35,9 @@ import EachTemplateDetails from "./components/firstScreen/TemplateComponents/Eac
 import VerifyInvitedMember from "./components/shared/VerifyInvitedMember";
 import Admin from "./components/admin/Admin";
 import Dashboard from "./components/admin/Dashboard";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 function getWithExpiry(key) {
   const itemStr = localStorage.getItem(key);
@@ -55,6 +58,9 @@ function getWithExpiry(key) {
 }
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+  }, [])
   const user = useSelector((state) => state.user);
   const [loading, setLoading] = useState(null);
   const dispatch = useDispatch();
@@ -106,7 +112,7 @@ function App() {
 
       <Routes>
         {!user?.email && <Route path="/" element={<Home1 />}></Route>}
-        <Route path="/invite/:workspaceId/:email/:token" element={<RequireAuth><VerifyInvitedMember /></RequireAuth>}></Route>
+        <Route path="/invite/:workspaceId/:email/:token" element={<VerifyInvitedMember />}></Route>
         {user?.email && (
           <Route
             path="/"
