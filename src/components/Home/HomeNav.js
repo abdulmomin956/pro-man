@@ -70,7 +70,7 @@ const HomeNav = () => {
 
       <div className="navbar-end ">
         <div className='hidden lg:flex'>
-          <Link to="/login" className="flex items-center justify-center text-xl  mx-5  hover:text-blue-600 font-[inherit]">Log In</Link>
+          <Link to="/login" className="flex items-center justify-center text-xl  mx-5  hover:text-blue-600">Log In</Link>
           <button className="bg-blue-600 lg:text-xl lg:px-3 lg:py-2 text-white">
             Get Proman for free
 

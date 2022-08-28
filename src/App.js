@@ -33,6 +33,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import EachTemplateDetails from "./components/firstScreen/TemplateComponents/EachTemplateDetails";
 import VerifyInvitedMember from "./components/shared/VerifyInvitedMember";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function getWithExpiry(key) {
   const itemStr = localStorage.getItem(key);
@@ -53,6 +55,9 @@ function getWithExpiry(key) {
 }
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+  }, [])
   const user = useSelector((state) => state.user);
   const [loading, setLoading] = useState(null);
   const dispatch = useDispatch();
