@@ -19,7 +19,7 @@ const InviteMemberModal = ({ workspaceId }) => {
   const form = useRef();
 
   useEffect(() => {
-    fetch(`https://morning-coast-54182.herokuapp.com/users`)
+    fetch(`https://morning-coast-54182.herokuapp.com/users/all`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);

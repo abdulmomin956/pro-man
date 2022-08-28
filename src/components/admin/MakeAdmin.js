@@ -19,7 +19,7 @@ const MakeAdmin = () => {
 
 
 
-  const users = useQuery(["users", { page, limit }], async () => await fetch(`https://morning-coast-54182.herokuapp.com/users?page=${page}&limit=${limit}`).then(res => res.json()))
+  const users = useQuery(["users", { page, limit }], async () => await fetch(`https://morning-coast-54182.herokuapp.com/users/pagination?page=${page}&limit=${limit}`).then(res => res.json()))
 
 
   console.log(page);
