@@ -102,7 +102,7 @@ const Workspace = () => {
 
         <div className='flex'>
 
-            <div className={`${open ? "w-72" : "w-16 "} p-5 pt-4 h-screen duration-300 bg-primary  relative`}>
+            <div className={`${open ? "w-72" : "w-16 "} p-5 pt-4 h-screen duration-300 bg-secondary  relative`}>
 
                 <img style={{ border: '#081A51' }}
                     src="https://i.ibb.co/86h7B94/control.png"

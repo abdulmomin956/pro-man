@@ -23,7 +23,7 @@ const MakeAdmin = () => {
 
   };
   return (
-    <div>
+    <div className="w-full">
       {
         <div className="overflow-x-auto ">
           <table className="table w-full ">
@@ -33,7 +33,7 @@ const MakeAdmin = () => {
                 <th>name</th>
                 <th>email</th>
                 <th>Role</th>
-                <th>Make Admin</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -53,7 +53,6 @@ const MakeAdmin = () => {
                       </button>
                     </td>
                   )}
-                  <td></td>
                 </tr>
               ))}
             </tbody>

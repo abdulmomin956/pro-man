@@ -99,8 +99,8 @@ const Sidebar = () => {
                         justifyContent: "center",
                       }}
                     >
-                      <Typography>
-                        <div className=" w-48  flex flex-col items-center justify-center">
+                      <div>
+                        <p className=" w-48  flex flex-col items-center justify-center">
                           <Link
                             to={`/${item.shortname}`}
                             className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
@@ -144,8 +144,8 @@ const Sidebar = () => {
                             <FaCogs className="mr-1 text-sm text-primary"></FaCogs>{" "}
                             Settings
                           </Link>
-                        </div>
-                      </Typography>
+                        </p>
+                      </div>
                     </AccordionDetails>
                   </Accordion>
                 ))}
