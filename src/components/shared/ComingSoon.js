@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CoomingSoon = () => {
+const ComingSoon = () => {
     return (
         <div className='text-center h-[90vh] flex flex-col justify-center items-center'>
             <div className='border border-[#333333] h-[30rem] w-[30rem] rounded-full flex flex-col justify-center items-center'>
@@ -14,4 +14,4 @@ const CoomingSoon = () => {
     );
 };
 
-export default CoomingSoon;
+export default ComingSoon;

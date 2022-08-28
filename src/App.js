@@ -23,7 +23,7 @@ import WorkspaceMembers from "./components/Workspace/Member/WorkspaceMembers";
 import Guests from "./components/Workspace/Member/Guests";
 import Pending from "./components/Workspace/Member/Pending";
 import { useSelector } from "react-redux";
-import MakeAdmin from "./components/dashboard/MakeAdmin";
+import MakeAdmin from "./components/admin/MakeAdmin";
 import TemplateCategory from "./components/firstScreen/TemplateComponents/TemplateCategory";
 import Home1 from "./components/Home/Home";
 import { useDispatch } from "react-redux";
@@ -33,8 +33,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import EachTemplateDetails from "./components/firstScreen/TemplateComponents/EachTemplateDetails";
 import VerifyInvitedMember from "./components/shared/VerifyInvitedMember";
+import Admin from "./components/admin/Admin";
+import Dashboard from "./components/admin/Dashboard";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
 
 function getWithExpiry(key) {
   const itemStr = localStorage.getItem(key);
@@ -155,7 +158,10 @@ function App() {
             }
             {/* Just for admin  */}
             {
-              user?.role === "Admin" && <Route path="/" element={<MakeAdmin />} />
+              user?.role === "Admin" && <Route path="/" element={<Admin />} >
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/makeadmin" element={<MakeAdmin />} />
+              </Route>
             }
           </Route>
         )}

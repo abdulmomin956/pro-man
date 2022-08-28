@@ -6,13 +6,12 @@ module.exports = {
       {
         mytheme: {
 
-          "primary": "#000000e6",
-          // "primary": "#102155",
-          secondary: "#adadad",
-          accent: "#F5F5F5",
+          "primary": "#5048E5",
+          "secondary": "#121828",
+          "accent": "#F5F5F5",
 
-          neutral: "#F3F4F6",
-          sidebar: "#081A51",
+          "neutral": "#adadad",
+          "sidebar": "#081A51",
           "light-white": "rgba(255,255,255,0.17)",
 
           "base-100": "#ffffff",

@@ -19,6 +19,7 @@ import { MdGroupWork } from "react-icons/md";
 import Notification from "./Notification";
 import TempleteBoard from "./TempleteBoard";
 import StarredBoard from "./StarredBoard";
+import logo from "../../images/logo.png"
 
 // FiBell
 
@@ -177,9 +178,9 @@ const Navbar = () => {
           }
 
           <div className='navbar-start w-full navTitle'>
-            <a href="/my-board" className="lg:mx-5  flex items-center justify-start">
-              ProMan
-            </a>
+            <Link to={role === "Admin" ? "/" : "/my-board"} className="lg:mx-5  flex items-center justify-start">
+              <img style={{ height: "32px" }} src={logo} alt="logo" />
+            </Link>
           </div>
 
 
