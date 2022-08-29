@@ -131,7 +131,7 @@ const CommonTopDesign = () => {
         </div>
       </div>
       <div className="accountUnderline"></div>
-      <InviteMemberModal workspaceId={currentWorkspace[0]._id}></InviteMemberModal>
+      <InviteMemberModal workspaceId={currentWorkspace[0]?._id}></InviteMemberModal>
     </div>
   );
 };

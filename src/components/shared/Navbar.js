@@ -179,7 +179,7 @@ const Navbar = () => {
 
           <div className='navbar-start w-full navTitle'>
             <Link to={role === "Admin" ? "/" : "/my-board"} className="lg:mx-5  flex items-center justify-start">
-              <img style={{ height: "32px" }} src={logo} alt="logo" />
+              <img style={{ height: '32px', minWidth: '90px' }} src={logo} alt="logo" />
             </Link>
           </div>
 
