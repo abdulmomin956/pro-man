@@ -22,7 +22,6 @@ const EachTemplateDetails = () => {
 
   return (
     <div>
-      <p>hiii from hello {params.id}</p>
       {template.map((item) => (
         <Details key={item._id} item={item}></Details>
       ))}
