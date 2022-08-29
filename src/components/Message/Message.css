@@ -35,12 +35,12 @@
   .Chat-wreaper button:hover {
     background: #2e7d32;
   }
-  .chat-window {
+.chat-body-wreper {
     width: 300px;
     height: 420px;
   }
   
-  .chat-window p {
+.chat-body-wreper p {
     margin: 0;
   }
   .chat-header {
@@ -65,23 +65,23 @@
   
     position: relative;
   }
-  .chat-window .chat-body .message-container {
+.chat-body-wreper .chat-body .message-container {
     width: 100%;
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
   }
   
-  .chat-window .chat-body .message-container::-webkit-scrollbar {
+.chat-body-wreper .chat-body .message-container::-webkit-scrollbar {
     display: none;
   }
-  .chat-window .chat-body .message {
+.chat-body-wreper .chat-body .message {
     height: auto;
     padding: 10px;
     display: flex;
   }
   
-  .chat-window .chat-body .message .message-content {
+ .chat-body .message .message-content {
     width: auto;
     height: auto;
     min-height: 40px;
