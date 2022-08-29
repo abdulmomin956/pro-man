@@ -1,28 +1,78 @@
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Loading from "../shared/Loading";
 
 const MakeAdmin = () => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(null);
   const [pageCount, setPageCount] = useState(0);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(null);
   const [canPreviousPage, setCanPreviousPage] = useState(false);
   const [canNextPage, setCanNextPage] = useState(false);
-  function previousPage() {
-    setPage(page - 1);
+  const [isAdmin, setIsAdmin] = useState(null)
+  const [data, setData] = useState([])
+  const [keyword, setKeyword] = useState('');
+  const [needLoad, setNeedLoad] = useState(true)
 
+
+
+  function previousPage() {
+    sessionStorage.setItem("page", (page - 1))
+    setPage(page - 1);
+    setNeedLoad(true)
   }
   function nextPage() {
+    sessionStorage.setItem("page", (page + 1))
     setPage(page + 1);
+    setNeedLoad(true)
   }
 
 
+  useEffect(() => {
+    const pageJson = sessionStorage.getItem("page");
+    const limitJson = sessionStorage.getItem("limit");
+    if (pageJson) {
+      setPage(parseInt(pageJson));
+    } else {
+      setPage(1)
+    }
+    if (limitJson) {
+      setLimit(parseInt(limitJson))
+    } else {
+      setLimit(10)
+    }
+  }, [])
 
-  const users = useQuery(["users", { page, limit }], async () => await fetch(`https://morning-coast-54182.herokuapp.com/users/pagination?page=${page}&limit=${limit}`).then(res => res.json()))
+  useEffect(() => {
+    const adminJson = sessionStorage.getItem("isAdmin")
+    // console.log(adminJson);
+    if (adminJson) {
+      setIsAdmin(adminJson)
+    } else {
+      setIsAdmin("All Users")
+    }
+  }, [])
 
 
-  console.log(page);
+
+  useEffect(() => {
+    const loadData = async () => {
+
+      const reqBody = { isAdmin, keyword }
+      if (page && limit && isAdmin && needLoad) {
+        setNeedLoad(false)
+        const res = await axios.post(`https://morning-coast-54182.herokuapp.com/users/pagination?page=${page}&limit=${limit}`, reqBody)
+        // console.log(res);
+        if (res.status === 200) {
+          setPageCount(res?.data?.num_pages)
+          setData(res?.data?.list)
+          sessionStorage.setItem("page", (res?.data?.page))
+          setPage(res?.data?.page)
+          sessionStorage.setItem("isAdmin", (res?.data?.isAdmin))
+        }
+      }
+    }
+
+    loadData();
+  }, [isAdmin, keyword, limit, needLoad, page])
 
 
 
@@ -44,21 +94,8 @@ const MakeAdmin = () => {
     }
   }, [page, pageCount])
 
-  useEffect(() => {
-    if (users?.data) {
-      setPageCount(users?.data?.num_pages)
-      // setData(users.data.list)
-      setPage(users?.data?.page)
-    }
-  }, [users?.data])
-
-  if (users.isLoading) {
-    return <Loading />
-  }
 
 
-
-  // console.log(users);
 
   const handleAdmin = async (id) => {
     const role = "Admin";
@@ -66,13 +103,19 @@ const MakeAdmin = () => {
 
     const res = await axios.put(`https://morning-coast-54182.herokuapp.com/users/${id}`, user)
     if (res.status === 200) {
-      users.refetch()
+      setNeedLoad(true)
     }
 
   };
 
-  return (
-
+  return (<div className="w-full">
+    <div className="p-4 shadow flex m-4 gap-2 justify-center">
+      <input onChange={(e) => { setKeyword(e.target.value); setNeedLoad(true) }} type="email" placeholder="Search by email" className="input input-bordered w-full max-w-xs" />
+      <select onChange={(e) => { setIsAdmin(e.target.value); sessionStorage.setItem('isAdmin', (e.target.value)); setNeedLoad(true) }} value={isAdmin || ""} className="select select-bordered w-full max-w-xs">
+        <option value="All Users">All Users</option>
+        <option value="Admin">Admin</option>
+      </select>
+    </div>
     <div className="overflow-y-auto block max-h-screen w-full">
       <table className="table w-full ">
         <thead className="sticky top-0">
@@ -85,7 +128,7 @@ const MakeAdmin = () => {
           </tr>
         </thead>
         <tbody>
-          {users?.data?.list?.map((user, i) => (
+          {data?.map((user, i) => (
             <tr key={i} className="border-2 rounded-md bg-red-400">
               <td className="font-bold">{(page - 1) * limit + i + 1}</td>
               <td>{user.name}</td>
@@ -105,23 +148,24 @@ const MakeAdmin = () => {
           ))}
         </tbody>
       </table>
-      <div className="text-center py-3">
+      <div className="text-center py-3 flex items-center justify-center gap-3">
         <span>Page {page} of {pageCount}</span>
-        <select value={limit} onChange={(e) => { setLimit(Number(e.target.value)); }}>
+        <select className="select select-bordered" value={limit || 1} onChange={(e) => { setLimit(Number(e.target.value)); sessionStorage.setItem("limit", parseInt(e.target.value)); setNeedLoad(true) }}>
           {[5, 10, 20, 30, 40, 50].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize}
             </option>
           ))}
         </select>
-        <button className="btn" onClick={previousPage} disabled={!canPreviousPage}>
+        <button className="btn btn-secondary" onClick={previousPage} disabled={!canPreviousPage}>
           &#x02190;
         </button>
-        <button className="btn" onClick={nextPage} disabled={!canNextPage}>
+        <button className="btn btn-secondary" onClick={nextPage} disabled={!canNextPage}>
           &#x02192;
         </button>
       </div>
     </div>
+  </div>
 
   );
 };
