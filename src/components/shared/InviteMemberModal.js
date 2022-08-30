@@ -19,7 +19,7 @@ const InviteMemberModal = ({ workspaceId }) => {
   const form = useRef();
 
   useEffect(() => {
-    fetch(`https://morning-coast-54182.herokuapp.com/users`)
+    fetch(`https://morning-coast-54182.herokuapp.com/users/all`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -33,11 +33,27 @@ const InviteMemberModal = ({ workspaceId }) => {
   }, [selectMember]);
   // console.log(selectMember);
 
+  useEffect(() => {
+    if (selectMember) {
+      const userData = {
+        email: selectMember,
+        workspaceId: workspaceId
+      }
+      axios.post("https://morning-coast-54182.herokuapp.com/invite/token", userData)
+        .then(res => {
+          if (res.status === 200) {
+            setUserInfoToken(res.data.token);
+            // console.log(res.data.token);
+          }
+        })
+    }
+
+  }, [selectMember, workspaceId])
+
   if (loading) {
     return <Loading></Loading>;
   }
 
-  // const { fromEmail, displayName } = user?.email;
 
   const handleModalSubmit = (event) => {
     event.preventDefault();
@@ -55,7 +71,7 @@ const InviteMemberModal = ({ workspaceId }) => {
         "iLv2oS5yxqCVzHgPL"
       )
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         if (res.status === 200) {
           setSelectMember("");
           setMatchField("");
@@ -70,18 +86,6 @@ const InviteMemberModal = ({ workspaceId }) => {
   };
   const handleSelectEmail = async (user) => {
     setSelectMember(user.email);
-    const userData = {
-      email: selectMember,
-      workspaceId: workspaceId
-    }
-    // console.log(userData);
-    await axios.post("http://localhost:5000/invite", userData)
-      .then(res => {
-        if (res.status === 200) {
-          setUserInfoToken(res.data.token);
-        }
-      })
-
   };
 
   return (
@@ -136,6 +140,7 @@ const InviteMemberModal = ({ workspaceId }) => {
                     name="user_email"
                     placeholder={`Enter email address`}
                     required
+                    autocomplete="off"
                     className={`input input-sm input-bordered w-full  rounded-none ${selectMember && "hidden"
                       }`}
                   />
@@ -149,8 +154,8 @@ const InviteMemberModal = ({ workspaceId }) => {
                 </div>
                 <div>
                   <textarea
-                    className={`textarea w-full textarea-bordered ${selectMember ? "block" : "hidden"
-                      }`}
+                    className=" hidden"
+                    // className={`textarea w-full textarea-bordered ${selectMember ? "block" : "hidden"}`}
                     placeholder="Bio"
                     name="message"
                   ></textarea>

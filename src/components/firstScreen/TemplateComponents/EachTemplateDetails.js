@@ -16,13 +16,12 @@ const EachTemplateDetails = () => {
     console.log(theTemplate);
   }, [popularTemplates, params]);
 
-  console.log(popularTemplates);
-  console.log(template);
-  console.log(params.id);
+  // console.log(popularTemplates);
+  // console.log(template);
+  // console.log(params.id);
 
   return (
     <div>
-      <p>hiii from hello {params.id}</p>
       {template.map((item) => (
         <Details key={item._id} item={item}></Details>
       ))}

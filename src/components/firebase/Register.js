@@ -75,18 +75,18 @@ const Register = () => {
     };
 
     return (
-        <div className='mt-8'>
-            <h1 className='text-3xl font-bold text-center '>Registration Here</h1>
+        <div style={{ backgroundImage: `url("https://i.ibb.co/1mrTrDM/pexels-adhitya-andanu-1539116.jpg")`, backgroundRepeat: 'no-repeat' }} className='h-screen'>
+
             <div className="hero-content mx-auto flex-col lg:flex-row-reverse ">
 
-                <div className="card  w-full   max-w-sm shadow-2xl bg-base-100">
-
+                <div className="card  w-full lg:mt-6 mt-20 md:mt-52  max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body ">
+                        <h1 className='text-3xl font-bold text-center text-secondary'>Registration Here</h1>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="flex flex-wrap -mx-3 ">
                                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                     <label className="label">
-                                        <span className="label-text">Name</span>
+                                        <span className="label-text text-secondary">First Name</span>
                                     </label>
                                     <input
                                         type="text"
@@ -105,7 +105,7 @@ const Register = () => {
                                 </div>
                                 <div className="w-full md:w-1/2 px-3">
                                     <label className="label">
-                                        <span className="label-text">Name</span>
+                                        <span className="label-text text-secondary">Last Name</span>
                                     </label>
                                     <input
                                         type="text"
@@ -126,7 +126,7 @@ const Register = () => {
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text text-secondary">Email</span>
                                 </label>
                                 <input {...register("email", {
                                     required: {
@@ -148,7 +148,7 @@ const Register = () => {
 
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text text-secondary">Password</span>
                                 </label>
                                 <input
                                     type="password"
@@ -178,8 +178,8 @@ const Register = () => {
                         </form>
 
                         <SocialLogin><span className='px-2'>Continue With</span></SocialLogin>
-                        <label className="label">
-                            <small>Already have an account?<a href="/login" className="label-text-alt link px-2 font-bold link-hover">Please Login</a></small>
+                        <label className="label text-secondary">
+                            <small>Already have an account?<a href="/login" className="label-text-alt link px-2 font-bold link-hover text-secondary">Please Login</a></small>
                         </label>
                     </div>
 

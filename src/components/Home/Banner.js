@@ -1,19 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
-        <div className="hero min-h-screen bg-base-100 lg:px-20 mt-24">
+        <div className="hero min-h-[95vh] bg-base-100 lg:px-20 ">
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <img src="https://images.ctfassets.net/rz1oowkt5gyp/5QIzYxue6b7raOnVFtMyQs/113acb8633ee8f0c9cb305d3a228823c/hero.png?w=1200&fm=webp" alt="" className="max-w-sm " />
-                <div className='lg:mr-20 sm:mt-16 sm:px-20'>
-                    <h1 className="text-6xl mb-8 font-[poppins]"                >
-                        ProMan helps teams move work forward.
-                    </h1>
+                <div data-aos="fade-left" data-aos-delay="800" data-aos-duration="1000">
+                    <img src="https://cdn.discordapp.com/attachments/962941524830715966/1013075270250536960/unknown.png" alt="" className="max-w-sm " />
+                </div>
+                <div className='lg:mr-40 sm:mr-0 sm:mt-16 sm:px-20 lg:px-0  '>
 
-                    <p className='text-xl mt-6 mb-12 text-justify'>Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all with Trello.</p>
-                    <div>
-                        <input type="text" className='text-lg pl-2 py-2 border w-3/5' placeholder='Email' />
-                        <button className='py-3 px-5 rounded mx-6 bg-blue-600 text-white'>Sign up - its free</button>
+                    <h1 data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" className="text-4xl  font-bold">ProMan helps teams move work forward.</h1>
+
+                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" className=' mt-6 mb-6 text-justify'>Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all with Trello.</p>
+
+                    <div data-aos="zoom-in" data-aos-delay="1700">
+                        <button href='/login' className='p-2 bg-primary text-white'><a href="/login">Sign up - its free</a></button>
                     </div>
                 </div>
             </div>
