@@ -151,6 +151,84 @@ const Sidebar = () => {
                     </AccordionDetails>
                   </Accordion>
                 ))}
+
+
+                {memberWorkspace.map((item) => (
+                  <Accordion key={item._id}>
+                    <AccordionSummary
+                      expandIcon={
+                        <ExpandMoreIcon
+                          className=""
+                          style={{ fontSize: "35px", fontWeight: "bold" }}
+                        ></ExpandMoreIcon>
+                      }
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                      style={{ fontSize: "25px", fontWeight: "bold" }}
+                    >
+                      <Typography className="" style={{ fontWeight: "bold" }}>
+                        {item.title}{" "}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails
+                      style={{
+                        padding: "0px",
+                        margin: "0 auto",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <div>
+                        <p className=" w-48  flex flex-col items-center justify-center">
+                          <Link
+                            to={`/${item.shortname}`}
+                            className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
+                          >
+                            <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes>{" "}
+                            Boards
+                          </Link>
+                          <Link
+                            to=""
+                            className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
+                          >
+                            <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd>{" "}
+                            Views
+                          </Link>
+                          <span className="sidebar-workspace-toggle-button mb-2 w-5/6 flex justify-between">
+                            <Link
+                              onClick={() => {
+                                dispatch(setWorkspaceID(item._id));
+                              }}
+                              to={`/${item.shortname}/members`}
+                              className=" flex items-center "
+                            >
+                              <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends>{" "}
+                              Members
+                            </Link>
+                            <label
+                              className="text-xl cursor-pointer "
+                              htmlFor="inviteMember"
+                              onClick={() => setWorkspaceId(item._id)}
+                            >
+                              +
+                            </label>
+                          </span>
+                          <Link
+                            onClick={() => {
+                              dispatch(setWorkspaceID(item._id));
+                            }}
+                            to={`/${item.shortname}/account`}
+                            className="sidebar-workspace-toggle-button mb-2 flex items-center w-5/6"
+                          >
+                            <FaCogs className="mr-1 text-sm text-primary"></FaCogs>{" "}
+                            Settings
+                          </Link>
+                        </p>
+                      </div>
+                    </AccordionDetails>
+                  </Accordion>
+                ))}
+              </div>
+              <div>
               </div>
             </div>
           </ul>
