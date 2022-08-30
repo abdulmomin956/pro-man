@@ -110,7 +110,7 @@ function App() {
   return (
     <div className="#F5F5F5">
       {/* <ToastContainer /> */}
-      
+
 
       <Routes>
         {!user?.email && <Route path="/" element={<Home1 />}></Route>}
@@ -183,7 +183,6 @@ function App() {
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
         <Route path="chat" element={<Chat></Chat>}></Route>
-        <Route path="chatBody" element={<Chatbody></Chatbody>}></Route>
       </Routes>
     </div>
   );
