@@ -42,13 +42,26 @@ const Navbar = () => {
       (res) => res.json()
     )
   );
+  console.log(email);
+  const { membersData, refetch: memberRefetch } = useQuery(["memberData", email], () =>
+    fetch(`http://localhost:5000/workspace/${email}`)
+      .then((res) => res.json())
+
+  );
   useEffect(() => {
     if (loadWorkspaceState) {
       refetch();
+      memberRefetch();
       dispatch(setLoadWorkspace(false));
     }
-  }, [dispatch, loadWorkspaceState, refetch]);
+  }, [dispatch, loadWorkspaceState, refetch, memberRefetch]);
 
+  useEffect(() => {
+    if (data?.length > 0) {
+      // console.log(allWorkspaceData);
+      dispatch(setWorkspace(data));
+    }
+  }, [data, dispatch]);
   useEffect(() => {
     if (data?.length > 0) {
       // console.log(allWorkspaceData);
@@ -70,7 +83,7 @@ const Navbar = () => {
 
   // }, [])
 
-  // console.log(initials);
+  console.log(membersData);
   const logout = () => {
     signOut(auth);
     localStorage.removeItem("token")
