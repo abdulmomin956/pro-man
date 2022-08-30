@@ -81,7 +81,7 @@
 }
 
 .workspace-sidebar-toggle-button:hover {
-   background: #7b7b84;
+   background: rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-workspace-toggle-button:hover {

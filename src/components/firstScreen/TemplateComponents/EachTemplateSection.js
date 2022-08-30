@@ -4,6 +4,8 @@ import { useState } from "react";
 import { AllTemplates } from "../../Home";
 import EachTemplate from "./EachTemplate";
 
+// Extra component
+
 const EachTemplateSection = ({ params }) => {
   const [templates, setTemplates] = useState([]);
   const { popularTemplates } = useContext(AllTemplates);

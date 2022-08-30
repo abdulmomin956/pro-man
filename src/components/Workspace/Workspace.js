@@ -102,7 +102,7 @@ const Workspace = () => {
 
         <div className='flex'>
 
-            <div className={`${open ? "w-72" : "w-16 "} p-5 pt-4 h-screen duration-300 bg-primary  relative`}>
+            <div className={`${open ? "w-72" : "w-16 "} p-5 pt-4 h-screen duration-300 bg-secondary  relative`}>
 
                 <img style={{ border: '#081A51' }}
                     src="https://i.ibb.co/86h7B94/control.png"
@@ -148,7 +148,7 @@ const Workspace = () => {
                                 {/* all board */}
 
                                 <div className='flex justify-center items-center px-2'>
-                                    <div className={`${!open && "hidden"}  origin-left duration-200 navbar-end`}  >
+                                    <div className={`${!open && "hidden"}  origin-left duration-200 navbar-end flex justify-center items-center`}  >
 
                                         <div className="dropdown ">
                                             <label
@@ -158,7 +158,7 @@ const Workspace = () => {
                                             >
                                                 <div onClick={() => setClose(!close)} className="flex justify-center items-center">
                                                     <span
-                                                        className=" block "
+                                                        className=" flex  justify-center items-center"
                                                     >
                                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
@@ -215,7 +215,7 @@ const Workspace = () => {
 
                                     </div>
                                     <div>
-                                        <div className={`${!open && "hidden"} ml-2 origin-left duration-200 navbar-end`}  >
+                                        <div className={`${!open && "hidden"} ml-2 origin-left duration-200 navbar-end flex justify-center items-center`}  >
                                             <div className="dropdown ">
                                                 <label
                                                     tabIndex="0"
