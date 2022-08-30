@@ -6,7 +6,6 @@ import auth from '../firebase/firebase.init';
 import Loading from './Loading';
 
 const VerifyInvitedMember = () => {
-   const [allUsers, setAllUsers] = useState([]);
    let location = useLocation();
    const [user, loading] = useAuthState(auth)
    const navigate = useNavigate()
@@ -14,12 +13,12 @@ const VerifyInvitedMember = () => {
 
    const { workspaceId, email, token } = useParams()
 
-
-   useEffect(() => {
-      fetch(`https://morning-coast-54182.herokuapp.com/users`)
-         .then((res) => res.json())
-         .then((data) => setAllUsers(data));
-   }, []);
+   // const [allUsers, setAllUsers] = useState([]);
+   // useEffect(() => {
+   //    fetch(`https://morning-coast-54182.herokuapp.com/users`)
+   //       .then((res) => res.json())
+   //       .then((data) => setAllUsers(data));
+   // }, []);
 
    // verify the User 
    useEffect(() => {
@@ -33,15 +32,30 @@ const VerifyInvitedMember = () => {
             }).catch(err => {
                return navigate('/login')
             })
+      } else {
+         // return navigate("/login", { from: location })
+         <Navigate to="/login" state={{ from: location }} replace />
       }
-   }, [user, token, navigate])
+   }, [user, token, navigate, location])
 
    // Update user as a member
    useEffect(() => {
       if (verifyUser) {
-         console.log(verifyUser);
+         const userData = { email: verifyUser.email, workspaceId: verifyUser.workspaceId }
+         axios.put("http://localhost:5000/invite/update-user", userData)
+            .then(res => {
+               if (res.status === 200) {
+                  console.log(res.data);
+                  return navigate('/')
+               }
+            }).catch(err => {
+               if (err.response.status === 409) {
+                  console.log("User already added.");
+                  return navigate('/')
+               }
+            })
       }
-   }, [verifyUser])
+   }, [verifyUser, navigate])
 
    if (loading) {
       return <Loading></Loading>
