@@ -42,7 +42,7 @@ const Navbar = () => {
       (res) => res.json()
     )
   );
-  console.log(email);
+  // console.log(email);
   const { data: membersData, refetch: memberRefetch } = useQuery(["memberData", email], () =>
     fetch(`http://localhost:5000/workspace/memberEmail/${email}`).then((res) => res.json())
   );
@@ -65,7 +65,6 @@ const Navbar = () => {
   useEffect(() => {
     if (membersData?.length > 0) {
       dispatch(setMembersWorkspace(membersData));
-      console.log(membersData);
     }
   }, [membersData, dispatch]);
 
