@@ -32,9 +32,6 @@ const VerifyInvitedMember = () => {
             }).catch(err => {
                return navigate('/login')
             })
-      } else {
-         // return navigate("/login", { from: location })
-         <Navigate to="/login" state={{ from: location }} replace />
       }
    }, [user, token, navigate, location])
 

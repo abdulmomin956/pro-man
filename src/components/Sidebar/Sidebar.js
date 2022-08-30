@@ -18,6 +18,7 @@ import { useState } from "react";
 
 const Sidebar = () => {
   const data = useSelector((state) => state.workspace);
+  const memberWorkspace = useSelector((state) => state.membersWorkspace);
   const dispatch = useDispatch();
   const [workspaceId, setWorkspaceId] = useState('');
 
@@ -25,6 +26,7 @@ const Sidebar = () => {
   // const email = user?.email;
   // const data = useSelector(state => state.workspace)
 
+  console.log(memberWorkspace);
   return (
     <div>
       <div className="drawer drawer-mobile static ">
