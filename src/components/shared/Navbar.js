@@ -12,6 +12,8 @@ import {
   setUser,
   setLoadWorkspace,
   setWorkspace,
+  setMembersWorkspace,
+
   // setWorkspaceID,
 } from "../../global-state/actions/reduxActions";
 import { FaRegBell, FaBoxes } from "react-icons/fa";
@@ -33,8 +35,6 @@ const Navbar = () => {
   const email = useSelector(state => state.user?.email)
   const navigate = useNavigate();
 
-
-
   const dispatch = useDispatch();
 
   const { data, refetch } = useQuery(["repoData", email], () =>
@@ -43,10 +43,8 @@ const Navbar = () => {
     )
   );
   console.log(email);
-  const { membersData, refetch: memberRefetch } = useQuery(["memberData", email], () =>
-    fetch(`http://localhost:5000/workspace/${email}`)
-      .then((res) => res.json())
-
+  const { data: membersData, refetch: memberRefetch } = useQuery(["memberData", email], () =>
+    fetch(`http://localhost:5000/workspace/memberEmail/${email}`).then((res) => res.json())
   );
   useEffect(() => {
     if (loadWorkspaceState) {
@@ -62,12 +60,16 @@ const Navbar = () => {
       dispatch(setWorkspace(data));
     }
   }, [data, dispatch]);
+
+
   useEffect(() => {
-    if (data?.length > 0) {
-      // console.log(allWorkspaceData);
-      dispatch(setWorkspace(data));
+    if (membersData?.length > 0) {
+      dispatch(setMembersWorkspace(membersData));
+      console.log(membersData);
     }
-  }, [data, dispatch]);
+  }, [membersData, dispatch]);
+
+
 
   useEffect(() => {
     if (user) {
@@ -78,12 +80,9 @@ const Navbar = () => {
   }, [user, user?.displayName])
 
 
+  // console.log(membersData);
 
-  // useEffect(() => {
 
-  // }, [])
-
-  console.log(membersData);
   const logout = () => {
     signOut(auth);
     localStorage.removeItem("token")

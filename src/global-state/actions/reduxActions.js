@@ -15,7 +15,7 @@ export const setWorkspace = (workspace) => {
         payload: workspace
     }
 }
-export const setmembersWorkspace = (workspace) => {
+export const setMembersWorkspace = (workspace) => {
     return {
         type: MEMBERSWORKSPACE,
         payload: workspace
