@@ -33,10 +33,13 @@ import { useState } from "react";
 import { useEffect } from "react";
 import EachTemplateDetails from "./components/firstScreen/TemplateComponents/EachTemplateDetails";
 import VerifyInvitedMember from "./components/shared/VerifyInvitedMember";
+import Chat from "./components/Message/Chat";
+import Chatbody from "./components/Message/Chatbody";
 import Admin from "./components/admin/Admin";
 import Dashboard from "./components/admin/Dashboard";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 
 function getWithExpiry(key) {
   const itemStr = localStorage.getItem(key);
@@ -107,6 +110,7 @@ function App() {
   return (
     <div className="#F5F5F5">
       {/* <ToastContainer /> */}
+      
 
       <Routes>
         {!user?.email && <Route path="/" element={<Home1 />}></Route>}
@@ -178,6 +182,8 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
+        <Route path="chat" element={<Chat></Chat>}></Route>
+        <Route path="chatBody" element={<Chatbody></Chatbody>}></Route>
       </Routes>
     </div>
   );
