@@ -44,7 +44,7 @@ const Navbar = () => {
   );
   // console.log(email);
   const { data: membersData, refetch: memberRefetch } = useQuery(["memberData", email], () =>
-    fetch(`http://localhost:5000/workspace/memberEmail/${email}`).then((res) => res.json())
+    fetch(`https://morning-coast-54182.herokuapp.com/workspace/memberEmail/${email}`).then((res) => res.json())
   );
   useEffect(() => {
     if (loadWorkspaceState) {
@@ -79,7 +79,7 @@ const Navbar = () => {
   }, [user, user?.displayName])
 
 
-  // console.log(membersData);
+  console.log(membersData);
 
 
   const logout = () => {
