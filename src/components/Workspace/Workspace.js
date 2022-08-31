@@ -110,6 +110,7 @@ const Workspace = () => {
         console.log(res);
         if (res.status === 200) {
             boards.refetch();
+            membersBoards.refetch();
         }
     }
 
