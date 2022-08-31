@@ -40,7 +40,11 @@ const ContactForm = () => {
       */
       
     return (
-        <div className='w-1/2 mx-auto px-12'>
+        <div className='sm:w-full lg:w-1/2 shadow py-12 shadow-primary mx-auto px-12'>
+            <div className='mx-auto text-center mb-5'>
+                <h1 className='text-2xl font-bold mb-5'>Contact support</h1>
+                <p className='text-lg'>For specific account or billing questions, security concerns, or answers not available on our help site, we’re happy to help.</p>
+            </div>
             <div className='mb-5 p-5 flex bg-blue-100 rounded'>
                 <div className='mx-5'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
@@ -81,7 +85,7 @@ const ContactForm = () => {
                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                 </div>}
                 {upList && <div>
-                    <ul onClick={()=>setList(!upList)}>
+                    <ul onClick={()=>setupList(!upList)}>
                         <li onClick={()=>setupTopic("How to do something")} className='pl-3 py-2 border-primary hover:border mb-1'>How to do something</li>
                         <li onClick={()=>setupTopic("Report a bug")} className='pl-3 py-2 border-primary hover:border mb-1'>Report a bug</li>
                         <li onClick={()=>setupTopic("Power-Ups and Integrations")} className='pl-3 py-2 border-primary hover:border mb-1'>Power-Ups and Integrations</li>
@@ -89,7 +93,7 @@ const ContactForm = () => {
                     </ul>
                 </div>}
                 {
-                    upTopic && <UsingProman upTopic={upTopic}></UsingProman>
+                    (selectItem === "Using Proman" && upTopic) && <UsingProman upTopic={upTopic}></UsingProman>
                 }
 
 
