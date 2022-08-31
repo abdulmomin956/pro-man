@@ -24,7 +24,7 @@ const Workspace = () => {
     const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
     const currentWorkspaceMember = membersWorkspace.filter(workspacesMembers => workspacesMembers.shortname === shortname)
 
-    console.log(boardData)
+    // console.log(boardData)
     // console.log(currentWorkspaceMember)
 
     const [close, setClose] = useState(false);

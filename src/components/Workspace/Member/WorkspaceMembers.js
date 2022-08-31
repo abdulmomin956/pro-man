@@ -4,15 +4,22 @@ import auth from "../../firebase/firebase.init";
 import Loading from "../../shared/Loading";
 import { FaLink } from "react-icons/fa";
 import { MdCancelPresentation } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const WorkspaceMembers = () => {
   const [user, loading] = useAuthState(auth);
   const [wMember, setWmember] = useState(0);
+  const { shortname } = useParams()
+  const membersWorkspace = useSelector(state => state.membersWorkspace)
+  const currentMembersWorkspace = membersWorkspace.filter(workspacesMembers => workspacesMembers.shortname === shortname)
+  // console.log(currentMembersWorkspace[0]);
+
   if (loading) {
     return <Loading></Loading>;
   }
   const name = user.displayName;
-  console.log(name);
+  // console.log(name);
 
   const x = name;
   const nameparts = x?.split(" ");
@@ -57,24 +64,48 @@ const WorkspaceMembers = () => {
         <hr />
         <div className="flex justify-between my-2">
           <div className="flex">
-            <div>
-              <button className="btn btn-circle font-bold text-xl">
+            {/* <div>
+              <button className="btn btn-circle btn-primary font-bold text-xl">
                 {initials}{" "}
               </button>
-            </div>
+            </div> */}
             <div className="ml-3">
-              <p className="font-bold mb-0">{name}</p>
-              <p className="text-sm">{user.email} </p>
+              <p className="font-bold mb-0">{currentMembersWorkspace[0].email}</p>
             </div>
           </div>
           <div className="flex items-center">
-            <button className="btn btn-sm rounded-none font-bold">
-              <MdCancelPresentation className="mr-1 font-bold"></MdCancelPresentation>{" "}
-              Leave
-            </button>
+            <p className="text-sm font-bold mr-3 text-green-500">Admin</p>
+            <div className="flex items-center">
+              <button className="btn btn-sm btn-primary rounded-none font-bold btn-disabled">
+                <MdCancelPresentation className="mr-1 font-bold"></MdCancelPresentation>{" "}
+                Leave
+              </button>
+            </div>
           </div>
         </div>
         <hr />
+        {
+          currentMembersWorkspace[0]?.members.map(e => <>
+            <div className="flex justify-between my-2">
+              <div className="">
+                <div className="ml-3">
+                  <p className="font-bold mb-0">{e}</p>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <p className="text-sm font-bold mr-3 text-green-400">Member</p>
+                <div className="flex items-center">
+                  <button className="btn btn-sm btn-primary rounded-none font-bold">
+                    <MdCancelPresentation className="mr-1 font-bold"></MdCancelPresentation>{" "}
+                    Leave
+                  </button>
+                </div>
+              </div>
+            </div>
+            <hr />
+          </>
+          )
+        }
       </div>
     </div>
   );

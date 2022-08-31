@@ -43,12 +43,9 @@ const Navbar = () => {
     )
   );
   // console.log(email);
-  const { data: membersData, refetch: memberRefetch } = useQuery(
-    ["memberData", email],
-    () =>
-      fetch(`http://localhost:5000/workspace/memberEmail/${email}`).then(
-        (res) => res.json()
-      )
+  const { data: membersData, refetch: memberRefetch } = useQuery(["memberData", email], () =>
+    fetch(`https://morning-coast-54182.herokuapp.com/workspace/memberEmail/${email}`).then((res) => res.json())
+
   );
   useEffect(() => {
     if (loadWorkspaceState) {
@@ -149,6 +146,19 @@ const Navbar = () => {
                         </Link>
                       </li>
                     ))}
+                    {membersData?.map((item, i) => (
+                      <li key={i}>
+                        <Link to={"/" + item?.shortname}
+                          className="mb-2 btn-sm w-full rounded-none   "
+                          style={{ borderRadius: "0px" }}
+                        >
+                          <span className="  text-txtColor font-bold rounded px-1 uppercase bg-indigo-400">
+                            {item?.title?.charAt(0)}
+                          </span>
+                          {item?.title}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </li>
                 <li tabIndex="0">
@@ -229,6 +239,21 @@ const Navbar = () => {
                     className="dropdown-content menu py-2 bg-base-100 rounded w-52 pt-4 shadow"
                   >
                     {data?.map((item, i) => (
+                      <li key={i}>
+                        <Link
+                          to={"/" + item?.shortname}
+                          className="mb-2 px-2 py-1 w-full  myButton"
+                          style={{ borderRadius: "0px" }}
+                        >
+                          <span className="  font-bold rounded-sm px-1 uppercase">
+                            {item?.title?.charAt(0)}
+                          </span>
+                          {item?.title}
+                        </Link>
+                        {/* <a className="mb-2 px-2 py-1 w-full  transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">{item?.title}</a> */}
+                      </li>
+                    ))}
+                    {membersData?.map((item, i) => (
                       <li key={i}>
                         <Link
                           to={"/" + item?.shortname}

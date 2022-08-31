@@ -2,7 +2,7 @@ import React from 'react';
 
 const Info = () => {
     return (
-        <div className="w-1/2 mx-auto px-12">
+        <div className="sm:w-full lg:w-1/2 mx-auto px-12">
             <div className='mx-auto text-center my-12'>
                 <h1 className='text-2xl font-bold mb-5'>Check our help site</h1>
                 <p className='text-lg'>Get an answer faster! There’s a good chance your question has been answered in one of our help articles.</p>
@@ -18,10 +18,7 @@ const Info = () => {
                 <p className='text-lg'>Get an answer faster! There’s a good chance your question has been answered in one of our help articles.</p>
                 <button className='hover:bg-blue-200 mt-3 border border-primary-focus font-bold py-3 px-6'>Go to community</button>
             </div>
-            <div className='mx-auto text-center mb-8 my-12'>
-                <h1 className='text-2xl font-bold mb-5'>Contact support</h1>
-                <p className='text-lg'>For specific account or billing questions, security concerns, or answers not available on our help site, we’re happy to help.</p>
-            </div>
+
         </div>
     );
 };
