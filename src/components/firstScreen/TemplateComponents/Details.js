@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import TempleteBoardModal from "../../shared/TempleteBoardModal";
 import TemplateCreateSection from "./TemplateCreateSection";
+import "../../Sidebar/Sidebar.css";
 
 const Details = ({ item }) => {
   const [openModal, setOpenModel] = useState(false);
@@ -24,7 +25,7 @@ const Details = ({ item }) => {
     views,
   } = item;
   return (
-    <div className="mx-5 my-12 ">
+    <div className="mx-5 my-12">
       <section className="flex flex-col md:flex-row justify-between items-center my-4">
         <div className="flex items-center flex-row gap-3">
           <img
@@ -54,7 +55,7 @@ const Details = ({ item }) => {
           </button>
           <label
             onClick={handleUseTemplate}
-            for="useTemplate"
+            htmlFor="useTemplate"
             className="btn modal-button w-[80vw] md:w-auto bg-cyan-500 text-sm rounded-sm text-white"
           >
             Use Template
@@ -83,14 +84,14 @@ const Details = ({ item }) => {
       </section>
       <TemplateCreateSection></TemplateCreateSection>
       {openModal && (
-        <div className="">
+        <div>
           <input type="checkbox" id="useTemplate" className="modal-toggle" />
 
-          <div class="modal modal-bottom md:modal-middle">
+          <div className="modal modal-top sm:modal-middle bg-transparent">
             <div className="modal-box border-2 border-black mx-4">
               <label
                 onClick={handleUseTemplate}
-                class="btn btn-sm btn-circle absolute right-2 top-2"
+                className="btn btn-sm btn-circle absolute right-2 top-2"
               >
                 ✕
               </label>
