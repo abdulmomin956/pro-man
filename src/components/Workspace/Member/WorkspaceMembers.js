@@ -46,7 +46,7 @@ const WorkspaceMembers = () => {
           </p>
         </div>
         <div className="w-4/12 flex justify-center items-center">
-          <button className="btn btn-sm rounded-none">
+          <button className="btn btn-sm rounded-none btn-primary">
             <FaLink className="mr-1"></FaLink> Invite with link
           </button>
         </div>
@@ -70,7 +70,7 @@ const WorkspaceMembers = () => {
               </button>
             </div> */}
             <div className="ml-3">
-              <p className="font-bold mb-0">{currentMembersWorkspace[0].email}</p>
+              <p className="font-bold mb-0">{(currentMembersWorkspace[0]?.email) ? (currentMembersWorkspace[0]?.email) : user.email}</p>
             </div>
           </div>
           <div className="flex items-center">
