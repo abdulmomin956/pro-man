@@ -12,8 +12,8 @@ const UserHelp = () => {
             <h1 className='text-5xl font-bold mt-12 text-center py-16 px-16 bg-primary text-white'>Get help with ProMan</h1>
             <Info></Info>
             <ContactForm></ContactForm>
-            <HomeFooter></HomeFooter>
-            
+            <br /><br />
+            <HomeFooter></HomeFooter>            
         </div>
     );
 };
