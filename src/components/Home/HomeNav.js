@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const HomeNav = () => {
+  const user = useSelector((state) => state.user);
+
+
   return (
     <div style={{ zIndex: 200 }} className="navbar  font-[inherit] shadow-lg fixed top-0 w-full bg-white ">
       <div className="navbar-start">
@@ -69,13 +74,16 @@ const HomeNav = () => {
       </div>
 
       <div className="navbar-end ">
-        <div className='hidden lg:flex'>
-          <Link to="/login" className="flex items-center justify-center text-xl  mx-5  hover:text-blue-600">Log In</Link>
+      {!user?.email && <div className='hidden lg:flex'>
+           <Link to="/login" className="flex items-center justify-center text-xl  mx-5  hover:text-blue-600">Log In</Link>
           <button className="bg-blue-600 lg:text-xl lg:px-3 lg:py-2 text-white">
             Get Proman for free
-
           </button>
-        </div>
+        </div>}
+       { user?.email && <button className="bg-blue-600 h-full lg:text-xl lg:px-3 lg:py-2 text-white">
+           <Link to="/my-board" className="flex items-center justify-center text-xl  mx-5 ">Go to boards</Link>
+            
+          </button>}
 
       </div>
     </div>

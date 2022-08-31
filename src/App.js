@@ -37,6 +37,7 @@ import Admin from "./components/admin/Admin";
 import Dashboard from "./components/admin/Dashboard";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import UserHelp from "./components/UserHelp/UserHelp";
 
 
 function getWithExpiry(key) {
@@ -113,7 +114,10 @@ function App() {
       <Routes>
         {!user?.email && <Route path="/" element={<Home1 />}></Route>}
         <Route path="/invite/:workspaceId/:email/:token" element={<VerifyInvitedMember />}></Route>
+        {user?.email && <Route path="/help" element={<UserHelp></UserHelp>}></Route>}
+
         {user?.email && (
+          
           <Route
             path="/"
             element={

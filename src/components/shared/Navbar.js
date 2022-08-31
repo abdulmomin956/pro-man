@@ -363,6 +363,10 @@ const Navbar = () => {
                   <p className="mb-2 btn-sm w-full   ">Settings</p>
                 </li>
                 <li>
+                  <Link to="/help">Help </Link>
+                  <p className="mb-2 btn-sm w-full   ">Settings</p>
+                </li>
+                <li>
                   <p onClick={logout} className="btn-sm w-full   ">
                     Logout
                   </p>
