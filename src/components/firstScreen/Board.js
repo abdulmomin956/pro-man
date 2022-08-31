@@ -11,71 +11,25 @@ import { useDispatch } from "react-redux";
 import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 import LoardBoard from "./LoardBoard";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Board = () => {
   const dispatch = useDispatch();
-
   const data = useSelector((state) => state.workspace);
   const membersWorkspace = useSelector((state) => state.membersWorkspace);
+  const [popularTemplates, setPopularTemplates] = useState([]);
 
-  // console.log(membersWorkspace)
+  useEffect(() => {
+    fetch("Templates/featuredData.json")
+      .then((res) => res.json())
+      .then((data) => setPopularTemplates(data.slice(2, 7)));
+  }, []);
 
-  const popularTemplates = [
-    {
-      _id: 1,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-    {
-      _id: 2,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-    },
-    {
-      _id: 3,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-    {
-      _id: 4,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-    },
-    {
-      _id: 5,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-    {
-      _id: 6,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-    },
-    {
-      _id: 7,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-    {
-      _id: 8,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRpPskxzYMDQzouodNrKlHQ8oFCwrFpwKzZA&usqp=CAU",
-    },
-    {
-      _id: 9,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-    {
-      _id: 10,
-      title: "Project Management",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT120qIDJDmhe8BNjc4tdgURzvtudzpaCJtJw&usqp=CAU",
-    },
-  ];
   return (
-    <div className="px-4" id="sidebarOverflow">
+    <div className="mx-4 my-7" id="sidebarOverflow">
       {/* This Board pages showing when enter to the site */}
-      <h2 className="text-2xl font-medium my-6">
+      <h2 className="text-2xl font-medium mb-6">
         <span className="flex items-center text-black">
           <FaBoxes className="mr-3"></FaBoxes>Most popular templates
         </span>
@@ -85,22 +39,21 @@ const Board = () => {
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 "
         id="sidebarOverflow"
       >
-        {popularTemplates.map((template, i) => (
+        {popularTemplates.map((template) => (
           <div
-            key={i}
-            className="align-middle"
+            key={template._id}
+            className="px-1 h-28 rounded-md cursor-pointer hover:shadow-2xl"
             style={{
-              height: "100px",
-              maxWidth: "180px",
-              borderRadius: "5px",
               backgroundSize: "cover",
-              backgroundImage: `url(${template.img})`,
+              backgroundImage: `url(${template.bg})`,
             }}
           >
-            <div>
-              <button className="btn btn-xs btn-accent m-3  ">TEMPLATE</button>
-            </div>
-            <p className="text-base font-bold text-white ">{template.title} </p>
+            <p className="bg-white text-xs text-black font-medium w-[65px] text-center py-1 mt-2 mx-2 rounded-md">
+              Template
+            </p>
+            <p className="my-1 mx-2 text-sm font-semibold text-white ">
+              {template.title}{" "}
+            </p>
           </div>
         ))}
       </div>
@@ -112,15 +65,13 @@ const Board = () => {
         <hr className="mt-3" />
         {/*  User all workspaces start here  */}
         {data?.map((item) => (
-          <div key={item._id}>
+          <div key={item._id} className=" my-5">
             <div className="md:flex items-center justify-between">
-              <div className="flex items-center my-5">
-                <span className="bg-black text-3xl font-bold rounded text-white px-2 pb-1 uppercase">
+              <div className="flex items-center flex-row gap-2">
+                <span className="bg-black text-2xl font-bold rounded text-white px-2 pb-1 uppercase">
                   {item?.title?.charAt(0)}
                 </span>
-                <h2 className="text-2xl font-bold ml-4 text-black">
-                  {item?.title}
-                </h2>
+                <h2 className="text-xl font-bold text-black">{item?.title}</h2>
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-1">
                 <div className="p-0 m-0">
@@ -129,7 +80,7 @@ const Board = () => {
                       dispatch(setWorkspaceID(item._id));
                     }}
                     to={`/${item.shortname}`}
-                    className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center"
+                    className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-lg font-semibold hover:bg-gray-300 flex items-center"
                   >
                     <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes>{" "}
                     Boards
@@ -138,7 +89,7 @@ const Board = () => {
                 <div>
                   <Link
                     to=""
-                    className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center"
+                    className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-lg font-semibold hover:bg-gray-300 flex items-center"
                   >
                     <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd>{" "}
                     Views
@@ -150,7 +101,7 @@ const Board = () => {
                       dispatch(setWorkspaceID(item._id));
                     }}
                     to={`/${item.shortname}/members`}
-                    className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center"
+                    className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-lg font-semibold hover:bg-gray-300 flex items-center"
                   >
                     <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends>{" "}
                     Members
@@ -162,7 +113,7 @@ const Board = () => {
                       dispatch(setWorkspaceID(item._id));
                     }}
                     to={`/${item.shortname}/account`}
-                    className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center"
+                    className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-lg font-semibold hover:bg-gray-300 flex items-center"
                   >
                     <FaCogs className="mr-1 text-sm text-primary"></FaCogs>{" "}
                     Settings
@@ -175,7 +126,7 @@ const Board = () => {
                 </div> */}
               </div>
             </div>
-            <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-2 my-5 md:my-3">
+            <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-4 my-5 md:my-3">
               <LoardBoard props={item.shortname} workspaceID={item._id} />
 
               <div className="bg-base-100 shadow flex justify-center items-center border-black border-2 hover:bg-gray-100 rounded-lg">
@@ -186,7 +137,7 @@ const Board = () => {
                     dispatch(setWorkspaceID(item._id));
                   }}
                 >
-                  <p className="">Create New Board</p>
+                  <p>Create New Board</p>
                   <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare>
                 </label>
               </div>
