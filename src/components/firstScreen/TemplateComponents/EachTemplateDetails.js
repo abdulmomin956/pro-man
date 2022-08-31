@@ -16,10 +16,6 @@ const EachTemplateDetails = () => {
     console.log(theTemplate);
   }, [popularTemplates, params]);
 
-  // console.log(popularTemplates);
-  // console.log(template);
-  // console.log(params.id);
-
   return (
     <div>
       {template.map((item) => (
