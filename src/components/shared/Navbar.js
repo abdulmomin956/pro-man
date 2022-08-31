@@ -79,7 +79,7 @@ const Navbar = () => {
   }, [user, user?.displayName])
 
 
-  console.log(membersData);
+  // console.log(membersData);
 
 
   const logout = () => {
