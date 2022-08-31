@@ -13,7 +13,7 @@ const WorkspaceMembers = () => {
   const { shortname } = useParams()
   const membersWorkspace = useSelector(state => state.membersWorkspace)
   const currentMembersWorkspace = membersWorkspace.filter(workspacesMembers => workspacesMembers.shortname === shortname)
-  console.log(currentMembersWorkspace[0]);
+  // console.log(currentMembersWorkspace[0]);
 
   if (loading) {
     return <Loading></Loading>;

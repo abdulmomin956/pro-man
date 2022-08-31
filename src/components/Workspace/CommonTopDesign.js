@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MdOutlineModeEditOutline, MdOutlineLock, MdPersonAddAlt1 } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -13,16 +13,26 @@ import InviteMemberModal from "../shared/InviteMemberModal";
 const CommonTopDesign = () => {
   const [editMood, setEditMood] = useState(false)
   const { shortname } = useParams();
-  const workspaces = useSelector(state => state.workspace)
-  const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
-  const membersWorkspace = useSelector(state => state.membersWorkspace)
-  const currentMembersWorkspace = membersWorkspace?.filter(workspaces => workspaces.shortname === shortname)
-  // console.log(currentMembersWorkspace);
   const [shortnameError, setShortnameError] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [allBoardData, setAllBoardData] = useState([])
+  const workspace = useSelector(state => state.workspace)
+  const membersWorkspace = useSelector(state => state.membersWorkspace)
+  // console.log(allBoardData);
 
-  // console.log(currentWorkspace[0]._id);
+  useEffect(() => {
+    if (workspace) {
+      setAllBoardData(workspace)
+    }
+  }, [workspace])
+  useEffect(() => {
+    if (membersWorkspace) {
+      setAllBoardData([...workspace, ...membersWorkspace])
+    }
+  }, [membersWorkspace, workspace])
+  const currentWorkspace = allBoardData.filter(workspaces => workspaces.shortname === shortname)
+
 
   const {
     register,
@@ -78,7 +88,7 @@ const CommonTopDesign = () => {
         <div className="flex items-start ">
           <div>
             <button className="bg-primary text-white p-2 rounded text-4xl">
-              <span className="p-1 font-bold">{((currentWorkspace[0]?.title) ? (currentWorkspace[0]?.title) : (currentMembersWorkspace[0]?.title))?.charAt(0).toUpperCase()}</span>{" "}
+              <span className="p-1 font-bold">{(currentWorkspace[0]?.title?.charAt(0).toUpperCase())}</span>{" "}
             </button>
           </div>
           {

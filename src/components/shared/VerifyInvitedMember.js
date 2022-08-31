@@ -20,14 +20,15 @@ const VerifyInvitedMember = () => {
    //       .then((data) => setAllUsers(data));
    // }, []);
 
-   // verify the User 
+   // verify the User ***
    useEffect(() => {
       if (user) {
          const userData = { userEmail: user.email, token: token }
-         axios.post("http://localhost:5000/invite/verify", userData)
+         axios.post("https://morning-coast-54182.herokuapp.com/invite/verify", userData)
             .then(res => {
                if (res.status === 200) {
                   setVerifyUser(res.data);
+                  console.log(res.data)
                }
             }).catch(err => {
                return navigate('/login')
@@ -35,14 +36,14 @@ const VerifyInvitedMember = () => {
       }
    }, [user, token, navigate, location])
 
-   // Update user as a member
+   // Update user as a member  ***
    useEffect(() => {
       if (verifyUser) {
          const userData = { email: verifyUser.email, workspaceId: verifyUser.workspaceId }
-         axios.put("http://localhost:5000/invite/update-user", userData)
+         axios.put("https://morning-coast-54182.herokuapp.com/invite/update-user", userData)
             .then(res => {
                if (res.status === 200) {
-                  console.log(res.data);
+                  // console.log(res.data);
                   return navigate('/')
                }
             }).catch(err => {
@@ -59,13 +60,12 @@ const VerifyInvitedMember = () => {
    }
 
    if (!user) {
-      console.log("null.......")
       return <Navigate to="/login" state={{ from: location }} replace />
    }
 
    return (
       <div>
-         <h2 className='text-4xl text-center mt-16'> Verify the member.....</h2>
+         <h2 className='text-4xl text-center mt-16 italic  text-primary'> Please wait a moment.....</h2>
          <Loading></Loading>
       </div>
    );
