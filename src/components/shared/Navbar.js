@@ -21,18 +21,18 @@ import { MdGroupWork } from "react-icons/md";
 import Notification from "./Notification";
 import TempleteBoard from "./TempleteBoard";
 import StarredBoard from "./StarredBoard";
-import logo from "../../images/logo.png"
+import logo from "../../images/logo.png";
 
 // FiBell
 
 const Navbar = () => {
-  const role = useSelector(state => state.user?.role)
+  const role = useSelector((state) => state.user?.role);
   const [user] = useAuthState(auth);
-  const [initials, setInitial] = useState("")
+  const [initials, setInitial] = useState("");
   const [open, setOpen] = useState(false);
-  const [openTemp, setOpenTemp] = useState(false)
+  const [openTemp, setOpenTemp] = useState(false);
   const loadWorkspaceState = useSelector((state) => state.loadWorkspace);
-  const email = useSelector(state => state.user?.email)
+  const email = useSelector((state) => state.user?.email);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -43,8 +43,12 @@ const Navbar = () => {
     )
   );
   // console.log(email);
-  const { data: membersData, refetch: memberRefetch } = useQuery(["memberData", email], () =>
-    fetch(`http://localhost:5000/workspace/memberEmail/${email}`).then((res) => res.json())
+  const { data: membersData, refetch: memberRefetch } = useQuery(
+    ["memberData", email],
+    () =>
+      fetch(`http://localhost:5000/workspace/memberEmail/${email}`).then(
+        (res) => res.json()
+      )
   );
   useEffect(() => {
     if (loadWorkspaceState) {
@@ -61,43 +65,39 @@ const Navbar = () => {
     }
   }, [data, dispatch]);
 
-
   useEffect(() => {
     if (membersData?.length > 0) {
       dispatch(setMembersWorkspace(membersData));
     }
   }, [membersData, dispatch]);
 
-
-
   useEffect(() => {
     if (user) {
       const x = user?.displayName;
       const nameparts = x?.split(" ");
-      setInitial(nameparts[0]?.charAt(0)?.toUpperCase() + nameparts[1]?.charAt(0)?.toUpperCase())
+      setInitial(
+        nameparts[0]?.charAt(0)?.toUpperCase() +
+          nameparts[1]?.charAt(0)?.toUpperCase()
+      );
     }
-  }, [user, user?.displayName])
-
+  }, [user, user?.displayName]);
 
   // console.log(membersData);
 
-
   const logout = () => {
     signOut(auth);
-    localStorage.removeItem("token")
-    dispatch(setUser(null))
-    navigate('/')
+    localStorage.removeItem("token");
+    dispatch(setUser(null));
+    navigate("/");
   };
 
   return (
     <div className=" text-txtColor">
       <div style={{ zIndex: 200 }} className="navbar bg-bg-100 w-full shadow">
-
         <div className="navbar-start lg:px-12">
-
           {/* this is dropdown menu for mobile view  */}
-          {
-            role !== "Admin" && <div className="dropdown">
+          {role !== "Admin" && (
+            <div className="dropdown">
               <label tabIndex="0" className="btn    lg:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +137,8 @@ const Navbar = () => {
                   <ul className="py-2  bg-base-100 rounded w-52 pt-4 shadow">
                     {data?.map((item, i) => (
                       <li key={i}>
-                        <Link to={"/" + item?.shortname}
+                        <Link
+                          to={"/" + item?.shortname}
                           className="mb-2 btn-sm w-full rounded-none   "
                           style={{ borderRadius: "0px" }}
                         >
@@ -186,23 +187,29 @@ const Navbar = () => {
                 </li>
               </ul>
             </div>
-          }
+          )}
 
-          <div className='navbar-start w-full navTitle'>
-            <Link to={role === "Admin" ? "/" : "/my-board"} className="lg:mx-5  flex items-center justify-start">
-              <img style={{ height: '32px', minWidth: '90px' }} src={logo} alt="logo" />
+          <div className="navbar-start w-full navTitle">
+            <Link
+              to={role === "Admin" ? "/" : "/my-board"}
+              className="lg:mx-5  flex items-center justify-start"
+            >
+              <img
+                style={{ height: "32px", minWidth: "90px" }}
+                src={logo}
+                alt="logo"
+              />
             </Link>
           </div>
 
-
-          {
-            role !== "Admin" && <div className="navbar-center hidden lg:flex">
+          {role !== "Admin" && (
+            <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal p-0 m-0">
                 <div className="dropdown">
                   <label
                     tabIndex="0"
                     className="btn font-black   text-txtColor border-0 btn-sm rounded-none mx-1 "
-                    style={{ fontWeight: 500, backgroundColor: 'transparent' }}
+                    style={{ fontWeight: 500, backgroundColor: "transparent" }}
                   >
                     Workspaces{" "}
                     <p>
@@ -243,7 +250,7 @@ const Navbar = () => {
                   <label
                     tabIndex="0"
                     className="btn btn-sm mx-1 bg-transparent    text-txtColor border-0   rounded-none font-bold"
-                    style={{ fontWeight: 500, backgroundColor: 'transparent' }}
+                    style={{ fontWeight: 500, backgroundColor: "transparent" }}
                   >
                     Create
                   </label>
@@ -280,7 +287,7 @@ const Navbar = () => {
                     onClick={() => setOpen(!open)}
                     tabIndex="0"
                     className="btn btn-sm mx-1 bg-transparent   text-txtColor border-0   rounded-none font-bold"
-                    style={{ fontWeight: 500, backgroundColor: 'transparent' }}
+                    style={{ fontWeight: 500, backgroundColor: "transparent" }}
                   >
                     Starred
                     <p>
@@ -296,7 +303,6 @@ const Navbar = () => {
                     </p>
                   </label>
 
-
                   {open && (
                     <StarredBoard setOpen={setOpen} open={open}></StarredBoard>
                   )}
@@ -307,7 +313,7 @@ const Navbar = () => {
                     onClick={() => setOpenTemp(!openTemp)}
                     tabIndex="0"
                     className="btn btn-sm mx-1 bg-transparent   text-txtColor border-0 h-full   rounded-none font-bold"
-                    style={{ fontWeight: 500, backgroundColor: 'transparent' }}
+                    style={{ fontWeight: 500, backgroundColor: "transparent" }}
                   >
                     Templetes
                     <p>
@@ -323,14 +329,15 @@ const Navbar = () => {
                     </p>
                   </label>
                   {openTemp && (
-                    <TempleteBoard setOpenTemp={setOpenTemp} openTemp={openTemp}></TempleteBoard>
+                    <TempleteBoard
+                      setOpenTemp={setOpenTemp}
+                      openTemp={openTemp}
+                    ></TempleteBoard>
                   )}
                 </div>
-
-
               </ul>
             </div>
-          }
+          )}
         </div>
 
         <div className="navbar-end lg:px-12">
@@ -346,7 +353,7 @@ const Navbar = () => {
               <label
                 tabIndex="0"
                 className=" "
-              // className="btn btn-ghost btn-circle bg-black avatar"
+                // className="btn btn-ghost btn-circle bg-black avatar"
               >
                 <div
                   id="navProfile"
