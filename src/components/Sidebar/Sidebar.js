@@ -26,7 +26,7 @@ const Sidebar = () => {
   // const email = user?.email;
   // const data = useSelector(state => state.workspace)
 
-  console.log(memberWorkspace);
+  // console.log(memberWorkspace);
   return (
     <div>
       <div className="drawer drawer-mobile static ">

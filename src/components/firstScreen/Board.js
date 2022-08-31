@@ -19,10 +19,9 @@ const Board = () => {
   const dispatch = useDispatch();
 
   const data = useSelector(state => state.workspace)
-  // if (data) {
-  //   console.log(data)
-  // }
-  // console.log(data)
+  const membersWorkspace = useSelector(state => state.membersWorkspace)
+
+  // console.log(membersWorkspace)
 
 
 
@@ -122,7 +121,80 @@ const Board = () => {
       <div className="my-16">
         <p className="text-2xl font-bold text-gray-500">YOUR WORKSPACES</p>
         <hr className="mt-3" />
+        {/*  User all workspaces start here  */}
         {data?.map(item =>
+          <div key={item._id}>
+            <div className="md:flex items-center justify-between">
+              <div className="flex items-center my-5">
+
+                <span className="bg-black text-3xl font-bold rounded text-white px-2 pb-1 uppercase">
+                  {item?.title?.charAt(0)}
+                </span>
+                <h2 className="text-2xl font-bold ml-4 text-black">{item?.title}</h2>
+
+              </div>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-1">
+                <div className="p-0 m-0">
+                  <Link onClick={() => {
+                    dispatch(setWorkspaceID(item._id))
+                  }}
+                    to={`/${item.shortname}`}
+                    className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                    <FaBoxes className="mr-1 text-sm text-primary"></FaBoxes> Boards
+                  </Link>{" "}
+                </div>
+                <div>
+                  <Link to="" className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                    <HiViewGridAdd className="mr-1 text-sm text-primary"></HiViewGridAdd> Views
+                  </Link>{" "}
+                </div>
+                <div>
+                  <Link onClick={() => {
+                    dispatch(setWorkspaceID(item._id))
+                  }}
+                    to={`/${item.shortname}/members`} className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                    <FaUserFriends className="mr-1 text-sm text-primary"></FaUserFriends> Members
+                  </Link>{" "}
+                </div>
+                <div>
+                  <Link onClick={() => {
+                    dispatch(setWorkspaceID(item._id))
+                  }}
+                    to={`/${item.shortname}/account`} className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                    <FaCogs className="mr-1 text-sm text-primary"></FaCogs> Settings
+                  </Link>{" "}
+                </div>
+                {/* <div>
+                  <Link to="" className="bg-gray-200 px-2 my-2 py-1 rounded-md hover:pointer-events-auto text-xl font-semibold hover:font-bold hover:bg-gray-300 flex items-center">
+                    <FaRegArrowAltCircleUp className="mr-1 text-sm text-primary"></FaRegArrowAltCircleUp> Upgrade
+                  </Link>{" "}
+                </div> */}
+              </div>
+            </div>
+            <div className="grid  md:grid-cols-3 lg:grid-cols-4">
+              <LoardBoard props={item.shortname} workspaceID={item._id} />
+
+
+              <div className=" w-60 bg-base-100 shadow">
+                <label
+                  htmlFor="my-modal-6"
+                  className=" hover:cursor-pointer hover:bg-gray-100  hover:font-bold flex w-60 h-32 justify-center items-center"
+                  onClick={() => {
+                    dispatch(setWorkspaceID(item._id))
+                  }}
+                >
+                  <p className="mr-2">
+                    Create New Board
+                  </p>
+                  <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare>
+
+                </label>
+              </div>
+            </div>
+          </div>
+        )}
+        {/*  User as a member workspaces start here  */}
+        {membersWorkspace?.map(item =>
           <div key={item._id}>
             <div className="md:flex items-center justify-between">
               <div className="flex items-center my-5">
