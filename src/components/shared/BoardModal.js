@@ -10,9 +10,12 @@ const BoardModal = () => {
   const [bTitle, setBtitle] = useState("")
   const [background, setBackground] = useState("https://i.ibb.co/xChCQ7F/bg1.jpg")
   const lastWorkspaceID = useSelector(state => state.lastWorkspaceID)
-  const allWorkspace = useSelector(state => state.workspace)
+  const workspace = useSelector(state => state.workspace)
+  const membersWorkspace = useSelector(state => state.membersWorkspace)
   // console.log(lastWorkspaceID);
-  // console.log(allWorkspace);
+
+  const allWorkspace = [...workspace, ...membersWorkspace];
+  console.log(allWorkspace);
 
 
 
