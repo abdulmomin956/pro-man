@@ -19,7 +19,7 @@ const InviteMemberModal = ({ workspaceId }) => {
   const form = useRef();
 
   useEffect(() => {
-    fetch(`https://morning-coast-54182.herokuapp.com/users`)
+    fetch(`https://morning-coast-54182.herokuapp.com/users/all`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -39,7 +39,7 @@ const InviteMemberModal = ({ workspaceId }) => {
         email: selectMember,
         workspaceId: workspaceId
       }
-      axios.post("http://localhost:5000/invite/token", userData)
+      axios.post("https://morning-coast-54182.herokuapp.com/invite/token", userData)
         .then(res => {
           if (res.status === 200) {
             setUserInfoToken(res.data.token);
@@ -71,7 +71,7 @@ const InviteMemberModal = ({ workspaceId }) => {
         "iLv2oS5yxqCVzHgPL"
       )
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         if (res.status === 200) {
           setSelectMember("");
           setMatchField("");
@@ -136,11 +136,11 @@ const InviteMemberModal = ({ workspaceId }) => {
                     onKeyUp={(e) => {
                       setMatchField(e.target.value);
                     }}
-                    type="email"
+                    type="text"
                     name="user_email"
                     placeholder={`Enter email address`}
                     required
-                    autocomplete="off"
+                    autoComplete="off"
                     className={`input input-sm input-bordered w-full  rounded-none ${selectMember && "hidden"
                       }`}
                   />

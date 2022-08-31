@@ -1,7 +1,15 @@
 import React from "react";
+import { useState } from "react";
+import TempleteBoardModal from "../../shared/TempleteBoardModal";
 import TemplateCreateSection from "./TemplateCreateSection";
 
 const Details = ({ item }) => {
+  const [openModal, setOpenModel] = useState(false);
+
+  const handleUseTemplate = () => {
+    setOpenModel(!openModal);
+  };
+
   const {
     _id,
     category,
@@ -16,7 +24,7 @@ const Details = ({ item }) => {
     views,
   } = item;
   return (
-    <div className="mx-5">
+    <div className="mx-5 my-12 ">
       <section className="flex flex-col md:flex-row justify-between items-center my-4">
         <div className="flex items-center flex-row gap-3">
           <img
@@ -44,9 +52,13 @@ const Details = ({ item }) => {
           <button className="px-3 py-2 w-[80vw] md:w-auto bg-slate-200 text-sm rounded-sm">
             Share
           </button>
-          <button className="px-3 py-2 w-[80vw] md:w-auto bg-cyan-500 text-sm rounded-sm text-white">
+          <label
+            onClick={handleUseTemplate}
+            for="useTemplate"
+            className="btn modal-button w-[80vw] md:w-auto bg-cyan-500 text-sm rounded-sm text-white"
+          >
             Use Template
-          </button>
+          </label>
         </div>
       </section>
       <section>
@@ -70,6 +82,26 @@ const Details = ({ item }) => {
         </div>
       </section>
       <TemplateCreateSection></TemplateCreateSection>
+      {openModal && (
+        <div className="">
+          <input type="checkbox" id="useTemplate" className="modal-toggle" />
+
+          <div class="modal modal-bottom md:modal-middle">
+            <div className="modal-box border-2 border-black mx-4">
+              <label
+                onClick={handleUseTemplate}
+                class="btn btn-sm btn-circle absolute right-2 top-2"
+              >
+                ✕
+              </label>
+              <TempleteBoardModal
+                tempBMTitle={title}
+                bgUrl={bg}
+              ></TempleteBoardModal>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

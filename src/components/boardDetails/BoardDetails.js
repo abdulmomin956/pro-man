@@ -33,12 +33,6 @@ const BoardDetails = () => {
     const currentBoards = useSelector(state => state.currentWorkspaceBoards)
     const board = currentBoards.filter(board => board._id === board1.id)
     const dispatch = useDispatch();
-    // console.log(currentBoards);
-
-    // console.log(board1);
-    // console.log(data);
-
-
 
     const background = {
         background: `url(${board[0]?.boardBg})center center/cover`
@@ -46,10 +40,6 @@ const BoardDetails = () => {
     }
 
     const allLists = useQuery(['allLists', board1.id], () => fetch(`https://morning-coast-54182.herokuapp.com/list/b/${board1.id}`).then(res => res.json()))
-
-
-
-    // localStorage.setItem('data', JSON.stringify(data))
 
     if (saveList) {
         dispatch(setSaveList(false))
@@ -61,10 +51,8 @@ const BoardDetails = () => {
                 allLists.refetch();
             }
         }
-
         saveData();
     }
-
 
     useEffect(() => {
         if (allLists?.data) {
@@ -75,11 +63,6 @@ const BoardDetails = () => {
     if (allLists.isLoading) {
         return <Loading />
     }
-
-    // console.log(allLists.data.list);
-
-
-
 
     const addMoreCard = (title, listId) => {
         const newCardId = uuid()
@@ -97,12 +80,9 @@ const BoardDetails = () => {
                 [listId]: list,
             },
         };
+        console.log(newState)
         setData(newState);
         dispatch(setSaveList(true))
-        // console.log(newState)
-        //     cardData.push(newState);
-        //     localStorage.setItem("cardData", JSON.stringify(cardData));
-        //     setData(newState);
     }
 
 
@@ -140,6 +120,26 @@ const BoardDetails = () => {
         setData(newState);
         console.log(newState);
         dispatch(setSaveList(true))
+    };
+
+    const deleteList = (listId) => {
+        var value = listId
+        let dataValue = (data.listIds);
+        let dataValue2 = (data.lists);
+        const filteredUsers = Object.keys(dataValue2)
+            .filter(key => value.includes(key) !== value)
+            .reduce((obj, key) => {
+                obj[key] = dataValue2[key];
+                return obj;
+            }, {});
+        const listValue = dataValue.filter(item => item !== value)
+        const newState = {
+            listIds: listValue,
+            lists: filteredUsers
+        };
+        setData(newState);
+        dispatch(setSaveList(true))
+        console.log(data)
     };
 
     const onDragEnd = (result) => {
@@ -197,7 +197,7 @@ const BoardDetails = () => {
 
     return (
 
-        <storeApi.Provider value={{ addMoreCard, addMoreList, updateListTitle }}>
+        <storeApi.Provider value={{ addMoreCard, addMoreList, updateListTitle, deleteList }}>
 
             <DragDropContext onDragEnd={onDragEnd}>
 

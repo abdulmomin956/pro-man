@@ -6,34 +6,53 @@ import auth from '../firebase/firebase.init';
 import Loading from './Loading';
 
 const VerifyInvitedMember = () => {
-   const [allUsers, setAllUsers] = useState([]);
    let location = useLocation();
    const [user, loading] = useAuthState(auth)
    const navigate = useNavigate()
+   const [verifyUser, setVerifyUser] = useState("");
 
    const { workspaceId, email, token } = useParams()
 
+   // const [allUsers, setAllUsers] = useState([]);
+   // useEffect(() => {
+   //    fetch(`https://morning-coast-54182.herokuapp.com/users`)
+   //       .then((res) => res.json())
+   //       .then((data) => setAllUsers(data));
+   // }, []);
 
-   useEffect(() => {
-      fetch(`https://morning-coast-54182.herokuapp.com/users`)
-         .then((res) => res.json())
-         .then((data) => setAllUsers(data));
-   }, []);
-
+   // verify the User 
    useEffect(() => {
       if (user) {
          const userData = { userEmail: user.email, token: token }
          axios.post("http://localhost:5000/invite/verify", userData)
             .then(res => {
-               console.log(res.status);
                if (res.status === 200) {
-                  console.log("Success......")
+                  setVerifyUser(res.data);
                }
             }).catch(err => {
                return navigate('/login')
             })
       }
-   }, [user, token, navigate])
+   }, [user, token, navigate, location])
+
+   // Update user as a member
+   useEffect(() => {
+      if (verifyUser) {
+         const userData = { email: verifyUser.email, workspaceId: verifyUser.workspaceId }
+         axios.put("http://localhost:5000/invite/update-user", userData)
+            .then(res => {
+               if (res.status === 200) {
+                  console.log(res.data);
+                  return navigate('/')
+               }
+            }).catch(err => {
+               if (err.response.status === 409) {
+                  console.log("User already added.");
+                  return navigate('/')
+               }
+            })
+      }
+   }, [verifyUser, navigate])
 
    if (loading) {
       return <Loading></Loading>

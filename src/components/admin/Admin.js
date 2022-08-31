@@ -30,7 +30,7 @@ const Admin = () => {
     return (
         <div className='flex'>
 
-            <div className="w-72  p-5 pt-4  duration-300 bg-secondary  relative shadow">
+            <div className="w-72 min-h-screen  p-5 pt-4  duration-300 bg-secondary  relative shadow">
 
 
                 <div className="flex gap-x-4 items-center mt-2">

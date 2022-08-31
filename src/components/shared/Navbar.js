@@ -12,6 +12,8 @@ import {
   setUser,
   setLoadWorkspace,
   setWorkspace,
+  setMembersWorkspace,
+
   // setWorkspaceID,
 } from "../../global-state/actions/reduxActions";
 import { FaRegBell, FaBoxes } from "react-icons/fa";
@@ -33,8 +35,6 @@ const Navbar = () => {
   const email = useSelector(state => state.user?.email)
   const navigate = useNavigate();
 
-
-
   const dispatch = useDispatch();
 
   const { data, refetch } = useQuery(["repoData", email], () =>
@@ -42,12 +42,17 @@ const Navbar = () => {
       (res) => res.json()
     )
   );
+  // console.log(email);
+  const { data: membersData, refetch: memberRefetch } = useQuery(["memberData", email], () =>
+    fetch(`http://localhost:5000/workspace/memberEmail/${email}`).then((res) => res.json())
+  );
   useEffect(() => {
     if (loadWorkspaceState) {
       refetch();
+      memberRefetch();
       dispatch(setLoadWorkspace(false));
     }
-  }, [dispatch, loadWorkspaceState, refetch]);
+  }, [dispatch, loadWorkspaceState, refetch, memberRefetch]);
 
   useEffect(() => {
     if (data?.length > 0) {
@@ -55,6 +60,15 @@ const Navbar = () => {
       dispatch(setWorkspace(data));
     }
   }, [data, dispatch]);
+
+
+  useEffect(() => {
+    if (membersData?.length > 0) {
+      dispatch(setMembersWorkspace(membersData));
+    }
+  }, [membersData, dispatch]);
+
+
 
   useEffect(() => {
     if (user) {
@@ -65,12 +79,9 @@ const Navbar = () => {
   }, [user, user?.displayName])
 
 
+  // console.log(membersData);
 
-  // useEffect(() => {
 
-  // }, [])
-
-  // console.log(initials);
   const logout = () => {
     signOut(auth);
     localStorage.removeItem("token")
@@ -179,7 +190,7 @@ const Navbar = () => {
 
           <div className='navbar-start w-full navTitle'>
             <Link to={role === "Admin" ? "/" : "/my-board"} className="lg:mx-5  flex items-center justify-start">
-              <img style={{ height: "32px" }} src={logo} alt="logo" />
+              <img style={{ height: '32px', minWidth: '90px' }} src={logo} alt="logo" />
             </Link>
           </div>
 

@@ -75,7 +75,7 @@ const SocialLogin = ({ children }) => {
       <button
         style={{ backgroundColor: "black" }}
         onClick={handleSignUp}
-        className="btn text-white btn-outline "
+        className="btn text-white w-full"
       >
         <img style={{ width: "25px" }} src="https://i.ibb.co/xXCkjSm/Google-G-Logo-svg.png" alt="" />
         {children} Google
