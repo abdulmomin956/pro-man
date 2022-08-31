@@ -14,8 +14,10 @@ const CommonTopDesign = () => {
   const [editMood, setEditMood] = useState(false)
   const { shortname } = useParams();
   const workspaces = useSelector(state => state.workspace)
-  console.log(workspaces);
   const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
+  const membersWorkspace = useSelector(state => state.membersWorkspace)
+  const currentMembersWorkspace = membersWorkspace?.filter(workspaces => workspaces.shortname === shortname)
+  // console.log(currentMembersWorkspace);
   const [shortnameError, setShortnameError] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -32,9 +34,9 @@ const CommonTopDesign = () => {
     const { newShortname, title, type, website, description } = data;
     if (newShortname === shortname) {
       const newData = { title, type, website, description }
-      console.log(newData);
+      // console.log(newData);
       const res = await axios.patch(`https://morning-coast-54182.herokuapp.com/sworkspace/api/${currentWorkspace[0]._id}`, newData)
-      console.log(res.status);
+      // console.log(res.status);
       if (res.status === 200) {
         dispatch(setLoadWorkspace(true))
         setEditMood(false)
@@ -44,7 +46,7 @@ const CommonTopDesign = () => {
       console.log(data);
       await axios.patch(`https://morning-coast-54182.herokuapp.com/sworkspace/api/${currentWorkspace[0]._id}`, data)
         .then(function (response) {
-          console.log(response);
+          // console.log(response);
           if (response.status === 200) {
             dispatch(setLoadWorkspace(true))
             setEditMood(false)
@@ -76,7 +78,7 @@ const CommonTopDesign = () => {
         <div className="flex items-start ">
           <div>
             <button className="bg-primary text-white p-2 rounded text-4xl">
-              <span className="p-1 font-bold">{currentWorkspace[0]?.title?.charAt(0).toUpperCase()}</span>{" "}
+              <span className="p-1 font-bold">{((currentWorkspace[0]?.title) ? (currentWorkspace[0]?.title) : (currentMembersWorkspace[0]?.title))?.charAt(0).toUpperCase()}</span>{" "}
             </button>
           </div>
           {
