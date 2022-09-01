@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const UsingProman = ({upTopic, acTopic}) => {
 
 
-    console.log(acTopic)
+    console.log(upTopic)
 
 
     return (
@@ -35,7 +35,7 @@ const UsingProman = ({upTopic, acTopic}) => {
             {/* Topics -->  Report a bug */}
 
             {
-                (upTopic === "Report a bug" || upTopic === "Features requests" || acTopic === "Login Issue" ) &&
+                (upTopic === "Billing" || upTopic === "Report a bug" || upTopic === "Features requests" || acTopic === "Login Issue" ) &&
                 <div>
                 <label htmlFor="">Summary</label> <br />
                 <input type="text" placeholder="Give us description what happening" className="w-full bg-gray-50 border px-3 my-2 py-1  text-black"/>
@@ -43,6 +43,13 @@ const UsingProman = ({upTopic, acTopic}) => {
                 <textarea type="text" placeholder="If you gave more specific info, add here" className="w-full bg-gray-50 border px-3 my-2 py-1  text-black"/>
                 <label htmlFor="">Page Link</label> <br />
                 <input type="text" placeholder="Put hare a link where happening the issue" className="w-full bg-gray-50 border px-3 my-2 py-1  text-black"/>
+               { (upTopic === "Billing") && <>
+                <label htmlFor="">Billing Contact Name</label> <br />
+                <input type="text" placeholder="Type who can reach to about billing" className="w-full bg-gray-50 border px-3 my-2 py-1  text-black"/>
+                
+                <label htmlFor="">Billing contact email</label> <br />
+                <input type="email" placeholder="Provide email of billing contact" className="w-full bg-gray-50 border px-3 my-2 py-1  text-black"/>                               
+                </>}
                 <div className='my-2 mx-auto w-full rounded-lg bg-primary shadow-lg text-center py-2 text-white justify-center shadow-teal-900'>
                     <input type="file" name="screenShort" id="" />
                     <p className='text-accent'>max. file size 150 MB, max. total file size 300 MB</p>
