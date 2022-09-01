@@ -1,20 +1,21 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 // import { useEffect } from 'react';
 // import { useState } from 'react';
 
-const UsingProman = ({upTopic}) => {
-    // const [selectItem, setSelectItem] = useState("")
+const UsingProman = ({upTopic, acTopic}) => {
 
-    // useEffect(()=>{
-    //     if()
-    // },[])
+
+    console.log(acTopic)
+
 
     return (
         <div className='mt-5'>
 
             {/* Topics -->  How to do something */}
 
-            {   (upTopic === "How to do something" || upTopic === "Power-Ups and Integrations") &&
+            {   (upTopic === "How to do something" || upTopic === "Power-Ups and Integrations" || acTopic === "Delete Account" || 
+            acTopic === "Update profile") &&
 
                 <div className='p-5 bg-gray-200 shadow-teal-900 shadow-md'>
                     <h1 className='text-xl my-5 font-bold'>Getting help from the Atlassian Community</h1>
@@ -34,7 +35,7 @@ const UsingProman = ({upTopic}) => {
             {/* Topics -->  Report a bug */}
 
             {
-                (upTopic === "Report a bug" || upTopic === "Features requests") &&
+                (upTopic === "Report a bug" || upTopic === "Features requests" || acTopic === "Login Issue" ) &&
                 <div>
                 <label htmlFor="">Summary</label> <br />
                 <input type="text" placeholder="Give us description what happening" className="w-full bg-gray-50 border px-3 my-2 py-1  text-black"/>
