@@ -179,7 +179,7 @@ const Workspace = () => {
                         <h4 className={`${!open && "hidden"} mx-auto text-white font-bold origin-left duration-200`}>Your Boards</h4>
                     </div>
                     {
-                        boardData?.map((item, index) => (
+                        (boards?.data).map((item, index) => (
                             <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex  justify-between  py-1 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-2 workspace-sidebar-toggle-button mb-2  w-full`}>
 
                                 <div className='flex justify-center items-center '>

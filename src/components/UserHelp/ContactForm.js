@@ -1,17 +1,25 @@
-import React, { useEffect } from 'react';
+
 import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useSelector } from "react-redux";
 import auth from '../firebase/firebase.init';
 import UsingProman from './UsingProman';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const ContactForm = () => {
 
     const [list, setList] = useState(false)
     const [upList, setupList] = useState(false)
+    const [acList, setAcList] = useState(false)
     const [selectItem, setSelectItems] = useState("")
     const [upTopic, setupTopic] = useState("")
+    const [acTopic, setAcTopic] = useState("")
+
     const [user] = useAuthState(auth)
+    const [acItemList, setACItemList] = useState("")
 
   const user1 = useSelector((state) => state.user);
     const email = user1?.email
@@ -28,16 +36,14 @@ const ContactForm = () => {
       console.log(user)
 
       }
+  const navigate = useNavigate();
 
-      /*
-      if(selectItem){
-        return <div onClick={()=>setList(!list)} className='w-full border bg-gray-50 flex justify-between px-3 my-2 py-1'>
-        <input type="text" disabled placeholder={selectItem ? `${selectItem}` : 'Select from the list'} className=" bg-transparent text-black"/>
-        <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
-        </div>
-      }
 
-      */
+      const logOut = () => {
+        signOut(auth);
+        localStorage.removeItem("token")
+        navigate('/')
+      };
       
     return (
         <div className='sm:w-full lg:w-1/2 shadow py-12 shadow-primary mx-auto px-12'>
@@ -52,8 +58,8 @@ const ContactForm = () => {
                 </svg>
                 </div>
                 <div>
-                <p>Your are contacting us as ......</p>
-                <br /> <p>Not you? <span className='underline text-primary font-bold italic'>Log Out</span></p>
+                <p>Your are contacting us as <strong>{user?.displayName}</strong></p>
+                <br /> <p>Not you? <span onClick={()=>logOut()} className='underline text-primary cursor-pointer font-bold italic'>Log Out</span></p>
                 </div>
                 
             </div>
@@ -92,12 +98,24 @@ const ContactForm = () => {
                         <li onClick={()=>setupTopic("Features requests")} className='pl-3 py-2 border-primary hover:border mb-1'>Features requests</li>
                     </ul>
                 </div>}
+
+
+                { (selectItem === "Acounts Issue") && 
+                <div onClick={()=>setAcList(!acList)} className='w-full border bg-gray-50 flex justify-between px-3 my-2 py-1'>
+                <input type="text" disabled placeholder={acTopic ? `${acTopic}` : 'Select from the list'} className=" bg-transparent text-black"/>
+                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                </div>}
+                {acList && <div>
+                    <ul onClick={()=>setAcList(!acList)}>
+                        <li onClick={()=>setAcTopic("Login Issue")} className='pl-3 py-2 border-primary hover:border mb-1'>Login Issue</li>
+                        <li onClick={()=>setAcTopic("Delete Account")} className='pl-3 py-2 border-primary hover:border mb-1'>Delete Account</li>
+                        <li onClick={()=>setAcTopic("Update profile")} className='pl-3 py-2 border-primary hover:border mb-1'>Update profile</li>
+                    </ul>
+                </div>}
+
                 {
-                    (selectItem === "Using Proman" && upTopic) && <UsingProman upTopic={upTopic}></UsingProman>
-                }
-
-
-                
+                    ((selectItem === "Using Proman" || selectItem === "Acounts Issue") && (upTopic || acTopic)) && <UsingProman upTopic={upTopic} acTopic={acTopic}></UsingProman>
+                }              
                 
             </form>
         </div>
