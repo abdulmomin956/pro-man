@@ -22,7 +22,7 @@ const Board = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("Templates/featuredData.json")
+    fetch("https://morning-coast-54182.herokuapp.com/template")
       .then((res) => res.json())
       .then((data) => setPopularTemplates(data.slice(2, 7)));
   }, []);
