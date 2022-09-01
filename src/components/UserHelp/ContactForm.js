@@ -19,23 +19,29 @@ const ContactForm = () => {
     const [acTopic, setAcTopic] = useState("")
 
     const [user] = useAuthState(auth)
-    const [acItemList, setACItemList] = useState("")
 
-  const user1 = useSelector((state) => state.user);
-    const email = user1?.email
 
-    console.log(user1?.email)
-    /* 
-    useEffect(() => {
-        fetch(`https://morning-coast-54182.herokuapp.com/profile/${email}`)
-          .then(res => res.json())
-          .then(data => setUser(data))
-      }, [email])
-*/
-      if(user){
-      console.log(user)
 
-      }
+  const setBillIssueTopic = () =>{
+    console.log("Abcd")
+    setupTopic("This is Testing")
+    setAcTopic("Billing")
+    setSelectItems("Billing")
+
+    setList(!list)
+  } 
+
+  if(acTopic){
+  console.log(acTopic)
+  }
+
+  const handleIssue = () =>{
+    setList(!list)            
+    setupTopic("")
+    setAcTopic("")
+}
+
+
   const navigate = useNavigate();
 
 
@@ -74,12 +80,12 @@ const ContactForm = () => {
                 <input type="text" disabled placeholder={selectItem ? `${selectItem}` : 'Select from the list'} className=" bg-transparent text-black"/>
                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                 </div>
-
+                
                 {list && <div>
-                    <ul onClick={()=>setList(!list)}>
+                    <ul onClick={()=>handleIssue()}>
                         <li onClick={()=>setSelectItems("Using Proman")} className='pl-3 py-2 border-primary hover:border mb-1'>Using Proman</li>
                         <li onClick={()=>setSelectItems("Acounts Issue")} className='pl-3 py-2 border-primary hover:border mb-1'>Acounts Issue</li>
-                        <li onClick={()=>setSelectItems("Billing")} className='pl-3 py-2 border-primary hover:border mb-1'>Billing</li>
+                        <li onClick={()=>setBillIssueTopic()} className='pl-3 py-2 border-primary hover:border mb-1'>Billing</li>
                         <li onClick={()=>setSelectItems("Sales")} className='pl-3 py-2 border-primary hover:border mb-1'>Sales</li>
                         <li onClick={()=>setSelectItems("Report Issue")} className='pl-3 py-2 border-primary hover:border mb-1'>Report Issue</li>
                     </ul>
@@ -114,7 +120,7 @@ const ContactForm = () => {
                 </div>}
 
                 {
-                    ((selectItem === "Using Proman" || selectItem === "Acounts Issue") && (upTopic || acTopic)) && <UsingProman upTopic={upTopic} acTopic={acTopic}></UsingProman>
+                    ((selectItem === "Using Proman" || selectItem === "Acounts Issue" || selectItem === "Billing") && (upTopic || acTopic)) && <UsingProman upTopic={upTopic} acTopic={acTopic}></UsingProman>
                 }              
                 
             </form>
