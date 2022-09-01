@@ -74,7 +74,7 @@ const Navbar = () => {
       const nameparts = x?.split(" ");
       setInitial(
         nameparts[0]?.charAt(0)?.toUpperCase() +
-          nameparts[1]?.charAt(0)?.toUpperCase()
+        nameparts[1]?.charAt(0)?.toUpperCase()
       );
     }
   }, [user, user?.displayName]);
@@ -89,8 +89,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" text-txtColor">
-      <div style={{ zIndex: 200 }} className="navbar bg-bg-100 w-full shadow">
+    <div className=" text-txtColor bg-[#F9FAFC]">
+      <div className="navbar bg-white w-full shadow">
         <div className="navbar-start lg:px-12">
           {/* this is dropdown menu for mobile view  */}
           {role !== "Admin" && (
@@ -379,7 +379,7 @@ const Navbar = () => {
               <label
                 tabIndex="0"
                 className=" "
-                // className="btn btn-ghost btn-circle bg-black avatar"
+              // className="btn btn-ghost btn-circle bg-black avatar"
               >
                 <div
                   id="navProfile"

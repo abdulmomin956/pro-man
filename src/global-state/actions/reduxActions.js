@@ -1,6 +1,6 @@
 //last workspace
 
-import { LAST_WORKSPACE, WORKSPACE, MEMBERSWORKSPACE, CURRENTWORKSPACE, CURRENTWORKSPACEBOARDS, LOADWORKSPACE, LIST, USER } from "../constants/reduxContstants"
+import { LAST_WORKSPACE, WORKSPACE, MEMBERSWORKSPACE, CURRENTWORKSPACE, CURRENTWORKSPACEBOARDS, LOADWORKSPACE, LIST, USER, LOADBOARD } from "../constants/reduxContstants"
 
 //isInBoard
 export const setWorkspaceID = (lastWorkspaceID) => {
@@ -48,6 +48,12 @@ export const setSaveList = (data) => {
 export const setUser = (data) => {
     return {
         type: USER,
+        payload: data
+    }
+}
+export const setLoadBoard = (data) => {
+    return {
+        type: LOADBOARD,
         payload: data
     }
 }

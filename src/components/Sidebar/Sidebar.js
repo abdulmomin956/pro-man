@@ -29,7 +29,7 @@ const Sidebar = () => {
   // console.log(memberWorkspace);
   return (
     <div>
-      <div className="drawer drawer-mobile static ">
+      <div className="drawer drawer-mobile static">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
         <div className="drawer-content " id="sidebarOverflow">
           {/* <!-- Page content here --> */}
@@ -42,15 +42,15 @@ const Sidebar = () => {
             <FaArrowAltCircleRight className="text-3xl"></FaArrowAltCircleRight>
           </label>
         </div>
-        <div className="drawer-side lg:mx-7 shadow">
+        <div className="drawer-side  shadow lg:my-10  lg:w-[20rem] ">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul
-            className="menu overflow-y-auto w-52 bg-base-100 text-base-content"
+            className="menu overflow-y-auto w-52 lg:w-full bg-base-100 text-base-content"
             id="sidebarOverflow"
           >
             {/* <!-- Sidebar content here --> */}
-            <li className="">
-              <NavLink to="/my-board" className="mb-2 p-2 pl-5 pr-5 myButton">
+            <li className="w-full">
+              <NavLink to="/my-board" className="mb-2 p-2 pl-5 pr-16 myButton">
                 Boards
               </NavLink>
             </li>

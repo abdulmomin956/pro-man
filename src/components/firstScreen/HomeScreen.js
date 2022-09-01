@@ -21,9 +21,9 @@ const HomeScreen = () => {
   }, [membersWorkspace, workspace])
 
   return (
-    <div className="md:flex justify-center my-10 shadow-sm">
-      <div className="md:w-12/6 lg:w-[90vh] flex justify-center">
-        <div className="card md:w-full bg-base-100 shadow">
+    <div className="md:flex justify-between my-10 shadow-sm lg:ml-10">
+      <div className="md:w-12/6 lg:w-[45vw] flex justify-center">
+        <div className="card md:w-full h-[32rem] bg-base-100 shadow">
           <figure>
             <img src={img} alt="Shoes" />
           </figure>
@@ -38,7 +38,7 @@ const HomeScreen = () => {
           </div>
         </div>
       </div>
-      <div className="ml-10 mt-10 md:mt-0 sm:w-6/12  md:w-[20rem] shadow-lg rounded-lg w-">
+      <div className="mx-auto md:ml-10 mt-10 md:mt-0 sm:w-8/12   md:w-[20rem] shadow-lg rounded-lg bg-white">
         <div className="p-2 ">
           <p className=" mb-2 ">Recently viewed</p>
           {

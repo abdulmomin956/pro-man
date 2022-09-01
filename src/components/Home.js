@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <AllTemplates.Provider value={{ popularTemplates: popularTemplates }}>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[88rem] mx-auto">
         <Sidebar></Sidebar>
       </div>
     </AllTemplates.Provider>
