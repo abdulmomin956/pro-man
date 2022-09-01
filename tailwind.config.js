@@ -13,6 +13,7 @@ module.exports = {
           "neutral": "#adadad",
           "sidebar": "#081A51",
           "light-white": "rgba(255,255,255,0.17)",
+          "bgColor": "#F9FAFC",
 
           "base-100": "#ffffff",
 

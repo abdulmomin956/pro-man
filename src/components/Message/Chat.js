@@ -108,9 +108,9 @@ const Chat = () => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  return (<main className='messenger w-full'>
+  return (<main className='messenger w-full mt-1'>
     <div className='chatMenu'>
-      <div className="chatMenuWrapper">
+      <div className="chatMenuWrapper bg-white shadow">
         <input placeholder="Search for friends" className="chatMenuInput" />
         {conversations.map((c, i) => (
           <div key={i} onClick={() => setCurrentChat(c)}>
@@ -148,7 +148,7 @@ const Chat = () => {
       </div>
     </div>
     <div className='chatOnline'>
-      <div className="chatOnlineWrapper">
+      <div className="chatOnlineWrapper  bg-white shadow">
         <ChatOnline
           onlineUsers={onlineUsers}
           currentId={user._id}

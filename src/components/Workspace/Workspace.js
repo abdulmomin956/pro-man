@@ -24,8 +24,8 @@ const Workspace = () => {
     const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
     const currentWorkspaceMember = membersWorkspace.filter(workspacesMembers => workspacesMembers.shortname === shortname)
 
+    // console.log(currentWorkspace)
     // console.log(boardData)
-    // console.log(currentWorkspaceMember)
 
     const [close, setClose] = useState(false);
     // console.log(anchorEl);
@@ -46,10 +46,10 @@ const Workspace = () => {
 
 
     const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${currentWorkspace[0]?._id}`).then(res => res.json()))
-    // console.log(boards)
+
 
     const membersBoards = useQuery(['membersBoards', currentWorkspaceMember[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${currentWorkspaceMember[0]?._id}`).then(res => res.json()))
-    console.log(membersBoards.data)
+
 
     useEffect(() => {
         if (currentWorkspace[0]?.title) {
@@ -74,35 +74,25 @@ const Workspace = () => {
     }, [currentWorkspaceMember])
 
     useEffect(() => {
-        if (boards?.data) {
+        if (boards?.data?.length > 0) {
             dispatch(setCurrentBoards(boards?.data))
-            console.log(boards?.data)
+            setBoardData(boards?.data)
         }
     }, [boards?.data, dispatch])
 
     useEffect(() => {
-        if (membersBoards?.data) {
+        if (membersBoards?.data?.length > 0) {
             dispatch(setCurrentBoards(membersBoards?.data))
-            console.log(membersBoards?.data)
+            setBoardData(membersBoards?.data)
         }
     }, [membersBoards?.data, dispatch])
 
-    useEffect(() => {
-        if (boards?.data) {
-            setBoardData(boards.data)
-        }
-    }, [boards?.data])
 
-    useEffect(() => {
-        if (membersBoards?.data) {
-            setBoardData(membersBoards?.data)
-        }
-    }, [membersBoards?.data])
 
-    if (boards.isLoading || membersBoards.isLoading) {
+    if (boards?.isLoading || membersBoards?.isLoading) {
         return <Loading></Loading>;
     }
-    // console.log(boards);
+    // console.log(boardData);
 
     const handleDelete = async id => {
         console.log(id);
@@ -179,7 +169,7 @@ const Workspace = () => {
                         <h4 className={`${!open && "hidden"} mx-auto text-white font-bold origin-left duration-200`}>Your Boards</h4>
                     </div>
                     {
-                        (boards?.data).map((item, index) => (
+                        boardData.map((item, index) => (
                             <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex  justify-between  py-1 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-2 workspace-sidebar-toggle-button mb-2  w-full`}>
 
                                 <div className='flex justify-center items-center '>

@@ -3,41 +3,33 @@ import Loading from "../shared/Loading";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setLoadBoard } from "../../global-state/actions/reduxActions";
+import { useQuery } from "@tanstack/react-query";
 
 const LoardBoard = ({ props, workspaceID }) => {
   const navigate = useNavigate();
-  // console.log(props);
   const shortname = props;
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  // console.log(data)
+  const loadBoard = useSelector(state => state.loadBoard)
+  const dispatch = useDispatch();
+  console.log(workspaceID)
 
-  // const data1 = useSelector(state => state.workspace)
-  // if (data1 && shortname) {
-  //     data1?.map((item1) => {
-  //         const itemId = item1._id === shortname
-  //         const itemName = item1.sortname
-  //         console.log(itemName)
-  //     })
-  // }
-  // console.log(shortname)
+
+
+  const boards = useQuery(['boards', workspaceID], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${workspaceID}`).then(res => res.json()))
+
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`https://morning-coast-54182.herokuapp.com/board/w/${workspaceID}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setData(result);
-        setLoading(false);
-        // console.log(result);
-      })
-      .catch((err) => {
-        // console.log(err)
-        setLoading(false);
-      });
-  }, [workspaceID]);
+    if (loadBoard) {
+      dispatch(setLoadBoard(false))
+      boards.refetch();
+    }
+  }, [boards, dispatch, loadBoard])
 
-  if (loading) {
+
+
+  if (boards.isLoading) {
     <Loading></Loading>;
   }
 
@@ -45,7 +37,7 @@ const LoardBoard = ({ props, workspaceID }) => {
   // onClick={() => navigate(`/${shortname}/${item._id}`)}
   return (
     <>
-      {data?.map((item) => (
+      {boards?.data?.map((item) => (
         <div
           key={item._id}
           onClick={() => navigate(`/${shortname}/${item._id}`)}
@@ -56,13 +48,13 @@ const LoardBoard = ({ props, workspaceID }) => {
               backgroundColor: "#00000026",
               background: `url(${item.boardBg})`,
 
-              webkitFilter: "grayscale(20%)",
+              WebkitFilter: "grayscale(20%)",
               backgroundSize: "cover",
             }}
             className="py-12 hover:cursor-pointer text-white hover:shadow-xl hover:font-bold flex justify-center items-center flex-row gap-2 rounded-lg"
-            //   onClick={() => {
-            //     dispatch(setWorkspaceID(item._id))
-            //   }}
+          //   onClick={() => {
+          //     dispatch(setWorkspaceID(item._id))
+          //   }}
           >
             <p className="text-lg text-center">
               {item.title.length > 14
