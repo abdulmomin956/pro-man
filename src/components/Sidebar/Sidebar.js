@@ -20,7 +20,7 @@ const Sidebar = () => {
   const data = useSelector((state) => state.workspace);
   const memberWorkspace = useSelector((state) => state.membersWorkspace);
   const dispatch = useDispatch();
-  const [workspaceId, setWorkspaceId] = useState('');
+  const [workspaceId, setWorkspaceId] = useState("");
 
   // const [user] = useAuthState(auth);
   // const email = user?.email;
@@ -42,7 +42,7 @@ const Sidebar = () => {
             <FaArrowAltCircleRight className="text-3xl"></FaArrowAltCircleRight>
           </label>
         </div>
-        <div className="drawer-side  shadow lg:my-10  lg:w-[20rem] ">
+        <div className="drawer-side  shadow lg:py-6  lg:w-[16rem] border-2">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul
             className="menu overflow-y-auto w-52 lg:w-full bg-base-100 text-base-content"
@@ -152,7 +152,6 @@ const Sidebar = () => {
                   </Accordion>
                 ))}
 
-
                 {memberWorkspace.map((item) => (
                   <Accordion key={item._id}>
                     <AccordionSummary
@@ -228,8 +227,7 @@ const Sidebar = () => {
                   </Accordion>
                 ))}
               </div>
-              <div>
-              </div>
+              <div></div>
             </div>
           </ul>
         </div>
