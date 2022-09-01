@@ -33,15 +33,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import EachTemplateDetails from "./components/firstScreen/TemplateComponents/EachTemplateDetails";
 import VerifyInvitedMember from "./components/shared/VerifyInvitedMember";
-<<<<<<< HEAD
+
 import Chat from "./components/Message/Chat";
 import Chatbody from "./components/Message/Chatbody";
-=======
+
 import Admin from "./components/admin/Admin";
 import Dashboard from "./components/admin/Dashboard";
 import AOS from "aos";
 import "aos/dist/aos.css";
->>>>>>> 3e0360a7c2b8fc6bbd940a23e9eb8aa0d7d65c03
 
 function getWithExpiry(key) {
   const itemStr = localStorage.getItem(key);
