@@ -13,13 +13,6 @@ const VerifyInvitedMember = () => {
 
    const { workspaceId, email, token } = useParams()
 
-   // const [allUsers, setAllUsers] = useState([]);
-   // useEffect(() => {
-   //    fetch(`https://morning-coast-54182.herokuapp.com/users`)
-   //       .then((res) => res.json())
-   //       .then((data) => setAllUsers(data));
-   // }, []);
-
    // verify the User ***
    useEffect(() => {
       if (user) {
