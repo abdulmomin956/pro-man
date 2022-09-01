@@ -16,7 +16,7 @@ import {
 
   // setWorkspaceID,
 } from "../../global-state/actions/reduxActions";
-import { FaRegBell, FaBoxes } from "react-icons/fa";
+import { FaRegBell, FaBoxes, FaRegComment } from "react-icons/fa";
 import { MdGroupWork } from "react-icons/md";
 import Notification from "./Notification";
 import TempleteBoard from "./TempleteBoard";
@@ -334,6 +334,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end lg:px-12">
+          <Link to='/chat'><FaRegComment className="text-2xl   text-txtColor mr-3" /></Link>
           <label
             htmlFor="notification"
             className=" cursor-pointer modal-button"

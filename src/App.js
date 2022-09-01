@@ -34,7 +34,6 @@ import { useEffect } from "react";
 import EachTemplateDetails from "./components/firstScreen/TemplateComponents/EachTemplateDetails";
 import VerifyInvitedMember from "./components/shared/VerifyInvitedMember";
 import Chat from "./components/Message/Chat";
-import Chatbody from "./components/Message/Chatbody";
 import Admin from "./components/admin/Admin";
 import Dashboard from "./components/admin/Dashboard";
 import AOS from 'aos';
@@ -119,7 +118,7 @@ function App() {
         <Route path="/invite/:workspaceId/:email/:token" element={<VerifyInvitedMember />}></Route>
         {user?.email && <Route path="/help" element={<UserHelp></UserHelp>}></Route>}
         {user?.email && (
-          
+
           <Route
             path="/"
             element={
@@ -134,7 +133,7 @@ function App() {
               <Route path="profileCard" element={<ProfileCard />} />
               <Route path="profileSettings" element={<ProfileSetting />} />
             </Route>
-
+            <Route path="chat" element={<Chat></Chat>}></Route>
             {user?.role !== "Admin" && (
               <>
                 <Route path="/" element={<Home />}>
@@ -183,7 +182,6 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
-        <Route path="chat" element={<Chat></Chat>}></Route>
       </Routes>
     </div>
   );
