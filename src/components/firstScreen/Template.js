@@ -64,7 +64,6 @@ const Template = () => {
   }, [popularTemplates]);
 
   const handleLoadMoreTemplates = (category) => {
-    // console.log(category);
     navigate("/template/" + category);
   };
 
