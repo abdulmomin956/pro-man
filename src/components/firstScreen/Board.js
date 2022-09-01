@@ -28,7 +28,7 @@ const Board = () => {
   }, []);
 
   return (
-    <div className="mx-4 my-10" id="sidebarOverflow">
+    <div className="m-8" id="sidebarOverflow">
       {/* This Board pages showing when enter to the site */}
       <h2 className="text-2xl font-medium mb-6">
         <span className="flex items-center text-black">
@@ -139,7 +139,7 @@ const Board = () => {
                     dispatch(setWorkspaceID(item._id));
                   }}
                 >
-                  <p>Create New Board</p>
+                  <p className="text-sm">Create New Board</p>
                   <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare>
                 </label>
               </div>
