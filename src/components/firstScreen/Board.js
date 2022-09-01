@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 import LoardBoard from "./LoardBoard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -19,6 +19,7 @@ const Board = () => {
   const data = useSelector((state) => state.workspace);
   const membersWorkspace = useSelector((state) => state.membersWorkspace);
   const [popularTemplates, setPopularTemplates] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("Templates/featuredData.json")
@@ -41,6 +42,7 @@ const Board = () => {
       >
         {popularTemplates.map((template) => (
           <div
+            onClick={() => navigate("/category/" + template._id)}
             key={template._id}
             className="px-1 h-28 rounded-md cursor-pointer hover:shadow-2xl"
             style={{
