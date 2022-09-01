@@ -12,8 +12,6 @@ const Details = ({ item }) => {
   };
 
   const {
-    _id,
-    category,
     bg,
     profilePic,
     title,
@@ -50,13 +48,13 @@ const Details = ({ item }) => {
           </div>
         </div>
         <div className=" flex flex-col md:flex-row justify-center items-center gap-4 my-4">
-          <button className="px-3 py-2 w-[80vw] md:w-auto bg-slate-200 text-sm rounded-sm">
+          <button className="px-3 py-2 w-[80vw] md:w-auto bg-slate-200 hover:bg-slate-300 text-sm rounded-sm">
             Share
           </button>
           <label
             onClick={handleUseTemplate}
             htmlFor="useTemplate"
-            className="btn modal-button w-[80vw] md:w-auto bg-cyan-500 text-sm rounded-sm text-white"
+            className="modal-button px-3 py-2 w-[80vw] text-center md:w-auto bg-cyan-500 text-sm rounded-sm text-white hover:bg-cyan-600"
           >
             Use Template
           </label>
@@ -87,7 +85,7 @@ const Details = ({ item }) => {
         <div>
           <input type="checkbox" id="useTemplate" className="modal-toggle" />
 
-          <div className="modal modal-top sm:modal-middle bg-transparent">
+          <div className="modal modal-bottom md:modal-middle bg-transparent">
             <div className="modal-box border-2 border-black mx-4">
               <label
                 onClick={handleUseTemplate}
