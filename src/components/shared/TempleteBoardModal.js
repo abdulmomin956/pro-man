@@ -52,7 +52,7 @@ const TempleteBoardModal = ({ tempBMTitle, bgUrl }) => {
   };
 
   return (
-    <div>
+    <div className="p-3">
       <form
         // onSubmit={handleSubmit(onSubmit)}
         onSubmit={handleSubmit}

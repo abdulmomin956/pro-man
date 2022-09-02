@@ -151,10 +151,10 @@ const BoardModal = () => {
             <p className="font-bold text-primary">Select Background</p>
             <div className="grid grid-cols-5 gap-1 justify-center items-center py-1 overflow-hidden">
               <img src="https://i.ibb.co/xChCQ7F/bg1.jpg" onClick={handleBg1} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
-              <img src="https://i.ibb.co/YRnq6yd/250x215-2.png" onClick={handleBg2} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
-              <img src="https://i.ibb.co/wcL4qWD/250x215-3.png" onClick={handleBg3} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
-              <img src="https://i.ibb.co/7p9Xb5z/250x215-4.png" onClick={handleBg4} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
-              <img src="https://i.ibb.co/GFwP6Vw/250x215-5.png" onClick={handleBg5} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src="https://i.ibb.co/qR72gx6/bg2.jpg" onClick={handleBg2} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src="https://i.ibb.co/h2KhkfR/bg3.jpg" onClick={handleBg3} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src="https://i.ibb.co/TT0tdj2/bg4.jpg" onClick={handleBg4} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
+              <img src="https://i.ibb.co/9n55Xpz/bg5.jpg" onClick={handleBg5} className=" cursor-pointer mx-auto h-16 w-16 rounded-xl bg-clip-padding" alt="" />
               <div onClick={handleBg6} style={{ background: `url("https://i.ibb.co/Wz5Z2nW/250x215.png")center center/cover` }} className="h-12 w-16  rounded-xl  cursor-pointer mx-auto"></div>
               <div onClick={handleBg7} style={{ background: `url("https://i.ibb.co/YRnq6yd/250x215-2.png")center center/cover` }} className="h-12 w-16 rounded-xl  cursor-pointer mx-auto"></div>
               <div onClick={handleBg8} style={{ background: `url("https://i.ibb.co/wcL4qWD/250x215-3.png")center center/cover` }} className="h-12 w-16  rounded-xl  cursor-pointer mx-auto"></div>
@@ -178,14 +178,7 @@ const BoardModal = () => {
                 required
               />
               <label className="label">Board title is required </label>
-              {/* --------------Board Title------------ */}
-              {/* <label className="label">
-                {errors.boardTitle?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.boardTitle.message}
-                  </span>
-                )}
-              </label> */}
+
             </div>
             <div className="form-control w-full mb-4">
               <label className="label">
@@ -210,13 +203,6 @@ const BoardModal = () => {
               <label className="label">Select your workspace </label>
               {/* --------------Error ------------- */}
 
-              {/* <label className="label">
-                {errors.boardTitle?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.boardTitle.message}
-                  </span>
-                )}
-              </label> */}
             </div>
 
             <div>
