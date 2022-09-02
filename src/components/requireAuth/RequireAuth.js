@@ -23,7 +23,7 @@ function getWithExpiry(key) {
 }
 
 const RequireAuth = ({ children }) => {
-    const email = useSelector(state => state.user.email)
+    const email = useSelector(state => state.user?.email)
     const dispatch = useDispatch()
     let location = useLocation();
     // if (loading) {

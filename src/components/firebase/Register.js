@@ -18,11 +18,49 @@ const Register = () => {
     let location = useLocation();
     let from = location.state?.from?.pathname || "/my-board";
     useEffect(() => {
-        if (user) {
-            navigate('/')
-            console.log(user)
+        // console.log(user);
+        // console.log(user?.user);
+        // console.log(user?.user?.displayName);
+        if (user?.user?.displayName) {
+            const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+            // console.log(user?.user?.displayName);
+            const userInfo = {
+                displayName: user?.user?.displayName,
+                email: user?.user?.email,
+                profileBg: "#" + randomColor,
+                bio: "",
+                createdAt: Date.now()
+            };
+
+            const regUser = async () => {
+                const res = await axios.post(`https://morning-coast-54182.herokuapp.com/api/reg`, userInfo)
+                console.log(res)
+                if (res.status === 201) {
+                    const accessToken = res.data.accessToken;
+                    const ttl = res.data.ttl;
+                    const now = new Date()
+
+                    // `item` is an object which contains the original value
+                    // as well as the time when it's supposed to expire
+                    const item = {
+                        accessToken: accessToken,
+                        expiry: now.getTime() + ttl,
+                        email: userInfo.email
+                    }
+                    localStorage.setItem("token", JSON.stringify(item))
+                    dispatch(setUser(userInfo))
+                    if (res.data?.usersDB?.role === "Admin") {
+                        navigate("/")
+                    }
+                    else {
+                        navigate(from, { replace: true })
+                    }
+                }
+            }
+            regUser();
+
         }
-    }, [user, navigate])
+    }, [user?.user?.displayName, navigate, dispatch, from, user])
 
     if (loading || updating) {
         return <Loading></Loading>
@@ -34,41 +72,14 @@ const Register = () => {
     }
 
 
+    // console.log(user);
 
     const onSubmit = async (data) => {
 
         await createUserWithEmailAndPassword(data.email, data.password, data.displayName)
         const userName = data.name + " " + data.lastName
         await updateProfile({ displayName: userName });
-        const userInfo = {
-            displayName: userName,
-            email: data.email
-        };
 
-        console.log(userInfo);
-        const res = await axios.post(`https://morning-coast-54182.herokuapp.com/api/reg`, userInfo)
-        console.log(res)
-        if (res.status === 200) {
-            const accessToken = res.data.accessToken;
-            const ttl = res.data.ttl;
-            const now = new Date()
-
-            // `item` is an object which contains the original value
-            // as well as the time when it's supposed to expire
-            const item = {
-                accessToken: accessToken,
-                expiry: now.getTime() + ttl,
-                email: userInfo.email
-            }
-            localStorage.setItem("token", JSON.stringify(item))
-            dispatch(setUser(userInfo))
-            if (res.data.usersDB.role === "Admin") {
-                navigate("/")
-            }
-            else {
-                navigate(from, { replace: true })
-            }
-        }
 
         reset()
         // console.log(data)

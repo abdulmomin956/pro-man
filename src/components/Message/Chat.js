@@ -21,7 +21,7 @@ const Chat = () => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const scrollRef = useRef();
-  const socket = useRef();
+  // const socket = useRef();
 
   useEffect(() => {
     socket.current = io("https://pro-man-socket.onrender.com/");
