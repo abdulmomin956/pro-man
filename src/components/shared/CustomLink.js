@@ -9,7 +9,7 @@ function CustomLink({ children, to, ...props }) {
     return (
         <div >
             <Link
-                style={{ textDecoration: match ? "" : "none", color: match ? '#10B981' : '#D1D5DB', fontWeight: match ? 'bold' : '500', background: match ? 'rgba(255,255,255, 0.08)' : '', padding: "9px 16px" }}
+                style={{ textDecoration: match ? "" : "none", color: match ? '#10B981' : '#D1D5DB', fontWeight: match ? 'bold' : '500', background: match ? 'rgba(255,255,255, 0.08)' : '', }}
                 to={to}
                 {...props}
             >

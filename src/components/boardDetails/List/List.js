@@ -27,30 +27,30 @@ const List = ({ list, index }) => {
     // console.log(data)
     // localStorage.setItem('board-details', JSON.stringify(data))
     // console.log(list);
-
+    console.log(list)
     return (
-        <Draggable draggableId={list.id} index={index}>
+        <Draggable draggableId={list?.id} index={index}>
             {(provided) => (
                 <div {...provided.draggableProps} ref={provided.innerRef}>
                     <Paper className={classes.root} {...provided.dragHandleProps}>
                         <CssBaseline />
-                        <Tittle title={list.title} listId={list.id} />
-                        <Droppable droppableId={list.id}>
+                        <Tittle title={list?.title} listId={list?.id} />
+                        <Droppable droppableId={list?.id}>
                             {(provided) => (
                                 <div
                                     ref={provided.innerRef}
                                     {...provided.droppableProps}
                                     className={classes.cardContainer}
                                 >
-                                    {list.cards.map((card, index) => (
-                                        <Card key={card.id} card={card} index={index} />
+                                    {list?.cards?.map((card, index) => (
+                                        <Card key={card?.id} card={card} index={index} />
                                     ))}
                                     {provided.placeholder}
                                 </div>
                             )}
                         </Droppable>
 
-                        <InputContainer listId={list.id} type="card" />
+                        <InputContainer listId={list?.id} type="card" />
                     </Paper>
                 </div>
             )}

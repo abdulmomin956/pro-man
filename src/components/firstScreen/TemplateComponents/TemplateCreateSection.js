@@ -3,7 +3,7 @@ import newCreation from "../../../images/new creation.png";
 
 const TemplateCreateSection = () => {
   return (
-    <section className="flex flex-col-reverse md:flex-row justify-center items-center gap-5 md:gap-3 border-t-2 px-[35px] py-[25px] mx-5 my-6">
+    <section className="flex flex-col-reverse md:flex-row justify-center items-center gap-5 md:gap-3 border-t-2 py-[25px] mx-5 my-6">
       <div>
         <p className=" font-semibold text-2xl mb-3">
           Show the world how you use Pro Man

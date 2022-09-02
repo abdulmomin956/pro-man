@@ -1,29 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { AllTemplates } from "../../Home";
 import EachTemplate from "./EachTemplate";
 import TemplateCreateSection from "./TemplateCreateSection";
 
 const TemplateCategory = () => {
   const params = useParams();
   const category = params.category;
-  const { popularTemplates } = useContext(AllTemplates);
   const [templates, setTemplates] = useState([]);
 
   useEffect(() => {
-    const filterOutTemplates = popularTemplates.filter(
-      (item) => item.category === params.category
-    );
-    setTemplates(filterOutTemplates);
-  }, [popularTemplates, params]);
-
-  // console.log(popularTemplates);
-  // console.log(templates);
-  // console.log(params.category);
+    fetch(
+      `https://morning-coast-54182.herokuapp.com/template/category/${params.category}`
+    )
+      .then((res) => res.json())
+      .then((data) => setTemplates(data));
+  }, [params]);
 
   return (
-    <div className="mx-5 my-6">
+    <div className="m-8">
       <div>
         <div className="flex items-center flex-row gap-3 mb-6">
           <img

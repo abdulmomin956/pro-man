@@ -20,7 +20,7 @@ const Home = () => {
             {/* <HomeSponcers></HomeSponcers> */}
             <ChooseView></ChooseView>
             <HomeDetails></HomeDetails>
-            <Review />
+            {/* <Review /> */}
             <HomeFooter></HomeFooter>
         </div>
     );

@@ -2,31 +2,31 @@
   {
     "_id": "sa6",
     "title": "Business",
-    "img": "../Images/Business.jpg"
+    "img": "https://i.ibb.co/8cK9BRN/Business.jpg"
   },
   {
     "_id": "sa61",
     "title": "Design",
-    "img": "../Images/Design.jpg"
+    "img": "https://i.ibb.co/ZdkW6Rx/Design.jpg"
   },
   {
     "_id": "sa62",
     "title": "Education",
-    "img": "../Images/Education.jpg"
+    "img": "https://i.ibb.co/F3f7dJ0/Education.jpg"
   },
   {
     "_id": "sa63",
     "title": "Engineering",
-    "img": "../Images/Engineering.jpg"
+    "img": "https://i.ibb.co/K53CcfX/Engineering.jpg"
   },
   {
     "_id": "sa64",
     "title": "Marketing",
-    "img": "../Images/Marketing.jpg"
+    "img": "https://i.ibb.co/c1PRLq9/Marketing.jpg"
   },
   {
     "_id": "sa65",
     "title": "Remote",
-    "img": "../Images/Remote Work.jpg"
+    "img": "https://i.ibb.co/6t6sk0V/Remote-Work.jpg"
   }
 ]

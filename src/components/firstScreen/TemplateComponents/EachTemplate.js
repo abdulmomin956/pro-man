@@ -2,8 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const EachTemplate = ({ item }) => {
-  const { _id, category, bg, profilePic, title, creator, about, used, views } =
-    item;
+  const { _id, bg, profilePic, title, creator, about, used, views } = item;
   const navigate = useNavigate();
   // console.log(item);
 

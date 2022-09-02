@@ -10,24 +10,18 @@ const VerifyInvitedMember = () => {
    let location = useLocation();
    const [user, loading] = useAuthState(auth)
    const navigate = useNavigate()
+   const [verifyUser, setVerifyUser] = useState("");
 
    const { workspaceId, email, token } = useParams()
-
-
-   useEffect(() => {
-      fetch(`https://morning-coast-54182.herokuapp.com/users`)
-         .then((res) => res.json())
-         .then((data) => setAllUsers(data));
-   }, []);
 
    useEffect(() => {
       if (user) {
          const userData = { userEmail: user.email, token: token }
-         axios.post("http://localhost:5000/invite/verify", userData)
+         axios.post("https://morning-coast-54182.herokuapp.com/invite/verify", userData)
             .then(res => {
-               console.log(res.status);
                if (res.status === 200) {
-                  console.log("Success......")
+                  setVerifyUser(res.data);
+                  console.log(res.data)
                }
             }).catch(err => {
                return navigate('/login')
@@ -35,18 +29,37 @@ const VerifyInvitedMember = () => {
       }
    }, [user, token, navigate])
 
+   // Update user as a member  ***
+   useEffect(() => {
+      if (verifyUser) {
+
+         const userData = { email: verifyUser.email, workspaceId: verifyUser.workspaceId }
+         axios.put("https://morning-coast-54182.herokuapp.com/invite/update-user", userData)
+            .then(res => {
+               if (res.status === 200) {
+                  // console.log(res.data);
+                  return navigate('/')
+               }
+            }).catch(err => {
+               if (err.response.status === 409) {
+                  console.log("User already added.");
+                  return navigate('/')
+               }
+            })
+      }
+   }, [verifyUser])
+
    if (loading) {
       return <Loading></Loading>
    }
 
    if (!user) {
-      console.log("null.......")
       return <Navigate to="/login" state={{ from: location }} replace />
    }
 
    return (
       <div>
-         <h2 className='text-4xl text-center mt-16'> Verify the member.....</h2>
+         <h2 className='text-4xl text-center mt-16 italic  text-primary'> Please wait a moment.....</h2>
          <Loading></Loading>
       </div>
    );

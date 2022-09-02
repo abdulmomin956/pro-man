@@ -5,7 +5,7 @@ import {  NavLink } from "react-router-dom";
 
 const ProfileNav = () => {
     return (
-        <div>
+        <div className=' w-full  md:10/12 lg:w-screen'>
             <div className="profileNav">
           <ul>
            

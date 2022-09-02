@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import img from "../../images/uptodate.png";
 import HomeScreenAllBoards from "./HomeScreenAllBoards";
 
 const HomeScreen = () => {
-  const data = useSelector(state => state.workspace)
-  // const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname)
-  // console.log(currentWorkspace)
+  const [allBoardData, setAllBoardData] = useState([])
+  const workspace = useSelector(state => state.workspace)
+  const membersWorkspace = useSelector(state => state.membersWorkspace)
 
+  useEffect(() => {
+    if (workspace) {
+      setAllBoardData(workspace)
+    }
+  }, [workspace])
+  useEffect(() => {
+    if (membersWorkspace) {
+      setAllBoardData([...workspace, ...membersWorkspace])
+    }
+  }, [membersWorkspace, workspace])
 
   return (
-    <div className="md:flex justify-between my-10 shadow-sm">
-      <div className="md:w-12/6 lg:w-full flex justify-center">
-        <div className="card md:w-full bg-base-100 shadow">
+    <div className="md:flex justify-between my-10 shadow-sm lg:ml-10">
+      <div className="md:w-12/6 lg:w-[45vw] flex justify-center">
+        <div className="card md:w-full h-[32rem] bg-base-100 shadow">
           <figure>
             <img src={img} alt="Shoes" />
           </figure>
@@ -28,11 +38,11 @@ const HomeScreen = () => {
           </div>
         </div>
       </div>
-      <div className="ml-10 mt-10 md:mt-0 sm:w-6/12  md:w-[20rem] shadow rounded-lg w-">
+      <div className="mx-auto md:ml-10 mt-10 md:mt-0 sm:w-8/12   md:w-[20rem] shadow-lg rounded-lg bg-white">
         <div className="p-2 ">
           <p className=" mb-2 ">Recently viewed</p>
           {
-            data.map(item => (
+            allBoardData.map(item => (
               <div className="" key={item._id}>
                 <HomeScreenAllBoards props={item.shortname} workspaceID={item._id} />
               </div>
