@@ -140,7 +140,7 @@ const InviteMemberModal = ({ workspaceId }) => {
                     name="user_email"
                     placeholder={`Enter email address`}
                     required
-                    autocomplete="off"
+                    autoComplete="off"
                     className={`input input-sm input-bordered w-full  rounded-none ${selectMember && "hidden"
                       }`}
                   />

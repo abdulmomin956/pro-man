@@ -17,9 +17,15 @@ const Workspace = () => {
     const [open, setOpen] = useState(null);
     const [closeB, setCloseB] = useState(false);
     const [firstLetter, setFirstLetter] = useState('')
+    const [boardData, setBoardData] = useState([])
     const workspaces = useSelector(state => state.workspace)
+    const membersWorkspace = useSelector(state => state.membersWorkspace)
+
     const currentWorkspace = workspaces.filter(workspaces => workspaces.shortname === shortname)
+    const currentWorkspaceMember = membersWorkspace.filter(workspacesMembers => workspacesMembers.shortname === shortname)
+
     // console.log(currentWorkspace)
+    // console.log(boardData)
 
     const [close, setClose] = useState(false);
     // console.log(anchorEl);
@@ -41,26 +47,52 @@ const Workspace = () => {
 
     const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${currentWorkspace[0]?._id}`).then(res => res.json()))
 
+
+    const membersBoards = useQuery(['membersBoards', currentWorkspaceMember[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${currentWorkspaceMember[0]?._id}`).then(res => res.json()))
+
+
     useEffect(() => {
         if (currentWorkspace[0]?.title) {
             const x = currentWorkspace[0]?.title;
             const nameparts = x?.split(" ");
             const initials =
                 nameparts[0]?.charAt(0)?.toUpperCase()
+            // console.log(initials)
             setFirstLetter(initials)
         }
     }, [currentWorkspace])
 
     useEffect(() => {
-        if (boards?.data) {
+        if (currentWorkspaceMember[0]?.title) {
+            const x = currentWorkspaceMember[0]?.title;
+            const nameparts = x?.split(" ");
+            const initials =
+                nameparts[0]?.charAt(0)?.toUpperCase()
+            // console.log(initials)
+            setFirstLetter(initials)
+        }
+    }, [currentWorkspaceMember])
+
+    useEffect(() => {
+        if (boards?.data?.length > 0) {
             dispatch(setCurrentBoards(boards?.data))
+            setBoardData(boards?.data)
         }
     }, [boards?.data, dispatch])
 
-    if (boards.isLoading) {
+    useEffect(() => {
+        if (membersBoards?.data?.length > 0) {
+            dispatch(setCurrentBoards(membersBoards?.data))
+            setBoardData(membersBoards?.data)
+        }
+    }, [membersBoards?.data, dispatch])
+
+
+
+    if (boards?.isLoading || membersBoards?.isLoading) {
         return <Loading></Loading>;
     }
-    // console.log(boards);
+    // console.log(boardData);
 
     const handleDelete = async id => {
         console.log(id);
@@ -68,6 +100,7 @@ const Workspace = () => {
         console.log(res);
         if (res.status === 200) {
             boards.refetch();
+            membersBoards.refetch();
         }
     }
 
@@ -75,7 +108,7 @@ const Workspace = () => {
         {
             path: `/${shortname}`,
             name: "Boards",
-            icon: <FaBoxes className='ml-1'></FaBoxes>
+            icon: <FaBoxes className='ml-1 mr-2'></FaBoxes>
         },
 
         {
@@ -120,12 +153,12 @@ const Workspace = () => {
                         </span>
                     </div>
                     <h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
-                        }`}>{currentWorkspace[0]?.title}</h1>
+                        }`}>{currentWorkspace[0]?.title ? currentWorkspace[0]?.title : currentWorkspaceMember[0]?.title}</h1>
                 </div>
                 <ul className={`pt-6 mr-8 w-full mb-12`}>
                     {
                         menusItem.map((menu, index) => (
-                            <CustomLink to={menu.path} key={index} className={`flex my-2  workspace-sidebar-toggle-button py-1  rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-4 `}>
+                            <CustomLink to={menu.path} key={index} className={`flex my-2  workspace-sidebar-toggle-button py-1  rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-2 `}>
                                 <div  >{menu.icon}</div>
                                 <span className={`${!open && "hidden"} origin-left duration-200`}>{menu.name}</span>
                             </CustomLink>
@@ -136,7 +169,7 @@ const Workspace = () => {
                         <h4 className={`${!open && "hidden"} mx-auto text-white font-bold origin-left duration-200`}>Your Boards</h4>
                     </div>
                     {
-                        boards?.data?.map((item, index) => (
+                        boardData.map((item, index) => (
                             <CustomLink to={`/${shortname}/${item._id}`} key={index} className={`flex  justify-between  py-1 rounded-md cursor-pointer   text-gray-300 text-sm items-center gap-x-2 workspace-sidebar-toggle-button mb-2  w-full`}>
 
                                 <div className='flex justify-center items-center '>

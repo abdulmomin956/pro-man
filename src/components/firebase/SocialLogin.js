@@ -19,12 +19,14 @@ const SocialLogin = ({ children }) => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (user?.user) {
       const userInfo = {
-        displayName: user.user.displayName,
-        email: user.user.email,
+        displayName: user?.user?.displayName,
+        email: user?.user?.email,
         verified: true
       };
+
+      console.log(userInfo);
 
       const saveUser = async () => {
         const res = await axios.post(`https://morning-coast-54182.herokuapp.com/api/login`, userInfo)

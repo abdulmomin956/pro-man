@@ -5,14 +5,20 @@ import "./BordModal.css";
 
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setLoadBoard } from "../../global-state/actions/reduxActions";
 
 const BoardModal = () => {
   const [bTitle, setBtitle] = useState("")
   const [background, setBackground] = useState("https://i.ibb.co/xChCQ7F/bg1.jpg")
   const lastWorkspaceID = useSelector(state => state.lastWorkspaceID)
-  const allWorkspace = useSelector(state => state.workspace)
+  const workspace = useSelector(state => state.workspace)
+  const membersWorkspace = useSelector(state => state.membersWorkspace)
+  const dispatch = useDispatch();
   // console.log(lastWorkspaceID);
-  // console.log(allWorkspace);
+
+  const allWorkspace = [...workspace, ...membersWorkspace];
+  console.log(allWorkspace);
 
 
 
@@ -37,6 +43,9 @@ const BoardModal = () => {
     //console.log(newBoard)
     const res = await axios.post('https://morning-coast-54182.herokuapp.com/board', newBoard)
     console.log(res)
+    if (res.status === 200) {
+      dispatch(setLoadBoard(true))
+    }
 
     e.target.boardTitle.value = ""
 

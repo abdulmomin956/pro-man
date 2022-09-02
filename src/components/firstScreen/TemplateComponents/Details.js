@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import TempleteBoardModal from "../../shared/TempleteBoardModal";
 import TemplateCreateSection from "./TemplateCreateSection";
+import "../../Sidebar/Sidebar.css";
 
 const Details = ({ item }) => {
   const [openModal, setOpenModel] = useState(false);
@@ -11,8 +12,6 @@ const Details = ({ item }) => {
   };
 
   const {
-    _id,
-    category,
     bg,
     profilePic,
     title,
@@ -49,15 +48,16 @@ const Details = ({ item }) => {
           </div>
         </div>
         <div className=" flex flex-col md:flex-row justify-center items-center gap-4 my-4">
-          <button className="px-3 py-2 w-[80vw] md:w-auto bg-slate-200 text-sm rounded-sm">
+          <button className="px-3 py-2 w-[80vw] md:w-auto bg-slate-200 hover:bg-slate-300 text-sm rounded-sm">
             Share
           </button>
-          <button
+          <label
             onClick={handleUseTemplate}
-            className="px-3 py-2 w-[80vw] md:w-auto bg-cyan-500 text-sm rounded-sm text-white"
+            htmlFor="useTemplate"
+            className="modal-button px-3 py-2 w-[80vw] text-center md:w-auto bg-cyan-500 text-sm rounded-sm text-white hover:bg-cyan-600"
           >
             Use Template
-          </button>
+          </label>
         </div>
       </section>
       <section>
@@ -82,7 +82,24 @@ const Details = ({ item }) => {
       </section>
       <TemplateCreateSection></TemplateCreateSection>
       {openModal && (
-        <TempleteBoardModal tempBMTitle={title} bgUrl={bg}></TempleteBoardModal>
+        <div>
+          <input type="checkbox" id="useTemplate" className="modal-toggle" />
+
+          <div className="modal modal-bottom md:modal-middle bg-transparent">
+            <div className="modal-box border-2 border-black mx-4">
+              <label
+                onClick={handleUseTemplate}
+                className="btn btn-sm btn-circle absolute right-2 top-2"
+              >
+                ✕
+              </label>
+              <TempleteBoardModal
+                tempBMTitle={title}
+                bgUrl={bg}
+              ></TempleteBoardModal>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

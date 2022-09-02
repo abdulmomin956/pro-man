@@ -1,69 +1,72 @@
-import React from 'react';
-import Loading from '../shared/Loading';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import Loading from "../shared/Loading";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setLoadBoard } from "../../global-state/actions/reduxActions";
+import { useQuery } from "@tanstack/react-query";
 
 const LoardBoard = ({ props, workspaceID }) => {
-    const navigate = useNavigate();
-    // console.log(props);
-    const shortname = props;
-    const [loading, setLoading] = useState(false)
-    const [data, setData] = useState([])
-    // console.log(data)
-
-    // const data1 = useSelector(state => state.workspace)
-    // if (data1 && shortname) {
-    //     data1?.map((item1) => {
-    //         const itemId = item1._id === shortname
-    //         const itemName = item1.sortname
-    //         console.log(itemName)
-    //     })
-    // }
-    // console.log(shortname)
+  const navigate = useNavigate();
+  const shortname = props;
+  const loadBoard = useSelector(state => state.loadBoard)
+  const dispatch = useDispatch();
+  console.log(workspaceID)
 
 
 
-    useEffect(() => {
-        setLoading(true)
-        fetch(`https://morning-coast-54182.herokuapp.com/board/w/${workspaceID}`)
-            .then(res => res.json())
-            .then(result => {
-                setData(result)
-                setLoading(false)
-                // console.log(result);
-            })
-            .catch(err => {
-                // console.log(err)
-                setLoading(false)
-            })
-    }, [workspaceID])
+  const boards = useQuery(['boards', workspaceID], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${workspaceID}`).then(res => res.json()))
 
-    if (loading) {
-        <Loading></Loading>
+
+  useEffect(() => {
+    if (loadBoard) {
+      dispatch(setLoadBoard(false))
+      boards.refetch();
     }
+  }, [boards, dispatch, loadBoard])
 
-    // console.log(data);
-    // onClick={() => navigate(`/${shortname}/${item._id}`)}
-    return <>{
-        data?.map(item => <div key={item._id} onClick={() => navigate(`/${shortname}/${item._id}`)} className=" w-60 bg-base-100 shadow">
-            <label
-                style={{ background: `url(${item.boardBg})`, backgroundSize: 'cover' }}
-                className=" hover:cursor-pointer text-white hover:bg-gray-700 hover:font-bold flex w-60 h-32 justify-center items-center"
-            //   onClick={() => {
-            //     dispatch(setWorkspaceID(item._id))
-            //   }}
-            >
-                <p className="mr-2 text-lg shadow-xl">
-                    {item.title}
 
-                </p>
-                {/* <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare> */}
 
-            </label>
+  if (boards.isLoading) {
+    <Loading></Loading>;
+  }
+
+  // console.log(data);
+  // onClick={() => navigate(`/${shortname}/${item._id}`)}
+  return (
+    <>
+      {boards?.data?.map((item) => (
+        <div
+          key={item._id}
+          onClick={() => navigate(`/${shortname}/${item._id}`)}
+          className="bg-base-100 shadow rounded-lg"
+        >
+          <label
+            style={{
+              backgroundColor: "#00000026",
+              background: `url(${item.boardBg})`,
+
+              WebkitFilter: "grayscale(20%)",
+              backgroundSize: "cover",
+            }}
+            className="py-12 hover:cursor-pointer text-white hover:shadow-xl hover:font-bold flex justify-center items-center flex-row gap-2 rounded-lg"
+          //   onClick={() => {
+          //     dispatch(setWorkspaceID(item._id))
+          //   }}
+          >
+            <p className="text-lg text-center">
+              {item.title.length > 14
+                ? item.title.slice(0, 12) + "..."
+                : item.title}
+            </p>
+            {/* <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare> */}
+          </label>
         </div>
-        )}
+      ))}
     </>
+  );
 };
 
 export default LoardBoard;

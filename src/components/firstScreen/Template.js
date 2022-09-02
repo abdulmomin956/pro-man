@@ -64,17 +64,17 @@ const Template = () => {
   }, [popularTemplates]);
 
   const handleLoadMoreTemplates = (category) => {
-    console.log(category);
+
     navigate("/template/" + category);
   };
 
   return (
-    <div className="px-4 my-7">
+    <div className="m-8">
       {/* This Board pages showing when enter to the site */}
       <p className="text-xl font-semibold mt-3">Featured categories</p>
 
       {/* **Featured categories start here** */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4  my-8">
+      <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-6 gap-4 my-8">
         {categories.map((template) => (
           <div key={template._id} className="">
             <img

@@ -14,8 +14,6 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setSaveList } from '../../global-state/actions/reduxActions';
 
-
-
 const useStyle = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -33,6 +31,9 @@ const BoardDetails = () => {
     const currentBoards = useSelector(state => state.currentWorkspaceBoards)
     const board = currentBoards.filter(board => board._id === board1.id)
     const dispatch = useDispatch();
+    console.log(data)
+
+
 
     const background = {
         background: `url(${board[0]?.boardBg})center center/cover`
@@ -53,6 +54,7 @@ const BoardDetails = () => {
         }
         saveData();
     }
+    // console.log(allLists)
 
     useEffect(() => {
         if (allLists?.data) {
@@ -84,8 +86,6 @@ const BoardDetails = () => {
         setData(newState);
         dispatch(setSaveList(true))
     }
-
-
     const addMoreList = (title) => {
         const newListId = uuid()
         // console.log(data);
@@ -124,6 +124,7 @@ const BoardDetails = () => {
 
     const deleteList = (listId) => {
         var value = listId
+        // console.log(value)
         let dataValue = (data.listIds);
         let dataValue2 = (data.lists);
         const filteredUsers = Object.keys(dataValue2)
@@ -140,6 +141,32 @@ const BoardDetails = () => {
         setData(newState);
         dispatch(setSaveList(true))
         console.log(data)
+    };
+
+    const deleteCard = (listId) => {
+        // var value = listId
+        let dataValue = (data.listIds);
+
+        console.log(data.listIds)
+
+        var newArr = data?.listIds?.map(function (listId) {
+            const list = data.lists[listId];
+
+            console.log(list)
+            return list;
+        });
+        const midArr = (newArr[0].cards);
+        console.log(midArr)
+
+        var newArrayy = midArr?.map(function (card) {
+            // const listValue = newArrayy?.filter(item => item !== card.id)
+            const remainingArr = newArrayy?.filter(item => item !== card.id);
+            // setData(listValue);
+            console.log(card)
+            // console.log(remainingArr)
+            return card;
+        });
+
     };
 
     const onDragEnd = (result) => {
@@ -197,7 +224,7 @@ const BoardDetails = () => {
 
     return (
 
-        <storeApi.Provider value={{ addMoreCard, addMoreList, updateListTitle, deleteList }}>
+        <storeApi.Provider value={{ addMoreCard, addMoreList, updateListTitle, deleteList, deleteCard }}>
 
             <DragDropContext onDragEnd={onDragEnd}>
 
