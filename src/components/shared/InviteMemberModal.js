@@ -14,7 +14,7 @@ const InviteMemberModal = ({ workspaceId }) => {
   const [selectMember, setSelectMember] = useState("");
   const [btnDisable, setBtnDisable] = useState(false);
   const [user, loading] = useAuthState(auth);
-  const [userInfoToken, setUserInfoToken] = useState("")
+  const [userInfoToken, setUserInfoToken] = useState("");
 
   const form = useRef();
 
@@ -37,28 +37,25 @@ const InviteMemberModal = ({ workspaceId }) => {
     if (selectMember) {
       const userData = {
         email: selectMember,
-        workspaceId: workspaceId
-      }
-      axios.post("http://localhost:5000/invite/token", userData)
-        .then(res => {
-          if (res.status === 200) {
-            setUserInfoToken(res.data.token);
-            // console.log(res.data.token);
-          }
-        })
+        workspaceId: workspaceId,
+      };
+      axios.post("http://localhost:5000/invite/token", userData).then((res) => {
+        if (res.status === 200) {
+          setUserInfoToken(res.data.token);
+          // console.log(res.data.token);
+        }
+      });
     }
-
-  }, [selectMember, workspaceId])
+  }, [selectMember, workspaceId]);
 
   if (loading) {
     return <Loading></Loading>;
   }
 
-
   const handleModalSubmit = (event) => {
     event.preventDefault();
     let message = event.target.message.value;
-    const url = `http://localhost:3000/invite/${workspaceId}/${selectMember}/${userInfoToken}`
+    const url = `http://localhost:3000/invite/${workspaceId}/${selectMember}/${userInfoToken}`;
     // console.log(url);
     form.current.user_email.value = selectMember;
     form.current.message.value = url;
@@ -119,7 +116,13 @@ const InviteMemberModal = ({ workspaceId }) => {
 
               <form ref={form} onSubmit={handleModalSubmit}>
                 <div className="mt-4 mb-2 flex justify-between items-center">
-                  <input type="text" name="woner_email" defaultValue={user?.email} id="" className=" hidden" />
+                  <input
+                    type="text"
+                    name="woner_email"
+                    defaultValue={user?.email}
+                    id=""
+                    className=" hidden"
+                  />
                   <input
                     type="text"
                     name="woner_name"
@@ -141,8 +144,9 @@ const InviteMemberModal = ({ workspaceId }) => {
                     placeholder={`Enter email address`}
                     required
                     autocomplete="off"
-                    className={`input input-sm input-bordered w-full  rounded-none ${selectMember && "hidden"
-                      }`}
+                    className={`input input-sm input-bordered w-full  rounded-none ${
+                      selectMember && "hidden"
+                    }`}
                   />
                   <button
                     disabled={btnDisable}
@@ -161,8 +165,7 @@ const InviteMemberModal = ({ workspaceId }) => {
                   ></textarea>
                 </div>
                 <div className={`${selectMember && "hidden"}`}>
-                  {users
-                    ?.filter((user) => {
+                  {users?.filter((user) => {
                       if (matchField === "") {
                         return;
                       } else if (
