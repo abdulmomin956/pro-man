@@ -64,6 +64,7 @@ const Template = () => {
   }, [popularTemplates]);
 
   const handleLoadMoreTemplates = (category) => {
+
     navigate("/template/" + category);
   };
 
@@ -75,11 +76,7 @@ const Template = () => {
       {/* **Featured categories start here** */}
       <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-6 gap-4 my-8">
         {categories.map((template) => (
-          <div
-            onClick={() => handleLoadMoreTemplates(template.title)}
-            key={template._id}
-            className=""
-          >
+          <div key={template._id} className="">
             <img
               className="w-[105px] cursor-pointer mx-auto hover:shadow-xl rounded-md"
               src={template.img}

@@ -1,20 +1,109 @@
-.chatapp {
-  width: 100vw;
-  height: 100vh;
-  background: #fff;
-  color: #212121;
-  font-family: "Open Sans", sans-serif;
-  display: grid;
-  place-items: center;
+.Chat-wreaper, .chat-body-wreper{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    text-align: center;
 }
-
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
-
-.joinChatContainer {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+.Chat-wreaper h3{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
+/* }
+<<<<<<< HEAD
+.Chat-wreaper input, .chat-body-wreper input {
+    width:90%;
+    height: 40px;
+    margin: 7px auto;
+    border: 2px solid #43a047;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+  }
+  .Chat-wreaper button, .chat-body-wreper button {
+    width: 225px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    background: #43a047;
+    color: #fff;
+    cursor: pointer;
+    margin: 7px auto;
+    
+  }
+  
+  .Chat-wreaper button:hover {
+    background: #2e7d32;
+  }
+.chat-body-wreper {
+    width: 300px;
+    height: 420px;
+  }
+  
+.chat-body-wreper p {
+    margin: 0;
+  }
+  .chat-header {
+    height: 45px;
+    border-radius: 6px;
+    background: #263238;
+    position: relative;
+    cursor: pointer;
+  }
+  .chat-header p {
+    display: block;
+    padding: 0 1em 0 2em;
+    color: #fff;
+    font-weight: 700;
+    line-height: 45px;
+  }
+  
+  .chat-body {
+    height: calc(450px - (45px + 70px));
+    border: 1px solid #263238;
+    background: #fff;
+  
+    position: relative;
+  }
+.chat-body-wreper .chat-body .message-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  
+.chat-body-wreper .chat-body .message-container::-webkit-scrollbar {
+    display: none;
+  }
+.chat-body-wreper .chat-body .message {
+    height: auto;
+    padding: 10px;
+    display: flex;
+  }
+  
+ .chat-body .message .message-content {
+    width: auto;
+    height: auto;
+    min-height: 40px;
+    max-width: 120px;
+    background-color: #43a047;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .chat-footer {
+    display: flex;
+    align-items: center;
+======= */
 
 .joinChatContainer h3 {
   font-size: 2.5rem;
@@ -281,4 +370,5 @@
   .chatOnline {
     flex: 1px;
   }
+/* >>>>>>> 035d02bf8392d1723d0aca0929a89649ca9b1fba */
 }

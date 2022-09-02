@@ -6,6 +6,7 @@ import auth from '../firebase/firebase.init';
 import Loading from './Loading';
 
 const VerifyInvitedMember = () => {
+   const [allUsers, setAllUsers] = useState([]);
    let location = useLocation();
    const [user, loading] = useAuthState(auth)
    const navigate = useNavigate()
@@ -13,7 +14,6 @@ const VerifyInvitedMember = () => {
 
    const { workspaceId, email, token } = useParams()
 
-   // verify the User ***
    useEffect(() => {
       if (user) {
          const userData = { userEmail: user.email, token: token }
@@ -27,11 +27,12 @@ const VerifyInvitedMember = () => {
                return navigate('/login')
             })
       }
-   }, [user, token, navigate, location])
+   }, [user, token, navigate])
 
    // Update user as a member  ***
    useEffect(() => {
       if (verifyUser) {
+
          const userData = { email: verifyUser.email, workspaceId: verifyUser.workspaceId }
          axios.put("https://morning-coast-54182.herokuapp.com/invite/update-user", userData)
             .then(res => {
@@ -46,7 +47,7 @@ const VerifyInvitedMember = () => {
                }
             })
       }
-   }, [verifyUser, navigate])
+   }, [verifyUser])
 
    if (loading) {
       return <Loading></Loading>
