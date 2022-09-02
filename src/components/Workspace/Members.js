@@ -18,21 +18,21 @@ const Members = () => {
 
           <Link
             to={`/${shortname}/members/`}
-            className=" btn btn-block mb-3 font-bold rounded-none"
+            className=" btn btn-block mb-3 font-bold rounded-none btn-primary"
           >
             {" "}
             Workspace Members
           </Link>
           <Link
             to={`/${shortname}/members/guests`}
-            className=" btn btn-block mb-3 font-bold rounded-none"
+            className=" btn btn-block mb-3 font-bold rounded-none btn-primary"
           >
             {" "}
             Guests
           </Link>
           <Link
             to={`/${shortname}/members/pending`}
-            className=" btn btn-block mb-3 font-bold rounded-none"
+            className=" btn btn-block mb-3 font-bold rounded-none btn-primary"
           >
             {" "}
             Pending

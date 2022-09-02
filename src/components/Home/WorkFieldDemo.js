@@ -11,7 +11,7 @@ const WorkFieldDemo = () => {
                     It’s more than work. It’s a way of working together.
                 </h1>
                 <p className=''>Start with a Proman board, lists, and cards. Customize and expand with more features as your teamwork grows. Manage projects, organize tasks, and build team spirit—all in one place.</p>
-                <button to="" className='py-2 px-5 mt-6   mx-auto  bg-blue-600 text-white'>Start Doing</button>
+                <button to="" className='py-2 px-5 mt-6 mx-auto  bg-primary text-white'>  <a href="/login">Start Doing</a></button>
 
             </div>
         </div>

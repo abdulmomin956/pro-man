@@ -1,8 +1,4 @@
-/* .profilebody_about {
-    width: 40%;
-    margin: auto;
-    box-shadow: 0 !important;
-} */
+
 .top-use-info-banner {
     position: relative;
 }
@@ -17,12 +13,12 @@
 
 .profileNav ul {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    transition: all ease-in-out 0.5s;
 }
 
 .profileNav ul li {
-
-    display: inline;
-
     background: #C1C7D0;
     padding: 10px 0px;
     margin: 0px 10px;
@@ -46,12 +42,12 @@
 
     background: #fff;
     border-bottom: 0px;
-    padding: 10px 30px;
+    padding: 12px 30px;
 
 }
 
 .profileNav ul li a {
-    padding: 10px 30px;
+    padding: 12px 9px;
 
 }
 
@@ -63,6 +59,14 @@
     width: 60%;
     margin: auto;
 }
+ @media only screen and (max-width:576px) {
+    .profilebody {
+        width: 90%;
+        margin: auto; 
+        padding: 40px;
+    }
+    
+  }
 
 .profilebody-heading {}
 

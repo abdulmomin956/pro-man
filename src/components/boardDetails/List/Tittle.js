@@ -42,7 +42,7 @@ const Tittle = ({ title, listId }) => {
     const [open, setOpen] = useState(false)
     const classes = useStyle()
     const [newTitle, setNewTitle] = useState(title)
-    const { updateListTitle } = useContext(storeApi);
+    const { updateListTitle, deleteList } = useContext(storeApi);
     // console.log(newTitle)
 
     const handleOnChange = (e) => {
@@ -72,6 +72,10 @@ const Tittle = ({ title, listId }) => {
             setOpen(!open)
         }
 
+    }
+
+    const handleDelete = () => {
+        deleteList(listId)
     }
     return (
         <div>
@@ -124,7 +128,7 @@ const Tittle = ({ title, listId }) => {
                                     <MenuItem >Create a custom rule</MenuItem>
                                     <Divider />
                                     <MenuItem >Move all cards in this list..</MenuItem>
-                                    <MenuItem >Achive this list..</MenuItem>
+                                    <MenuItem onClick={handleDelete} >Achive this list..</MenuItem>
                                 </div>
                             </Menu>
                         </div>

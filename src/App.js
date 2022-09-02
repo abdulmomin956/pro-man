@@ -33,10 +33,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import EachTemplateDetails from "./components/firstScreen/TemplateComponents/EachTemplateDetails";
 import VerifyInvitedMember from "./components/shared/VerifyInvitedMember";
+import Chat from "./components/Message/Chat";
 import Admin from "./components/admin/Admin";
 import Dashboard from "./components/admin/Dashboard";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import UserHelp from "./components/UserHelp/UserHelp";
 
 
 function getWithExpiry(key) {
@@ -60,7 +62,7 @@ function getWithExpiry(key) {
 function App() {
   useEffect(() => {
     AOS.init();
-  }, [])
+  }, []);
   const user = useSelector((state) => state.user);
   const [loading, setLoading] = useState(null);
   const dispatch = useDispatch();
@@ -88,7 +90,6 @@ function App() {
         );
         // console.log(res);
         if (res.status === 200) {
-
           // console.log(res.data);
           dispatch(setUser(res.data));
           setLoading(false);
@@ -110,10 +111,13 @@ function App() {
     <div className="#F5F5F5">
       {/* <ToastContainer /> */}
 
+
       <Routes>
         {!user?.email && <Route path="/" element={<Home1 />}></Route>}
         <Route path="/invite/:workspaceId/:email/:token" element={<VerifyInvitedMember />}></Route>
+        {user?.email && <Route path="/help" element={<UserHelp></UserHelp>}></Route>}
         {user?.email && (
+
           <Route
             path="/"
             element={
@@ -128,46 +132,57 @@ function App() {
               <Route path="profileCard" element={<ProfileCard />} />
               <Route path="profileSettings" element={<ProfileSetting />} />
             </Route>
-
-            {user?.role !== "Admin" && <>
-              <Route path="/" element={<Home />}>
-                <Route path="/my-board" element={<Board />}></Route>
-                <Route path="/template" element={<Template />}>
+            <Route path="chat" element={<Chat></Chat>}></Route>
+            {user?.role !== "Admin" && (
+              <>
+                <Route path="/" element={<Home />}>
+                  <Route path="/my-board" element={<Board />}></Route>
+                  <Route path="/template" element={<Template />}></Route>
                   <Route
                     path="/template/:category"
-                    element={<TemplateCategory></TemplateCategory>} />
+                    element={<TemplateCategory></TemplateCategory>}
+                  />
+                  <Route
+                    path="/category/:id"
+                    element={<EachTemplateDetails></EachTemplateDetails>}
+                  ></Route>
+                  <Route path="/" element={<HomeScreen />}></Route>
                 </Route>
-                <Route
-                  path="/category/:id"
-                  element={<EachTemplateDetails></EachTemplateDetails>}
-                ></Route>
-                <Route path="/" element={<HomeScreen />}></Route>
-              </Route>
-              <Route path="/:shortname" element={<Workspace />}>
-                <Route path="/:shortname/" element={<Boards />}></Route>
-                <Route path="/:shortname/members" element={<Members />}>
-                  <Route path="/:shortname/members" element={<WorkspaceMembers />} />
-                  <Route path="/:shortname/members/guests" element={<Guests />} />
-                  <Route path="/:shortname/members/pending" element={<Pending />} />
+                <Route path="/:shortname" element={<Workspace />}>
+                  <Route path="/:shortname/" element={<Boards />}></Route>
+                  <Route path="/:shortname/members" element={<Members />}>
+                    <Route
+                      path="/:shortname/members"
+                      element={<WorkspaceMembers />}
+                    />
+                    <Route
+                      path="/:shortname/members/guests"
+                      element={<Guests />}
+                    />
+                    <Route
+                      path="/:shortname/members/pending"
+                      element={<Pending />}
+                    />
+                  </Route>
+                  <Route path="/:shortname/account" element={<Account />} />
+                  <Route path="/:shortname/:id" element={<BoardDetails />} />
                 </Route>
-                <Route path="/:shortname/account" element={<Account />} />
-                <Route path="/:shortname/:id" element={<BoardDetails />} />
-              </Route>
-
-            </>
-            }
+              </>
+            )}
             {/* Just for admin  */}
-            {
-              user?.role === "Admin" && <Route path="/" element={<Admin />} >
+            {user?.role === "Admin" && (
+              <Route path="/" element={<Admin />}>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/makeadmin" element={<MakeAdmin />} />
               </Route>
-            }
+            )}
           </Route>
         )}
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
+
+
       </Routes>
     </div>
   );

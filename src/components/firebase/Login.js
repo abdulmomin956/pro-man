@@ -2,7 +2,7 @@ import React from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from './firebase.init';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
 import Loading from '../shared/Loading';
 import axios from 'axios';
@@ -68,16 +68,17 @@ const Login = () => {
     };
 
     return (
-        <div className='mt-12'>
-            <h1 className='text-3xl font-bold text-center '>Please Login First!</h1>
+        <div style={{ backgroundImage: `url("https://i.ibb.co/1mrTrDM/pexels-adhitya-andanu-1539116.jpg")`, backgroundRepeat: 'no-repeat' }} className='h-screen'>
+
             <div className="hero-content mx-auto flex-col lg:flex-row-reverse ">
-                <div className="card w-full  max-w-sm shadow-2xl bg-base-100">
+                <div className="card w-full lg:mt-12 mt-24 max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
+                        <h1 className='text-3xl font-bold text-center text-secondary'>Please Login First!</h1>
                         <form onSubmit={handleSubmit(onSubmit)}>
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text text-secondary">Email</span>
                                 </label>
                                 <input {...register("email", {
                                     required: {
@@ -97,7 +98,7 @@ const Login = () => {
 
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text text-secondary">Password</span>
                                 </label>
                                 <input
                                     type="password"
@@ -121,20 +122,20 @@ const Login = () => {
                             </div>
                             {signInError}
 
-                            <p>Forgot password? <button type='button' onClick={async () => {
+                            <p className='text-secondary'>Forgot password? <button type='button' onClick={async () => {
                                 const values = getValues('email');
                                 await sendPasswordResetEmail(values);
                                 alert('Sent email');
-                            }} className=" link-hover">Reset </button></p>
+                            }} className=" link-hover text-secondary">Reset </button></p>
 
                             <div className="form-control ">
-                                <button style={{ backgroundColor: 'black' }} className="btn text-white w-full mx-auto">Login</button>
+                                <button className="btn btn-secondary text-white w-full mx-auto">Login</button>
                             </div>
                         </form>
 
                         <SocialLogin><span className='px-2'>Continue With</span></SocialLogin>
-                        <label className="label">
-                            <small>New to Pro-Man?<a href="/register" className="label-text-alt link px-2 font-bold link-hover">Please Register</a></small>
+                        <label className="label text-secondary">
+                            <small >New to Pro-Man?<Link to="/register" className="label-text-alt link px-2 font-bold link-hover text-secondary">Please Register</Link></small>
                         </label>
                     </div>
 

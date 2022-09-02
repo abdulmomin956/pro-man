@@ -19,12 +19,14 @@ const SocialLogin = ({ children }) => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (user?.user) {
       const userInfo = {
-        displayName: user.user.displayName,
-        email: user.user.email,
+        displayName: user?.user?.displayName,
+        email: user?.user?.email,
         verified: true
       };
+
+      console.log(userInfo);
 
       const saveUser = async () => {
         const res = await axios.post(`https://morning-coast-54182.herokuapp.com/api/login`, userInfo)
@@ -73,9 +75,8 @@ const SocialLogin = ({ children }) => {
   return (
     <>
       <button
-        style={{ backgroundColor: "black" }}
         onClick={handleSignUp}
-        className="btn text-white btn-outline "
+        className="btn btn-secondary text-white w-full"
       >
         <img style={{ width: "25px" }} src="https://i.ibb.co/xXCkjSm/Google-G-Logo-svg.png" alt="" />
         {children} Google
