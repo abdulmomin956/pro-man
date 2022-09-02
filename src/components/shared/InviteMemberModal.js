@@ -37,15 +37,15 @@ const InviteMemberModal = ({ workspaceId }) => {
     if (selectMember) {
       const userData = {
         email: selectMember,
-        workspaceId: workspaceId,
-      };
-      axios.post("http://localhost:5000/invite/token", userData).then((res) => {
-        if (res.status === 200) {
-          setUserInfoToken(res.data.token);
-          // console.log(res.data.token);
-        }
-      });
-
+        workspaceId: workspaceId
+      }
+      axios.post("https://morning-coast-54182.herokuapp.com/invite/token", userData)
+        .then(res => {
+          if (res.status === 200) {
+            setUserInfoToken(res.data.token);
+            // console.log(res.data.token);
+          }
+        })
     }
   }, [selectMember, workspaceId]);
 
@@ -144,11 +144,9 @@ const InviteMemberModal = ({ workspaceId }) => {
                     name="user_email"
                     placeholder={`Enter email address`}
                     required
-                    autocomplete="off"
-                    className={`input input-sm input-bordered w-full  rounded-none ${
-                      selectMember && "hidden"
-                    }`}
-
+                    autoComplete="off"
+                    className={`input input-sm input-bordered w-full  rounded-none ${selectMember && "hidden"
+                      }`}
                   />
                   <button
                     disabled={btnDisable}
