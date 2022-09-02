@@ -13,7 +13,6 @@ const LoardBoard = ({ props, workspaceID }) => {
   const shortname = props;
   const loadBoard = useSelector(state => state.loadBoard)
   const dispatch = useDispatch();
-  console.log(workspaceID)
 
 
 

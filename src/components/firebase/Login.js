@@ -2,7 +2,7 @@ import React from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from './firebase.init';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
 import Loading from '../shared/Loading';
 import axios from 'axios';
@@ -129,13 +129,13 @@ const Login = () => {
                             }} className=" link-hover text-secondary">Reset </button></p>
 
                             <div className="form-control ">
-                                <button style={{ backgroundColor: 'black' }} className="btn text-white w-full mx-auto">Login</button>
+                                <button className="btn btn-secondary text-white w-full mx-auto">Login</button>
                             </div>
                         </form>
 
                         <SocialLogin><span className='px-2'>Continue With</span></SocialLogin>
                         <label className="label text-secondary">
-                            <small >New to Pro-Man?<a href="/register" className="label-text-alt link px-2 font-bold link-hover text-secondary">Please Register</a></small>
+                            <small >New to Pro-Man?<Link to="/register" className="label-text-alt link px-2 font-bold link-hover text-secondary">Please Register</Link></small>
                         </label>
                     </div>
 

@@ -45,14 +45,14 @@ const TempleteBoard = ({ openTemp, setOpenTemp }) => {
     <div>
       <div
         tabIndex="0"
-        className="dropdown-content menu p-4 bg-base-100 rounded w-80 pt-4 shadow-lg"
+        className="dropdown-content menu bg-base-100 rounded w-80 pt-4 shadow-lg"
       >
         {!openTempBM && (
           <label
             className="mb-2 h-full w-full  "
             style={{ borderRadius: "0px" }}
           >
-            <div>
+            <div className="">
               <label
                 onClick={() => setOpenTempBm(!openTempBM)}
                 tabIndex="0"
@@ -71,7 +71,7 @@ const TempleteBoard = ({ openTemp, setOpenTemp }) => {
             </div>
             <hr />
 
-            <div className="flex justify-between">
+            <div className="flex justify-between px-3">
               <p className="text-sm">Top templates</p>
               <button>
                 <svg
@@ -94,7 +94,7 @@ const TempleteBoard = ({ openTemp, setOpenTemp }) => {
                 bTempletes.map((templete) => (
                   <div
                     onClick={() => handleTemp(templete.name, templete.imgURL)}
-                    className="flex my-2  items-center cursor-pointer hover:bg-gray-200"
+                    className="flex my-2 px-3 items-center cursor-pointer myButton"
                   >
                     <img
                       style={{ width: "40px", height: "40px" }}
