@@ -18,7 +18,7 @@ const BoardModal = () => {
   // console.log(lastWorkspaceID);
 
   const allWorkspace = [...workspace, ...membersWorkspace];
-  console.log(allWorkspace);
+  // console.log(allWorkspace);
 
 
 
@@ -40,9 +40,9 @@ const BoardModal = () => {
       visibility: visibility,
     };
 
-    //console.log(newBoard)
+
     const res = await axios.post('https://morning-coast-54182.herokuapp.com/board', newBoard)
-    console.log(res)
+    // console.log(res)
     if (res.status === 200) {
       dispatch(setLoadBoard(true))
     }

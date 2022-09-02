@@ -33,11 +33,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import EachTemplateDetails from "./components/firstScreen/TemplateComponents/EachTemplateDetails";
 import VerifyInvitedMember from "./components/shared/VerifyInvitedMember";
-
 import Chat from "./components/Message/Chat";
-
-import Chatbody from "./components/Message/Chatbody";
-
 import Admin from "./components/admin/Admin";
 import Dashboard from "./components/admin/Dashboard";
 import AOS from 'aos';
@@ -114,7 +110,7 @@ function App() {
   return (
     <div className="#F5F5F5">
       {/* <ToastContainer /> */}
-      
+
 
       <Routes>
         {!user?.email && <Route path="/" element={<Home1 />}></Route>}
@@ -186,7 +182,7 @@ function App() {
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
 
-       
+
       </Routes>
     </div>
   );
