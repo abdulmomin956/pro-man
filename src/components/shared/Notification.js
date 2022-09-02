@@ -3,11 +3,11 @@ import "./Notification.css";
 
 const Notification = () => {
   return (
-    <div>
+    <div className="">
       <input type="checkbox" id="notification" className="modal-toggle" />
 
       <label htmlFor="notification" className="modal">
-        <label className="modal-box right-2 absolute top-16">
+        <label style={{width: '420px'}} className="modal-box right-2 absolute top-16">
           <div className="flex items-center justify-center">
             {/* modal header............. */}
             <label
