@@ -27,7 +27,7 @@ import logo from "../../images/logo.png";
 
 const Navbar = () => {
   const role = useSelector((state) => state.user?.role);
-  const [user] = useAuthState(auth);
+  const user = useSelector(state => state.user)
   const [initials, setInitial] = useState("");
   const [open, setOpen] = useState(false);
   const [openTemp, setOpenTemp] = useState(false);
@@ -36,6 +36,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
+  // console.log(user);
 
   const { data, refetch } = useQuery(["repoData", email], () =>
     fetch(`https://morning-coast-54182.herokuapp.com/workspace/${email}`).then(
@@ -68,13 +70,12 @@ const Navbar = () => {
     }
   }, [membersData, dispatch]);
 
+
   useEffect(() => {
     if (user) {
       const x = user?.displayName;
-      const nameparts = x?.split(" ");
       setInitial(
-        nameparts[0]?.charAt(0)?.toUpperCase() +
-        nameparts[1]?.charAt(0)?.toUpperCase()
+        x?.charAt(0)?.toUpperCase()
       );
     }
   }, [user, user?.displayName]);
@@ -379,15 +380,16 @@ const Navbar = () => {
               <label
                 tabIndex="0"
                 className=" "
-              // className="btn btn-ghost btn-circle bg-black avatar"
               >
                 <div
-                  id="navProfile"
-                  className="flex justify-center items-center"
+                  // id="navProfile"
+
+                  className="flex justify-center items-center h-8 w-8"
                 >
-                  <span title={user?.displayName} className=" font-bold block ">
-                    {initials}
-                  </span>
+                  {user?.photoURL ? <img style={{ borderRadius: "50%", objectFit: 'cover' }} src={user?.photoURL} alt="" />
+                    : <span style={{ borderRadius: "50%", backgroundColor: user.profileBg }} title={user?.displayName} className=" font-bold w-full h-full flex justify-center items-center text-white">
+                      {initials}
+                    </span>}
                 </div>
               </label>
               <ul
