@@ -6,6 +6,7 @@ import { FaLink } from "react-icons/fa";
 import { MdCancelPresentation } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const WorkspaceMembers = () => {
   const [user, loading] = useAuthState(auth);
@@ -13,7 +14,13 @@ const WorkspaceMembers = () => {
   const { shortname } = useParams()
   const membersWorkspace = useSelector(state => state.membersWorkspace)
   const currentMembersWorkspace = membersWorkspace.filter(workspacesMembers => workspacesMembers.shortname === shortname)
-  // console.log(currentMembersWorkspace[0]);
+  // console.log(currentMembersWorkspace[0]?.members?.length);
+
+
+
+  useEffect(() => {
+    setWmember(currentMembersWorkspace[0]?.members?.length)
+  }, [currentMembersWorkspace])
 
   if (loading) {
     return <Loading></Loading>;
