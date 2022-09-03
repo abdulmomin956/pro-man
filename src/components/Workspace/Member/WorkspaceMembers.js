@@ -12,15 +12,27 @@ const WorkspaceMembers = () => {
   const [user, loading] = useAuthState(auth);
   const [wMember, setWmember] = useState(0);
   const { shortname } = useParams()
+  const [allBoardData, setAllBoardData] = useState([])
+  const workspace = useSelector(state => state.workspace)
   const membersWorkspace = useSelector(state => state.membersWorkspace)
-  const currentMembersWorkspace = membersWorkspace.filter(workspacesMembers => workspacesMembers.shortname === shortname)
-  // console.log(currentMembersWorkspace[0]?.members?.length);
-
 
 
   useEffect(() => {
-    setWmember(currentMembersWorkspace[0]?.members?.length)
-  }, [currentMembersWorkspace])
+    if (workspace) {
+      setAllBoardData(workspace)
+    }
+  }, [workspace])
+  useEffect(() => {
+    if (membersWorkspace) {
+      setAllBoardData([...workspace, ...membersWorkspace])
+    }
+  }, [membersWorkspace, workspace]);
+
+  const currentWorkspace = allBoardData.filter(workspaces => workspaces.shortname === shortname)
+
+  useEffect(() => {
+    setWmember(currentWorkspace[0]?.members?.length)
+  }, [currentWorkspace])
 
   if (loading) {
     return <Loading></Loading>;
@@ -30,8 +42,7 @@ const WorkspaceMembers = () => {
 
   const x = name;
   const nameparts = x?.split(" ");
-  const initials =
-    nameparts[0].charAt(0).toUpperCase() + nameparts[1].charAt(0).toUpperCase();
+  const initials = nameparts[0].charAt(0).toUpperCase() + nameparts[1].charAt(0).toUpperCase();
 
   return (
     <div>
@@ -77,7 +88,7 @@ const WorkspaceMembers = () => {
               </button>
             </div> */}
             <div className="ml-3">
-              <p className="font-bold mb-0">{(currentMembersWorkspace[0]?.email) ? (currentMembersWorkspace[0]?.email) : user.email}</p>
+              <p className="font-bold mb-0">{(currentWorkspace[0]?.email) ? (currentWorkspace[0]?.email) : user.email}</p>
             </div>
           </div>
           <div className="flex items-center">
@@ -92,8 +103,8 @@ const WorkspaceMembers = () => {
         </div>
         <hr />
         {
-          currentMembersWorkspace[0]?.members.map(e => <>
-            <div className="flex justify-between my-2">
+          currentWorkspace[0]?.members.map((e, index) => <section key={index}>
+            <div key={index} className="flex justify-between my-2">
               <div className="">
                 <div className="ml-3">
                   <p className="font-bold mb-0">{e}</p>
@@ -110,7 +121,7 @@ const WorkspaceMembers = () => {
               </div>
             </div>
             <hr />
-          </>
+          </section>
           )
         }
       </div>
