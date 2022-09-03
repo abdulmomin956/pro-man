@@ -47,7 +47,7 @@ const VerifyInvitedMember = () => {
                }
             })
       }
-   }, [verifyUser])
+   }, [verifyUser, navigate])
 
    if (loading) {
       return <Loading></Loading>
