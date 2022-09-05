@@ -4,38 +4,54 @@ import './conversation.css'
 import noAvatar from '../../../images/noAvatar.png'
 
 const Conversation = ({ conversation, currentUser }) => {
-    const [users, setUsers] = useState(null);
+    const [users, setUsers] = useState({});
 
     useEffect(() => {
-        const friendId = conversation.members.find((m) => m !== currentUser._id);
-        // console.log(friendId);
+        // console.log(conversation);
 
-        const getUser = async () => {
-            try {
-                const res = await axios.get(`https://morning-coast-54182.herokuapp.com/users/${friendId}`);
-                // console.log(res.data);
-                setUsers(res.data);
-            } catch (err) {
-                console.log(err);
+        if (conversation.type === "personal") {
+            const friendId = conversation.nameId.find((m) => m !== currentUser._id);
+            // console.log(friendId);
+            const getUser = async () => {
+                try {
+                    const res = await axios.get(`https://morning-coast-54182.herokuapp.com/users/${friendId}`);
+                    // console.log(res.data);
+                    setUsers(res.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            getUser();
+        } else {
+            const workspaceId = conversation.nameId.find((m) => m !== currentUser._id);
+            // console.log(workspaceId);
+            const getWorkspace = async () => {
+                try {
+                    const res = await axios.get(`https://morning-coast-54182.herokuapp.com/sworkspace/api/${workspaceId}`);
+                    // console.log(res.data);
+                    setUsers(res.data)
+                } catch (err) {
+                    console.log(err);
+                }
             }
-        };
-        getUser();
+            getWorkspace();
+        }
     }, [currentUser, conversation]);
+
+    // console.log(users);
 
     return (
         <div className="conversation">
-            <img
+            {users?.photoURL ? <img
                 className="conversationImg"
-                src={
-                    users?.profilePicture
-                        ? users.profilePicture
-                        : noAvatar
-                }
-
-                alt=""
-            />
-            <span className="conversationName">
-                {users?.displayName}
+                src={users?.photoURL}
+                alt={users?.displayName}
+            /> :
+                <div style={{ borderRadius: "50%", backgroundColor: users.profileBg }} className={`conversationImg bg-[${users?.profileBg}] flex justify-center items-center text-white`}>
+                    {users?.displayName?.charAt(0)?.toUpperCase() || users?.title?.charAt(0)?.toUpperCase()}
+                </div>}
+            <span className="conversationName ">
+                {users?.displayName || users?.title}
             </span>
         </div>
     );

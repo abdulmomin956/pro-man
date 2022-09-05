@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import "./Workspace.css";
 import { FaTimes } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../firebase/firebase.init";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLoadWorkspace } from "../../global-state/actions/reduxActions";
+import { useSelector } from "react-redux";
 
 const WorkspaceModal = () => {
   const [workspaceName, setWorkspaceName] = useState("");
-  const [user] = useAuthState(auth);
+  const user = useSelector(state => state.user)
   const email = user?.email;
   const dispatch = useDispatch();
 
@@ -23,16 +22,19 @@ const WorkspaceModal = () => {
 
   const onSubmit = async (data) => {
     const { description, workspaceType } = data;
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
     const newWorkspace = {
       title: workspaceName,
       type: workspaceType,
       email: email,
       description: description,
+      userId: user?._id,
+      profileBg: "#" + randomColor,
     };
 
     const res = await axios.post('https://morning-coast-54182.herokuapp.com/workspace', newWorkspace)
-    // console.log(res)
+    console.log(res)
     if (res.status === 200) {
       dispatch(setLoadWorkspace(true))
       // navigate(workspaces[workspaces.length - 1]?.shortname)

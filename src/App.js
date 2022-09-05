@@ -27,7 +27,7 @@ import MakeAdmin from "./components/admin/MakeAdmin";
 import TemplateCategory from "./components/firstScreen/TemplateComponents/TemplateCategory";
 import Home1 from "./components/Home/Home";
 import { useDispatch } from "react-redux";
-import { setUser } from "./global-state/actions/reduxActions";
+import { setChats, setUser } from "./global-state/actions/reduxActions";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -39,6 +39,7 @@ import Dashboard from "./components/admin/Dashboard";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import UserHelp from "./components/UserHelp/UserHelp";
+import Message from "./components/Message/message/Message";
 
 
 function getWithExpiry(key) {
@@ -67,6 +68,7 @@ function App() {
   const [loading, setLoading] = useState(null);
   const dispatch = useDispatch();
   const token = getWithExpiry("token");
+  const [conversations, setConversations] = useState([]);
 
   if (!token) {
     dispatch(setUser(null));
@@ -103,6 +105,21 @@ function App() {
   }, [dispatch, token]);
   // console.log(user);
 
+  useEffect(() => {
+    const getConversations = async () => {
+      try {
+        const res = await axios.get("https://morning-coast-54182.herokuapp.com/api/conversations/" + user._id);
+        setConversations(res.data);
+        dispatch(setChats(res.data))
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getConversations();
+  }, [dispatch, user?._id]);
+
+  // console.log(conversations);
+
   if (loading) {
     return <Loading />;
   }
@@ -131,7 +148,10 @@ function App() {
             <Route path="profileCard" element={<ProfileCard />} />
             <Route path="profileSettings" element={<ProfileSetting />} />
           </Route>
-          <Route path="chat" element={<Chat></Chat>}></Route>
+          <Route path="chat" element={<Chat conversations={conversations} />}>
+            <Route path={`/chat/`} element={<Message />} />
+            <Route path={`/chat/:currentChatId`} element={<Message />} />
+          </Route>
           {user?.role !== "Admin" && (
             <>
               <Route path="/" element={<Home />}>
