@@ -43,11 +43,11 @@ const VerifyInvitedMember = () => {
             }).catch(err => {
                if (err.response.status === 409) {
                   console.log("User already added.");
-                  return navigate('/')
+                  return navigate('/my-board')
                }
             })
       }
-   }, [verifyUser])
+   }, [navigate, verifyUser])
 
    if (loading) {
       return <Loading></Loading>
