@@ -34,6 +34,8 @@ const Account = () => {
   }, [membersWorkspace, workspaces])
   const workspace = allBoardData.filter(workspaces => workspaces.shortname === shortname)
 
+  // console.log(workspace[0]?.title);
+
   useEffect(() => {
     if (workspace[0]?.title === matchField) {
       setValidName(true);
@@ -157,7 +159,7 @@ const Account = () => {
                 </div>
                 <hr></hr>
                 <p className="font-bold mt-4">
-                  Are you sure you want to delete Demo Workspace?
+                  Are you sure you want to delete (<span className="text-primary">{workspace[0]?.title}</span>)?
                 </p>
                 <div className="text-gray-500 text-sm mt-3">
                   <p className="font-bold">Things to know</p>
