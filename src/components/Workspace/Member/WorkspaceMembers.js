@@ -12,10 +12,17 @@ const WorkspaceMembers = () => {
   const [user, loading] = useAuthState(auth);
   const [wMember, setWmember] = useState(0);
   const { shortname } = useParams()
+  const [allUsers, setAllUsers] = useState([])
   const [allBoardData, setAllBoardData] = useState([])
   const workspace = useSelector(state => state.workspace)
   const membersWorkspace = useSelector(state => state.membersWorkspace)
 
+
+  useEffect(() => {
+    fetch(`https://morning-coast-54182.herokuapp.com/users/all`)
+      .then((res) => res.json())
+      .then((data) => setAllUsers(data));
+  }, []);
 
   useEffect(() => {
     if (workspace) {
@@ -34,11 +41,17 @@ const WorkspaceMembers = () => {
     setWmember(currentWorkspace[0]?.members?.length)
   }, [currentWorkspace])
 
+  useEffect(() => {
+
+  }, [])
+
+
+
   if (loading) {
     return <Loading></Loading>;
   }
   const name = user.displayName;
-  // console.log(name);
+  console.log(allUsers);
 
   const x = name;
   const nameparts = x?.split(" ");
