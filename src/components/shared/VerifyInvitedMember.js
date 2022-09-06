@@ -40,7 +40,7 @@ const VerifyInvitedMember = () => {
          const userData = { userId: users._id, workspaceId: verifyUser.workspaceId }
          console.log(userData);
 
-         axios.put("http://localhost:5000/invite/update-user", userData)
+         axios.put("https://morning-coast-54182.herokuapp.com/invite/update-user", userData)
             .then(res => {
                if (res.status === 200) {
                   console.log(res.data);

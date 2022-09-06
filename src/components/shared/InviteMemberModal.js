@@ -56,7 +56,7 @@ const InviteMemberModal = ({ workspaceId }) => {
   const handleModalSubmit = (event) => {
     event.preventDefault();
     let message = event.target.message.value;
-    const url = `http://localhost:3000/invite/${workspaceId}/${selectMember}/${userInfoToken}`;
+    const url = `https://pro-man-4cb6f.web.app/invite/${workspaceId}/${selectMember}/${userInfoToken}`;
     // console.log(url);
     form.current.user_email.value = selectMember;
     form.current.message.value = url;
