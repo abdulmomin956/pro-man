@@ -1,19 +1,24 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useSelector } from 'react-redux';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import auth from '../firebase/firebase.init';
 import Loading from './Loading';
 
 const VerifyInvitedMember = () => {
-   const [allUsers, setAllUsers] = useState([]);
+   // const [allUsers, setAllUsers] = useState([]);
    let location = useLocation();
    const [user, loading] = useAuthState(auth)
    const navigate = useNavigate()
    const [verifyUser, setVerifyUser] = useState("");
 
+   const users = useSelector(state => state.user)
    const { workspaceId, email, token } = useParams()
 
+   // console.log(users);
+   // console.log(user);
+   // verify the user when accept invite request.
    useEffect(() => {
       if (user) {
          const userData = { userEmail: user.email, token: token }
@@ -21,7 +26,7 @@ const VerifyInvitedMember = () => {
             .then(res => {
                if (res.status === 200) {
                   setVerifyUser(res.data);
-                  console.log(res.data)
+                  // console.log(res.data)
                }
             }).catch(err => {
                return navigate('/login')
@@ -32,12 +37,13 @@ const VerifyInvitedMember = () => {
    // Update user as a member  ***
    useEffect(() => {
       if (verifyUser) {
+         const userData = { userId: users._id, workspaceId: verifyUser.workspaceId }
+         console.log(userData);
 
-         const userData = { email: verifyUser.email, workspaceId: verifyUser.workspaceId }
-         axios.put("https://morning-coast-54182.herokuapp.com/invite/update-user", userData)
+         axios.put("http://localhost:5000/invite/update-user", userData)
             .then(res => {
                if (res.status === 200) {
-                  // console.log(res.data);
+                  console.log(res.data);
                   return navigate('/')
                }
             }).catch(err => {
@@ -47,7 +53,7 @@ const VerifyInvitedMember = () => {
                }
             })
       }
-   }, [verifyUser, navigate])
+   }, [verifyUser, navigate, users._id])
 
 
    if (loading) {

@@ -45,8 +45,8 @@ const Navbar = () => {
     )
   );
   // console.log(email);
-  const { data: membersData, refetch: memberRefetch } = useQuery(["memberData", email], () =>
-    fetch(`https://morning-coast-54182.herokuapp.com/workspace/memberEmail/${email}`).then((res) => res.json())
+  const { data: membersData, refetch: memberRefetch } = useQuery(["memberData", user._id], () =>
+    fetch(`https://morning-coast-54182.herokuapp.com/workspace/memberEmail/${user._id}`).then((res) => res.json())
 
   );
   useEffect(() => {
@@ -80,7 +80,7 @@ const Navbar = () => {
     }
   }, [user, user?.displayName]);
 
-  // console.log(membersData);
+  console.log(membersData);
 
   const logout = () => {
     signOut(auth);
