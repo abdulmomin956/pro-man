@@ -103,7 +103,7 @@ const WorkspaceMembers = () => {
         </div>
         <hr />
         {
-          currentWorkspace[0]?.members.map((e, index) => <section key={index}>
+          currentWorkspace[0]?.members?.map((e, index) => <section key={index}>
             <div key={index} className="flex justify-between my-2">
               <div className="">
                 <div className="ml-3">

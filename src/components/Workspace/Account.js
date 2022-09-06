@@ -17,22 +17,22 @@ const Account = () => {
   const [matchField, setMatchField] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [allBoardData, setAllBoardData] = useState([])
+  const [allWorkspaceData, setAllWorkspaceData] = useState([])
   const workspaces = useSelector(state => state.workspace)
   const membersWorkspace = useSelector(state => state.membersWorkspace)
-  // console.log(allBoardData);
+  // console.log(allWorkspaceData);
 
   useEffect(() => {
     if (workspaces) {
-      setAllBoardData(workspaces)
+      setAllWorkspaceData(workspaces)
     }
   }, [workspaces])
   useEffect(() => {
     if (membersWorkspace) {
-      setAllBoardData([...workspaces, ...membersWorkspace])
+      setAllWorkspaceData([...workspaces, ...membersWorkspace])
     }
   }, [membersWorkspace, workspaces])
-  const workspace = allBoardData.filter(workspaces => workspaces.shortname === shortname)
+  const workspace = allWorkspaceData.filter(workspaces => workspaces.shortname === shortname)
 
   // console.log(workspace[0]?.title);
 
