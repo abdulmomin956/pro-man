@@ -31,7 +31,7 @@ const BoardDetails = () => {
     const currentBoards = useSelector(state => state.currentWorkspaceBoards)
     const board = currentBoards.filter(board => board._id === board1.id)
     const dispatch = useDispatch();
-    console.log(data)
+    // console.log(data)
 
 
 

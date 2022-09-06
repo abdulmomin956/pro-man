@@ -51,7 +51,7 @@ const WorkspaceMembers = () => {
     return <Loading></Loading>;
   }
   const name = user.displayName;
-  console.log(allUsers);
+  // console.log(allUsers);
 
   const x = name;
   const nameparts = x?.split(" ");

@@ -80,7 +80,7 @@ const Navbar = () => {
     }
   }, [user, user?.displayName]);
 
-  console.log(membersData);
+  // console.log(membersData);
 
   const logout = () => {
     signOut(auth);
@@ -396,24 +396,23 @@ const Navbar = () => {
                 tabIndex="0"
                 className="mt-3  shadow menu menu-compact dropdown-content bg-base-100 rounded w-52"
               >
-                <li>
+                <li className="">
                   <Link
                     to="/profile"
-                    className="justify-between   mb-2 btn-sm w-full   "
+                    className="justify-between myButton  mb-2 btn-sm w-full   "
                   >
                     Profile
                     <span className="badge">New</span>
                   </Link>
                 </li>
                 <li>
-                  <p className="mb-2 btn-sm w-full   ">Settings</p>
+                  <p className="mb-2 btn-sm w-full myButton ">Settings</p>
                 </li>
                 <li>
-                  <Link to="/help">Help </Link>
-                  <p className="mb-2 btn-sm w-full   ">Settings</p>
+                  <Link to="/help" className="myButton mb-2 btn-sm w-full">Help </Link>
                 </li>
                 <li>
-                  <p onClick={logout} className="btn-sm w-full   ">
+                  <p onClick={logout} className="btn-sm w-full myButton  ">
                     Logout
                   </p>
                 </li>

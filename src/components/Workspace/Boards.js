@@ -7,7 +7,7 @@ import { setWorkspaceID } from "../../global-state/actions/reduxActions";
 
 const Boards = () => {
   const { shortname } = useParams();
-  console.log(shortname);
+  // console.log(shortname);
   const currentBoards = useSelector((state) => state.currentWorkspaceBoards);
   const navigate = useNavigate();
   const workspaces = useSelector((state) => state.workspace);
@@ -16,7 +16,7 @@ const Boards = () => {
   );
   // console.log(currentWorkspace[0]._id)
   const lastWorkspaceID = useSelector((state) => state.lastWorkspaceID);
-  console.log(lastWorkspaceID);
+  // console.log(lastWorkspaceID);
   const dispatch = useDispatch();
 
   return (
