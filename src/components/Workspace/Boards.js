@@ -20,7 +20,7 @@ const Boards = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="mx-auto">
+    <div className="mx-auto w-full">
       <CommonTopDesign></CommonTopDesign>
       <div className="mx-12">
         <h1 className="text-2xl mb-5">Boards</h1>
@@ -32,9 +32,9 @@ const Boards = () => {
               onClick={() => {
                 dispatch(setWorkspaceID(currentWorkspace[0]?._id));
               }}
-              //   onClick={() => {
-              //     dispatch(setWorkspaceID(item._id))
-              //   }}
+            //   onClick={() => {
+            //     dispatch(setWorkspaceID(item._id))
+            //   }}
             >
               <p>Create new board</p>
               {/* <FaRegPlusSquare className="mr-1 text-sm"></FaRegPlusSquare> */}

@@ -148,7 +148,7 @@ function App() {
             <Route path="profileCard" element={<ProfileCard />} />
             <Route path="profileSettings" element={<ProfileSetting />} />
           </Route>
-          <Route path="chat" element={<Chat conversations={conversations} />}>
+          <Route path="chat" element={<Chat />}>
             <Route path={`/chat/`} element={<Message />} />
             <Route path={`/chat/:currentChatId`} element={<Message />} />
           </Route>

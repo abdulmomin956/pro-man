@@ -4,13 +4,12 @@ import './message.css'
 import noAvatar from '../../../images/noAvatar.png'
 import ChatOnline from '../chatOnline/ChatOnline';
 import { useSelector } from 'react-redux';
-import io from "socket.io-client";
 import axios from 'axios';
 import { useOutletContext, useParams } from 'react-router-dom';
 
 const Message = () => {
     const { currentChatId } = useParams();
-    const [socket] = useOutletContext();
+    const [socket, arrivalMessage] = useOutletContext();
     const chats = useSelector(state => state.chats);
     const currentChat = chats.find(c => c._id === currentChatId);
     const [messages, setMessages] = useState([]);
@@ -18,19 +17,9 @@ const Message = () => {
     const user = useSelector(state => state.user);
     const [uniqueUsers, setUniqueUsers] = useState([])
     const [friend, setFriend] = useState([]);
-    const [arrivalMessage, setArrivalMessage] = useState(null);
     const scrollRef = useRef();
 
-    useEffect(() => {
-        socket.current = io("https://pro-man-socket.onrender.com/");
-        socket.current.on("getMessage", (data) => {
-            setArrivalMessage({
-                sender: data.senderId,
-                text: data.text,
-                createdAt: Date.now(),
-            });
-        });
-    }, [socket]);
+    console.log(arrivalMessage);
 
     useEffect(() => {
         arrivalMessage &&
@@ -61,11 +50,11 @@ const Message = () => {
             text: newMessage,
             conversationId: currentChat._id,
         };
-        const receiverId = currentChat.members.find(
+        const receiverId = currentChat.members.filter(
             (member) => member !== user._id
         );
 
-        socket?.current.emit("sendMessage", {
+        socket?.current?.emit("sendMessage", {
             senderId: user._id,
             receiverId,
             text: newMessage,
@@ -112,7 +101,7 @@ const Message = () => {
         }
     }, [uniqueUsers])
 
-    console.log(friend);
+    // console.log(friend);
     return (<>
         <div className='chat-window'>
             <div className='chatBoxWrapper'>
