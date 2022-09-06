@@ -14,17 +14,17 @@ const Profiles = () => {
   const email = user?.email;
   const [profiles, setProfiles] = useState({});
 
-  useEffect(() => {
-    fetch(`https://morning-coast-54182.herokuapp.com/profile/${email}`)
-      .then(res => res.json())
-      .then(data => setProfiles(data))
-  }, [email])
+  // useEffect(() => {
+  //   fetch(`https://morning-coast-54182.herokuapp.com/profile/${email}`)
+  //     .then(res => res.json())
+  //     .then(data => setProfiles(data))
+  // }, [email])
   if (loading) {
     return (
       <Loading></Loading>
     );
   }
-  const userName = profiles.userName;
+
 
   return (
     <div>
@@ -34,12 +34,15 @@ const Profiles = () => {
           style={{ background: "#F4F5F7" }}
         >
           <div className="avatar p-5">
-            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={userPhoto} alt="" />
+            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 flex justify-center items-center">
+              {userPhoto ?
+                <img src={userPhoto} alt={name} />
+                : <div className="text-7xl h-full flex justify-center items-center">{name?.charAt(0)?.toUpperCase()}</div>
+              }
             </div>
           </div>
           <div className="p-5">
-            <h2 className="font-bold text-4xl">{userName ? userName : name}  </h2>
+            <h2 className="font-bold text-4xl">{name}</h2>
           </div>
 
 
