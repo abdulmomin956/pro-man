@@ -34,7 +34,7 @@ const SocialLogin = ({ children }) => {
 
       const saveUser = async () => {
         const res = await axios.post(`https://morning-coast-54182.herokuapp.com/api/login`, userInfo)
-        console.log(res);
+        // console.log(res);
         if (res.status === 200) {
           const accessToken = res.data.accessToken;
           const ttl = res.data.ttl;

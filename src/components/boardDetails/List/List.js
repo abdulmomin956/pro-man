@@ -27,7 +27,7 @@ const List = ({ list, index }) => {
     // console.log(data)
     // localStorage.setItem('board-details', JSON.stringify(data))
     // console.log(list);
-    console.log(list)
+    // console.log(list)
     return (
         <Draggable draggableId={list?.id} index={index}>
             {(provided) => (

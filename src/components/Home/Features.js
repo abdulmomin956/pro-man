@@ -4,10 +4,10 @@ const Features = () => {
     return (
         <div >
             <div className='hero'>
-                <div class="hero-content text-center">
-                    <div class="max-w-[60rem] ">
-                        <h1 class="text-3xl text-primary font-bold">AWESOME FEATURES</h1>
-                        <p class="py-4 text-secondary text-justify">ProMan is a smart project manajment tools that allows you to monitor your workspace, their real-time value and other useful information for investors like you! Inside the app, you can create your own personal workspace and take a glance at all your boards in just one click!</p>
+                <div className="hero-content text-center">
+                    <div className="max-w-[60rem] ">
+                        <h1 className="text-3xl text-primary font-bold">AWESOME FEATURES</h1>
+                        <p className="py-4 text-secondary text-justify">ProMan is a smart project manajment tools that allows you to monitor your workspace, their real-time value and other useful information for investors like you! Inside the app, you can create your own personal workspace and take a glance at all your boards in just one click!</p>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@ const Features = () => {
 
                     </div>
                 </div>
-                <div className='card mx-auto w-96 bbg-white shadow'>
+                <div className='card mx-auto w-96 bg-white shadow'>
                     <div className='p-6'>
                         <div className='flex gap-x-6'>
                             <img className='w-[25px]' src="https://i.ibb.co/xXdyXjZ/moodboard-cuadrados-tablero.png" alt="" />
