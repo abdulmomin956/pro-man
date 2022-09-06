@@ -126,7 +126,7 @@ const Dashboard = () => {
             <div>
                 <div className="mx-auto text-center py-10">
                     <div className=" shadow grid md:grid-cols-3 gap-6 px-5 ">
-                        <div className="shadow-xl my-4 py-5 cardHover">
+                        <div className="shadow my-4 py-5 cardHover bg-white">
                             <div className=" text-center w-12 mx-auto">
                                 <FaUsers className="text-5xl text-yellow-500" />
                             </div>
@@ -134,7 +134,7 @@ const Dashboard = () => {
                             <div className="stat-value text-primary">86</div>
                         </div>
 
-                        <div className="shadow-xl my-4 py-5 cardHover">
+                        <div className="shadow my-4 py-5 cardHover bg-white">
                             <div className=" text-center w-12 mx-auto">
                                 <MdOutlineGroupWork className="text-5xl text-secondary" />
                             </div>
@@ -142,7 +142,7 @@ const Dashboard = () => {
                             <div className="stat-value text-primary">250</div>
                         </div>
 
-                        <div className="shadow-xl my-4 py-5 cardHover">
+                        <div className="shadow my-4 py-5 cardHover bg-white">
                             <div className=" text-center w-12 mx-auto">
                                 <FaBoxes className="text-5xl text-red-300" />
                             </div>
@@ -157,7 +157,7 @@ const Dashboard = () => {
                 <div className=''>
                     <h2 className='text-4xl mb-5 font-bold text-center text-primary'>ProMan Yearly Data </h2>
                     <ComposedChart
-                        className='mx-auto shadow-xl mb-10'
+                        className='mx-auto shadow bg-white mb-10'
                         width={900}
                         height={450}
                         data={chartReport}

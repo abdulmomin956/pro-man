@@ -7,28 +7,37 @@ import Conversation from './conversation/Conversation'
 import Message from './message/Message'
 import ChatOnline from "./chatOnline/ChatOnline";
 import { Link, Outlet } from "react-router-dom";
+import { io } from "socket.io-client";
 
 
 
-const Chat = ({ conversations }) => {
+const Chat = () => {
   const [currentChat, setCurrentChat] = useState(null);
   const user = useSelector(state => state.user)
   const [messages, setMessages] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const scrollRef = useRef();
   const socket = useRef();
+  const [arrivalMessage, setArrivalMessage] = useState(null);
+  const conversations = useSelector(state => state.chats)
 
-
+  useEffect(() => {
+    socket.current = io("https://pro-man-socket.onrender.com/");
+    socket?.current?.on("getMessage", (data) => {
+      setArrivalMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
+  }, [socket]);
 
 
 
   useEffect(() => {
     socket.current.emit("addUser", user._id);
     socket.current.on("getUsers", (users) => {
-      // console.log(users);
-      // setOnlineUsers(
-      //   user?.filter((f) => users.some((u) => u.userId === f))
-      // );
+      console.log(users);
       setOnlineUsers(
         users
       );
@@ -51,7 +60,7 @@ const Chat = ({ conversations }) => {
         ))}
       </div>
     </div>
-    <Outlet context={[socket]} />
+    <Outlet context={[socket, arrivalMessage]} />
   </main>
   );
 };

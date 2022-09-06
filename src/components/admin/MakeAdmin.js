@@ -131,7 +131,7 @@ const MakeAdmin = () => {
           {data?.map((user, i) => (
             <tr key={i} className="border-2 rounded-md bg-red-400">
               <td className="font-bold">{(page - 1) * limit + i + 1}</td>
-              <td>{user.name}</td>
+              <td>{user.displayName}</td>
               <td>{user.email}</td>
               <td>{user.role}</td>
               {user?.role !== "Admin" && (

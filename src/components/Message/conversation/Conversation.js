@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './conversation.css'
 import noAvatar from '../../../images/noAvatar.png'
+import CustomLink from '../../shared/CustomLink';
 
 const Conversation = ({ conversation, currentUser }) => {
     const [users, setUsers] = useState({});
@@ -41,7 +42,7 @@ const Conversation = ({ conversation, currentUser }) => {
     // console.log(users);
 
     return (
-        <div className="conversation">
+        <CustomLink to={`/chat/${conversation?._id}`} className="conversation">
             {users?.photoURL ? <img
                 className="conversationImg"
                 src={users?.photoURL}
@@ -53,7 +54,7 @@ const Conversation = ({ conversation, currentUser }) => {
             <span className="conversationName ">
                 {users?.displayName || users?.title}
             </span>
-        </div>
+        </CustomLink>
     );
 };
 
