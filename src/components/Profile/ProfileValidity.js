@@ -42,14 +42,14 @@ const ProfileValidity = () => {
           <div className="form-control w-full mb-4">
             <label className="label">
               <span className="text-sm font-bold board-modal-title">
-                Username
+                Name
               </span>
             </label>
             <input
               type="text"
-              placeholder="Type here"
+              placeholder="Full Name"
               className="input input-bordered w-full"
-              {...register("userName", {
+              {...register("displayName", {
                 required: {
                   value: true,
                   message: "Board Title is Required",
@@ -63,7 +63,7 @@ const ProfileValidity = () => {
             </label>
             <input
               type="text"
-              placeholder="Type here"
+              placeholder="Write about yourself"
               className="input input-bordered w-full"
               {...register("bio", {
                 required: {
