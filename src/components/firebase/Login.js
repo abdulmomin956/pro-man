@@ -68,10 +68,10 @@ const Login = () => {
     };
 
     return (
-        <div style={{ backgroundImage: `url("https://i.ibb.co/1mrTrDM/pexels-adhitya-andanu-1539116.jpg")`, backgroundRepeat: 'no-repeat' }} className='h-screen'>
+        <div style={{ backgroundImage: `url("https://i.ibb.co/JdkMHrY/b-RDQI7-1-1.webp")`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} className='h-screen'>
 
             <div className="hero-content mx-auto flex-col lg:flex-row-reverse ">
-                <div className="card w-full lg:mt-12 mt-24 max-w-sm shadow-2xl bg-base-100">
+                <div className="card w-full lg:mt-20 mt-24 max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
                         <h1 className='text-3xl font-bold text-center text-secondary'>Please Login First!</h1>
                         <form onSubmit={handleSubmit(onSubmit)}>
