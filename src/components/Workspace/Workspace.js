@@ -45,10 +45,10 @@ const Workspace = () => {
     }
 
 
-    const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${currentWorkspace[0]?._id}`).then(res => res.json()))
+    const boards = useQuery(['boards', currentWorkspace[0]?._id], () => fetch(`http://13.126.5.141:5000/board/w/${currentWorkspace[0]?._id}`).then(res => res.json()))
 
 
-    const membersBoards = useQuery(['membersBoards', currentWorkspaceMember[0]?._id], () => fetch(`https://morning-coast-54182.herokuapp.com/board/w/${currentWorkspaceMember[0]?._id}`).then(res => res.json()))
+    const membersBoards = useQuery(['membersBoards', currentWorkspaceMember[0]?._id], () => fetch(`http://13.126.5.141:5000/board/w/${currentWorkspaceMember[0]?._id}`).then(res => res.json()))
 
 
     useEffect(() => {
@@ -96,7 +96,7 @@ const Workspace = () => {
 
     const handleDelete = async id => {
         console.log(id);
-        const res = await axios.delete(`https://morning-coast-54182.herokuapp.com/board/b/${id}`)
+        const res = await axios.delete(`http://13.126.5.141:5000/board/b/${id}`)
         console.log(res);
         if (res.status === 200) {
             boards.refetch();

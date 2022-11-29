@@ -19,7 +19,7 @@ const InviteMemberModal = ({ workspaceId }) => {
   const form = useRef();
 
   useEffect(() => {
-    fetch(`https://morning-coast-54182.herokuapp.com/users/all`)
+    fetch(`http://13.126.5.141:5000/users/all`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -39,7 +39,7 @@ const InviteMemberModal = ({ workspaceId }) => {
         email: selectMember,
         workspaceId: workspaceId
       }
-      axios.post("https://morning-coast-54182.herokuapp.com/invite/token", userData)
+      axios.post("http://13.126.5.141:5000/invite/token", userData)
         .then(res => {
           if (res.status === 200) {
             setUserInfoToken(res.data.token);

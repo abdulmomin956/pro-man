@@ -13,7 +13,7 @@ const ChatOnline = ({ onlineUsers, currentId, setCurrentChat }) => {
         if (friendsArrayId?.userId) {
             const getUser = async () => {
                 try {
-                    const res = await axios.get(`https://morning-coast-54182.herokuapp.com/users/${friendsArrayId?.userId}`);
+                    const res = await axios.get(`http://13.126.5.141:5000/users/${friendsArrayId?.userId}`);
                     // console.log(res.data);
                     setFriends(res.data);
                 } catch (err) {
@@ -34,7 +34,7 @@ const ChatOnline = ({ onlineUsers, currentId, setCurrentChat }) => {
     const handleClick = async (user) => {
         try {
             const res = await axios.get(
-                `https://morning-coast-54182.herokuapp.com/api/conversations/find/${currentId}/${user._id}`
+                `http://13.126.5.141:5000/api/conversations/find/${currentId}/${user._id}`
             );
             setCurrentChat(res.data);
         } catch (err) {

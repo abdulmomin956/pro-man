@@ -15,7 +15,7 @@ const Conversation = ({ conversation, currentUser }) => {
             // console.log(friendId);
             const getUser = async () => {
                 try {
-                    const res = await axios.get(`https://morning-coast-54182.herokuapp.com/users/${friendId}`);
+                    const res = await axios.get(`http://13.126.5.141:5000/users/${friendId}`);
                     // console.log(res.data);
                     setUsers(res.data);
                 } catch (err) {
@@ -28,7 +28,7 @@ const Conversation = ({ conversation, currentUser }) => {
             // console.log(workspaceId);
             const getWorkspace = async () => {
                 try {
-                    const res = await axios.get(`https://morning-coast-54182.herokuapp.com/sworkspace/api/${workspaceId}`);
+                    const res = await axios.get(`http://13.126.5.141:5000/sworkspace/api/${workspaceId}`);
                     // console.log(res.data);
                     setUsers(res.data)
                 } catch (err) {

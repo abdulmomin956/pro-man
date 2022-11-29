@@ -59,7 +59,7 @@ const MakeAdmin = () => {
       const reqBody = { isAdmin, keyword }
       if (page && limit && isAdmin && needLoad) {
         setNeedLoad(false)
-        const res = await axios.post(`https://morning-coast-54182.herokuapp.com/users/pagination?page=${page}&limit=${limit}`, reqBody)
+        const res = await axios.post(`http://13.126.5.141:5000/users/pagination?page=${page}&limit=${limit}`, reqBody)
         // console.log(res);
         if (res.status === 200) {
           setPageCount(res?.data?.num_pages)
@@ -101,7 +101,7 @@ const MakeAdmin = () => {
     const role = "Admin";
     const user = { role };
 
-    const res = await axios.put(`https://morning-coast-54182.herokuapp.com/users/${id}`, user)
+    const res = await axios.put(`http://13.126.5.141:5000/users/${id}`, user)
     if (res.status === 200) {
       setNeedLoad(true)
     }
