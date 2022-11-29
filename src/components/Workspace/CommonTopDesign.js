@@ -45,7 +45,7 @@ const CommonTopDesign = () => {
     if (newShortname === shortname) {
       const newData = { title, type, website, description }
       // console.log(newData);
-      const res = await axios.patch(`https://morning-coast-54182.herokuapp.com/sworkspace/api/${currentWorkspace[0]._id}`, newData)
+      const res = await axios.patch(`http://13.126.5.141:5000/sworkspace/api/${currentWorkspace[0]._id}`, newData)
       // console.log(res.status);
       if (res.status === 200) {
         dispatch(setLoadWorkspace(true))
@@ -54,7 +54,7 @@ const CommonTopDesign = () => {
     }
     else {
       console.log(data);
-      await axios.patch(`https://morning-coast-54182.herokuapp.com/sworkspace/api/${currentWorkspace[0]._id}`, data)
+      await axios.patch(`http://13.126.5.141:5000/sworkspace/api/${currentWorkspace[0]._id}`, data)
         .then(function (response) {
           // console.log(response);
           if (response.status === 200) {

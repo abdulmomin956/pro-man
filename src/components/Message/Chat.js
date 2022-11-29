@@ -22,11 +22,13 @@ const Chat = () => {
   const conversations = useSelector(state => state.chats)
 
   useEffect(() => {
-    socket.current = io("https://pro-man-socket.onrender.com/");
+    socket.current = io("http://localhost:8900/");
     socket?.current?.on("getMessage", (data) => {
+      console.log(data);
       setArrivalMessage({
         sender: data.senderId,
         text: data.text,
+        conversationId: data.conversationId,
         createdAt: Date.now(),
       });
     });

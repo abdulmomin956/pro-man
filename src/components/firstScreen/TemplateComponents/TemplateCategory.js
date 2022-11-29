@@ -10,7 +10,7 @@ const TemplateCategory = () => {
 
   useEffect(() => {
     fetch(
-      `https://morning-coast-54182.herokuapp.com/template/category/${params.category}`
+      `http://13.126.5.141:5000/template/category/${params.category}`
     )
       .then((res) => res.json())
       .then((data) => setTemplates(data));

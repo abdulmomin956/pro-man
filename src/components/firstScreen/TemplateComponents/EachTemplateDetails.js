@@ -10,7 +10,7 @@ const EachTemplateDetails = () => {
 
   useEffect(() => {
     fetch(
-      `https://morning-coast-54182.herokuapp.com/template/each/${params.id}`
+      `http://13.126.5.141:5000/template/each/${params.id}`
     )
       .then((res) => res.json())
       .then((data) => setTemplate(data));

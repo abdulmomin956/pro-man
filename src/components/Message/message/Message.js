@@ -18,8 +18,9 @@ const Message = () => {
     const [uniqueUsers, setUniqueUsers] = useState([])
     const [friend, setFriend] = useState([]);
     const scrollRef = useRef();
+    const [activeConversations, setActiveConversations] = useState([])
 
-    console.log(arrivalMessage);
+    console.log(arrivalMessage, activeConversations);
 
     useEffect(() => {
         arrivalMessage &&
@@ -27,12 +28,22 @@ const Message = () => {
             setMessages((prev) => [...prev, arrivalMessage]);
     }, [arrivalMessage, currentChat]);
 
+    useEffect(() => {
+        socket?.current?.emit('activeConversation', currentChatId)
+        socket.current.on("getActiveConversations", (conversations) => {
+            console.log(conversations);
+            setActiveConversations(
+                conversations
+            );
+        });
+    }, [currentChatId, socket])
+
     // console.log(socket);
 
     useEffect(() => {
         const getMessages = async () => {
             try {
-                const res = await axios.get("https://morning-coast-54182.herokuapp.com/api/messages/" + currentChatId);
+                const res = await axios.get("http://13.126.5.141:5000/api/messages/" + currentChatId);
                 setMessages(res.data);
                 // console.log(res.data);
             } catch (err) {
@@ -56,12 +67,12 @@ const Message = () => {
 
         socket?.current?.emit("sendMessage", {
             senderId: user._id,
-            receiverId,
             text: newMessage,
+            conversationId: currentChat._id,
         });
 
         try {
-            const res = await axios.post("https://morning-coast-54182.herokuapp.com/api/messages", message);
+            const res = await axios.post("http://13.126.5.141:5000/api/messages", message);
             setMessages([...messages, res.data]);
             setNewMessage("");
         } catch (err) {
@@ -90,7 +101,7 @@ const Message = () => {
         if (uniqueUsers.length > 0) {
             const getUser = async () => {
                 try {
-                    const res = await axios.post(`https://morning-coast-54182.herokuapp.com/users/chat`, uniqueUsers);
+                    const res = await axios.post(`http://13.126.5.141:5000/users/chat`, uniqueUsers);
                     // console.log(res.data);
                     setFriend(res.data);
                 } catch (err) {

@@ -33,7 +33,7 @@ const WorkspaceModal = () => {
       profileBg: "#" + randomColor,
     };
 
-    const res = await axios.post('https://morning-coast-54182.herokuapp.com/workspace', newWorkspace)
+    const res = await axios.post('http://13.126.5.141:5000/workspace', newWorkspace)
     console.log(res)
     if (res.status === 200) {
       dispatch(setLoadWorkspace(true))

@@ -21,7 +21,7 @@ const Template = () => {
       .then((res) => res.json())
       .then((data) => setCategories(data));
 
-    fetch("https://morning-coast-54182.herokuapp.com/template")
+    fetch("http://13.126.5.141:5000/template")
       .then((res) => res.json())
       .then((data) => setPopularTemplates(data));
   }, []);

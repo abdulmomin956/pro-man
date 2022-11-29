@@ -40,13 +40,13 @@ const Navbar = () => {
   // console.log(user);
 
   const { data, refetch } = useQuery(["repoData", email], () =>
-    fetch(`https://morning-coast-54182.herokuapp.com/workspace/${email}`).then(
+    fetch(`http://13.126.5.141:5000/workspace/${email}`).then(
       (res) => res.json()
     )
   );
   // console.log(email);
   const { data: membersData, refetch: memberRefetch } = useQuery(["memberData", user._id], () =>
-    fetch(`https://morning-coast-54182.herokuapp.com/workspace/memberEmail/${user._id}`).then((res) => res.json())
+    fetch(`http://13.126.5.141:5000/workspace/memberEmail/${user._id}`).then((res) => res.json())
 
   );
   useEffect(() => {
