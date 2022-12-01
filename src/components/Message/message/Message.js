@@ -6,6 +6,8 @@ import ChatOnline from '../chatOnline/ChatOnline';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useOutletContext, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCurrentChatId } from '../../../global-state/actions/reduxActions';
 
 const Message = () => {
     const { currentChatId } = useParams();
@@ -18,9 +20,10 @@ const Message = () => {
     const [uniqueUsers, setUniqueUsers] = useState([])
     const [friend, setFriend] = useState([]);
     const scrollRef = useRef();
+    const dispatch = useDispatch();
     const [activeConversations, setActiveConversations] = useState([])
 
-    console.log(arrivalMessage, activeConversations);
+    // console.log(arrivalMessage, activeConversations);
 
     useEffect(() => {
         arrivalMessage &&
@@ -29,16 +32,10 @@ const Message = () => {
     }, [arrivalMessage, currentChat]);
 
     useEffect(() => {
-        socket?.current?.emit('activeConversation', currentChatId)
-        socket.current.on("getActiveConversations", (conversations) => {
-            console.log(conversations);
-            setActiveConversations(
-                conversations
-            );
-        });
-    }, [currentChatId, socket])
+        dispatch(setCurrentChatId(currentChatId))
+    }, [currentChatId, dispatch])
 
-    // console.log(socket);
+    // console.log(socket, currentChatId);
 
     useEffect(() => {
         const getMessages = async () => {
@@ -55,7 +52,6 @@ const Message = () => {
 
     const handleSubmit = async (e) => {
         // e.preventDefault();
-        console.log(socket);
         const message = {
             sender: user._id,
             text: newMessage,
@@ -156,7 +152,7 @@ const Message = () => {
                             onChange={(e) => setNewMessage(e.target.value)}
                             value={newMessage}
                             onKeyPress={(event) => {
-                                event.key === "Enter" && handleSubmit();
+                                event.key === "Enter" && newMessage && handleSubmit();
                             }}
                         ></input>
                         <button className="chatSubmitButton" onClick={handleSubmit}>

@@ -12,19 +12,21 @@ import { io } from "socket.io-client";
 
 
 const Chat = () => {
-  const [currentChat, setCurrentChat] = useState(null);
+  // const [currentChat, setCurrentChat] = useState(null);
   const user = useSelector(state => state.user)
-  const [messages, setMessages] = useState([]);
+  // const [messages, setMessages] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
-  const scrollRef = useRef();
+  // const scrollRef = useRef();
   const socket = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const conversations = useSelector(state => state.chats)
+  const currentChatId = useSelector(state => state.currentChatId)
+  const [activeConversations, setActiveConversations] = useState([])
 
   useEffect(() => {
-    socket.current = io("http://localhost:8900/");
+    socket.current = io("http://13.126.5.141:8900/");
     socket?.current?.on("getMessage", (data) => {
-      console.log(data);
+      // console.log(data);
       setArrivalMessage({
         sender: data.senderId,
         text: data.text,
@@ -39,12 +41,24 @@ const Chat = () => {
   useEffect(() => {
     socket.current.emit("addUser", user._id);
     socket.current.on("getUsers", (users) => {
-      console.log(users);
+      // console.log(users);
       setOnlineUsers(
         users
       );
     });
   }, [user]);
+
+  useEffect(() => {
+    if (socket.current && user._id) {
+      socket.current?.emit('activeConversation', { currentChatId, userId: user._id })
+      socket.current.on("getActiveConversations", (conversations) => {
+        // console.log(conversations);
+        setActiveConversations(
+          conversations
+        );
+      });
+    }
+  }, [currentChatId, socket, user._id])
 
 
 
