@@ -25,7 +25,8 @@ const Chat = () => {
 
   useEffect(() => {
     socket.current = io("https://pro-man-socket.onrender.com/");
-    socket?.current?.on("getMessage", (data) => {
+    // socket.current = io("http://localhost:8900/");
+    socket.current.on("getMessage", (data) => {
       // console.log(data);
       setArrivalMessage({
         sender: data.senderId,
@@ -34,7 +35,7 @@ const Chat = () => {
         createdAt: Date.now(),
       });
     });
-  }, [socket]);
+  }, []);
 
 
 

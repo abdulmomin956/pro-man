@@ -21,6 +21,7 @@ const Message = () => {
     const [friend, setFriend] = useState([]);
     const scrollRef = useRef();
     const dispatch = useDispatch();
+    const [sendable, setSendable] = useState();
     const [activeConversations, setActiveConversations] = useState([])
 
     // console.log(arrivalMessage, activeConversations);
@@ -52,6 +53,7 @@ const Message = () => {
 
     const handleSubmit = async (e) => {
         // e.preventDefault();
+        setSendable(false)
         const message = {
             sender: user._id,
             text: newMessage,
@@ -149,10 +151,10 @@ const Message = () => {
                         <input
                             className="chatMessageInput"
                             placeholder="write something..."
-                            onChange={(e) => setNewMessage(e.target.value)}
+                            onChange={(e) => { setNewMessage(e.target.value); setSendable(true) }}
                             value={newMessage}
                             onKeyPress={(event) => {
-                                event.key === "Enter" && newMessage && handleSubmit();
+                                event.key === "Enter" && newMessage && sendable && handleSubmit();
                             }}
                         ></input>
                         <button className="chatSubmitButton" onClick={handleSubmit}>
