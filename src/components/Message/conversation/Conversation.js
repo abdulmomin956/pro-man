@@ -15,7 +15,7 @@ const Conversation = ({ conversation, currentUser }) => {
             // console.log(friendId);
             const getUser = async () => {
                 try {
-                    const res = await axios.get(`http://13.126.5.141:5000/users/${friendId}`);
+                    const res = await axios.get(`https://65.0.1.22/users/${friendId}`);
                     // console.log(res.data);
                     setUsers(res.data);
                 } catch (err) {
@@ -28,7 +28,7 @@ const Conversation = ({ conversation, currentUser }) => {
             // console.log(workspaceId);
             const getWorkspace = async () => {
                 try {
-                    const res = await axios.get(`http://13.126.5.141:5000/sworkspace/api/${workspaceId}`);
+                    const res = await axios.get(`https://65.0.1.22/sworkspace/api/${workspaceId}`);
                     // console.log(res.data);
                     setUsers(res.data)
                 } catch (err) {

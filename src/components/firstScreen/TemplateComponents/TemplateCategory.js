@@ -10,7 +10,7 @@ const TemplateCategory = () => {
 
   useEffect(() => {
     fetch(
-      `http://13.126.5.141:5000/template/category/${params.category}`
+      `https://65.0.1.22/template/category/${params.category}`
     )
       .then((res) => res.json())
       .then((data) => setTemplates(data));

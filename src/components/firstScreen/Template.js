@@ -21,7 +21,7 @@ const Template = () => {
       .then((res) => res.json())
       .then((data) => setCategories(data));
 
-    fetch("http://13.126.5.141:5000/template")
+    fetch("https://65.0.1.22/template")
       .then((res) => res.json())
       .then((data) => setPopularTemplates(data));
   }, []);

@@ -19,7 +19,7 @@ const WorkspaceMembers = () => {
 
 
   useEffect(() => {
-    fetch(`http://13.126.5.141:5000/users/all`)
+    fetch(`https://65.0.1.22/users/all`)
       .then((res) => res.json())
       .then((data) => setAllUsers(data));
   }, []);

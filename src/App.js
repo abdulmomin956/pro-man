@@ -86,7 +86,7 @@ function App() {
           key: "value",
         };
         const res = await axios.post(
-          "http://13.126.5.141:5000/api/auth",
+          "https://65.0.1.22/api/auth",
           bodyParameters,
           config
         );
@@ -108,7 +108,7 @@ function App() {
   useEffect(() => {
     const getConversations = async () => {
       try {
-        const res = await axios.get("http://13.126.5.141:5000/api/conversations/" + user?._id);
+        const res = await axios.get("https://65.0.1.22/api/conversations/" + user?._id);
         setConversations(res.data);
         dispatch(setChats(res.data))
       } catch (err) {

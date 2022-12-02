@@ -19,7 +19,7 @@ const InviteMemberModal = ({ workspaceId }) => {
   const form = useRef();
 
   useEffect(() => {
-    fetch(`http://13.126.5.141:5000/users/all`)
+    fetch(`https://65.0.1.22/users/all`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -39,7 +39,7 @@ const InviteMemberModal = ({ workspaceId }) => {
         email: selectMember,
         workspaceId: workspaceId
       }
-      axios.post("http://13.126.5.141:5000/invite/token", userData)
+      axios.post("https://65.0.1.22/invite/token", userData)
         .then(res => {
           if (res.status === 200) {
             setUserInfoToken(res.data.token);

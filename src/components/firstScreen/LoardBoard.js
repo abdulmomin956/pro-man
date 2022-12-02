@@ -16,7 +16,7 @@ const LoardBoard = ({ props, workspaceID }) => {
 
 
 
-  const boards = useQuery(['boards', workspaceID], () => fetch(`http://13.126.5.141:5000/board/w/${workspaceID}`).then(res => res.json()))
+  const boards = useQuery(['boards', workspaceID], () => fetch(`https://65.0.1.22/board/w/${workspaceID}`).then(res => res.json()))
 
 
   useEffect(() => {

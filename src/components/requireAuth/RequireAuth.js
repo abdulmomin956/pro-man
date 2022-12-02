@@ -47,7 +47,7 @@ const RequireAuth = ({ children }) => {
 
             const fetchData = async () => {
                 const res = await axios.post(
-                    'http://13.126.5.141:5000/api/auth',
+                    'https://65.0.1.22/api/auth',
                     bodyParameters,
                     config
                 )
