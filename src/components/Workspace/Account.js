@@ -49,7 +49,7 @@ const Account = () => {
 
     await axios
       .delete(
-        `http://13.126.5.141:5000/sworkspace/api/${workspace[0]?._id}`
+        `https://65.0.1.22/sworkspace/api/${workspace[0]?._id}`
       )
       .then((res) => {
         navigate("/");

@@ -15,7 +15,7 @@ const Profiles = () => {
   const [profiles, setProfiles] = useState({});
 
   // useEffect(() => {
-  //   fetch(`http://13.126.5.141:5000/profile/${email}`)
+  //   fetch(`https://65.0.1.22/profile/${email}`)
   //     .then(res => res.json())
   //     .then(data => setProfiles(data))
   // }, [email])

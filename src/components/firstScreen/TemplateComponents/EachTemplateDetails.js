@@ -10,7 +10,7 @@ const EachTemplateDetails = () => {
 
   useEffect(() => {
     fetch(
-      `http://13.126.5.141:5000/template/each/${params.id}`
+      `https://65.0.1.22/template/each/${params.id}`
     )
       .then((res) => res.json())
       .then((data) => setTemplate(data));
