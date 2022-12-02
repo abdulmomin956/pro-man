@@ -18,7 +18,7 @@ const HomeScreenAllBoards = ({ props, workspaceID }) => {
 
     useEffect(() => {
         setLoading(true)
-        fetch(`http://13.126.5.141:5000/board/w/${workspaceID}`)
+        fetch(`https://65.0.1.22/board/w/${workspaceID}`)
             .then(res => res.json())
             .then(result => {
                 setData(result)

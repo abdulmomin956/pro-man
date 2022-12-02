@@ -42,7 +42,7 @@ const Login = () => {
         reset()
         const userInfo = { email: data.email }
         // console.log(data)
-        const res = await axios.post(`http://13.126.5.141:5000/api/login`, userInfo)
+        const res = await axios.post(`https://65.0.1.22/api/login`, userInfo)
         // console.log(res);
         if (res.status === 200) {
             const accessToken = res.data.accessToken;

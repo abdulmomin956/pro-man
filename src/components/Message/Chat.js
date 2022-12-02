@@ -24,7 +24,7 @@ const Chat = () => {
   const [activeConversations, setActiveConversations] = useState([])
 
   useEffect(() => {
-    socket.current = io("http://13.126.5.141:8900/");
+    socket.current = io("http://65.0.1.22:8900/");
     socket?.current?.on("getMessage", (data) => {
       // console.log(data);
       setArrivalMessage({

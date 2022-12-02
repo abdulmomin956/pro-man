@@ -22,7 +22,7 @@ const VerifyInvitedMember = () => {
    useEffect(() => {
       if (user) {
          const userData = { userEmail: user.email, token: token }
-         axios.post("http://13.126.5.141:5000/invite/verify", userData)
+         axios.post("https://65.0.1.22/invite/verify", userData)
             .then(res => {
                if (res.status === 200) {
                   setVerifyUser(res.data);
@@ -40,7 +40,7 @@ const VerifyInvitedMember = () => {
          const userData = { userId: users._id, workspaceId: verifyUser.workspaceId }
          console.log(userData);
 
-         axios.put("http://13.126.5.141:5000/invite/update-user", userData)
+         axios.put("https://65.0.1.22/invite/update-user", userData)
             .then(res => {
                if (res.status === 200) {
                   console.log(res.data);
