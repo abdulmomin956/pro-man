@@ -1,5 +1,5 @@
 # ProMan (Project Management Tool)
-[Live Link](https://pro-man-4cb6f.web.app/)
+[Live Link](https://pro-man.netlify.app/)
 
 * Users can manage their tasks or project on this website.
 * They can add members to their workspace.
