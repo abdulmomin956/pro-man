@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLoadBoard } from "../../global-state/actions/reduxActions";
+import { RESTAPI } from "../../api";
 
 const BoardModal = () => {
   const [bTitle, setBtitle] = useState("")
@@ -41,7 +42,7 @@ const BoardModal = () => {
     };
 
 
-    const res = await axios.post('https://65.0.1.22/board', newBoard)
+    const res = await axios.post(RESTAPI + 'board', newBoard)
     // console.log(res)
     if (res.status === 200) {
       dispatch(setLoadBoard(true))
@@ -66,7 +67,7 @@ const BoardModal = () => {
         visibility: visibility,
       };
       // console.log(newBoard);
-      const res = await axios.post('https://65.0.1.22/board', newBoard)
+      const res = await axios.post(RESTAPI+'board', newBoard)
       console.log(res)
       // navigate("/board-details");
   

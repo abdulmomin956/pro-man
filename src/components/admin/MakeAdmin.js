@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { RESTAPI } from "../../api";
 
 const MakeAdmin = () => {
   const [page, setPage] = useState(null);
@@ -59,7 +60,7 @@ const MakeAdmin = () => {
       const reqBody = { isAdmin, keyword }
       if (page && limit && isAdmin && needLoad) {
         setNeedLoad(false)
-        const res = await axios.post(`https://65.0.1.22/users/pagination?page=${page}&limit=${limit}`, reqBody)
+        const res = await axios.post(`${RESTAPI}users/pagination?page=${page}&limit=${limit}`, reqBody)
         // console.log(res);
         if (res.status === 200) {
           setPageCount(res?.data?.num_pages)
@@ -101,7 +102,7 @@ const MakeAdmin = () => {
     const role = "Admin";
     const user = { role };
 
-    const res = await axios.put(`https://65.0.1.22/users/${id}`, user)
+    const res = await axios.put(`${RESTAPI}users/${id}`, user)
     if (res.status === 200) {
       setNeedLoad(true)
     }

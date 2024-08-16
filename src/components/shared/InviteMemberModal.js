@@ -7,6 +7,7 @@ import Loading from "./Loading";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { RESTAPI } from "../../api";
 
 const InviteMemberModal = ({ workspaceId }) => {
   const [matchField, setMatchField] = useState("");
@@ -19,7 +20,7 @@ const InviteMemberModal = ({ workspaceId }) => {
   const form = useRef();
 
   useEffect(() => {
-    fetch(`https://65.0.1.22/users/all`)
+    fetch(`${RESTAPI}users/all`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -39,7 +40,7 @@ const InviteMemberModal = ({ workspaceId }) => {
         email: selectMember,
         workspaceId: workspaceId
       }
-      axios.post("https://65.0.1.22/invite/token", userData)
+      axios.post(RESTAPI + "invite/token", userData)
         .then(res => {
           if (res.status === 200) {
             setUserInfoToken(res.data.token);

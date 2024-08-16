@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TempleteBoardModal from "../../shared/TempleteBoardModal";
 import TemplateCreateSection from "./TemplateCreateSection";
+import { RESTAPI } from "../../../api";
 
 const EachTemplateDetails = () => {
   const params = useParams();
@@ -10,7 +11,7 @@ const EachTemplateDetails = () => {
 
   useEffect(() => {
     fetch(
-      `https://65.0.1.22/template/each/${params.id}`
+      `${RESTAPI}template/each/${params.id}`
     )
       .then((res) => res.json())
       .then((data) => setTemplate(data));

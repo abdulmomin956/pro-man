@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import EachTemplate from "./EachTemplate";
 import TemplateCreateSection from "./TemplateCreateSection";
+import { RESTAPI } from "../../../api";
 
 const TemplateCategory = () => {
   const params = useParams();
@@ -10,7 +11,7 @@ const TemplateCategory = () => {
 
   useEffect(() => {
     fetch(
-      `https://65.0.1.22/template/category/${params.category}`
+      `${RESTAPI}template/category/${params.category}`
     )
       .then((res) => res.json())
       .then((data) => setTemplates(data));

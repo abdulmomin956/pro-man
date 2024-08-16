@@ -3,6 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux"
 import axios from 'axios';
 import { setUser } from '../../global-state/actions/reduxActions';
+import { RESTAPI } from '../../api';
 
 function getWithExpiry(key) {
     const itemStr = localStorage.getItem(key)
@@ -47,7 +48,7 @@ const RequireAuth = ({ children }) => {
 
             const fetchData = async () => {
                 const res = await axios.post(
-                    'https://65.0.1.22/api/auth',
+                    RESTAPI + 'api/auth',
                     bodyParameters,
                     config
                 )

@@ -40,6 +40,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import UserHelp from "./components/UserHelp/UserHelp";
 import Message from "./components/Message/message/Message";
+import { RESTAPI } from "./api";
 
 
 function getWithExpiry(key) {
@@ -86,7 +87,7 @@ function App() {
           key: "value",
         };
         const res = await axios.post(
-          "https://65.0.1.22/api/auth",
+          RESTAPI + "api/auth",
           bodyParameters,
           config
         );
@@ -108,7 +109,7 @@ function App() {
   useEffect(() => {
     const getConversations = async () => {
       try {
-        const res = await axios.get("https://65.0.1.22/api/conversations/" + user?._id);
+        const res = await axios.get(RESTAPI + "api/conversations/" + user?._id);
         setConversations(res.data);
         dispatch(setChats(res.data))
       } catch (err) {

@@ -7,6 +7,7 @@ import { MdCancelPresentation } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { RESTAPI } from "../../../api";
 
 const WorkspaceMembers = () => {
   const [user, loading] = useAuthState(auth);
@@ -19,7 +20,7 @@ const WorkspaceMembers = () => {
 
 
   useEffect(() => {
-    fetch(`https://65.0.1.22/users/all`)
+    fetch(`${RESTAPI}users/all`)
       .then((res) => res.json())
       .then((data) => setAllUsers(data));
   }, []);

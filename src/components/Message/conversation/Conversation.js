@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './conversation.css'
 import noAvatar from '../../../images/noAvatar.png'
 import CustomLink from '../../shared/CustomLink';
+import { RESTAPI } from '../../../api';
 
 const Conversation = ({ conversation, currentUser }) => {
     const [users, setUsers] = useState({});
@@ -15,7 +16,7 @@ const Conversation = ({ conversation, currentUser }) => {
             // console.log(friendId);
             const getUser = async () => {
                 try {
-                    const res = await axios.get(`https://65.0.1.22/users/${friendId}`);
+                    const res = await axios.get(`${RESTAPI}users/${friendId}`);
                     // console.log(res.data);
                     setUsers(res.data);
                 } catch (err) {
@@ -28,7 +29,7 @@ const Conversation = ({ conversation, currentUser }) => {
             // console.log(workspaceId);
             const getWorkspace = async () => {
                 try {
-                    const res = await axios.get(`https://65.0.1.22/sworkspace/api/${workspaceId}`);
+                    const res = await axios.get(`${RESTAPI}sworkspace/api/${workspaceId}`);
                     // console.log(res.data);
                     setUsers(res.data)
                 } catch (err) {

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { RESTAPI } from "../../api";
 
 const TempleteBoardModal = ({ tempBMTitle, bgUrl }) => {
   const allWorkspace = useSelector((state) => state.workspace);
@@ -36,7 +37,7 @@ const TempleteBoardModal = ({ tempBMTitle, bgUrl }) => {
 
     console.log(newBoard);
     const res = await axios.post(
-      "https://65.0.1.22/board",
+      RESTAPI + "board",
       newBoard
     );
     console.log(res);

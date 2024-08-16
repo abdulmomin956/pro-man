@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import axios from "axios"
 import { useDispatch } from "react-redux";
 import { setUser } from "../../global-state/actions/reduxActions";
+import { RESTAPI } from "../../api";
 
 const SocialLogin = ({ children }) => {
   const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const SocialLogin = ({ children }) => {
       // console.log(userInfo);
 
       const saveUser = async () => {
-        const res = await axios.post(`https://65.0.1.22/api/login`, userInfo)
+        const res = await axios.post(`${RESTAPI}api/login`, userInfo)
         // console.log(res);
         if (res.status === 200) {
           const accessToken = res.data.accessToken;

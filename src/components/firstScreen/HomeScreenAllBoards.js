@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../shared/Loading';
+import { RESTAPI } from '../../api';
 
 const HomeScreenAllBoards = ({ props, workspaceID }) => {
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ const HomeScreenAllBoards = ({ props, workspaceID }) => {
 
     useEffect(() => {
         setLoading(true)
-        fetch(`https://65.0.1.22/board/w/${workspaceID}`)
+        fetch(`${RESTAPI}board/w/${workspaceID}`)
             .then(res => res.json())
             .then(result => {
                 setData(result)

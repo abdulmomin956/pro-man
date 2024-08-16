@@ -6,6 +6,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLoadWorkspace } from "../../global-state/actions/reduxActions";
 import { useSelector } from "react-redux";
+import { RESTAPI } from "../../api";
 
 const WorkspaceModal = () => {
   const [workspaceName, setWorkspaceName] = useState("");
@@ -33,7 +34,7 @@ const WorkspaceModal = () => {
       profileBg: "#" + randomColor,
     };
 
-    const res = await axios.post('https://65.0.1.22/workspace', newWorkspace)
+    const res = await axios.post(RESTAPI + 'workspace', newWorkspace)
     console.log(res)
     if (res.status === 200) {
       dispatch(setLoadWorkspace(true))
