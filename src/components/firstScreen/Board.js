@@ -13,6 +13,7 @@ import LoardBoard from "./LoardBoard";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
+import { RESTAPI } from "../../api";
 
 const Board = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Board = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://65.0.1.22/template")
+    fetch(RESTAPI + "template")
       .then((res) => res.json())
       .then((data) => setPopularTemplates(data.slice(2, 7)));
   }, []);

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import auth from '../firebase/firebase.init';
 import Loading from './Loading';
+import { RESTAPI } from '../../api';
 
 const VerifyInvitedMember = () => {
    // const [allUsers, setAllUsers] = useState([]);
@@ -22,7 +23,7 @@ const VerifyInvitedMember = () => {
    useEffect(() => {
       if (user) {
          const userData = { userEmail: user.email, token: token }
-         axios.post("https://65.0.1.22/invite/verify", userData)
+         axios.post(RESTAPI + "invite/verify", userData)
             .then(res => {
                if (res.status === 200) {
                   setVerifyUser(res.data);
@@ -40,7 +41,7 @@ const VerifyInvitedMember = () => {
          const userData = { userId: users._id, workspaceId: verifyUser.workspaceId }
          console.log(userData);
 
-         axios.put("https://65.0.1.22/invite/update-user", userData)
+         axios.put(RESTAPI + "invite/update-user", userData)
             .then(res => {
                if (res.status === 200) {
                   console.log(res.data);

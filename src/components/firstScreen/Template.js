@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EachTemplate from "./TemplateComponents/EachTemplate";
 import TemplateCreateSection from "./TemplateComponents/TemplateCreateSection";
+import { RESTAPI } from "../../api";
 
 const Template = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const Template = () => {
       .then((res) => res.json())
       .then((data) => setCategories(data));
 
-    fetch("https://65.0.1.22/template")
+    fetch(RESTAPI + "template")
       .then((res) => res.json())
       .then((data) => setPopularTemplates(data));
   }, []);

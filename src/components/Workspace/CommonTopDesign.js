@@ -9,6 +9,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLoadWorkspace } from "../../global-state/actions/reduxActions";
 import InviteMemberModal from "../shared/InviteMemberModal";
+import { RESTAPI } from "../../api";
 
 const CommonTopDesign = () => {
   const [editMood, setEditMood] = useState(false)
@@ -45,7 +46,7 @@ const CommonTopDesign = () => {
     if (newShortname === shortname) {
       const newData = { title, type, website, description }
       // console.log(newData);
-      const res = await axios.patch(`https://65.0.1.22/sworkspace/api/${currentWorkspace[0]._id}`, newData)
+      const res = await axios.patch(`${RESTAPI}sworkspace/api/${currentWorkspace[0]._id}`, newData)
       // console.log(res.status);
       if (res.status === 200) {
         dispatch(setLoadWorkspace(true))
@@ -54,7 +55,7 @@ const CommonTopDesign = () => {
     }
     else {
       console.log(data);
-      await axios.patch(`https://65.0.1.22/sworkspace/api/${currentWorkspace[0]._id}`, data)
+      await axios.patch(`${RESTAPI}sworkspace/api/${currentWorkspace[0]._id}`, data)
         .then(function (response) {
           // console.log(response);
           if (response.status === 200) {

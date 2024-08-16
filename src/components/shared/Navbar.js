@@ -22,6 +22,7 @@ import Notification from "./Notification";
 import TempleteBoard from "./TempleteBoard";
 import StarredBoard from "./StarredBoard";
 import logo from "../../images/logo.png";
+import { RESTAPI } from "../../api";
 
 // FiBell
 
@@ -40,13 +41,13 @@ const Navbar = () => {
   // console.log(user);
 
   const { data, refetch } = useQuery(["repoData", email], () =>
-    fetch(`https://65.0.1.22/workspace/${email}`).then(
+    fetch(`${RESTAPI}workspace/${email}`).then(
       (res) => res.json()
     )
   );
   // console.log(email);
   const { data: membersData, refetch: memberRefetch } = useQuery(["memberData", user._id], () =>
-    fetch(`https://65.0.1.22/workspace/memberEmail/${user._id}`).then((res) => res.json())
+    fetch(`${RESTAPI}workspace/memberEmail/${user._id}`).then((res) => res.json())
 
   );
   useEffect(() => {

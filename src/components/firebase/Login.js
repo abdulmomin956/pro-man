@@ -8,6 +8,7 @@ import Loading from '../shared/Loading';
 import axios from 'axios';
 import { useDispatch } from "react-redux";
 import { setUser } from '../../global-state/actions/reduxActions';
+import { RESTAPI } from '../../api';
 // import { toast } from 'react-toastify';
 
 const Login = () => {
@@ -42,7 +43,7 @@ const Login = () => {
         reset()
         const userInfo = { email: data.email }
         // console.log(data)
-        const res = await axios.post(`https://65.0.1.22/api/login`, userInfo)
+        const res = await axios.post(`${RESTAPI}api/login`, userInfo)
         // console.log(res);
         if (res.status === 200) {
             const accessToken = res.data.accessToken;

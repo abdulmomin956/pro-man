@@ -9,6 +9,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setLoadWorkspace } from "../../global-state/actions/reduxActions";
+import { RESTAPI } from "../../api";
 
 const Account = () => {
   const { shortname } = useParams();
@@ -49,7 +50,7 @@ const Account = () => {
 
     await axios
       .delete(
-        `https://65.0.1.22/sworkspace/api/${workspace[0]?._id}`
+        `${RESTAPI}sworkspace/api/${workspace[0]?._id}`
       )
       .then((res) => {
         navigate("/");

@@ -15,13 +15,14 @@ import {
     Tooltip,
     Legend,
 } from "recharts";
+import { RESTAPI } from '../../api';
 
 const Dashboard = () => {
     const [allUsers, setAllUsers] = useState([]);
     const workspaces = useSelector(state => state.workspace)
 
     useEffect(() => {
-        fetch(`https://65.0.1.22/users/all`)
+        fetch(`${RESTAPI}users/all`)
             .then((res) => res.json())
             .then((data) => setAllUsers(data));
     }, []);

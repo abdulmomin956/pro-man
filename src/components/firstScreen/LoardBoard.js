@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setLoadBoard } from "../../global-state/actions/reduxActions";
 import { useQuery } from "@tanstack/react-query";
+import { RESTAPI } from "../../api";
 
 const LoardBoard = ({ props, workspaceID }) => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const LoardBoard = ({ props, workspaceID }) => {
 
 
 
-  const boards = useQuery(['boards', workspaceID], () => fetch(`https://65.0.1.22/board/w/${workspaceID}`).then(res => res.json()))
+  const boards = useQuery(['boards', workspaceID], () => fetch(`${RESTAPI}board/w/${workspaceID}`).then(res => res.json()))
 
 
   useEffect(() => {

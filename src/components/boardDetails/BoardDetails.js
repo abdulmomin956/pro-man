@@ -13,6 +13,7 @@ import Loading from '../shared/Loading';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setSaveList } from '../../global-state/actions/reduxActions';
+import { RESTAPI } from '../../api';
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -40,12 +41,12 @@ const BoardDetails = () => {
 
     }
 
-    const allLists = useQuery(['allLists', board1.id], () => fetch(`https://65.0.1.22/list/b/${board1.id}`).then(res => res.json()))
+    const allLists = useQuery(['allLists', board1.id], () => fetch(`${RESTAPI}list/b/${board1.id}`).then(res => res.json()))
 
     if (saveList) {
         dispatch(setSaveList(false))
         const saveData = async () => {
-            const res = await axios.post(`https://65.0.1.22/list/b/${board1.id}`, data)
+            const res = await axios.post(`${RESTAPI}list/b/${board1.id}`, data)
             console.log(res);
             if (res.status === 200) {
 

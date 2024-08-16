@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useOutletContext, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCurrentChatId } from '../../../global-state/actions/reduxActions';
+import { RESTAPI } from '../../../api';
 
 const Message = () => {
     const { currentChatId } = useParams();
@@ -41,7 +42,7 @@ const Message = () => {
     useEffect(() => {
         const getMessages = async () => {
             try {
-                const res = await axios.get("https://65.0.1.22/api/messages/" + currentChatId);
+                const res = await axios.get(RESTAPI + "api/messages/" + currentChatId);
                 setMessages(res.data);
                 // console.log(res.data);
             } catch (err) {
@@ -70,7 +71,7 @@ const Message = () => {
         });
 
         try {
-            const res = await axios.post("https://65.0.1.22/api/messages", message);
+            const res = await axios.post(RESTAPI + "api/messages", message);
             setMessages([...messages, res.data]);
             setNewMessage("");
         } catch (err) {
@@ -99,7 +100,7 @@ const Message = () => {
         if (uniqueUsers.length > 0) {
             const getUser = async () => {
                 try {
-                    const res = await axios.post(`https://65.0.1.22/users/chat`, uniqueUsers);
+                    const res = await axios.post(`${RESTAPI}users/chat`, uniqueUsers);
                     // console.log(res.data);
                     setFriend(res.data);
                 } catch (err) {
