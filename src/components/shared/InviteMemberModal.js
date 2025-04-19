@@ -64,10 +64,10 @@ const InviteMemberModal = ({ workspaceId }) => {
 
     emailjs
       .sendForm(
-        "service_lvaziz1",
-        "template_jwbokis",
+        "service_jf011pm",
+        "template_e814g7k",
         form.current,
-        "iLv2oS5yxqCVzHgPL"
+        "7UHd1JsNtmzGFUsnP"
       )
       .then((res) => {
         console.log(res);
